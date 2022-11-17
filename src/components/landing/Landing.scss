@@ -1,0 +1,65 @@
+.landing-section {
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    .me {
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 10px solid var(--background);
+        width: 240px;
+        height: 240px;
+    }
+
+    .hello {
+        font-family: monospace;
+        font-size: 24px;
+        color: var(--dark-white)
+    }
+
+    .main-h1 {
+        font-size: 32px;
+    }
+
+    .name {
+        color: var(--primary);
+    }
+
+    .landing-info {
+        width: 100%;
+
+        button {
+            margin-top: 24px;
+        }
+    }
+
+    .social-links {
+        color: var(--primary);
+        position: absolute;
+        bottom: 24px;
+
+        .icon {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+.first-panel {
+    width: 100%;
+    height: 40vh;
+    background-color: var(--primary);
+}
+
+.second-panel {
+    width: 100%;
+    height: 60vh;
+    padding: 130px 30px;
+    color: var(--white);
+}
+

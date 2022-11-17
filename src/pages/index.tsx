@@ -1,11 +1,10 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+import { Landing } from "../components/landing/Landing"
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <h1>
-      Hello World
-    </h1>
+    <Landing />
   )
 }
 
