@@ -19,6 +19,11 @@
     .notfound-links {
         position: absolute;
         bottom: 44px;
+
+        .icon {
+            width: 3em;
+            height: 3em;
+        }
     }
 }
 
@@ -33,5 +38,11 @@
 @media (max-width: 600px) {
     .notfound {
         font-size: 12px;
+    }
+}
+
+@media (max-width: 300px) {
+    .notfound {
+        font-size: 10px;
     }
 }

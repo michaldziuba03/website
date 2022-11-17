@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { DevIcon } from './DevIcon';
 import { FacebookIcon } from './FacebookIcon';
-import { GithubIcon } from './GitHubIcon';
+import { GithubIcon } from './GithubIcon';
 import { LinkedinIcon } from './LinkedinIcon';
 import './Icon.scss';
 
