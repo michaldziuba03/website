@@ -3,7 +3,7 @@ import { HeadFC, PageProps } from "gatsby"
 import '../styles/404.scss';
 import {  SolidButton } from "../components/buttons";
 import { Logo } from "../components/logo/Logo";
-import { Icon } from "../icons/Icon";
+import { Socials } from "../components/socials/Socials";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
@@ -13,12 +13,7 @@ const NotFoundPage: React.FC<PageProps> = () => {
       <span className="notfound-status">404</span>
       <SolidButton variant="dark" link="/" stretched>Back to home</SolidButton>
 
-      <div className="links">
-        <Icon name="github" size="48"/>
-        <Icon name="facebook" size="48"/>
-        <Icon name="linkedin" size="48"/>
-        <Icon name="dev" size="48"/>
-      </div>
+      <Socials className="notfound-links"/>
     </main>
   )
 }

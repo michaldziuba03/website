@@ -1,0 +1,12 @@
+.social-links {
+    a {
+        margin: 0 16px;
+        color: currentColor;
+        
+        &:hover {
+            opacity: .6;
+            cursor: pointer;
+            transition: opacity ease-in-out .3s;
+        }
+    }
+}
