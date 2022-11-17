@@ -63,3 +63,32 @@
     color: var(--white);
 }
 
+
+@media (min-width: 700px) {
+    .landing-section {
+        flex-direction: row;
+
+        .me {
+            top: 50%;
+            left: 40%;
+        }
+
+        .landing-info {
+            width: auto;
+        }
+    }
+
+    .first-panel {
+        width: 40%;
+        height: 100vh;
+    }
+
+    .second-panel {
+        width: 60%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: 140px;
+    }
+}
