@@ -75,6 +75,10 @@
 
         .landing-info {
             width: auto;
+
+            button {
+                width: 250px;
+            }
         }
     }
 
@@ -145,6 +149,14 @@
         .landing-info {
             h1 {
                 font-size: 3em;
+            }
+        }
+
+        .buttons-group {
+            display: flex;
+            
+            button {
+                margin-right: 16px;
             }
         }
     }
