@@ -1,0 +1,94 @@
+.about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: var(--mobile-margin);
+    background-color: var(--background);
+}
+
+.about__me {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 24px;
+}
+
+.about__details {
+    width: 100%;
+    color: var(--white)
+}
+
+.about__description {
+    color: var(--dark-white);
+    margin-bottom: 24px;
+}
+
+.about__headline {
+    text-align: center;
+}
+
+.about__headline2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.about__skills {
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+        width: 52px;
+        height: 52px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .about {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+    }
+
+    .about__me {
+        width: 40%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .about__details {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 160px;
+    }
+
+    .about__description {
+        font-size: 20px;
+        margin-bottom: 80px;
+    }
+
+    .about__headline {
+        text-align: left;
+        font-size: 40px;
+        margin-bottom: 16px;
+    }
+
+    .about__headline2 {
+        text-align: left;
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .about__skills {
+        svg {
+            width: 70px;
+            height: 70px;
+        }
+    }
+}
