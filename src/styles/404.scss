@@ -8,22 +8,18 @@
     height: 100vh;
     background-color: var(--primary);
     font-weight: 900;
-    padding: 30px;
+    padding: var(--mobile-margin);
+    font-size: 10px;
 
     .logo {
         position: absolute;
-        top: 40px;
-        left: 40px;
+        top: var(--mobile-margin);
+        left: var(--mobile-margin);
     }
 
     .notfound-links {
         position: absolute;
-        bottom: 44px;
-
-        .icon {
-            width: 3em;
-            height: 3em;
-        }
+        bottom: var(--mobile-margin);
     }
 }
 
@@ -35,14 +31,24 @@
     font-size: 8em;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 700px) {
     .notfound {
         font-size: 12px;
     }
 }
 
-@media (max-width: 300px) {
+@media (min-width: 1024px) {
     .notfound {
-        font-size: 10px;
+        font-size: 16px;
+        padding: var(--desktop-margin);
+
+        .logo {
+            top: var(--desktop-margin);
+            left: var(--desktop-margin);
+        }
+
+        .notfound-links {
+            bottom: var(--desktop-margin);
+        }
     }
 }

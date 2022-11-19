@@ -7,7 +7,7 @@ import './Landing.scss';
 
 export const Landing = () => {
   return (
-    <section className='landing-section'>
+    <div className='landing-section'>
         <Navbar />
         <div className='first-panel'></div>
         <StaticImage className='me' alt='me' src='../../images/michal.jpeg' />
@@ -25,6 +25,6 @@ export const Landing = () => {
 
             <Socials className='social-links' />
         </div>
-    </section>
+    </div>
   )
 }

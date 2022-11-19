@@ -6,10 +6,14 @@
 
 body {
     --font: 'Prompt', sans-serif;
+    --monospace: 'Roboto Mono', monospace;
     --primary: #EB5757;
     --background: #0E0E0E;
     --white: #FAFAFA;
     --dark-white: #DEDEDE;
+    --mobile-margin: 30px;
+    --desktop-margin: 40px;
+
     font-family: var(--font);
     background-color: var(--background);
 }

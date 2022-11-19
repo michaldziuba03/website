@@ -5,6 +5,45 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 30px;
+    align-items: center;
+    padding: var(--mobile-margin);
     color: var(--background)
+}
+
+.navbar__navigation {
+    display: none;
+}
+
+@media (min-width: 700px) {
+    .navbar__navigation {
+        display: flex;
+        color: var(--dark-white);
+    }
+
+    .navbar_link {
+         padding: 0 16px;
+         font-weight: 500;
+    
+        &:hover {
+            color: var(--primary);
+            cursor: pointer;
+        }
+    }
+
+    .navbar__menu-icon {
+        display: none;
+    }
+}
+
+@media(min-width: 1024px) {
+    .navbar {
+        padding: var(--desktop-margin);
+    }
+}
+
+@media (min-width: 1200px) {
+    .navbar_link {
+        font-size: 18px;
+        padding: 0 24px;
+    }
 }
