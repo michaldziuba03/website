@@ -12,11 +12,7 @@
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
-}
-
-.btn:hover {
-    opacity: 0.6;
-    transition: opacity ease-in-out .3s;
+    transition: background-color ease-in-out .2s, border-color ease-in-out .2s, color ease-in-out .2s;
 }
 
 .ghost-btn {
@@ -33,6 +29,12 @@
     color: var(--background);
 }
 
+.ghost-btn:hover {
+    color: var(--background);
+    background-color: var(--white);
+    border-color: var(--white);
+}
+
 .solid-btn.light-btn {
     border: 2px solid var(--primary);
     background-color: var(--primary);
@@ -43,6 +45,12 @@
     border: 2px solid var(--background);
     background-color: var(--background);
     color: var(--primary);
+}
+
+.solid-btn:hover {
+    background-color: transparent;
+    border-color: var(--white);
+    color: var(--white);
 }
 
 @media (max-width: 700px) {

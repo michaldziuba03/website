@@ -10,11 +10,11 @@ export const Main = () => {
     <div className='main'>
         <Navbar />
         <div className='main__first-panel'></div>
-        <StaticImage className='me' alt='me' src='../../images/michal.jpeg' />
+        <StaticImage className='main__me' alt='me' src='../../images/michal.jpeg' />
         <div className='main__second-panel'>
             <div className='main__headlines'>
                 <h1 className='main__hello'>&lt;HELLO /&gt;</h1>
-                <h1 className='main__name'>I'm <span className='name'>Michał</span></h1>
+                <h1 className='main__headline'>I'm <span className='name'>Michał</span></h1>
                 <h1>programming enjoyer</h1>
 
                 <div className='buttons-group'>
