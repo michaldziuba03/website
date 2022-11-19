@@ -9,12 +9,15 @@ import { NodeIcon } from "./NodeIcon";
 import { PostgresIcon } from "./PostgresIcon";
 import { RedisIcon } from "./RedisIcon";
 import { TypescriptIcon } from "./TypescriptIcon";
+import './Skill.scss';
 
-export interface SkillProps {
-    technology: 'typescript' | 'javascript' | 'docker' | 'nest' | 'node' | 'postgres' | 'redis' | 'mongo' | 'git' | 'nginx';
+type Technologies = 'typescript' | 'javascript' | 'docker' | 'nest' | 'node' | 'postgres' | 'redis' | 'mongo' | 'git' | 'nginx';
+
+export interface SkillIconProps {
+    technology: Technologies;
 }
 
-export const Skill: FC<SkillProps> = ({ technology }) => {
+export const SkillIcon: FC<SkillIconProps> = ({ technology }) => {
     switch (technology) {
         case 'typescript':
             return <TypescriptIcon />
@@ -37,4 +40,18 @@ export const Skill: FC<SkillProps> = ({ technology }) => {
         case 'nginx':
             return <NginxIcon />
     }
+}
+
+export interface SkillProps {
+    technology: Technologies;
+    label: string;
+}
+
+export const Skill: FC<SkillProps> = ({ technology, label }) => {
+    return (
+        <div className="skill">
+            <SkillIcon technology={technology} />
+            <span className="skill__label">{label}</span>
+        </div>
+    )   
 }

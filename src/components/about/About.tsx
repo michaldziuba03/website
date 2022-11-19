@@ -13,19 +13,19 @@ export const About = () => {
 
                 <h1 className='about__headline2'>Tech stack</h1>
                 <div className='about__skills'>
-                    <Skill technology='typescript' />
-                    <Skill technology='javascript' />
-                    <Skill technology='node' />
-                    <Skill technology='nest' />
-                    <Skill technology='docker' />
+                    <Skill label='TypeScript' technology='typescript' />
+                    <Skill label='JavaScript' technology='javascript' />
+                    <Skill label='Node.js' technology='node' />
+                    <Skill label='Nest.js' technology='nest' />
+                    <Skill label='Docker' technology='docker' />
                 </div>
 
                 <div className='about__skills'>
-                    <Skill technology='postgres' />
-                    <Skill technology='redis' />
-                    <Skill technology='mongo' />
-                    <Skill technology='git' />
-                    <Skill technology='nginx' />
+                    <Skill label='PostgreSQL' technology='postgres' />
+                    <Skill label='Redis' technology='redis' />
+                    <Skill label='MongoDB' technology='mongo' />
+                    <Skill label='Git' technology='git' />
+                    <Skill label='Nginx' technology='nginx' />
                 </div>
             </div>
         </div>
