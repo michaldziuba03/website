@@ -1,4 +1,4 @@
-.landing-section {
+.main {
     width: 100%;
     height: 100vh;
 
@@ -16,13 +16,13 @@
         height: 240px;
     }
 
-    .hello {
+    .main__hello {
         font-family: var(--monospace);
         font-size: 24px;
         color: var(--dark-white)
     }
 
-    .main-h1 {
+    .main__name {
         font-size: 32px;
     }
 
@@ -30,7 +30,7 @@
         color: var(--primary);
     }
 
-    .landing-info {
+    .main__headlines {
         width: 100%;
 
         button {
@@ -38,20 +38,20 @@
         }
     }
 
-    .social-links {
+    .main__links {
         color: var(--primary);
         position: absolute;
         bottom: 24px;
     }
 }
 
-.first-panel {
+.main__first-panel {
     width: 100%;
     height: 40vh;
     background-color: var(--primary);
 }
 
-.second-panel {
+.main__second-panel {
     width: 100%;
     height: 60vh;
     padding: 130px var(--mobile-margin);
@@ -60,7 +60,7 @@
 
 
 @media (min-width: 700px) {
-    .landing-section {
+    .main {
         flex-direction: row;
 
         .me {
@@ -68,7 +68,7 @@
             left: 40%;
         }
 
-        .landing-info {
+        .main__headlines {
             width: auto;
 
             button {
@@ -77,12 +77,12 @@
         }
     }
 
-    .first-panel {
+    .main__first-panel {
         width: 40%;
         height: 100vh;
     }
 
-    .second-panel {
+    .main__second-panel {
         width: 60%;
         height: 100vh;
         display: flex;
@@ -93,7 +93,7 @@
 }
 
 @media (min-width: 1024px) {
-    .landing-section {
+    .main {
 
         .me {
             width: 300px;
@@ -101,14 +101,14 @@
             border: 15px solid var(--background);
         }
 
-        .landing-info {
+        .main__headlines {
             h1 {
                 font-size: 2em;
             }
             
         }
 
-        .social-links {
+        .main__links {
             position: absolute;
             left: var(--desktop-margin);
             bottom: var(--desktop-margin);
@@ -118,9 +118,9 @@
 }
 
 @media(min-width: 1200px) {
-    .landing-section {
+    .main {
 
-        .landing-info {
+        .main__headlines {
             h1 {
                 font-size: 2.6em;
             }
@@ -129,7 +129,7 @@
 }
 
 @media(min-width: 1400px) {
-    .landing-section {
+    .main {
 
         .me {
             width: 400px;
@@ -137,7 +137,7 @@
             border: 20px solid var(--background);
         }
 
-        .landing-info {
+        .main__headlines {
             h1 {
                 font-size: 3em;
             }
@@ -154,14 +154,14 @@
 }
 
 @media(min-width: 1600px) {
-    .landing-section {
+    .main {
         .me {
             width: 490px;
             height: 490px;
             border: 20px solid var(--background);
         }
 
-        .landing-info {
+        .main__headlines {
             h1 {
                 font-size: 3.2em;
             }

@@ -17,17 +17,17 @@
         left: var(--mobile-margin);
     }
 
-    .notfound-links {
+    .notfound__links {
         position: absolute;
         bottom: var(--mobile-margin);
     }
 }
 
-.notfound-description {
+.notfound__description {
     font-size: 4em;
 }
 
-.notfound-status {
+.notfound__status {
     font-size: 8em;
 }
 
@@ -47,7 +47,7 @@
             left: var(--desktop-margin);
         }
 
-        .notfound-links {
+        .notfound__links {
             bottom: var(--desktop-margin);
         }
     }

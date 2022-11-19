@@ -9,11 +9,11 @@ const NotFoundPage: React.FC<PageProps> = () => {
   return (
     <main className="notfound">
       <Logo />
-      <span className="notfound-description">OOPS! PAGE NOT FOUND</span>
-      <span className="notfound-status">404</span>
+      <span className="notfound__description">OOPS! PAGE NOT FOUND</span>
+      <span className="notfound__status">404</span>
       <SolidButton variant="dark" link="/" stretched>Back to home</SolidButton>
 
-      <Socials className="notfound-links"/>
+      <Socials className="notfound__links"/>
     </main>
   )
 }
