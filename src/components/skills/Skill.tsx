@@ -10,8 +10,10 @@ import { PostgresIcon } from "./PostgresIcon";
 import { RedisIcon } from "./RedisIcon";
 import { TypescriptIcon } from "./TypescriptIcon";
 import './Skill.scss';
+import { ReactIcon } from "./ReactIcon";
+import { KafkaIcon } from "./KafkaIcon";
 
-type Technologies = 'typescript' | 'javascript' | 'docker' | 'nest' | 'node' | 'postgres' | 'redis' | 'mongo' | 'git' | 'nginx';
+type Technologies = 'typescript' | 'javascript' | 'docker' | 'nest' | 'node' | 'postgres' | 'redis' | 'mongo' | 'git' | 'nginx' | 'react' | 'kafka';
 
 export interface SkillIconProps {
     technology: Technologies;
@@ -39,6 +41,10 @@ export const SkillIcon: FC<SkillIconProps> = ({ technology }) => {
             return <GitIcon />
         case 'nginx':
             return <NginxIcon />
+        case 'react':
+            return <ReactIcon />
+        case 'kafka':
+            return <KafkaIcon />
     }
 }
 

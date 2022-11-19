@@ -37,12 +37,21 @@
 }
 
 .about__skills {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 16px;
+}
 
-    svg {
-        width: 52px;
-        height: 52px;
+@media (min-width: 400px) {
+    .about__skills {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 600px) {
+    .about__skills {
+        grid-template-columns: repeat(6, 1fr);
     }
 }
 
@@ -86,9 +95,6 @@
     }
 
     .about__skills {
-        svg {
-            width: 70px;
-            height: 70px;
-        }
+        gap: 32px;
     }
 }

@@ -17,15 +17,14 @@ export const About = () => {
                     <Skill label='JavaScript' technology='javascript' />
                     <Skill label='Node.js' technology='node' />
                     <Skill label='Nest.js' technology='nest' />
+                    <Skill label='React' technology='react' />
                     <Skill label='Docker' technology='docker' />
-                </div>
-
-                <div className='about__skills'>
                     <Skill label='PostgreSQL' technology='postgres' />
                     <Skill label='Redis' technology='redis' />
                     <Skill label='MongoDB' technology='mongo' />
                     <Skill label='Git' technology='git' />
                     <Skill label='Nginx' technology='nginx' />
+                    <Skill label='Kafka' technology='kafka' />
                 </div>
             </div>
         </div>

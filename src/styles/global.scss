@@ -18,3 +18,13 @@ body {
     background-color: var(--background);
     overflow-x: hidden;
 }
+
+::-moz-selection { /* Code for Firefox */
+    color: #FAFAFA;
+    background: #EB5757;
+  }
+  
+  ::selection {
+    color: #FAFAFA;
+    background: #EB5757;
+  }
