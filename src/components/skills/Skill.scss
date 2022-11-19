@@ -23,23 +23,7 @@
     margin-top: 10px;
 }
 
-@media (min-width: 700px) {
-    .skill {
-        svg {
-            width: 52px;
-            height: 52px;
-        }
-    }
-}
-
 @media (min-width: 1024px) {
-    .skill {
-        svg {
-            width: 64px;
-            height: 64px;
-        }
-    }
-
     .skill__label {
         font-size: 12px;
         margin-top: 12px;
