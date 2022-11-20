@@ -1,0 +1,21 @@
+.footer {
+    width: 100%;
+    background-color: var(--primary);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--background);
+
+    * {
+        margin: 4px;
+    }
+}
+
+.footer__copyright {
+    font-weight: 500;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
