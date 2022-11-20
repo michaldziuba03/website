@@ -8,7 +8,7 @@ export const About = () => {
         <div className='about'>
             <StaticImage 
                 className='about__me' 
-                alt='me' 
+                alt='me'
                 src='../../images/cooler-michal.jpg'
             />
             <div className='about__details'>
@@ -21,7 +21,7 @@ export const About = () => {
                     <Skill label='JavaScript' technology='javascript' />
                     <Skill label='Node.js' technology='node' />
                     <Skill label='Nest.js' technology='nest' />
-                    <Skill label='React' technology='react' />
+                    <Skill label='React.js' technology='react' />
                     <Skill label='Docker' technology='docker' />
                     <Skill label='PostgreSQL' technology='postgres' />
                     <Skill label='Redis' technology='redis' />

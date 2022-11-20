@@ -14,7 +14,6 @@
     height: 200px;
     border-radius: 50%;
     margin-bottom: 24px;
-    max-height: 100vh;
 }
 
 .about__details {
@@ -59,21 +58,21 @@
 @media (min-width: 1024px) {
     .about {
         width: 100%;
-        display: flex;
-        flex-direction: row;
+        display: grid;
         padding: 0;
-        align-items: flex-start;
+        margin: 0;
+        grid-template-columns: .4fr .6fr;
     }
 
     .about__me {
-        width: 40%;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         border-radius: 0;
         margin-bottom: 0;
+        min-height: 100vh;
     }
 
     .about__details {
-        width: 60%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
