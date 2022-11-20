@@ -1,4 +1,44 @@
 .projects {
     width: 100%;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white);
+    padding: 100px var(--desktop-margin);
+}
+
+.projects__headline {
+    width: 100%;
+    text-align: center;
+}
+
+.project {
+    display: flex;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.project__image {
+    width: 500px;
+    border-radius: 10px;
+    background-color: black;
+}
+
+.project__info {
+    max-width: 500px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    p {
+        color: var(--dark-white);
+    }
+}
+
+.project__featured {
+    color: var(--primary);
+    font-family: var(--monospace);
 }
