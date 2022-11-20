@@ -38,3 +38,33 @@
         }
     }
 }
+
+.tag {
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    align-items: center;
+    background-color: #404040;
+    color: var(--white);
+    padding: 4px 12px;
+    font-family: var(--monospace);
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 10px;
+    user-select: none;
+    margin: 0 4px;
+
+    &:first-of-type {
+        margin-left: 0;
+    }
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+    }
+}

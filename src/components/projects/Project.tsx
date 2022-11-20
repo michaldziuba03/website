@@ -1,5 +1,6 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
+import { Tag } from '../skills/Skill';
 
 export const Project = () => {
     return (
@@ -14,6 +15,11 @@ export const Project = () => {
                 <div className='project__featured'>Featured project</div>
                 <h2>Elegant homepage</h2>
                 <p>Sed metus est, bibendum vitae lacus nec, imperdiet sagittis lacus. Maecenas molestie dolor dui, ut ullamcorper tortor varius rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras felis ex, congue vitae iaculis eu.</p>
+
+                <div className='project__tags'>
+                    <Tag label='JavaScript' technology='javascript' />
+                    <Tag label='React' technology='react' />
+                </div>
             </div>
         </div>
     )

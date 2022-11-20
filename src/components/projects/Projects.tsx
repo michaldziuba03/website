@@ -9,6 +9,7 @@ export const Projects = () => {
 
             <Project />
             <Project />
+            <Project />
         </div>
     )
 }
