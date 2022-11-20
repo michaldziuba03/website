@@ -24,7 +24,24 @@ body {
     background: #EB5757;
   }
   
-  ::selection {
-    color: #FAFAFA;
-    background: #EB5757;
-  }
+::selection {
+  color: #FAFAFA;
+  background: #EB5757;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+    
+::-webkit-scrollbar-track {
+  background-color: var(--background);
+}
+
+$thumb: #888;
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+  background: lighten($color: $thumb, $amount: 10);
+}

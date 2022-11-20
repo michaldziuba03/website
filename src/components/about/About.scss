@@ -14,6 +14,7 @@
     height: 200px;
     border-radius: 50%;
     margin-bottom: 24px;
+    max-height: 100vh;
 }
 
 .about__details {
@@ -61,12 +62,14 @@
         display: flex;
         flex-direction: row;
         padding: 0;
+        align-items: flex-start;
     }
 
     .about__me {
         width: 40%;
         height: 100vh;
         border-radius: 0;
+        margin-bottom: 0;
     }
 
     .about__details {
@@ -74,6 +77,8 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+        justify-content: center;
+        min-height: 100vh;
         padding: 80px;
     }
 
