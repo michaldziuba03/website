@@ -10,6 +10,7 @@ export const Projects = () => {
             <Project />
             <Project />
             <Project />
+            <Project />
         </div>
     )
 }

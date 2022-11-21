@@ -71,6 +71,16 @@
 @media (min-width: 700px) {
     .project {
         flex-direction: row;
+        margin-bottom: 80px;
+    }
+
+    .project:nth-of-type(even) {
+        flex-direction: row-reverse;
+
+        .project__info {
+            padding-left: 0;
+            padding-right: 32px;
+        }
     }
 
     .project__info {
@@ -88,5 +98,30 @@
         p {
             font-size: 16px;
         }
+    }
+}
+
+@media (min-width: 1600px) {
+    .project {
+        flex-direction: row;
+        margin-bottom: 80px;
+    }
+
+    .project__image {
+        max-width: 700px;
+    }
+
+    .project:nth-of-type(even) {
+        flex-direction: row-reverse;
+
+        .project__info {
+            padding-left: 0;
+            padding-right: 50px;
+        }
+    }
+
+    .project__info {
+        padding-top: 0px;
+        padding-left: 50px;
     }
 }
