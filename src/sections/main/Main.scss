@@ -32,7 +32,7 @@
 }
 
 .main__info {
-    font-size: clamp(1.4rem, 1rem + 3vw, 2rem);
+    font-size: clamp(1.4rem, 1rem + 2vw, 2rem);
     
     h1 {
         font-size: 1em;
@@ -82,11 +82,11 @@
     .main__me {
         margin-bottom: 0;
         margin-right: calc(var(--image-half) * -1);
-        border: 20px solid var(--color-background);
+        border: 15px solid var(--color-background);
     }
 
     .main__second-panel {
-        padding: 0;
+        padding: 2em;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -102,33 +102,22 @@
 
     .main__buttons {
         margin-top: 1.5rem;
-    
-        button {
-            width: 200px;
-        }
     }
 }
 
 @media (min-width: 1024px) {
-    .main__buttons {
-        display: flex;
-        
-        button {
-            margin-right: 1rem;
-        }
-    }
-
     .main__info {
         font-size: clamp(2rem, 1rem + 2vw, 3.2rem);
+    }
+
+    .main__me {
+        border: 20px solid var(--color-background);
     }
 }
 
 @media(min-width: 1200px) {
     .main__buttons {
         display: flex;
-        
-        button {
-            width: 250px;
-        }
+        gap: 1rem;
     }
 }

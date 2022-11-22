@@ -4,7 +4,7 @@
     align-items: center;
     height: 46px;
     font-size: 1rem;
-    border-radius: 30px;
+    border-radius: 5px;
     font-family: var(--font-primary);
     font-weight: 500;
     text-decoration: none;
@@ -53,8 +53,6 @@
     color: var(--white);
 }
 
-@media (max-width: 724px) {
-    .stretched-btn {
-        width: 100%;
-    }
+.stretched-btn {
+    width: 100%;
 }
