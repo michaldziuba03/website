@@ -36,25 +36,6 @@
     font-weight: 700;
 }
 
-.about__skills {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 16px;
-}
-
-@media (min-width: 400px) {
-    .about__skills {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (min-width: 600px) {
-    .about__skills {
-        grid-template-columns: repeat(6, 1fr);
-    }
-}
-
 @media (min-width: 1024px) {
     .about {
         width: 100%;
@@ -96,12 +77,6 @@
         text-align: left;
         font-size: 32px;
         margin-bottom: 16px;
-    }
-}
-
-@media (min-width: 1400px) {
-    .about__skills {
-        gap: 32px;
     }
 }
 

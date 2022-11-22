@@ -1,6 +1,6 @@
-import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { Skill } from '../../components/skills/Skill';
+import { StaticImage } from 'gatsby-plugin-image';
+import { Stack } from '../../components/stack/Stack';
 import './About.scss';
 
 export const About = () => {
@@ -16,20 +16,7 @@ export const About = () => {
                 <p className='about__description'>My name is Michał and I’m 19 years old from Poland. I started with programming in 2018. I’m intested in web development, operating systems (like Linux) and open-source-software movement. Besides programming I also like video games, history and dogs.</p>
 
                 <h1 className='about__headline2'>Tech stack</h1>
-                <div className='about__skills'>
-                    <Skill label='TypeScript' technology='typescript' />
-                    <Skill label='JavaScript' technology='javascript' />
-                    <Skill label='Node.js' technology='node' />
-                    <Skill label='Nest.js' technology='nest' />
-                    <Skill label='React.js' technology='react' />
-                    <Skill label='Docker' technology='docker' />
-                    <Skill label='PostgreSQL' technology='postgres' />
-                    <Skill label='Redis' technology='redis' />
-                    <Skill label='MongoDB' technology='mongo' />
-                    <Skill label='Git' technology='git' />
-                    <Skill label='Nginx' technology='nginx' />
-                    <Skill label='Kafka' technology='kafka' />
-                </div>
+                <Stack />
             </div>
         </div>
     )
