@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  Personal portfolio website
+  Personal website (EXPERIMENTAL VERSION)
 </h1>
 
 ![image](https://user-images.githubusercontent.com/43048524/203225459-3fd8179f-82ad-4cb5-a12e-8ed01cd7df5b.png)
@@ -14,3 +14,9 @@
 1. Modern CSS (Flex and Grid) and SCSS
 2. Mobile first
 3. BEM methodology
+
+# To-do
+1. Refactor code
+2. Improve design (based on opinions)
+3. Replace hardcoded data in components with Gatsby GraphQL queries
+4. Create blog with markdown
