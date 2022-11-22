@@ -1,0 +1,17 @@
+.section-h1 {
+    font-size: 32px;
+}
+
+.section-h2 {
+    font-size: 24px;
+}
+
+@media (min-width: 1024px) {
+    .section-h1 {
+        font-size: 40px;
+    }
+    
+    .section-h2 {
+        font-size: 32px;
+    }
+}

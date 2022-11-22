@@ -38,12 +38,12 @@ const BaseButton: FC<ButtonProps> = ({ children, stretched, variant, className, 
 
 export const SolidButton: FC<ButtonProps> = ({ children, stretched, ...attributes }) => {
     return (
-        <BaseButton className='solid-btn' stretched {...attributes} >{children}</BaseButton>
+        <BaseButton className='solid-btn' stretched={stretched} {...attributes} >{children}</BaseButton>
     )
 }
 
 export const GhostButton: FC<ButtonProps> = ({ children, stretched, ...attributes }) => {
     return (
-        <BaseButton className='ghost-btn' stretched {...attributes}>{children}</BaseButton>
+        <BaseButton className='ghost-btn' stretched={stretched} {...attributes}>{children}</BaseButton>
     )
 }

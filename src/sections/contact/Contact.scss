@@ -2,3 +2,37 @@
     width: 100%;
     min-height: 100vh;
 }
+
+form {
+    width: 700px;
+
+    label {
+        font-size: 14px;
+    }
+
+    input,
+    textarea {
+        font-family: var(--font-primary);
+        margin: 1rem 0;
+        display: block;
+    }
+
+    input {
+        width: 400px;
+        padding: .8rem;
+        background-color: #1B1B1B;
+        border: 1px solid #DEDEDE;
+        border-radius: 5px;
+        color: #DEDEDE;
+    }
+
+    textarea {
+        width: 400px;
+        height: 200px;
+        padding: .8rem;
+        background-color: #1B1B1B;
+        border: 1px solid #DEDEDE;
+        border-radius: 5px;
+        color: #DEDEDE;
+    }
+}
