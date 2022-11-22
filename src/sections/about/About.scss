@@ -5,8 +5,8 @@
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    padding: var(--mobile-margin);
-    background-color: var(--background);
+    padding: 1.5rem;
+    background-color: var(--color-background);
 }
 
 .about__me {
@@ -18,11 +18,11 @@
 
 .about__details {
     width: 100%;
-    color: var(--white)
+    color: var(--color-white)
 }
 
 .about__description {
-    color: var(--dark-white);
+    color: var(--color-dark-white);
     margin-bottom: 24px;
 }
 

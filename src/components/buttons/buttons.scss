@@ -5,7 +5,7 @@
     height: 46px;
     font-size: 1rem;
     border-radius: 30px;
-    font-family: var(--font);
+    font-family: var(--font-primary);
     font-weight: 500;
     text-decoration: none;
     padding: 0 64px;
@@ -20,13 +20,13 @@
 }
 
 .ghost-btn.light-btn {
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
 }
 
 .ghost-btn.dark-btn {
-    border: 2px solid var(--background);
-    color: var(--background);
+    border: 2px solid var(--color-background);
+    color: var(--color-background);
 }
 
 .ghost-btn:hover {
@@ -36,15 +36,15 @@
 }
 
 .solid-btn.light-btn {
-    border: 2px solid var(--primary);
-    background-color: var(--primary);
-    color: var(--background);
+    border: 2px solid var(--color-primary);
+    background-color: var(--color-primary);
+    color: var(--color-background);
 }
 
 .solid-btn.dark-btn {
-    border: 2px solid var(--background);
-    background-color: var(--background);
-    color: var(--primary);
+    border: 2px solid var(--color-background);
+    background-color: var(--color-background);
+    color: var(--color-primary);
 }
 
 .solid-btn:hover {
@@ -53,7 +53,7 @@
     color: var(--white);
 }
 
-@media (max-width: 700px) {
+@media (max-width: 724px) {
     .stretched-btn {
         width: 100%;
     }

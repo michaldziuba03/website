@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import './Navbar.scss';
 import { Logo } from '../logo/Logo';
-import { Icon } from '../../icons/Icon';
+import { Icon } from '../icons/Icon';
 
 export interface NavbarProps {
 }

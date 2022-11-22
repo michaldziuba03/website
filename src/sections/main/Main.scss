@@ -1,0 +1,134 @@
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 3fr 7fr;
+    --image-size: clamp(160px, 50vw, 260px);
+    --image-half: calc(var(--image-size) / 2);
+}
+
+.main__first-panel {
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.main__second-panel {
+    padding: 0 1.5rem;
+    padding-top: calc(var(--image-half) + 1.5rem);
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main__me {
+    width: var(--image-size);
+    height: var(--image-size);
+    border-radius: 50%;
+    border: 10px solid var(--color-background);
+    margin-bottom: calc(var(--image-half) * -1);
+}
+
+.main__info {
+    font-size: clamp(1.4rem, 1rem + 3vw, 2rem);
+    
+    h1 {
+        font-size: 1em;
+    }
+
+    .main__hello {
+        font-family: var(--font-monospace);
+        color: var(--color-dark-white);
+        font-size: .8em;
+    }
+
+    .main__headline {
+        .name {
+            color: var(--color-primary);
+        }
+    }
+
+    .main__headline2 {
+        font-size: 1em;
+    }
+}
+
+.main__buttons {
+    margin: 1.5rem 0;
+
+    button {
+        margin-top: 1rem;
+    }
+}
+
+.main__links {
+    color: var(--color-primary);
+}
+
+@media (min-width: 724px) {
+    .main {
+        grid-template-rows: 1fr;
+        grid-template-columns: 4fr 6fr;
+        --image-size: clamp(260px, 30vw, 490px);
+    }
+
+    .main__first-panel {
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .main__me {
+        margin-bottom: 0;
+        margin-right: calc(var(--image-half) * -1);
+        border: 20px solid var(--color-background);
+    }
+
+    .main__second-panel {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left: calc(var(--image-half) + 1rem);
+    }
+
+    .main__links {
+        color: var(--color-background);
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+    }
+
+    .main__buttons {
+        margin-top: 1.5rem;
+    
+        button {
+            width: 200px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .main__buttons {
+        display: flex;
+        
+        button {
+            margin-right: 1rem;
+        }
+    }
+
+    .main__info {
+        font-size: clamp(2rem, 1rem + 2vw, 3.2rem);
+    }
+}
+
+@media(min-width: 1200px) {
+    .main__buttons {
+        display: flex;
+        
+        button {
+            width: 250px;
+        }
+    }
+}

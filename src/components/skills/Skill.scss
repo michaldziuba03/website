@@ -17,8 +17,8 @@
 }
 
 .skill__label {
-    color: var(--dark-white);
-    font-family: var(--monospace);
+    color: var(--color-dark-white);
+    font-family: var(--font-monospace);
     font-size: 10px;
     margin-top: 10px;
 }
@@ -45,9 +45,9 @@
     height: 32px;
     align-items: center;
     background-color: #404040;
-    color: var(--white);
+    color: var(--color-white);
     padding: 4px 12px;
-    font-family: var(--monospace);
+    font-family: var(--font-monospace);
     font-size: 12px;
     font-weight: 400;
     border-radius: 10px;

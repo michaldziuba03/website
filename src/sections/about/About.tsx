@@ -1,6 +1,6 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { Skill } from '../skills/Skill';
+import { Skill } from '../../components/skills/Skill';
 import './About.scss';
 
 export const About = () => {

@@ -1,6 +1,6 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
-import { Tag } from '../skills/Skill';
+import { Tag } from '../../components/skills/Skill';
 
 export const Project = () => {
     return (

@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import './Socials.scss';
-import { Icon } from "../../icons/Icon";
+import { Icon } from "../icons/Icon";
 
 interface SocialsProps {
     className?: string;

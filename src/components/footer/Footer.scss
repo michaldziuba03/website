@@ -1,12 +1,12 @@
 .footer {
     width: 100%;
-    background-color: var(--primary);
+    background-color: var(--color-primary);
     padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--background);
+    color: var(--color-background);
 
     * {
         margin: 4px;

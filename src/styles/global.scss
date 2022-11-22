@@ -4,29 +4,35 @@
     margin: 0;
 }
 
-body {
-    --font: 'Prompt', sans-serif;
-    --monospace: 'Roboto Mono', monospace;
-    --primary: #EB5757;
-    --background: #0E0E0E;
-    --white: #FAFAFA;
-    --dark-white: #DEDEDE;
-    --mobile-margin: 30px;
-    --desktop-margin: 40px;
+:root {
+  --font-primary: 'Prompt', sans-serif;
+  --font-monospace: 'Roboto Mono', monospace;
+  --color-primary: #EB5757;
+  --color-background: #0E0E0E;
+  --color-white: #FAFAFA;
+  --color-dark-white: #DEDEDE;
+}
 
-    font-family: var(--font);
-    background-color: var(--background);
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-white);
     overflow-x: hidden;
 }
 
-::-moz-selection { /* Code for Firefox */
-    color: #FAFAFA;
-    background: #EB5757;
+img {
+  max-width: 100%;
+}
+
+// SELECTION STYLES:
+::-moz-selection {
+    color: var(--color-white);
+    background: var(--color-primary);
   }
   
 ::selection {
-  color: #FAFAFA;
-  background: #EB5757;
+  color: var(--color-white);
+  background: var(--color-primary);
 }
 
 ::-webkit-scrollbar {
