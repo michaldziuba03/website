@@ -6,6 +6,10 @@
 <h1 align="center">
   Personal website (EXPERIMENTAL VERSION)
 </h1>
+<p align="center">
+  This is experimental prototype, not final design.
+</p>
+
 
 ![image](https://user-images.githubusercontent.com/43048524/203225459-3fd8179f-82ad-4cb5-a12e-8ed01cd7df5b.png)
 ![image](https://user-images.githubusercontent.com/43048524/203225525-07431b09-efc3-47b5-ab04-54da61fcba12.png)
