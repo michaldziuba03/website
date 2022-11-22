@@ -5,10 +5,11 @@ import { GithubIcon } from './GithubIcon';
 import { LinkedinIcon } from './LinkedinIcon';
 import './Icon.scss';
 import { MenuIcon } from './MenuIcon';
+import { EmailIcon } from './EmailIcon';
 
 interface IconProps {
     size: string;
-    name: 'linkedin' | 'facebook' | 'github' | 'dev' | 'menu';
+    name: 'linkedin' | 'facebook' | 'github' | 'dev' | 'menu' | 'email';
 }
 
 export const Icon: FC<IconProps> = ({ name, size }) => {
@@ -23,5 +24,7 @@ export const Icon: FC<IconProps> = ({ name, size }) => {
             return <LinkedinIcon size={size} />
         case 'menu':
             return <MenuIcon size={size} />
+        case 'email':
+            return <EmailIcon size={size} />
     }
 }
