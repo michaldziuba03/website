@@ -21,8 +21,10 @@
     }
 
     .navbar_link {
+        text-decoration: none;
         padding: 0 16px;
         font-weight: 500;
+        color: currentColor;
     
         &:hover {
             color: var(--color-primary);

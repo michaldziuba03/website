@@ -15,7 +15,7 @@ export const Socials: FC<SocialsProps> = ({ className }) => {
             <Icon name="github" size="48"/>
         </a>
         
-        <a className='socials__link' href='https://www.facebook.com/profile.php?id=100048691100562' target="_blank">
+        <a className='socials__link' href='https://www.facebook.com/michaldziuba03' target="_blank">
             <Icon name="facebook" size="48"/>
         </a>
         

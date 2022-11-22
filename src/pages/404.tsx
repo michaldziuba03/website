@@ -11,7 +11,9 @@ const NotFoundPage: React.FC<PageProps> = () => {
       <Logo />
       <span className="notfound__description">OOPS! PAGE NOT FOUND</span>
       <span className="notfound__status">404</span>
-      <SolidButton variant="dark" link="/" stretched>Back to home</SolidButton>
+      <div className="notfound__button">
+        <SolidButton variant="dark" link="/">Back to home</SolidButton>
+      </div>
 
       <Socials className="notfound__links"/>
     </main>

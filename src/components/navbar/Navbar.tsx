@@ -3,10 +3,7 @@ import './Navbar.scss';
 import { Logo } from '../logo/Logo';
 import { Icon } from '../icons/Icon';
 
-export interface NavbarProps {
-}
-
-export const Navbar: FC<NavbarProps> = ({  }) => {
+export const Navbar: FC = () => {
     return (
         <div className='navbar'>
             <Logo />
@@ -14,10 +11,9 @@ export const Navbar: FC<NavbarProps> = ({  }) => {
                 <Icon name='menu' size='32' />
             </div>
             <nav className='navbar__navigation'>
-                <span className='navbar_link'>About</span>
-                <span className='navbar_link'>Projects</span>
-                <span className='navbar_link'>Blog</span>
-                <span className='navbar_link'>Contact</span>
+                <a className='navbar_link' href='#'>About</a>
+                <a className='navbar_link' href='#'>Projects</a>
+                <a className='navbar_link' href='#'>Contact</a>
             </nav>
         </div>
     )
