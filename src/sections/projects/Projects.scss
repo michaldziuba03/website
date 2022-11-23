@@ -26,11 +26,9 @@
     border-radius: 5px;
     background-color: black;
     cursor: pointer;
-    max-width: clamp(200px, 600px, 700px);
 }
 
 .project__info {
-    max-width: 600px;
     padding-top: 16px;
     display: flex;
     flex-direction: column;
@@ -104,10 +102,7 @@
     .project {
         flex-direction: row;
         margin-bottom: 80px;
-    }
-
-    .project__image {
-        max-width: 700px;
+        max-width: 1200px;
     }
 
     .project:nth-of-type(even) {

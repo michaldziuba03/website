@@ -1,4 +1,6 @@
 .contact {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     min-height: 100vh;
     padding: 4rem 1.5rem;
@@ -76,10 +78,15 @@ form {
 }
 
 @media (min-width: 724px) {
+    .contact {
+        align-items: center;
+    }
+
     .contact__form-container {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
+        width: 100%;
         gap: 5rem;
     }
 
@@ -89,5 +96,11 @@ form {
 
     .contact__alternatives {
         margin: 0;
+    }
+}
+
+@media (min-width: 1600px) {
+    .contact__form-container {
+        width: 1200px;
     }
 }
