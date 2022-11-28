@@ -1,0 +1,24 @@
+.about {
+    position: relative;
+}
+
+.about__info {
+    margin-top: 1.5rem;
+}
+
+.about__photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 10px;
+}
+
+.about__description {
+    color: var(--color-dark-white);
+    padding: 1rem 0;
+}
+
+.triangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
