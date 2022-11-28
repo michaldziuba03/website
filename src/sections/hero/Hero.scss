@@ -62,3 +62,24 @@
         }
     }
 }
+
+@media (min-width: 1200px) {
+    .dots {
+        width: 200px;
+        height: 70px;
+    }
+
+    .hero__first-panel {
+        width: 62%;
+    }
+
+    .hero__me {
+        border-radius: 125px 0px;
+    }
+
+    .hero__info {
+        p {
+            font-size: 20px;
+        }
+    }
+}

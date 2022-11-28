@@ -1,6 +1,19 @@
 .section {
+    --size-between: 2rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
     width: 100%;
-    padding: 2rem var(--size-margin);
+    padding: var(--size-between) var(--size-margin);
+}
+
+@media (min-width: 40rem) {
+    .section {
+        --size-between: 3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .section {
+        --size-between: 6.5rem;
+    }
 }

@@ -1,6 +1,7 @@
 .header {
     width: 100%;
     padding: 2rem var(--size-margin);
+    color: var(--color-dark-white);
 
     nav {
         display: none;
@@ -29,7 +30,7 @@
     .header {
         nav {
             display: flex;
-            gap: 1rem;
+            gap: .5rem;
         }
 
         .header__menu {
