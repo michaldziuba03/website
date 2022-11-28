@@ -25,6 +25,10 @@ img {
   max-width: 100%;
 }
 
+p {
+  color: var(--color-dark-white);
+}
+
 // SELECTION:
 ::selection {
   color: var(--color-white);
