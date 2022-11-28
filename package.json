@@ -16,6 +16,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/poppins": "^4.5.10",
+    "@fontsource/roboto-mono": "^4.5.8",
     "@mdx-js/react": "^2.1.5",
     "gatsby": "^5.2.0",
     "gatsby-plugin-image": "^3.2.0",
