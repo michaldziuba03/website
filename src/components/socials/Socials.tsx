@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import './Socials.scss';
 import { Icon } from "../icons/Icon";
-import { useLinksQuery } from '../../hooks/useLinks';
+import { useLinksQuery } from '../../hooks/useLinksQuery';
 import { IconNames } from '../../types';
 
 interface SocialsProps {
