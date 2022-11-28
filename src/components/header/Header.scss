@@ -1,10 +1,39 @@
 .header {
     width: 100%;
-    padding: 2rem 1.5rem;
+    padding: 2rem var(--size-margin);
+
+    nav {
+        display: none;
+
+        a {
+            text-decoration: none;
+            padding: 0 16px;
+            font-weight: 500;
+            color: currentColor;
+        
+            &:hover {
+                color: var(--color-primary);
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .header__block {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+@media (min-width: 40rem) {
+    .header {
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .header__menu {
+            display: none;
+        }
+    }
 }

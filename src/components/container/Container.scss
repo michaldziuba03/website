@@ -2,3 +2,19 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+@media (min-width: 40rem) {
+    .container {
+        max-width: 800px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    :root {
+        --size-margin: 10vw;
+    }
+}

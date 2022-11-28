@@ -14,6 +14,13 @@ export const Header = () => {
                     <div className='header__menu'>
                         <Icon name='menu' />
                     </div>
+
+                    <nav>
+                        <a href='#'>Home</a>
+                        <a href='#'>About</a>
+                        <a href='#'>Blog</a>
+                        <a href='#'>Contact</a>
+                    </nav>
                 </div>
             </Container>
         </header>
