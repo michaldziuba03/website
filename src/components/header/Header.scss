@@ -34,7 +34,12 @@
     .header {
         nav {
             display: flex;
+            align-items: center;
             gap: .5rem;
+
+            button {
+                padding: 1rem;
+            }
         }
 
         .header__menu {

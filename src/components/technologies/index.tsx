@@ -11,8 +11,7 @@ import { NodeIcon } from "./NodeIcon";
 import { PostgresIcon } from "./PostgresIcon";
 import { RedisIcon } from "./RedisIcon";
 import { TypescriptIcon } from "../technologies/TypescriptIcon";
-
-export type Technologies = 'typescript' | 'javascript' | 'docker' | 'nest' | 'node' | 'postgres' | 'redis' | 'mongo' | 'git' | 'nginx' | 'react' | 'graphql';
+import { Technologies } from '../../types';
 
 export interface TechIconProps {
     technology: Technologies;

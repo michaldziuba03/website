@@ -2,7 +2,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Triangle } from '../../components/accents/Triangle';
 import { Section } from '../../components/section/Section';
-import { TechIcon } from '../../components/technologies';
+import { Skills } from '../../components/skills/Skills';
 import './About.scss';
 
 export const About: React.FC = () => {
@@ -19,71 +19,7 @@ export const About: React.FC = () => {
             </div>
 
             <h1 className='about__stack-heading'>Tech stack</h1>
-            <div className='about__stack'>
-                <div className='about__skill'>
-                    <TechIcon technology='typescript' />
-                    <span>TypeScript</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='javascript' />
-                    <span>JavaScript</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='node' />
-                    <span>Node.js</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='nest' />
-                    <span>Nest.js</span>
-                </div>
-
-                
-                <div className='about__skill'>
-                    <TechIcon technology='graphql' />
-                    <span>GraphQL</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='react' />
-                    <span>React</span>
-                </div>
-
-
-
-
-                <div className='about__skill'>
-                    <TechIcon technology='docker' />
-                    <span>Docker</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='postgres' />
-                    <span>PostgreSQL</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='mongo' />
-                    <span>MongoDB</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='redis' />
-                    <span>Redis</span>
-                </div>
-                
-                <div className='about__skill'>
-                    <TechIcon technology='nginx' />
-                    <span>Nginx</span>
-                </div>
-
-                <div className='about__skill'>
-                    <TechIcon technology='git' />
-                    <span>Git</span>
-                </div>
-             </div>
+            <Skills />
         </div>
     </Section>
     )
