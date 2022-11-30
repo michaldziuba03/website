@@ -17,6 +17,10 @@
                 cursor: pointer;
             }
         }
+
+        a.active {
+            color: var(--color-primary);
+        }
     }
 }
 

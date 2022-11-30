@@ -9,8 +9,10 @@ const IndexPage: React.FC<PageProps> = () => {
   return (
     <>
       <Header />
-      <Hero />
-      <About />
+      <main>
+        <Hero />
+        <About />
+      </main>
       <Footer />
     </>
   )

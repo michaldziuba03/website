@@ -16,7 +16,7 @@ export const Header = () => {
                     </div>
 
                     <nav>
-                        <a href='#'>Home</a>
+                        <a className='active' href='#'>Home</a>
                         <a href='#'>Resume</a>
                         <a href='#'>Blog</a>
                         <a href='#'>Contact</a>
