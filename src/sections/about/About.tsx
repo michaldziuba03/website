@@ -5,18 +5,19 @@ import { Section } from '../../components/section/Section';
 import { Skills } from '../../components/skills/Skills';
 import './About.scss';
 import { description } from '../../../content/about.json';
+import { Description, SectionH1 } from '../../components/typography';
 
 export const About: React.FC = () => {
     return (
     <Section>
         <div className='about'>
             <Triangle />
-            <h1>About</h1>
+            <SectionH1>About</SectionH1>
             <div className='about__info'>
                 <StaticImage className='about__photo' alt='me' src='../../images/me.jpeg' />
-                <p className='about__description'>
+                <Description className='about__description'>
                     { description }
-                </p>
+                </Description>
             </div>
 
             <h1 className='about__stack-heading'>Tech stack</h1>
