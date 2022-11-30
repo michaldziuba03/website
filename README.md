@@ -4,7 +4,7 @@
   </a>
 </p>
 <h1 align="center">
-  Personal website (EXPERIMENTAL VERSION)
+  Personal website
 </h1>
 <p align="center">
   This is experimental prototype, not final design.
