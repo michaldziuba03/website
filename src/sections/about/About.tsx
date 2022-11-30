@@ -4,6 +4,7 @@ import { Triangle } from '../../components/accents/Triangle';
 import { Section } from '../../components/section/Section';
 import { Skills } from '../../components/skills/Skills';
 import './About.scss';
+import { description } from '../../../content/about.json';
 
 export const About: React.FC = () => {
     return (
@@ -14,7 +15,7 @@ export const About: React.FC = () => {
             <div className='about__info'>
                 <StaticImage className='about__photo' alt='me' src='../../images/me.jpeg' />
                 <p className='about__description'>
-                My name is Michał and I’m 19 years old from Poland. I started with programming in 2018. I’m interested in networking, backend development, operating systems (like Linux) and open-source-software movement. Besides programming I also like video games, history and dogs.
+                    { description }
                 </p>
             </div>
 
