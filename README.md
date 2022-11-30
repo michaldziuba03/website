@@ -11,3 +11,10 @@
 
 
 <img align="center" src="https://user-images.githubusercontent.com/43048524/204703952-4ccad258-e8f0-4cc6-8583-a8d855f88c37.png" />
+
+
+## Inspirations
+1. DesignCourse: Build & Deploy a Personal Portfolio with TailwindCSS - 2022 Edition [https://youtube.com/watch?v=Vp6GC3jKG20]
+2. DesignCourse: An EASY Way to INSTANTLY Improve your UI Designs [https://www.youtube.com/watch?v=Q8A2E8CnYH4]
+3. Brittany Chiang website [https://brittanychiang.com/]
+4. My first iteration (`v1` branch)
