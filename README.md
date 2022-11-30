@@ -18,3 +18,13 @@
 2. DesignCourse: An EASY Way to INSTANTLY Improve your UI Designs [https://www.youtube.com/watch?v=Q8A2E8CnYH4]
 3. Brittany Chiang website [https://brittanychiang.com/]
 4. My first iteration (`v1` branch)
+
+## Features
+1. Mobile first aproach
+2. Modern CSS (Flex, Grid + more)
+3. BEM methodology
+4. Working contact form
+
+## To-do
+1. Create blog
+2. SEO improvements
