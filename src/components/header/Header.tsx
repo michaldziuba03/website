@@ -19,7 +19,6 @@ export const Header = () => {
                     <nav>
                         <a className='active' href='#'>Home</a>
                         <a href='#'>Blog</a>
-                        <a href='#'>Contact</a>
                         <a href='#'>Resume</a>
                     </nav>
                 </div>

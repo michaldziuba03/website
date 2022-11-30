@@ -5,6 +5,7 @@ import { Header } from "../components/header/Header"
 import { Footer } from "../components/footer/Footer"
 import { About } from "../sections/about/About"
 import { Contact } from "../sections/contact/Contact"
+import { Projects } from "../sections/projects/Projects"
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -13,6 +14,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <main>
         <Hero />
         <About />
+        <Projects />
         <Contact />
       </main>
       <Footer />
