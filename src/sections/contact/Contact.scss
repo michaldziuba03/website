@@ -36,6 +36,8 @@ form {
     textarea {
         width: 100%;
         font-family: var(--font-primary);
+        background-color: #03070D;
+        border: 2px solid #222B3C;
         margin: 1rem 0;
         display: block;
         resize: none;
@@ -49,8 +51,6 @@ form {
 
     input {
         padding: .8rem;
-        background-color: #03070D;
-        border: 1px solid var(--color-dark-white);
         border-radius: 5px;
         color: var(--color-dark-white);
     }
@@ -58,8 +58,6 @@ form {
     textarea {
         height: 250px;
         padding: .8rem;
-        background-color: #03070D;
-        border: 1px solid var(--color-dark-white);
         border-radius: 5px;
         color: var(--color-dark-white);
     }

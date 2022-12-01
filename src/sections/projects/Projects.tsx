@@ -1,6 +1,7 @@
 import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { Section } from '../../components/section/Section';
+import { Tag } from '../../components/skills/Skills';
 import { Description, SectionH1 } from '../../components/typography';
 import './Projects.scss';
 
@@ -21,9 +22,40 @@ export const Projects: React.FC = () => {
                     <div className='project__info'>
                         <div className='project__featured'>Featured project</div>
                         <h3>Elegant homepage</h3>
-                        <Description>
-                        Sed metus est, bibendum vitae lacus nec, imperdiet sagittis lacus. Maecenas molestie dolor dui, ut ullamcorper tortor varius rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras felis ex, congue vitae iaculis eu.
-                        </Description>
+                        <p className='project__description'>
+                        A minimal and elegant homepage for browser written in Preact nad TypeScript.
+                        </p>
+
+                        <div className='project__tags'>
+                            <Tag label='TypeScript' technology='typescript' />
+                            <Tag label='React' technology='react' />
+                            <Tag label='GraphQL' technology='graphql' />
+                            <Tag label='Nest.js' technology='nest' />
+                        </div>
+                    </div>
+                </div>
+
+                <div className='project'>
+                    <StaticImage 
+                        alt='Project: elegant-homepage'
+                        className='project__image'
+                        src='https://user-images.githubusercontent.com/43048524/205111792-d573b026-9847-4533-afea-4b56df23b91b.png' 
+                    />
+
+                    <div className='project__info'>
+                        <div className='project__featured'>Featured project</div>
+                        <h3>Whiteboard</h3>
+                        <p className='project__description'>
+                        My major project - big fullstack real time application written in Nest.js with many services.
+                        </p>
+
+                        <div className='project__tags'>
+                            <Tag label='TypeScript' technology='typescript' />
+                            <Tag label='MongoDB' technology='mongo' />
+                            <Tag label='Redis' technology='redis' />
+                            <Tag label='Docker' technology='docker' />
+                            <Tag label='Nest.js' technology='nest' />
+                        </div>
                     </div>
                 </div>
             </div>

@@ -9,12 +9,18 @@
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
     .container {
-        max-width: 1200px;
+        max-width: 1024px;
     }
 
     :root {
         --size-margin: 10vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
     }
 }

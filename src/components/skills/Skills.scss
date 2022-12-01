@@ -28,6 +28,35 @@
     }
 }
 
+.tag {
+    display: flex;
+    justify-content: center;
+    height: 32px;
+    align-items: center;
+    background-color: #222B3C;
+    color: var(--color-white);
+    padding: 4px 12px;
+    font-family: var(--font-monospace);
+    font-size: 11px;
+    font-weight: 400;
+    border-radius: 5px;
+    user-select: none;
+
+    &:first-of-type {
+        margin-left: 0;
+    }
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 8px;
+    }
+}
+
 @media (min-width: 40rem) {
     .skills {
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

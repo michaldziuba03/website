@@ -24,3 +24,12 @@ export const Skills: FC = () => {
     </div>
     )
 }
+
+export const Tag: FC<SkillProps> = ({ technology, label }) => {
+    return (
+        <div className="tag">
+            <TechIcon technology={technology} />
+            <span className="tag__label">{label}</span>
+        </div>
+    )
+}
