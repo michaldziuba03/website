@@ -24,6 +24,14 @@
     user-select: none;
 }
 
+.project__title {
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-primary);
+    }
+}
+
 .project__info {
     margin-top: 1.5rem;
 }
@@ -47,7 +55,7 @@
       }
 }
 
-@media (min-width: 50rem) {
+@media (min-width: 40rem) {
     .project {
         display: grid;
         align-items: center;

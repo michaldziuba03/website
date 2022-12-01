@@ -21,7 +21,7 @@ export const Projects: React.FC = () => {
 
                     <div className='project__info'>
                         <div className='project__featured'>Featured project</div>
-                        <h3>Elegant homepage</h3>
+                        <h3 className="project__title">Elegant homepage</h3>
                         <p className='project__description'>
                         A minimal and elegant homepage for browser written in Preact nad TypeScript.
                         </p>
@@ -44,7 +44,7 @@ export const Projects: React.FC = () => {
 
                     <div className='project__info'>
                         <div className='project__featured'>Featured project</div>
-                        <h3>Whiteboard</h3>
+                        <h3 className="project__title">Whiteboard</h3>
                         <p className='project__description'>
                         My major project - big fullstack real time application written in Nest.js with many services.
                         </p>

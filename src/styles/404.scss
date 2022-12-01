@@ -1,0 +1,61 @@
+.notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    font-weight: 900;
+    padding: 1.5rem;
+    font-size: 10px;
+    gap: 4rem;
+
+    .logo {
+        position: absolute;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+}
+
+.notfound__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notfound__description {
+    font-size: 4em;
+}
+
+.notfound__status {
+    font-size: 8em;
+}
+
+.notfound__button {
+    max-width: 250px;
+}
+
+@media (min-width: 40rem) {
+    .notfound {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .notfound {
+        font-size: 1rem;
+        padding: 2rem;
+
+        .logo {
+            top: 2rem;
+            left: 2rem;
+        }
+
+        .notfound__links {
+            bottom: 2rem;
+        }
+    }
+}
