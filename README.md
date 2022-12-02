@@ -24,7 +24,13 @@
 2. Modern CSS (Flex, Grid + more)
 3. BEM methodology
 4. Working contact form
+5. Disqus integration
 
 ## To-do
 1. Create blog
 2. SEO improvements
+
+## Variables
+```
+GATSBY_DISQUS_NAME={disqus_shortname}
+```

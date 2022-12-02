@@ -1,6 +1,6 @@
 {
   "name": "website",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "website",
   "author": "mich4ld",
@@ -20,6 +20,8 @@
     "@fontsource/roboto-mono": "^4.5.8",
     "@mdx-js/react": "^2.1.5",
     "classnames": "^2.3.2",
+    "disqus-react": "^1.1.5",
+    "dotenv": "^16.0.3",
     "gatsby": "^5.2.0",
     "gatsby-plugin-image": "^3.2.0",
     "gatsby-plugin-manifest": "^5.2.0",

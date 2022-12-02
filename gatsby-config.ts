@@ -1,4 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -38,7 +41,12 @@ const config: GatsbyConfig = {
       "path": "./src/pages/"
     },
     __key: "pages"
-  }]
+  }, {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      path: `${__dirname}/content`
+    }
+  },]
 };
 
 export default config;
