@@ -8,13 +8,14 @@ interface PostsListTemplateProps {
         skip: number,
         numPages: number,
         currentPage: number,
+        tag: string;
     }
 }
 
 const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data, pageContext }) => {
     return (
         <>
-            <h1>Blog posts</h1>
+            <h1>Blog posts for tag: #{pageContext.tag}</h1>
             { data.allMdx.nodes.map((node: any) => 
             <div>
                 <h3> {node.frontmatter.title}</h3>
