@@ -17,9 +17,7 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data, children }) =
             <Header />
             <Section>
                 <article>
-                    <MDXProvider>
-                        { children }
-                    </MDXProvider>
+                    <MDXProvider>{ children }</MDXProvider>
                 </article>
                 <Comments 
                     identifier={data.mdx.frontmatter.slug} 
@@ -37,7 +35,8 @@ export const query = graphql`
       frontmatter {
         slug,
         title
-      }
+      },
+      body
     }
   }
 `
