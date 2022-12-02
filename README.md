@@ -30,7 +30,6 @@
 7. Tags for blog posts
 
 ## To-do
-1. Create blog
 2. SEO improvements
 
 ## Variables
