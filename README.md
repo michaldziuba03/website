@@ -1,6 +1,7 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <a href="https://michaldziuba.dev">
+    <img alt="MD" src="https://user-images.githubusercontent.com/43048524/205249624-43c40f8e-f37f-493f-8c0a-f65fbe296287.png" width="60" />
+
   </a>
 </p>
 <h1 align="center">
