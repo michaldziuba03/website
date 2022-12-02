@@ -21,7 +21,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
   
     const result = await graphql<any>(`
       query {
-        allMdx (
+        posts: allMdx (
           sort: { frontmatter: { date: DESC }},
           limit: 3000
         ) {
@@ -35,14 +35,20 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
             }
           }
         }
+
+        tags: allMdx {
+          group(field: { frontmatter: { tags: SELECT }}) {
+            fieldValue
+          }
+        }
       }
     `);
   
     if (result.errors) {
       reporter.panicOnBuild('Error loading MDX result', result.errors)
     }
-  
-    const posts = result.data.allMdx.nodes;
+
+    const posts = result.data.posts.nodes;
     const postsPerPage = 15;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
@@ -66,4 +72,46 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
         context: { id: node.id },
       })
     })
+
+    const tags = result.data.tags.group.map((tag: any) => tag.fieldValue);
+    
+    for (const tag of tags) {
+      const postsByTagResult = await graphql<any>(`
+      query($tag: String) {
+        allMdx(
+          sort: {frontmatter: {date: DESC}}, 
+          limit: 3000
+          filter: { 
+            frontmatter: { tags: { eq: $tag} }
+          }
+        ) {
+          nodes {
+            id
+            frontmatter {
+              slug
+            }
+            internal {
+              contentFilePath
+            }
+          }
+        }
+      }
+      `, { tag });
+
+      const postsByTag = postsByTagResult.data.allMdx.nodes;
+      Array.from({ length: Math.ceil(postsByTag.length / postsPerPage) }).forEach((_, i) => {
+        createPage({
+          path: i === 0 ? `/blog/tags/${tag}` : `/blog/tags/${tag}/${i + 1}`,
+          component: path.resolve("./src/templates/PostsByTag.tsx"),
+          context: {
+            limit: postsPerPage,
+            skip: i * postsPerPage,
+            numPages,
+            currentPage: i + 1,
+            tag
+          },
+        })
+      });
+    }
+
   }
