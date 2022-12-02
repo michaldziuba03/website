@@ -16,7 +16,10 @@ const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data, children }) =
         <>
             <Header />
             <Section>
+                <p>Posted on {data.mdx.frontmatter.date} - {data.mdx.fields.readingTime.minutes} minutes </p>
                 <article>
+                    <h1>{data.mdx.frontmatter.title}</h1>
+                    <p>{data.mdx.frontmatter.description}</p>
                     <MDXProvider>{ children }</MDXProvider>
                 </article>
                 <Comments 
@@ -34,7 +37,14 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         slug,
-        title
+        date(formatString: "DD MMMM YYYY")
+        title,
+        description
+      },
+      fields {
+        readingTime {
+          minutes,
+        }
       }
     }
   }
