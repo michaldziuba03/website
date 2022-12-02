@@ -3,12 +3,23 @@ title: "First blog post"
 slug: "first-post"
 description: "My first post on my personal website"
 date: "2022-01-12"
+tags: ["react", "programming"]
 ---
 
 ## Hello world
 My first blog post
 ```js
 console.log("Hello world");
+
+function hello(name) {
+    console.log(`Hello ${name}`);
+}
+
+export class RandomClass {
+    sayHello() {
+        hello();
+    }
+}
 ```
 
 Lorem ipsum dolor sit amet

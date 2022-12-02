@@ -5,19 +5,21 @@ import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { Section } from '../components/section/Section';
 import { Comments } from '../components/comments/Comments';
-import "../styles/nord-theme.scss";
+import "../styles/prism.scss";
 
 interface BlogPostTemplateProps extends PropsWithChildren {
     data: any,
     pageContext: { id: string }
 }
+
 const BlogPostTemplate: React.FC<BlogPostTemplateProps> = ({ data, children }) => {
     return (
         <>
             <Header />
             <Section>
-                <p>Posted on {data.mdx.frontmatter.date} - {data.mdx.fields.readingTime.minutes} minutes </p>
+                <p>Posted on {data.mdx.frontmatter.date} · {data.mdx.fields.readingTime.minutes} minutes </p>
                 <article>
+                    { data.mdx.frontmatter.tags.map((tag: string) => (<div>#{tag}</div>)) }
                     <h1>{data.mdx.frontmatter.title}</h1>
                     <p>{data.mdx.frontmatter.description}</p>
                     <MDXProvider>{ children }</MDXProvider>
@@ -37,9 +39,10 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         slug,
-        date(formatString: "DD MMMM YYYY")
+        date(formatString: "DD MMM, YYYY")
         title,
-        description
+        description,
+        tags
       },
       fields {
         readingTime {
