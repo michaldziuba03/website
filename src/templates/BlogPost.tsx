@@ -5,7 +5,7 @@ import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { Section } from '../components/section/Section';
 import { Comments } from '../components/comments/Comments';
-
+import "../styles/nord-theme.scss";
 
 interface BlogPostTemplateProps extends PropsWithChildren {
     data: any,
@@ -35,8 +35,7 @@ export const query = graphql`
       frontmatter {
         slug,
         title
-      },
-      body
+      }
     }
   }
 `
