@@ -24,7 +24,9 @@
 2. Modern CSS (Flex, Grid + more)
 3. BEM methodology
 4. Working contact form
-5. Disqus integration
+5. Blog
+6. Disqus integration
+7. Tags for blog posts
 
 ## To-do
 1. Create blog
