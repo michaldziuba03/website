@@ -4,6 +4,7 @@ import { HeadFC, PageProps } from "gatsby"
 import { Logo } from "../components/logo/Logo";
 import { SolidButton } from "../components/buttons";
 import { Socials } from "../components/socials/Socials";
+import { SEO } from "../components/seo/SEO";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
@@ -26,4 +27,8 @@ const NotFoundPage: React.FC<PageProps> = () => {
 
 export default NotFoundPage
 
-export const Head: HeadFC = () => <title>Not found 😕</title>
+export const Head: HeadFC = () => <SEO
+  title="Not found 😕"
+  description="OOPS! Page not found"
+  pathname='/404'
+/>

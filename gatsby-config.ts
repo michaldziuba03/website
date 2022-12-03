@@ -7,6 +7,7 @@ const config: GatsbyConfig = {
   siteMetadata: {
     title: `Michał Dziuba`,
     siteUrl: `https://michaldziuba.dev`,
+    siteName: 'Michał Dziuba',
     author: {
       firstName: "Michał",
       secondName: "Dziuba",

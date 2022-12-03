@@ -1,5 +1,6 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, HeadFC } from 'gatsby';
+import { SEO } from '../components/seo/SEO';
 
 interface PostsListTemplateProps {
     data: any,
@@ -52,3 +53,12 @@ query ($skip: Int!, $limit: Int!) {
     }
   }
 }`;
+
+export const Head: HeadFC = ({ location }) => {
+  return <SEO
+    title="Michał Dziuba Blog"
+    description="Welcome to my blog about programming and technology"
+    type='website'
+    pathname={location.pathname}
+  />
+}

@@ -28,9 +28,8 @@
 5. Blog
 6. Disqus integration
 7. Tags for blog posts
+8. SEO improvements (OpenGraph, Twitter Card and other meta tags)
 
-## To-do
-2. SEO improvements
 
 ## Variables
 ```

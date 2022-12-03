@@ -1,11 +1,12 @@
 import { MDXProvider } from '@mdx-js/react';
 import React, { PropsWithChildren } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, HeadFC } from 'gatsby';
 import { Footer } from '../components/footer/Footer';
 import { Header } from '../components/header/Header';
 import { Section } from '../components/section/Section';
 import { Comments } from '../components/comments/Comments';
 import "../styles/prism.scss";
+import { SEO } from '../components/seo/SEO';
 
 interface BlogPostTemplateProps extends PropsWithChildren {
     data: any,
@@ -42,7 +43,10 @@ export const query = graphql`
         date(formatString: "DD MMM, YYYY")
         title,
         description,
-        tags
+        tags,
+        featuredImage {
+          publicURL
+        }
       },
       fields {
         readingTime {
@@ -54,3 +58,16 @@ export const query = graphql`
 `
 
 export default BlogPostTemplate;
+
+export const Head: HeadFC = ({ data, location }) => {
+  const post = (data as any).mdx;
+
+  return <SEO
+    title={post.frontmatter.title}
+    description={post.frontmatter.description}
+    keywords={post.frontmatter.tags}
+    image={post.frontmatter.featuredImage.publicURL}
+    type='article'
+    pathname={location.pathname}
+  />
+}

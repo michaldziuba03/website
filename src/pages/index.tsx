@@ -6,6 +6,7 @@ import { Footer } from "../components/footer/Footer"
 import { About } from "../sections/about/About"
 import { Contact } from "../sections/contact/Contact"
 import { Projects } from "../sections/projects/Projects"
+import { SEO } from "../components/seo/SEO"
 
 const IndexPage: React.FC<PageProps> = () => {
   return (
@@ -24,4 +25,8 @@ const IndexPage: React.FC<PageProps> = () => {
 
 export default IndexPage
 
-export const Head: HeadFC = () => <title>Michał Dziuba ✌️</title>
+export const Head: HeadFC = ({ location }) => <SEO
+  title="Michał Dziuba"
+  description="My personal website and blog"
+  pathname={location.pathname}
+/>
