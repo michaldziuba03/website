@@ -31,7 +31,8 @@
 8. SEO improvements (OpenGraph, Twitter Card and other meta tags)
 
 
-## Variables
-```
+## ENV Variables
+```ts
 GATSBY_DISQUS_NAME={disqus_shortname}
+GATSBY_SITE_URL={website_url}
 ```

@@ -6,7 +6,7 @@ import { skills } from '../../../content/about.json';
 
 interface SkillProps {
     technology: Technologies;
-    label: string;
+    label?: string;
 }
 export const Skill: FC<SkillProps> = ({ technology, label }) => (
     <div className='skill'>

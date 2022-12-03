@@ -7,7 +7,8 @@ export const useAuthorQuery = () => {
                 siteMetadata {
                     author {
                             firstName,
-                            secondName
+                            secondName,
+                            bio
                         }
                     }
                 }

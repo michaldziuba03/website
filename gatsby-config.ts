@@ -6,11 +6,12 @@ dotenv.config();
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Michał Dziuba`,
-    siteUrl: `https://michaldziuba.dev`,
+    siteUrl: process.env['GATSBY_SITE_URL'], // `https://michaldziuba.dev`,
     siteName: 'Michał Dziuba',
     author: {
       firstName: "Michał",
       secondName: "Dziuba",
+      bio: "19 y.o. programming enjoyer and OSS enthusiast. I started with programming in 2018." // short description for blog
     },
     links: [
       { icon: "github", url: "https://github.com/mchldziuba" },
@@ -32,7 +33,16 @@ const config: GatsbyConfig = {
   {
     resolve: "gatsby-plugin-mdx",
     options: {
-      gatsbyRemarkPlugins: ["gatsby-remark-prismjs", "gatsby-remark-images"]
+      gatsbyRemarkPlugins: [
+        "gatsby-remark-prismjs",
+        {
+          resolve: `gatsby-remark-images`,
+          options: {
+            maxWidth: 1200,
+            showCaptions: true
+          },
+        }
+      ]
     }
   },{
     resolve: 'gatsby-source-filesystem',
