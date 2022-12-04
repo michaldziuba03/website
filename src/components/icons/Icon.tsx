@@ -7,6 +7,8 @@ import './Icon.scss';
 import { MenuIcon } from './MenuIcon';
 import { EmailIcon } from './EmailIcon';
 import { IconNames } from '../../types';
+import { TwitterIcon } from './TwitterIcon';
+import { LinkIcon } from './LinkIcon';
 
 interface IconProps {
     name: IconNames;
@@ -26,5 +28,9 @@ export const Icon: FC<IconProps> = ({ name }) => {
             return <MenuIcon />
         case 'email':
             return <EmailIcon />
+        case 'twitter':
+            return <TwitterIcon />
+        case 'link':
+            return <LinkIcon />
     }
 }

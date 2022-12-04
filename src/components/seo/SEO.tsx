@@ -46,6 +46,7 @@ export const SEO: React.FC<SeoProps> = (props) => {
             <SharedSocialMediaTag name='title' content={props.title} />
             <SharedSocialMediaTag name='description' content={props.description} />
             <SharedSocialMediaTag name='url' content={`${metadata.siteUrl}${props.pathname}`} />
+            <link rel="canonical" href={`${metadata.siteUrl}${props.pathname}`} />
             { 
                 props.image && 
                 <SharedSocialMediaTag name="image" content={`${metadata.siteUrl}${props.image}`} /> 
@@ -63,5 +64,5 @@ export const SEO: React.FC<SeoProps> = (props) => {
 SEO.defaultProps = {
     type: 'website',
     pathname: '',
-    keywords: ['programming', 'tech', 'web development', 'tutorial'],
+    keywords: ['programming', 'tech', 'web development'],
 }

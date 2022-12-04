@@ -29,6 +29,7 @@
 6. Disqus integration
 7. Tags for blog posts
 8. SEO improvements (OpenGraph, Twitter Card and other meta tags)
+9. Share buttons
 
 
 ## ENV Variables

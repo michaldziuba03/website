@@ -28,8 +28,18 @@
     }
 }
 
+
 .article__title {
     font-size: 40px;
+}
+
+.article__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
 }
 
 .article__author-img {
@@ -41,7 +51,6 @@
 .article__author {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
 }
 
 .article__author-info {
@@ -141,12 +150,14 @@
 }
 
 @media (min-width: 1200px) {
-    .content-wrapper {
-        padding: 2rem 0;
-
-        p {
-            font-size: 18px;
-            margin: 1.2rem 0;
+    .article {
+        .content-wrapper {
+            padding: 2rem 0;
+    
+            p {
+                font-size: 18px;
+                margin: 1.2rem 0;
+            }
         }
     }
 
