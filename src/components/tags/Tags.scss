@@ -1,0 +1,21 @@
+.article-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.article-tag {
+    display: flex;
+    background-color: #222B3C;
+    padding: .5rem;
+    color: var(--color-dark-white);
+    text-decoration: none;
+    width: min-content;
+    border-radius: 5px;
+    font-size: .9rem;
+
+    &:hover {
+        color: var(--color-white);
+    }
+}

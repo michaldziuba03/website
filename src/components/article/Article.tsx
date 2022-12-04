@@ -3,6 +3,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React, { PropsWithChildren } from 'react';
 import { buildArticleUrl } from '../../utils';
 import { Share } from '../share/Share';
+import { Tags } from '../tags/Tags';
 import './Article.scss';
 
 interface ArticleProps extends PropsWithChildren {
@@ -17,7 +18,8 @@ interface ArticleProps extends PropsWithChildren {
 export const Article: React.FC<ArticleProps> = (props) => {
     const url = buildArticleUrl(props.slug);
 
-    return <article className='article'>
+    return <>
+    <article className='article'>
         <h1 className='article__title'>{props.title}</h1>
         <div className='article__info'>
             <div className='article__author'>
@@ -35,6 +37,8 @@ export const Article: React.FC<ArticleProps> = (props) => {
             <MDXProvider>{ props.children }</MDXProvider>
         </div>
     </article>
+    <Tags tags={props.tags} />
+    </>
 }
 
 // { props.tags.map((tag: string) => (<div>#{tag}</div>)) }
