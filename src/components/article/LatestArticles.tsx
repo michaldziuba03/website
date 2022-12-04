@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { useLastArticlesQuery } from '../../hooks/useLastArticlesQuery';
@@ -6,16 +7,20 @@ interface LatestArticleProps {
     title: string;
     date: string;
     readingTime: string;
+    slug: string;
     featuredImage: any;
 }
-const LatestArticle: React.FC<LatestArticleProps> = ({ title, date, readingTime, featuredImage }) => {
+const LatestArticle: React.FC<LatestArticleProps> = ({ title, date, readingTime, featuredImage, slug }) => {
     const thumbnail = getImage(featuredImage?.childImageSharp?.gatsbyImageData);
+    const pathname = `/blog/${slug}`;
 
     return (
     <div className='latest-article'>
-        <GatsbyImage className='thumbnail' image={thumbnail!} alt='thumbnail' />
+        <Link to={pathname}>
+            <GatsbyImage className='thumbnail' image={thumbnail!} alt='thumbnail' />
+        </Link>
         <div>
-            <b>{title}</b>
+            <Link className='latest-article__title' to={pathname}>{title}</Link>
             <span>{date} · {readingTime}</span>
         </div>
     </div>)
@@ -34,6 +39,7 @@ export const LatestArticles: React.FC = () => {
                     title={article.frontmatter.title}
                     readingTime={article.fields.readingTime.text}
                     featuredImage={article.frontmatter.featuredImage}
+                    slug={article.frontmatter.slug}
                 />) }
             </div>
         </div>

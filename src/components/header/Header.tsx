@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import { GhostButton } from '../buttons';
 import { Container } from '../container/Container';
@@ -17,9 +18,9 @@ export const Header = () => {
                     </div>
 
                     <nav>
-                        <a className='active' href='#'>Home</a>
-                        <a href='#'>Blog</a>
-                        <a href='#'>Resume</a>
+                        <Link to='/' activeClassName='active' >Home</Link>
+                        <Link to='/blog' activeClassName='active' >Blog</Link>
+                        <Link to='/resume' activeClassName='active' >Resume</Link>
                     </nav>
                 </div>
             </Container>
