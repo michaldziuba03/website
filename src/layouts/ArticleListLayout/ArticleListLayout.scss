@@ -1,0 +1,9 @@
+.article-list {
+    padding: 1.5rem;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

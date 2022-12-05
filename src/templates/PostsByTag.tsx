@@ -1,5 +1,7 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, HeadFC } from 'gatsby';
+import { ArticleListLayout } from '../layouts/ArticleListLayout/ArticleListLayout';
+import { SEO } from '../components/seo/SEO';
 
 interface PostsListTemplateProps {
     data: any,
@@ -15,15 +17,9 @@ interface PostsListTemplateProps {
 const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data, pageContext }) => {
     return (
         <>
-            <h1>Blog posts for tag: #{pageContext.tag}</h1>
-            { data.allMdx.nodes.map((node: any) => 
-            <div>
-                <h3> {node.frontmatter.title}</h3>
-                <p>{node.frontmatter.description}</p>
-            </div>)
-            }
-
-            <p>Current page: {pageContext.currentPage}</p>
+            <ArticleListLayout articles={data.allMdx.nodes}>
+              Posts with tag: #{pageContext.tag}
+            </ArticleListLayout>
         </>
     )
 }
@@ -44,7 +40,13 @@ query ($skip: Int!, $limit: Int!, $tag: String) {
       frontmatter {
         date(formatString: "DD MMM, YYYY")
         title,
+        slug,
         description,
+        featuredImage {
+          childImageSharp {
+            gatsbyImageData(width: 500, height: 250)
+          }
+        },
         tags
       },
       fields {
@@ -56,3 +58,14 @@ query ($skip: Int!, $limit: Int!, $tag: String) {
     }
   }
 }`;
+
+export const Head: HeadFC = ({ location, pageContext }) => {
+  const description = `Posts with tag: ${(pageContext as any).tag}`;
+
+  return <SEO
+    title={`#${(pageContext as any).tag}`}
+    description={description}
+    keywords={[(pageContext as any).tag]}
+    pathname={location.pathname}
+  />
+}

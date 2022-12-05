@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, HeadFC } from 'gatsby';
 import { SEO } from '../components/seo/SEO';
+import { ArticleListLayout } from '../layouts/ArticleListLayout/ArticleListLayout';
 
 interface PostsListTemplateProps {
     data: any,
@@ -12,18 +13,12 @@ interface PostsListTemplateProps {
     }
 }
 
-const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data, pageContext }) => {
+const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data }) => {
     return (
         <>
-            <h1>Blog posts</h1>
-            { data.allMdx.nodes.map((node: any) => 
-            <div>
-                <h3> {node.frontmatter.title}</h3>
-                <p>{node.frontmatter.description}</p>
-            </div>)
-            }
-
-            <p>Current page: {pageContext.currentPage}</p>
+            <ArticleListLayout articles={data.allMdx.nodes}>
+              All blog posts
+            </ArticleListLayout>
         </>
     )
 }
@@ -41,7 +36,13 @@ query ($skip: Int!, $limit: Int!) {
       frontmatter {
         date(formatString: "DD MMM, YYYY")
         title,
+        slug,
         description,
+        featuredImage {
+          childImageSharp {
+            gatsbyImageData(width: 500, height: 250)
+          }
+        },
         tags
       },
       fields {
