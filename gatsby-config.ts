@@ -15,7 +15,7 @@ const config: GatsbyConfig = {
     },
     links: [
       { icon: "github", url: "https://github.com/mchldziuba" },
-      { icon: "facebook", url: "https://www.facebook.com/michaldziuba03" },
+      { icon: "twitter", url: "https://twitter.com/michaldziuba03" },
       { icon: "linkedin", url: "https://www.linkedin.com/in/micha%C5%82-dziuba-74b29a244" },
       { icon: "dev", url: "https://dev.to/michaldziuba" }
     ]
@@ -61,9 +61,23 @@ const config: GatsbyConfig = {
   }, {
     resolve: "gatsby-source-filesystem",
     options: {
-      path: `${__dirname}/content`
+      path: `${__dirname}/content/images`
     }
-  },]
+  },
+  {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      path: `${__dirname}/content/blog`,
+      name: "blog"
+    }
+  },
+  {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      path: `${__dirname}/content/projects`,
+      name: "projects"
+    }
+  }]
 };
 
 export default config;

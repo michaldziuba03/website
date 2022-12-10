@@ -11,6 +11,16 @@
     padding: 1rem 0;
 }
 
+.article-card__author-img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.article-card__author-name {
+    font-size: .8rem;
+}
+
 .article-card__date {
     display: block;
     font-size: 0.8rem;
@@ -22,7 +32,12 @@
     text-decoration: none;
     color: var(--color-white);
     font-weight: 700;
-    font-size: 1.4rem
+    font-size: 1.4rem;
+
+    &:hover {
+        color: var(--color-dark-white);
+        text-decoration: underline;
+    }
 }
 
 .article-card__description {

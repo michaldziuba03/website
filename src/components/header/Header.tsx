@@ -20,7 +20,6 @@ export const Header = () => {
                     <nav>
                         <Link to='/' activeClassName='active' >Home</Link>
                         <Link to='/blog' activeClassName='active' >Blog</Link>
-                        <Link to='/resume' activeClassName='active' >Resume</Link>
                     </nav>
                 </div>
             </Container>

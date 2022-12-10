@@ -3,15 +3,22 @@ import path from 'path';
 import type { GatsbyNode } from "gatsby"
 import readingTime from 'reading-time';
 
-export const onCreateNode: GatsbyNode<any>['onCreateNode'] = ({ node, actions }) => {
+export const onCreateNode: GatsbyNode<any>['onCreateNode'] = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === 'Mdx') {
+    const parent = getNode(node.parent);
 
     createNodeField({
       node,
       name: 'readingTime',
       value: readingTime(node.body),
+    });
+
+    createNodeField({
+      node,
+      name: 'collection',
+      value: parent!.sourceInstanceName
     });
   }
 }
@@ -22,6 +29,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     const result = await graphql<any>(`
       query {
         posts: allMdx (
+          filter:{fields: { collection: { eq: "blog" } }}
           sort: { frontmatter: { date: DESC }},
           limit: 3000
         ) {
@@ -82,7 +90,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
           sort: {frontmatter: {date: DESC}}, 
           limit: 3000
           filter: { 
-            frontmatter: { tags: { eq: $tag} }
+            frontmatter: { 
+              tags: { eq: $tag}
+            },
+            fields: { 
+              collection: { eq: "blog" } 
+            }
           }
         ) {
           nodes {

@@ -25,7 +25,3 @@ export const Description: FC<CustomTypography> = (props) => {
         </p>
     )
 }
-
-export const Figcaption = () => {
-    
-} 

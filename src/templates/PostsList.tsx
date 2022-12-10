@@ -17,7 +17,7 @@ const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data }) => {
     return (
         <>
             <ArticleListLayout articles={data.allMdx.nodes}>
-              All blog posts
+              <h3>Latest posts</h3>
             </ArticleListLayout>
         </>
     )
@@ -28,6 +28,9 @@ export default PostsListTemplate;
 export const query = graphql`
 query ($skip: Int!, $limit: Int!) {
   allMdx(
+    filter:{
+      fields: { collection: { eq: "blog" } }
+    }
     sort: { frontmatter: { date: DESC }}
     limit: $limit
     skip: $skip

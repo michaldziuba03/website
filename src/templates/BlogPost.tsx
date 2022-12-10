@@ -5,8 +5,8 @@ import { Header } from '../components/header/Header';
 import { Comments } from '../components/comments/Comments';
 import { SEO } from '../components/seo/SEO';
 import { Article } from '../components/article/Article';
-import { ArticleLayout } from '../components/article/ArticleLayout';
 import "../styles/prism.scss";
+import { ArticleLayout } from '../layouts/ArticleLayout/ArticleLayout';
 
 interface BlogPostTemplateProps extends PropsWithChildren {
     data: any,

@@ -4,6 +4,9 @@ export const useLastArticlesQuery = () => {
     const result = useStaticQuery(graphql`
     query {
         allMdx(
+            filter:{
+                fields: { collection: { eq: "blog" } }
+            }
             sort:{frontmatter: { date:  DESC}},
             limit: 3
         ) {

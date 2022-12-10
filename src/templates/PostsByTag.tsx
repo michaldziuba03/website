@@ -18,7 +18,7 @@ const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data, pageContext
     return (
         <>
             <ArticleListLayout articles={data.allMdx.nodes}>
-              Posts with tag: #{pageContext.tag}
+              <h3>Posts with tag: #{pageContext.tag}</h3>
             </ArticleListLayout>
         </>
     )
@@ -31,7 +31,8 @@ query ($skip: Int!, $limit: Int!, $tag: String) {
   allMdx(
     sort: { frontmatter: { date: DESC }},
     filter: { 
-    	frontmatter: { tags: { eq: $tag} }
+    	frontmatter: { tags: { eq: $tag} },
+      fields: { collection: { eq: "blog" } }
     },
     limit: $limit
     skip: $skip

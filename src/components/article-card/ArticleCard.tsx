@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, ImageDataLike } from 'gatsby-plugin-image';
 import React from 'react';
 import { Tags } from '../tags/Tags';
 import './ArticleCard.scss';
@@ -11,7 +11,7 @@ interface ArticleCardProps {
     readingTime: string;
     tags: string[];
     slug: string;
-    featuredImage: any;
+    featuredImage: ImageDataLike;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({ date, title, description, readingTime, tags, slug, featuredImage }) => {

@@ -13,6 +13,8 @@
 
     .paragraph {
         font-size: 1.1rem;
+        line-height: 200%;
+        max-width: 800px;
         color: var(--color-dark-white);
     }
 }
