@@ -1,4 +1,4 @@
-import { GatsbyImage, getImage, IGatsbyImageData, StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage, getImage, IGatsbyImageData } from 'gatsby-plugin-image';
 import React from 'react';
 import { Technologies, technologyLabels } from '../../types';
 import { Tag } from '../skills/Skills';
@@ -8,6 +8,7 @@ interface ProjectProps {
     name: string;
     description: string;
     tags: Technologies[];
+    link: string;
     picture: IGatsbyImageData;
 }
 
@@ -16,15 +17,17 @@ export const Project: React.FC<ProjectProps> = (props) => {
 
     return (
             <div className='project'>
+                <a href={props.link}>
                     <GatsbyImage
-                        alt='Project picture'
-                        className='project__image'
-                        image={thumbnail!}
+                            alt='Project picture'
+                            className='project__image'
+                            image={thumbnail!}
                     />
+                </a>
 
                     <div className='project__info'>
                         <div className='project__featured'>Featured project</div>
-                        <h3 className="project__title">{props.name}</h3>
+                        <a className="project__title" href={props.link}>{props.name}</a>
                         <p className='project__description'>
                         {props.description}
                         </p>

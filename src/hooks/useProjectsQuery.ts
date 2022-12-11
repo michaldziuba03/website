@@ -8,6 +8,7 @@ export function useProjectsQuery() {
                 frontmatter {
                     name
                     tags
+                    link
                     featuredImage {
                     childImageSharp {
                         gatsbyImageData(width: 600)

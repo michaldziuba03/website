@@ -20,6 +20,7 @@ export const Projects: React.FC = () => {
                     description={project.body}
                     picture={project.frontmatter.featuredImage}
                     tags={project.frontmatter.tags as Technologies[]}
+                    link={project.frontmatter.link}
                     key={project.frontmatter.name}
                 />) }
             </div>

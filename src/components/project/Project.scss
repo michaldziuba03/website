@@ -18,10 +18,14 @@
 }
 
 .project__title {
+    color: var(--color-white);
+    font-weight: 700;
+    text-decoration: none;
     cursor: pointer;
 
     &:hover {
         color: var(--color-primary);
+        text-decoration: underline;
     }
 }
 

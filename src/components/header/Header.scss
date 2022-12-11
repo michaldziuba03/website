@@ -3,7 +3,7 @@
     padding: 2rem var(--size-margin);
     color: var(--color-dark-white);
 
-    nav {
+    .header__nav {
         display: none;
 
         a {
@@ -24,6 +24,10 @@
     }
 }
 
+.header__menu {
+    cursor: pointer;
+}
+
 .header__block {
     display: flex;
     justify-content: space-between;
@@ -32,7 +36,7 @@
 
 @media (min-width: 40rem) {
     .header {
-        nav {
+        .header__nav {
             display: flex;
             align-items: center;
             gap: .5rem;

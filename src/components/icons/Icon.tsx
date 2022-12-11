@@ -9,6 +9,7 @@ import { EmailIcon } from './EmailIcon';
 import { IconNames } from '../../types';
 import { TwitterIcon } from './TwitterIcon';
 import { LinkIcon } from './LinkIcon';
+import { CloseIcon } from './CloseIcon';
 
 interface IconProps {
     name: IconNames;
@@ -32,5 +33,7 @@ export const Icon: FC<IconProps> = ({ name }) => {
             return <TwitterIcon />
         case 'link':
             return <LinkIcon />
+        case 'close':
+            return <CloseIcon />
     }
 }

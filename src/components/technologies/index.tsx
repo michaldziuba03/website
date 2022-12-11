@@ -12,6 +12,7 @@ import { PostgresIcon } from "./PostgresIcon";
 import { RedisIcon } from "./RedisIcon";
 import { TypescriptIcon } from "../technologies/TypescriptIcon";
 import { Technologies } from '../../types';
+import { PreactIcon } from './PreactIcon';
 
 export interface TechIconProps {
     technology: Technologies;
@@ -43,5 +44,7 @@ export const TechIcon: FC<TechIconProps> = ({ technology }) => {
             return <ReactIcon />
         case 'graphql':
             return <GraphqlIcon />
+        case 'preact':
+            return <PreactIcon />
     }
 }

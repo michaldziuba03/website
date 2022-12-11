@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import './Logo.scss';
 
-export const Logo = () => <h1 className='logo'>MD</h1>;
+export const Logo = () => <Link className='logo' to='/'>MD</Link>;
