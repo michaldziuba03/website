@@ -1,5 +1,5 @@
 {
-    "description": "My name is Michał and I’m 19 years old from Poland. I started with programming in 2018. I’m interested in networking, backend development, operating systems (like Linux) and open-source-software movement. Besides programming I also like video games, history and dogs.",
+    "description": "My name is Michał and I’m 19 years old from Poland. I started with programming in 2018. I’m interested in networking, backend development, operating systems (like Linux) and open-source-software movement. Besides programming I also like metal music, video games, history and dogs.",
     "skills": [
         { "technology": "typescript", "label": "TypeScript" },
         { "technology": "javascript", "label": "JavaScript" },

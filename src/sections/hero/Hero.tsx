@@ -27,7 +27,7 @@ export const Hero: FC<{}> = () => {
                         <Dots />
                         <h1>Hello world.</h1>
                         <h1>My name is <span className='hero__name'>{author.firstName}</span>.</h1>
-                        <p>I am aspiring backend developer.</p>
+                        <p>I am aspiring back-end developer.</p>
                         <SolidButton onClick={scrollToProjects} className='hero__btn'>Check projects</SolidButton>
                     </div>
                     
