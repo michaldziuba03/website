@@ -10,6 +10,11 @@ import './Hero.scss';
 export const Hero: FC<{}> = () => {
     const author = useAuthorQuery();
 
+    function scrollToProjects() {
+        const scrollPoint = document.querySelector('.projects-scroll');
+        scrollPoint?.scrollIntoView();
+    }
+
     return (
         <Section>
             <div className='hero'>
@@ -23,7 +28,7 @@ export const Hero: FC<{}> = () => {
                         <h1>Hello world.</h1>
                         <h1>My name is <span className='hero__name'>{author.firstName}</span>.</h1>
                         <p>I am aspiring backend developer.</p>
-                        <SolidButton className='hero__btn'>Check projects</SolidButton>
+                        <SolidButton onClick={scrollToProjects} className='hero__btn'>Check projects</SolidButton>
                     </div>
                     
                     <Socials className='hero__socials' />

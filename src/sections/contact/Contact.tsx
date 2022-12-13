@@ -39,9 +39,9 @@ export const Contact: React.FC = () => {
                         <Icon name='github' />
                         GitHub
                     </a>
-                    <a className='contact__alternative' href='https://www.facebook.com/michaldziuba03'>
-                        <Icon name='facebook' />
-                        Facebook
+                    <a className='contact__alternative' href='https://twitter.com/michaldziuba03'>
+                        <Icon name='twitter' />
+                        Twitter
                     </a>
                     <a className='contact__alternative' href='https://www.linkedin.com/in/micha%C5%82-dziuba-74b29a244/'>
                         <Icon name='linkedin' /> 

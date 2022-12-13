@@ -11,6 +11,7 @@ export const Projects: React.FC = () => {
 
     return (
         <Section>
+            <div style={{ padding: '1rem' }} className="projects-scroll"></div>
             <SectionH1>Projects</SectionH1>
             <Description>Some applications I’ve built</Description>
 
