@@ -1,0 +1,13 @@
+export type Technologies = 'typescript'
+    | 'javascript'
+    | 'docker'
+    | 'nest'
+    | 'node'
+    | 'postgres'
+    | 'redis'
+    | 'mongo'
+    | 'git'
+    | 'nginx'
+    | 'react'
+    | 'graphql'
+    | 'preact';

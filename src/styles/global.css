@@ -3,5 +3,54 @@
 @tailwind utilities;
 
 body {
-    @apply font-poppins;
+    @apply font-poppins bg-body text-paragraph dark:bg-body-dark dark:text-paragraph-dark;
+}
+
+.svg path {
+    fill: currentColor;
+}
+
+.icon {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+}
+
+.technology {
+    fill: currentColor;
+    width: 1em;
+    height: 1em;
+    font-size: inherit;
+}
+
+.heading {
+    @apply font-bold text-heading dark:text-heading-dark;
+}
+
+.hero-img {
+    border: 0;
+    border-radius: 125px 0;
+    box-shadow: 10px 10px 0 #508BFE;
+}
+
+.about-img {
+    width: 300px;
+    height: 300px;
+    border: 10px solid #C1D6FF;
+}
+
+.fadein {
+    animation-name: fadein-animation;
+    animation-duration: .8s;
+}
+
+@keyframes fadein-animation {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

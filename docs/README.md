@@ -1,1 +1,0 @@
-## Simple documentation for my website (for future development)
