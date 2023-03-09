@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@fontsource/poppins": "^4.5.10",
     "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.7.0",
     "gatsby-plugin-image": "^3.7.0",
