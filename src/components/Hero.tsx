@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import { StaticImage } from "gatsby-plugin-image";
 import { Dots } from "./Dots";
 import { Socials } from "./Socials";
+import {ArrowIcon} from "./icons/ArrowIcon";
 
 export const Hero: React.FC = () => (
     <section className='mt-20'>
@@ -16,7 +17,7 @@ export const Hero: React.FC = () => (
                         <span className='text-primary dark:text-primary-dark'>Michał</span>.
                     </h1>
                     <p className='text-xl mb-6 font-medium'>I am aspiring backend developer.</p>
-                    <Button>Check projects</Button>
+                    <Button>Check projects <ArrowIcon /></Button>
                     <Socials className='mt-28' />
                 </div>
                 <div className='flex'>

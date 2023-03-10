@@ -15,6 +15,15 @@ module.exports = {
         'paragraph': '#4C4F69',
         'heading': '#130303',
         'primary': '#1E66F5',
+        'error': '#d20f39',
+        'mauve': '#8839ef',
+        'flamingo': '#dd7878',
+        'teal': '#179299',
+        'lavender': '#7287fd',
+        'peach': '#E75400',
+        // brand colors:
+        'nestjs': '#E0234E',
+        'tor': '#60048E',
         // dark theme variant:
         'body-dark': '#11111B',
         'body-darken-dark': '#000611',

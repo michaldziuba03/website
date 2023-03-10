@@ -6,6 +6,10 @@ body {
     @apply font-poppins bg-body text-paragraph dark:bg-body-dark dark:text-paragraph-dark;
 }
 
+html,body {
+    scroll-behavior: smooth;
+}
+
 .svg path {
     fill: currentColor;
 }

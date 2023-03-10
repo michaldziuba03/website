@@ -10,4 +10,5 @@ export type Technologies = 'typescript'
     | 'nginx'
     | 'react'
     | 'graphql'
-    | 'preact';
+    | 'preact'
+    | 'kafka';

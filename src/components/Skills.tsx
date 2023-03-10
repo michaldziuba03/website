@@ -32,7 +32,7 @@ export const Skills: React.FC = () => {
            <Skill technology='nginx'></Skill>
            <Skill technology='git'></Skill>
            <Skill technology='preact'></Skill>
-           <Skill technology='typescript'></Skill>
+           <Skill technology='kafka'></Skill>
        </div>
    ); 
 }

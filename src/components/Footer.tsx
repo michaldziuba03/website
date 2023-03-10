@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
             <Logo />
             <Socials />
             <p className='font-medium'>
-                &copy; {date.getFullYear()} Michał Dziuba. All rights reserved
+                &copy; {date.getFullYear()} Michał Dziuba. All rights reserved.
             </p>
         </footer>
     )
