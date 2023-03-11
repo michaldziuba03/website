@@ -11,7 +11,7 @@ export const Input: React.FC<InputProps> = ({ name, label, type= 'text', require
     <div>
         <label className='flex flex-col'>
             <span className='font-medium'>{ label }</span>
-            <InputOrTextArea name={name} type={type} />
+            <InputOrTextArea name={name} type={type} required={required} />
         </label>
     </div>
 );
@@ -20,7 +20,7 @@ const InputOrTextArea: React.FC<InputProps> = (props) => {
     if (props.type === 'textarea') {
         return (
             <textarea
-                className='px-3 py-3 mt-2 h-40 rounded text-black border resize-none border-2 border'
+                className='px-3 py-3 mt-2 h-60 rounded text-black border resize-none border-2 border'
                 name={props.name}
                 required={props.required}
             />

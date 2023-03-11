@@ -1,30 +1,41 @@
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import {Header} from "../components/Header";
-import {Hero} from "../components/Hero";
+import {Hero} from "../components/sections/Hero";
 import {Footer} from "../components/Footer";
-import {About} from "../components/About";
-import {Contact} from "../components/Contact";
+import {About} from "../components/sections/About";
+import {Contact} from "../components/sections/Contact";
 import {BaseSEO} from "../components/seo/BaseSEO";
 import {FixedNav} from "../components/FixedNav";
-import {Projects} from "../components/Projects";
-import {Featured} from "../components/Featured";
+import {Projects} from "../components/sections/Projects";
+import {Featured} from "../components/sections/Featured";
+
+/*
+              <About name={sections[1]} />
+              <Projects name={sections[2]} />
+              <Featured name={sections[3]} />
+              <Contact name={sections[4]} />
+ */
 
 const IndexPage: React.FC<PageProps> = () => {
-  return (
+    const sections = [
+        'hero',
+        'about',
+        'projects',
+        'featured',
+        'contact',
+    ];
+
+    return (
       <>
           <Header />
-          <FixedNav />
+          <FixedNav sections={sections} />
           <main className='min-h-screen'>
-              <Hero />
-              <About />
-              <Projects />
-              <Featured />
-              <Contact />
+              <Hero name={sections[0]} />
           </main>
           <Footer />
       </>
-  )
+    )
 }
 
 export default IndexPage

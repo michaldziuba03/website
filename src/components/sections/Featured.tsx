@@ -1,11 +1,10 @@
 import React from "react";
-import { Container } from "./Container";
-import { H1 } from "./Heading";
-import { Paragraph } from "./Paragraph";
+import { H1 } from "../common/Heading";
+import { Paragraph } from "../common/Paragraph";
+import { Section, SectionProps } from "./Section";
 
-export const Featured: React.FC = () => (
-    <section className='mt-20'>
-        <Container>
+export const Featured: React.FC<SectionProps> = (props) => (
+    <Section {...props}>
             <H1>Featured</H1>
             <Paragraph>Check out my YouTube videos and blog posts.</Paragraph>
 
@@ -14,6 +13,5 @@ export const Featured: React.FC = () => (
                 <div className='animate-pulse w-full h-72 bg-gray-400 rounded'></div>
                 <div className='animate-pulse w-full h-72 bg-gray-400 rounded'></div>
             </div>
-        </Container>
-    </section>
+    </Section>
 );

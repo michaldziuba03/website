@@ -38,6 +38,12 @@ html,body {
     box-shadow: 10px 10px 0 #508BFE;
 }
 
+@media (max-width: 668px) {
+    .hero-img {
+        border-radius: 100px 0;
+    }
+}
+
 .about-img {
     width: 300px;
     height: 300px;
@@ -47,6 +53,10 @@ html,body {
 .fadein {
     animation-name: fadein-animation;
     animation-duration: .8s;
+}
+
+.indicator-active {
+    @apply border-primary bg-primary;
 }
 
 @keyframes fadein-animation {

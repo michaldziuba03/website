@@ -1,29 +1,38 @@
 import React from "react";
-import { Container } from "./Container";
-import {H1, H2} from "./Heading";
-import { Paragraph } from "./Paragraph";
-import {Icon} from "./icons/Icon";
+import {H1, H2} from "../common/Heading";
+import { Paragraph } from "../common/Paragraph";
+import {Icon} from "../icons/Icon";
+import {Tag} from "../Tag";
+import {Section, SectionProps} from "./Section";
 
 const Project: React.FC = () => (
-    <div className='w-full flex gap-16 items-center even:flex-row-reverse'>
+    <div className='w-full flex gap-16 items-center'>
         <div className='flex'>
             <div className='w-70 h-96 bg-gray-400 animate-pulse'>
                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
             </div>
         </div>
-        <div className='flex flex-col p-8'>
+        <div className='flex flex-col'>
             <span className='text-primary font-bold select-none'>Featured project</span>
-            <a className='heading text-2xl'>URL Shortener</a>
+            <a className='heading text-2xl hover:text-primary' href='src/components#'>URL Shortener</a>
             <p className='mt-4 text-lg'>
                 Sed metus est, bibendum vitae lacus nec, imperdiet sagittis lacus. Maecenas molestie dolor dui, ut ullamcorper tortor varius rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras felis ex, congue vitae iaculis eu.
             </p>
+
+            <div className='flex gap-2 mt-8'>
+                <Tag technology='typescript' />
+                <Tag technology='nest' />
+                <Tag technology='redis' />
+                <Tag technology='mongo' />
+                <Tag technology='docker' />
+                <Tag technology='react' />
+            </div>
         </div>
     </div>
 )
 
-export const Projects: React.FC = () => (
-    <section className='mt-20'>
-        <Container>
+export const Projects: React.FC<SectionProps> = (props) => (
+    <Section {...props}>
             <H1>Projects</H1>
             <Paragraph>Applications I wrote as side projects.</Paragraph>
 
@@ -88,6 +97,5 @@ export const Projects: React.FC = () => (
 
                 </div>
             </div>
-        </Container>
-    </section>
+    </Section>
 );
