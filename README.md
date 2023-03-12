@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://michaldziuba.dev">
-    <img alt="MD" src="https://user-images.githubusercontent.com/43048524/205249624-43c40f8e-f37f-493f-8c0a-f65fbe296287.png" width="60" />
+    <img alt="MD" src="https://user-images.githubusercontent.com/43048524/224560315-7a56a97e-127b-4ac6-9345-af43264f3488.png" width="60" />
 
   </a>
 </p>
@@ -14,7 +14,8 @@ Built with React and Gatsby. I am not frontend developer but I tried to make it 
 1. [DesignCourse: Build & Deploy a Personal Portfolio with TailwindCSS - 2022 Edition](https://youtube.com/watch?v=Vp6GC3jKG20)
 2. [DesignCourse: An EASY Way to INSTANTLY Improve your UI Designs](https://www.youtube.com/watch?v=Q8A2E8CnYH4)
 3. [Brittany Chiang website](https://brittanychiang.com/)
-4. My previous iterations (`v1` and `v2` branches)
+4. [Hello Roman website](https://helloroman.pl/)
+5. My previous iterations (`v1` and `v2` branches)
 
 ### ENV Variables
 ```ts
