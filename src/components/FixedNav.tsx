@@ -14,8 +14,10 @@ interface IndicatorDotProps extends IndicatorProps {
 }
 
 export const IndicatorDot: React.FC<IndicatorDotProps> = ({ section, activeSection, sections}) => {
+    const isFirst = section === sections[0];
+
     function handleClick(e: any) {
-        if (section === sections[0]) {
+        if (isFirst) {
             document.body.scrollIntoView({ behavior: 'smooth' });
             e.preventDefault();
         }
@@ -25,15 +27,16 @@ export const IndicatorDot: React.FC<IndicatorDotProps> = ({ section, activeSecti
         return (
             <a href={`#${section}`}
                onClick={handleClick}
-               className=' flex w-5 h-5 flex border border-gray-400 border-2 rounded-full transition-transform'
+               className=' flex relative group w-5 h-5 flex border border-gray-400 border-2 rounded-full transition-transform'
             >
+                <span className='indicator-label'>{ isFirst ? 'Home' : section }</span>
             </a>
         )
     }
     return (
         <a href={`#${section}`}
            onClick={handleClick}
-           className='flex w-5 h-5 scale-150 flex items-center justify-center border border-primary border-2 rounded-full transition-transform'
+           className='flex relative group w-5 h-5 scale-150 flex items-center justify-center border border-primary border-2 rounded-full transition-transform'
         >
             <div className='w-3 h-3 bg-primary rounded-full'></div>
         </a>

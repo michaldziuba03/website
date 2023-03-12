@@ -1,31 +1,55 @@
 import React from "react";
-import {H1, H2} from "../common/Heading";
+import { H1, H2 } from "../common/Heading";
 import { Paragraph } from "../common/Paragraph";
-import {Icon} from "../icons/Icon";
-import {Tag} from "../Tag";
-import {Section, SectionProps} from "./Section";
+import { Icon } from "../icons/Icon";
+import { Tag } from "../Tag";
+import { Section, SectionProps } from "./Section";
+import { StaticImage } from "gatsby-plugin-image";
 
-const Project: React.FC = () => (
-    <div className='w-full flex gap-16 items-center'>
-        <div className='flex'>
-            <div className='w-70 h-96 bg-gray-400 animate-pulse'>
-                xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-            </div>
+interface ProjectProps {
+    githubUrl: string;
+}
+
+const Project: React.FC<ProjectProps> = ({ githubUrl }) => (
+    <div className='w-full flex flex-col md:grid md:grid-cols-9 gap-6 md:gap-16 items-center'>
+        <div className='flex md:col-span-4 md:grid md:grid-cols-2 md:gap-3'>
+            <a href={githubUrl} className='flex md:col-span-full rounded'>
+                <StaticImage
+                    src='../../images/screen1.png'
+                    alt='screen1'
+                />
+            </a>
+
+            <a href={githubUrl} className='hidden md:flex rounded'>
+                <StaticImage
+                    src='../../images/screen3.png'
+                    alt='screen1'
+                />
+            </a>
+
+            <a href={githubUrl} className='inline-block hidden md:flex rounded'>
+                <StaticImage
+                    src='../../images/screen2.png'
+                    alt='screen1'
+                />
+            </a>
         </div>
-        <div className='flex flex-col'>
+        <div className='flex flex-col md:col-span-5'>
             <span className='text-primary font-bold select-none'>Featured project</span>
-            <a className='heading text-2xl hover:text-primary' href='src/components#'>URL Shortener</a>
+            <a href={githubUrl} className='heading text-2xl hover:text-primary'>URL Shortener</a>
             <p className='mt-4 text-lg'>
                 Sed metus est, bibendum vitae lacus nec, imperdiet sagittis lacus. Maecenas molestie dolor dui, ut ullamcorper tortor varius rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras felis ex, congue vitae iaculis eu.
             </p>
 
-            <div className='flex gap-2 mt-8'>
+            <div className='flex flex-wrap gap-2 mt-8'>
                 <Tag technology='typescript' />
+                <Tag technology='node' />
                 <Tag technology='nest' />
                 <Tag technology='redis' />
                 <Tag technology='mongo' />
                 <Tag technology='docker' />
                 <Tag technology='react' />
+                <Tag technology='nginx' />
             </div>
         </div>
     </div>
@@ -37,15 +61,15 @@ export const Projects: React.FC<SectionProps> = (props) => (
             <Paragraph>Applications I wrote as side projects.</Paragraph>
 
             <div className='flex flex-col gap-20 mt-5'>
-                <Project />
-                <Project />
-                <Project />
+                <Project githubUrl='https://github.com/michaldziuba03/url-shortener' />
+                <Project githubUrl='https://github.com/michaldziuba03/url-shortener' />
+                <Project githubUrl='https://github.com/michaldziuba03/url-shortener' />
             </div>
 
             <div className='mt-16'>
                 <H2>Libraries</H2>
                 <Paragraph>Libraries and other noteworthy smaller projects.</Paragraph>
-                <div className='grid grid-cols-4 gap-10 mt-5'>
+                <div className='grid grid-cols-1 md:grid-cols-4 gap-10 mt-5'>
 
                     <div className='flex flex-col justify-between w-full text-body p-7 bg-heading border rounded shadow'>
                         <div>

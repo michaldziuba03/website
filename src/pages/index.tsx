@@ -10,12 +10,6 @@ import {FixedNav} from "../components/FixedNav";
 import {Projects} from "../components/sections/Projects";
 import {Featured} from "../components/sections/Featured";
 
-/*
-              <About name={sections[1]} />
-              <Projects name={sections[2]} />
-              <Featured name={sections[3]} />
-              <Contact name={sections[4]} />
- */
 
 const IndexPage: React.FC<PageProps> = () => {
     const sections = [
@@ -32,6 +26,10 @@ const IndexPage: React.FC<PageProps> = () => {
           <FixedNav sections={sections} />
           <main className='min-h-screen'>
               <Hero name={sections[0]} />
+              <About name={sections[1]} />
+              <Projects name={sections[2]} />
+              <Featured name={sections[3]} />
+              <Contact name={sections[4]} />
           </main>
           <Footer />
       </>

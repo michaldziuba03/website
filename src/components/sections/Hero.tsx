@@ -9,7 +9,6 @@ import { Section, SectionProps } from "./Section";
 export const Hero: React.FC<SectionProps> = (props) => {
     function handleCallToAction() {
         const projectsEl = document.getElementById('projects');
-        console.log(projectsEl);
         if (projectsEl) {
             projectsEl.scrollIntoView({ behavior: 'smooth' });
         }
@@ -17,8 +16,8 @@ export const Hero: React.FC<SectionProps> = (props) => {
 
     return (
         <Section {...props}>
-            <div className='flex flex-col-reverse md:grid md:grid-cols-2'>
-                <div className='md:mt-16'>
+            <div className='md:grid md:grid-cols-2'>
+                <div className='mt-8 md:mt-16'>
                     <h1 className='heading fadein text-5xl md:text-7xl leading-tight'>Hello world.</h1>
                     <h1 className='heading fadein text-5xl md:text-7xl leading-tight'>My name is</h1>
                     <h1 className='heading fadein text-5xl md:text-7xl leading-tight'>
@@ -28,10 +27,10 @@ export const Hero: React.FC<SectionProps> = (props) => {
                     <Button onClick={handleCallToAction}>Check projects <ArrowIcon /></Button>
                     <Socials className='mt-28' />
                 </div>
-                <div className='md:flex'>
+                <div className='hidden md:flex'>
                     <Dots className='hidden md:block text-primary dark:text-primary-dark md:w-20 md:h-70' />
                     <StaticImage
-                        className='hero-img mb-8 w-full h-80 md:w-5/6 md:h-5/6 md:m-0 border shadow-primary'
+                        className='hero-img mb-8 w-64 h-64 md:w-5/6 md:h-5/6 md:m-0 border shadow-primary'
                         src='../../images/me.jpg'
                         alt='my face'
                         loading='eager'

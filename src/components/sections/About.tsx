@@ -7,8 +7,8 @@ import { Section, SectionProps } from "./Section";
 
 export const About: React.FC<SectionProps> = (props) => (
     <Section {...props}>
-            <div className='flex justify-between items-center gap-20'>
-                <div className='pt-10'>
+            <div className='flex flex-col-reverse gap-8 md:flex-row md:justify-between md:items-center md:gap-20'>
+                <div className='md:pt-10'>
                     <div>
                         <H1>About</H1>
                         <Paragraph>
@@ -22,7 +22,7 @@ export const About: React.FC<SectionProps> = (props) => (
                 </div>
                 <div>
                     <StaticImage
-                        className='about-img rounded-full'
+                        className='about-img w-64 h-64 md:w-80 md:h-80 rounded-full'
                         src='../../images/aboutme.jpg'
                         alt='my face'
                         loading='eager'
