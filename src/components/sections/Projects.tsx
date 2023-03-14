@@ -13,8 +13,9 @@ interface ProjectProps {
 const Project: React.FC<ProjectProps> = ({ githubUrl }) => (
     <div className='w-full flex flex-col md:grid md:grid-cols-9 gap-6 md:gap-16 items-center'>
         <div className='flex md:col-span-4 md:grid md:grid-cols-2 md:gap-3'>
-            <a href={githubUrl} className='flex md:col-span-full rounded'>
+            <a href={githubUrl} className='flex md:col-span-full'>
                 <StaticImage
+                    className='hover:opacity-70 transition-opacity rounded'
                     src='../../images/screen1.png'
                     alt='screen1'
                 />
@@ -22,6 +23,7 @@ const Project: React.FC<ProjectProps> = ({ githubUrl }) => (
 
             <a href={githubUrl} className='hidden md:flex rounded'>
                 <StaticImage
+                    className='hover:opacity-70 transition-opacity rounded'
                     src='../../images/screen3.png'
                     alt='screen1'
                 />
@@ -29,6 +31,7 @@ const Project: React.FC<ProjectProps> = ({ githubUrl }) => (
 
             <a href={githubUrl} className='inline-block hidden md:flex rounded'>
                 <StaticImage
+                    className='hover:opacity-70 transition-opacity rounded'
                     src='../../images/screen2.png'
                     alt='screen1'
                 />
@@ -37,11 +40,11 @@ const Project: React.FC<ProjectProps> = ({ githubUrl }) => (
         <div className='flex flex-col md:col-span-5'>
             <span className='text-primary font-bold select-none'>Featured project</span>
             <a href={githubUrl} className='heading text-2xl hover:text-primary'>URL Shortener</a>
-            <p className='mt-4 text-lg'>
+            <p className='mt-4 md:text-lg'>
                 Sed metus est, bibendum vitae lacus nec, imperdiet sagittis lacus. Maecenas molestie dolor dui, ut ullamcorper tortor varius rhoncus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Cras felis ex, congue vitae iaculis eu.
             </p>
 
-            <div className='flex flex-wrap gap-2 mt-8'>
+            <div className='flex flex-wrap gap-2 mt-4 md:mt-8'>
                 <Tag technology='typescript' />
                 <Tag technology='node' />
                 <Tag technology='nest' />

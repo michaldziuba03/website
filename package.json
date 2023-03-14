@@ -1,11 +1,19 @@
 {
-  "name": "website",
-  "version": "1.0.0",
+  "name": "@md03/website",
+  "version": "3.0.0",
   "private": true,
   "description": "website",
-  "author": "mich4ld",
+  "author": "Michał Dziuba",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio",
+    "website",
+    "blog",
+    "personal",
+    "michal",
+    "dziuba",
+    "skills",
+    "showcase"
   ],
   "scripts": {
     "develop": "gatsby develop",

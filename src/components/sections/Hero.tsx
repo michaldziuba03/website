@@ -4,7 +4,8 @@ import { StaticImage } from "gatsby-plugin-image";
 import { Dots } from "../Dots";
 import { Socials } from "../Socials";
 import { ArrowIcon } from "../icons/ArrowIcon";
-import { Section, SectionProps } from "./Section";
+import { SectionProps } from "./Section";
+import {Container} from "../common/Container";
 
 export const Hero: React.FC<SectionProps> = (props) => {
     function handleCallToAction() {
@@ -15,15 +16,16 @@ export const Hero: React.FC<SectionProps> = (props) => {
     }
 
     return (
-        <Section {...props}>
+        <section id={props.name} className='min-h-screen flex items-center justify-center pt-24'>
+            <Container>
             <div className='md:grid md:grid-cols-2'>
                 <div className='mt-8 md:mt-16'>
-                    <h1 className='heading fadein text-5xl md:text-7xl leading-tight'>Hello world.</h1>
-                    <h1 className='heading fadein text-5xl md:text-7xl leading-tight'>My name is</h1>
-                    <h1 className='heading fadein text-5xl md:text-7xl leading-tight'>
+                    <h1 className='heading fadein text-5xl leading-tight xl:text-7xl xl:leading-tight'>Hello world.</h1>
+                    <h1 className='heading fadein text-5xl leading-tight xl:text-7xl xl:leading-tight'>My name is</h1>
+                    <h1 className='heading fadein text-5xl leading-tight xl:text-7xl xl:leading-tight'>
                         <span className='text-primary dark:text-primary-dark'>Michał</span>.
                     </h1>
-                    <p className='md:text-xl mb-6 font-medium'>I am aspiring backend developer.</p>
+                    <p className='lg:text-xl mb-6 font-medium'>I am aspiring backend developer.</p>
                     <Button onClick={handleCallToAction}>Check projects <ArrowIcon /></Button>
                     <Socials className='mt-28' />
                 </div>
@@ -38,6 +40,7 @@ export const Hero: React.FC<SectionProps> = (props) => {
                     <Dots className='hidden md:block text-primary dark:text-primary-dark w-20 h-70' />
                 </div>
             </div>
-        </Section>
+            </Container>
+        </section>
     );
 }

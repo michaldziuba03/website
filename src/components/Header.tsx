@@ -5,7 +5,7 @@ import {Icon} from "./icons/Icon";
 
 export const Header = () => {
     return (
-        <header>
+        <header className='absolute w-full'>
             <Container>
                 <div className='w-full flex justify-between py-6 pt-10 md:py-12 items-center'>
                     <Logo />

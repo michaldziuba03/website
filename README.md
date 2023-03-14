@@ -22,3 +22,9 @@ Built with React and Gatsby. I am not frontend developer but I tried to make it 
 GATSBY_DISQUS_NAME={disqus_shortname}
 GATSBY_SITE_URL={website_url}
 ```
+
+### Install dependencies and run
+```shell
+npm install
+npm run develop
+```

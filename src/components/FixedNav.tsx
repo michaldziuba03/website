@@ -1,4 +1,4 @@
-import React, {useEffect, useState, MouseEvent} from "react";
+import React, { useEffect, useState } from "react";
 
 interface IndicatorProps {
     sections: string[];
@@ -48,27 +48,11 @@ export const FixedNav: React.FC<IndicatorProps> = ({ sections }) => {
 
     function spyScroll() {
         const sectionsEl = Array.from(document.querySelectorAll('section'));
-        let minValue;
-        let closestIndex = 0;
-        let i = 0;
+        const sortedSections = sectionsEl.sort((s1, s2) => {
+            return getTopBoundingRect(s1) - getTopBoundingRect(s2);
+        });
 
-        for (const section of sectionsEl) {
-            const currentValue = getTopBoundingRect(section);
-            if (!minValue) {
-                minValue = currentValue;
-                closestIndex = i;
-                i++;
-                continue;
-            }
-            if (minValue > currentValue) {
-                minValue = currentValue;
-                closestIndex = i;
-                i++;
-            }
-        }
-
-        const closestSection = sectionsEl[closestIndex];
-        setActiveSection(closestSection.id);
+        setActiveSection(sortedSections[0].id);
     }
 
     useEffect(() => {
@@ -77,7 +61,7 @@ export const FixedNav: React.FC<IndicatorProps> = ({ sections }) => {
     }, []);
 
     return (
-        <nav className='hidden fixed top-2/4 left-24 -translate-y-1/2 lg:flex flex-col items-center gap-6'>
+        <nav className='hidden fixed top-2/4 left-24 -translate-y-1/2 xl:flex flex-col items-center gap-6'>
             { sections.map(section => <IndicatorDot
                 key={section}
                 section={section}

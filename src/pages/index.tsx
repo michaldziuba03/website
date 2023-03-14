@@ -23,7 +23,6 @@ const IndexPage: React.FC<PageProps> = () => {
     return (
       <>
           <Header />
-          <FixedNav sections={sections} />
           <main className='min-h-screen'>
               <Hero name={sections[0]} />
               <About name={sections[1]} />
@@ -31,6 +30,7 @@ const IndexPage: React.FC<PageProps> = () => {
               <Featured name={sections[3]} />
               <Contact name={sections[4]} />
           </main>
+          <FixedNav sections={sections} />
           <Footer />
       </>
     )

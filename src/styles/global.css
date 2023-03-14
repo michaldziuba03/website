@@ -58,7 +58,7 @@ html,body {
 }
 
 .indicator-label {
-    @apply hidden capitalize absolute left-7 top-1/2 -translate-y-1/2 select-none rounded group-hover:flex px-3 py-2 bg-heading text-body font-medium text-sm;
+    @apply hidden z-50 capitalize absolute left-7 top-1/2 -translate-y-1/2 select-none rounded group-hover:flex px-3 py-2 bg-heading text-body font-medium text-sm;
 }
 
 @keyframes fadein-animation {
