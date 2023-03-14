@@ -10,6 +10,11 @@
 
 Built with React and Gatsby. I am not frontend developer but I tried to make it good enough. This is my third iteration of design (check `v2` branch).
 
+### Screenshots
+![image](https://user-images.githubusercontent.com/43048524/224570171-329c5d80-711b-4798-8882-438fa00ea133.png)
+![image](https://user-images.githubusercontent.com/43048524/224570235-ad0a55bf-2a54-4a57-a87f-66d6038d3229.png)
+
+
 ### Inspirations
 1. [DesignCourse: Build & Deploy a Personal Portfolio with TailwindCSS - 2022 Edition](https://youtube.com/watch?v=Vp6GC3jKG20)
 2. [DesignCourse: An EASY Way to INSTANTLY Improve your UI Designs](https://www.youtube.com/watch?v=Q8A2E8CnYH4)
