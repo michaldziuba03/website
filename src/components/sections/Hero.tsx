@@ -6,6 +6,7 @@ import { Socials } from "../Socials";
 import { ArrowIcon } from "../icons/ArrowIcon";
 import { SectionProps } from "./Section";
 import {Container} from "../common/Container";
+import {Triangles} from "../Triangles";
 
 export const Hero: React.FC<SectionProps> = (props) => {
     function handleCallToAction() {
@@ -16,9 +17,10 @@ export const Hero: React.FC<SectionProps> = (props) => {
     }
 
     return (
-        <section id={props.name} className='min-h-screen flex items-center justify-center pt-24'>
+        <section id={props.name} className='min-h-screen relative flex items-center justify-center pt-24'>
             <Container>
             <div className='md:grid md:grid-cols-2'>
+                <Triangles className='absolute md:hidden w-52 bottom-0 right-0' />
                 <div className='mt-8 md:mt-16'>
                     <h1 className='heading fadein text-5xl leading-tight xl:text-7xl xl:leading-tight'>Hello world.</h1>
                     <h1 className='heading fadein text-5xl leading-tight xl:text-7xl xl:leading-tight'>My name is</h1>
@@ -30,14 +32,14 @@ export const Hero: React.FC<SectionProps> = (props) => {
                     <Socials className='mt-28' />
                 </div>
                 <div className='hidden md:flex'>
-                    <Dots className='hidden md:block text-primary dark:text-primary-dark md:w-20 md:h-70' />
+                    <Dots className='hidden lg:block text-primary dark:text-primary-dark md:w-20 md:h-70' />
                     <StaticImage
                         className='hero-img mb-8 w-64 h-64 md:w-5/6 md:h-5/6 md:m-0 border shadow-primary'
                         src='../../images/me.jpg'
                         alt='my face'
                         loading='eager'
                     />
-                    <Dots className='hidden md:block text-primary dark:text-primary-dark w-20 h-70' />
+                    <Dots className='hidden lg:block text-primary dark:text-primary-dark w-20 h-70' />
                 </div>
             </div>
             </Container>

@@ -11,8 +11,8 @@ interface ProjectProps {
 }
 
 const Project: React.FC<ProjectProps> = ({ githubUrl }) => (
-    <div className='w-full flex flex-col md:grid md:grid-cols-9 gap-6 md:gap-16 items-center'>
-        <div className='flex md:col-span-4 md:grid md:grid-cols-2 md:gap-3'>
+    <div className='w-full flex flex-col lg:grid lg:grid-cols-9 gap-6 lg:gap-16 items-center'>
+        <div className='flex lg:pr-6 lg:col-span-4 lg:grid lg:grid-cols-2 md:gap-3'>
             <a href={githubUrl} className='flex md:col-span-full'>
                 <StaticImage
                     className='hover:opacity-70 transition-opacity rounded'
@@ -29,7 +29,7 @@ const Project: React.FC<ProjectProps> = ({ githubUrl }) => (
                 />
             </a>
 
-            <a href={githubUrl} className='inline-block hidden md:flex rounded'>
+            <a href={githubUrl} className='inline-block hidden lg:flex rounded'>
                 <StaticImage
                     className='hover:opacity-70 transition-opacity rounded'
                     src='../../images/screen2.png'
@@ -72,7 +72,7 @@ export const Projects: React.FC<SectionProps> = (props) => (
             <div className='mt-16'>
                 <H2>Libraries</H2>
                 <Paragraph>Libraries and other noteworthy smaller projects.</Paragraph>
-                <div className='grid grid-cols-1 md:grid-cols-4 gap-10 mt-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:max-2xl:gap-3 gap-10 mt-5'>
 
                     <div className='flex flex-col justify-between w-full text-body p-7 bg-heading border rounded shadow'>
                         <div>

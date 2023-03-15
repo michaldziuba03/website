@@ -1,3 +1,5 @@
+import type { GatsbyConfig as BaseGatsbyConfig } from "gatsby";
+
 export type Technologies = 'typescript'
     | 'javascript'
     | 'docker'
@@ -12,3 +14,17 @@ export type Technologies = 'typescript'
     | 'graphql'
     | 'preact'
     | 'kafka';
+
+export interface MetaDataType {
+    title: string;
+    siteUrl: string;
+    author: {
+        firstName: string;
+        secondName: string;
+        skills: Technologies[];
+    }
+}
+
+export interface GatsbyConfig extends Omit<BaseGatsbyConfig, 'siteMetadata'> {
+    siteMetadata?: MetaDataType;
+}
