@@ -1,6 +1,7 @@
 import React from "react";
 import { Logo } from "./Logo";
-import {Socials} from "./Socials";
+import { Socials } from "./Socials";
+import { person } from "../config";
 
 export const Footer: React.FC = () => {
     const date = new Date();
@@ -9,7 +10,7 @@ export const Footer: React.FC = () => {
             <Logo />
             <Socials />
             <p className='font-medium text-xs md:text-sm'>
-                &copy; {date.getFullYear()} Michał Dziuba. All rights reserved.
+                &copy; {date.getFullYear()} { person.firstName } { person.secondName }. All rights reserved.
             </p>
         </footer>
     )

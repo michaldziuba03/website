@@ -14,14 +14,12 @@ import {DatabaseIcon} from "./DatabaseIcon";
 import {TorIcon} from "./TorIcon";
 import {WebsocketIcon} from "./WebsocketIcon";
 import {YoutubeIcon} from "./YoutubeIcon";
+import {SocialNames} from "../../types";
 
-export type IconNames = 'linkedin'
-    | 'facebook'
-    | 'github'
-    | 'dev'
+export type IconNames =
+    | SocialNames
     | 'menu'
     | 'email'
-    | 'twitter'
     | 'link'
     | 'close'
     | 'arrow'
@@ -29,7 +27,6 @@ export type IconNames = 'linkedin'
     | 'database'
     | 'tor'
     | 'websocket'
-    | 'youtube';
 
 interface IconProps {
     name: IconNames;
@@ -37,10 +34,6 @@ interface IconProps {
 
 export const Icon: FC<IconProps> = ({ name }) => {
     switch(name) {
-        case 'facebook':
-            return <FacebookIcon />
-        case 'dev':
-            return <DevIcon />
         case 'github':
             return <GithubIcon />
         case 'linkedin':

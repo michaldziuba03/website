@@ -1,6 +1,10 @@
 import type { GatsbyConfig as BaseGatsbyConfig } from "gatsby";
+import {PropsWithChildren} from "react";
 
-export type Technologies = 'typescript'
+export type SocialNames = 'twitter' | 'linkedin' | 'youtube' | 'github';
+
+export type Technologies =
+    | 'typescript'
     | 'javascript'
     | 'docker'
     | 'nest'
@@ -28,3 +32,9 @@ export interface MetaDataType {
 export interface GatsbyConfig extends Omit<BaseGatsbyConfig, 'siteMetadata'> {
     siteMetadata?: MetaDataType;
 }
+
+export interface PropsWitchClassName {
+    className?: string;
+}
+
+export type PropsWithChildrenAndClass = PropsWithChildren & PropsWitchClassName;

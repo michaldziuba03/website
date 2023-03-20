@@ -1,15 +1,14 @@
+import '../styles/landing.css';
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
+import { BaseSEO } from "../components/seo/BaseSEO";
+import { PersonJsonLd } from "../components/seo/PersonJsonLd";
+import {Hero} from "../landing/Hero";
 import {Header} from "../components/Header";
-import {Hero} from "../components/sections/Hero";
+import {SectionIndicator} from "../components/SectionIndicator";
 import {Footer} from "../components/Footer";
-import {About} from "../components/sections/About";
-import {Contact} from "../components/sections/Contact";
-import {BaseSEO} from "../components/seo/BaseSEO";
-import {FixedNav} from "../components/FixedNav";
-import {Projects} from "../components/sections/Projects";
-import {Featured} from "../components/sections/Featured";
-
+import {About} from "../landing/About";
+import {Projects} from "../landing/Projects";
 
 const IndexPage: React.FC<PageProps> = () => {
     const sections = [
@@ -23,19 +22,22 @@ const IndexPage: React.FC<PageProps> = () => {
     return (
       <>
           <Header />
-          <main className='min-h-screen'>
+          <main>
               <Hero name={sections[0]} />
               <About name={sections[1]} />
               <Projects name={sections[2]} />
-              <Featured name={sections[3]} />
-              <Contact name={sections[4]} />
           </main>
-          <FixedNav sections={sections} />
           <Footer />
+          <SectionIndicator sections={sections} />
       </>
     )
 }
 
 export default IndexPage
 
-export const Head: HeadFC = () => <BaseSEO title='Michał Dziuba' description='Personal website' />
+export const Head: HeadFC = () => (
+    <>
+        <BaseSEO title='Michał Dziuba' description='Personal website' />
+        <PersonJsonLd />
+    </>
+)

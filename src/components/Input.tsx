@@ -1,4 +1,5 @@
 import React, { HTMLInputTypeAttribute } from "react";
+import classNames from "classnames";
 
 export interface InputProps {
     name: string;
@@ -16,11 +17,13 @@ export const Input: React.FC<InputProps> = ({ name, label, type= 'text', require
     </div>
 );
 
+const inputStyle = 'px-3 py-3 mt-2 rounded text-black border-2 border'
+
 const InputOrTextArea: React.FC<InputProps> = (props) => {
     if (props.type === 'textarea') {
         return (
             <textarea
-                className='px-3 py-3 mt-2 h-60 rounded text-black border resize-none border-2 border'
+                className={classNames(inputStyle, 'resize-none')}
                 name={props.name}
                 required={props.required}
             />
@@ -29,7 +32,7 @@ const InputOrTextArea: React.FC<InputProps> = (props) => {
 
     return (
         <input
-            className='px-3 py-3 mt-2 rounded text-black border-2 border'
+            className={inputStyle}
             type={props.type}
             name={props.name}
             required={props.required}

@@ -2,12 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    @apply font-poppins bg-body text-paragraph dark:bg-body-dark dark:text-paragraph-dark;
+@layer base {
+    :root {
+        --color-base: #F6F9FF;
+        --color-base-dark: #E3E9F3;
+        --color-paragraph: #4C4F69;
+        --color-heading: #130303;
+        --color-primary: #1E66F5;
+        --color-accent: #508BFE;
+    }
+    .theme-dark {
+        --color-base: #11111B;
+        --color-base-dark: #000611;
+        --color-paragraph: #e4ecfb;
+        --color-heading: #FAFAFA;
+        --color-primary: #a4c1ff;
+        --color-accent: #5b88d3;
+    }
 }
 
-html,body {
+html,
+body {
     scroll-behavior: smooth;
+}
+
+body {
+    @apply font-poppins bg-body text-paragraph transition-colors;
 }
 
 .svg path {
@@ -26,47 +46,4 @@ html,body {
     width: 1em;
     height: 1em;
     font-size: inherit;
-}
-
-.heading {
-    @apply font-bold text-heading dark:text-heading-dark;
-}
-
-.hero-img {
-    border: 0;
-    border-radius: 125px 0;
-    box-shadow: 10px 10px 0 #508BFE;
-}
-
-@media (max-width: 668px) {
-    .hero-img {
-        border-radius: 100px 0;
-    }
-}
-
-.about-img {
-    border: 10px solid #C1D6FF;
-}
-
-.fadein {
-    animation-name: fadein-animation;
-    animation-duration: .8s;
-}
-
-.indicator-active {
-    @apply border-primary bg-primary;
-}
-
-.indicator-label {
-    @apply hidden z-50 capitalize absolute left-7 top-1/2 -translate-y-1/2 select-none rounded group-hover:flex px-3 py-2 bg-heading text-body font-medium text-sm;
-}
-
-@keyframes fadein-animation {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
 }

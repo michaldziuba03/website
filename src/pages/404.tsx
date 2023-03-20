@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link, HeadFC, PageProps } from "gatsby"
-import {Socials} from "../components/Socials";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
@@ -16,7 +15,6 @@ const NotFoundPage: React.FC<PageProps> = () => {
         </div>
 
         <div className='py-10'>
-            <Socials className='text-body' />
         </div>
     </main>
   )
