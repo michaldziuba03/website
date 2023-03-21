@@ -1,14 +1,13 @@
 import React from "react";
 import { H1, H2 } from "../components/Heading";
 import { Paragraph } from "../components/Paragraph";
-import { Icon } from "../components/icons/Icon";
 import { Tag } from "../components/Tag";
 import { Section, SectionProps } from "./Section";
-import {GatsbyImage, getImage, StaticImage} from "gatsby-plugin-image";
-import {useProjectsQuery} from "../hooks/useProjectsQuery";
-import {Technologies} from "../types";
-import {LibraryCard} from "../components/LibraryCard";
-import {useLibsQuery} from "../hooks/useLibsQuery";
+import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import { useProjectsQuery } from "../hooks/useProjectsQuery";
+import { Technologies } from "../types";
+import { LibraryCard } from "../components/LibraryCard";
+import { useLibsQuery } from "../hooks/useLibsQuery";
 
 interface ProjectProps {
     name: string;
@@ -24,7 +23,7 @@ interface ProjectImageProps {
 }
 
 const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
-    const imageData = getImage(image?.childImageSharp?.gatsbyImageData);
+    const imageData = getImage(image);
     if (!imageData) {
         return (
             <StaticImage
@@ -45,7 +44,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
 }
 
 const Project: React.FC<ProjectProps> = ({ name, description, link, tags, images }) => (
-    <div className='w-full flex flex-col lg:grid lg:grid-cols-9 gap-6 lg:gap-16 items-center'>
+    <div className='w-full flex flex-col lg:grid lg:grid-cols-9 gap-6 lg:gap-16 items-center grid-flow-col even:grid-reverse'>
         <div className='flex lg:pr-6 lg:col-span-4 lg:grid lg:grid-cols-2 md:gap-3'>
             <a href={link} className='table w-full h-full md:col-span-full'>
                 <ProjectImage image={images[0]} alt='screen1' />
@@ -61,7 +60,7 @@ const Project: React.FC<ProjectProps> = ({ name, description, link, tags, images
         </div>
         <div className='flex flex-col md:col-span-5'>
             <span className='text-primary font-bold select-none'>Featured project</span>
-            <a href={link} className='font-bold text-2xl hover:text-primary inline-block'>{ name }</a>
+            <a href={link} className='font-bold text-2xl hover:text-gray-500 inline-block'>{ name }</a>
             <p className='mt-4 md:text-lg'> { description } </p>
 
             <div className='flex flex-wrap gap-2 mt-4 md:mt-8'>
@@ -74,7 +73,6 @@ const Project: React.FC<ProjectProps> = ({ name, description, link, tags, images
 export const Projects: React.FC<SectionProps> = (props) => {
     const projects = useProjectsQuery();
     const libs = useLibsQuery();
-    console.log(libs);
 
     return (
         <Section {...props}>

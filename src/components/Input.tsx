@@ -17,13 +17,13 @@ export const Input: React.FC<InputProps> = ({ name, label, type= 'text', require
     </div>
 );
 
-const inputStyle = 'px-3 py-3 mt-2 rounded text-black border-2 border'
+const inputStyle = 'px-3 py-3 mt-2 rounded text-black border-2 border border-gray-300 dark:border-gray-600 dark:bg-body-dark text-heading focus:outline-none focus:border-primary focus:ring-primary transition-colors dark:focus:outline-none dark:focus:border-primary dark:focus:ring-primary'
 
 const InputOrTextArea: React.FC<InputProps> = (props) => {
     if (props.type === 'textarea') {
         return (
             <textarea
-                className={classNames(inputStyle, 'resize-none')}
+                className={classNames(inputStyle, 'resize-none h-64')}
                 name={props.name}
                 required={props.required}
             />

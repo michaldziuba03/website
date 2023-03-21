@@ -3,13 +3,10 @@ import { useStaticQuery, graphql } from "gatsby";
 export function useProjectsQuery() {
     const result = useStaticQuery(graphql`
         query ProjectsQuery {
-            allMdx(filter: {
-                fields: {
-                    collection: {
-                        eq: "projects"
-                    }
-                }
-            }) {
+            allMdx(
+                filter: {fields: {collection: {eq: "projects"}}}
+                sort: {frontmatter: {date: DESC}}
+            ) {
                 nodes {
                     frontmatter {
                         name
@@ -17,11 +14,7 @@ export function useProjectsQuery() {
                         link
                         images {
                             childImageSharp {
-                                gatsbyImageData(
-                                    width: 700
-                                    placeholder: BLURRED
-                                    formats: [AUTO, WEBP, AVIF]
-                                )
+                                gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                             }
                         }
                     }

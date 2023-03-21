@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: ['class', '.theme-dark'],
   theme: {
     extend: {
       colors: {
@@ -11,6 +12,7 @@ module.exports = {
         'paragraph': 'var(--color-paragraph)',
         'heading': 'var(--color-heading)',
         'primary': 'var(--color-primary)',
+        'secondary': 'var(--color-secondary)',
         'accent': 'var(--color-accent)',
       },
       fontFamily: {

@@ -39,11 +39,11 @@ export const Header: React.FC = () => {
             <Container>
                 <div className='w-full flex justify-between py-6 pt-10 md:py-12 items-center'>
                     <Logo />
-                    <nav className='hidden md:flex items-center gap-8 font-medium text-heading dark:text-heading-dark'>
-                        <a href='#' className='text-primary dark:text-primary-dark' >Home</a>
-                        <a href='#'>Blog</a>
-                        <a href='#' className='py-1 flex items-center gap-2 px-5 bg-heading hover:bg-primary text-body rounded-2xl'>Resume</a>
-                        <button onClick={handleChangeTheme}>
+                    <nav className='hidden md:flex items-center gap-8 font-medium text-heading'>
+                        <a href='#' className='text-primary dark:text-primary-dark hover:text-primary transition-colors' >Home</a>
+                        <a href='#' className='hover:text-primary transition-colors'>Blog</a>
+                        <a href='#' className='hover:text-primary transition-colors'>Resume</a>
+                        <button className='hover:text-primary transition-colors' onClick={handleChangeTheme}>
                             <ThemeIndicator isDark={isDark} />
                         </button>
                     </nav>

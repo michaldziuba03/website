@@ -9,6 +9,7 @@
         --color-paragraph: #4C4F69;
         --color-heading: #130303;
         --color-primary: #1E66F5;
+        --color-secondary: #0390c7;
         --color-accent: #508BFE;
     }
     .theme-dark {
@@ -17,7 +18,14 @@
         --color-paragraph: #e4ecfb;
         --color-heading: #FAFAFA;
         --color-primary: #a4c1ff;
+        --color-secondary: #6fcaef;
         --color-accent: #5b88d3;
+    }
+}
+
+@layer utilities {
+    .grid-reverse > *:first-child {
+        grid-column-end: -1 !important;
     }
 }
 
@@ -28,6 +36,16 @@ body {
 
 body {
     @apply font-poppins bg-body text-paragraph transition-colors;
+}
+
+::-moz-selection {
+    color: var(--color-base);
+    background: var(--color-accent);
+}
+
+::selection {
+    color: var(--color-base);
+    background: var(--color-accent);
 }
 
 .svg path {
