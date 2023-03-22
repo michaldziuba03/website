@@ -20,7 +20,6 @@ export const Socials: React.FC<SocialsProps> = ({ className  }) => {
                     <Icon name={social.name} />
                 </a>
             )) }
-
         </div>
     )
 }
