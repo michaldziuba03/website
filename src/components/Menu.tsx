@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import classNames from "classnames";
 import {changeTheme, getSavedTheme} from "../theme";
 import {Icon} from "./icons/Icon";
+import {Link} from "gatsby";
 
 interface ThemeIndicatorProps {
     isDark: boolean;
@@ -48,8 +49,8 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
     return (
         <div className={styles}>
             <nav className='h-full flex text-2xl md:text-base flex-col md:h-auto md:flex-row justify-center items-center gap-8 font-medium text-heading'>
-                <a href='#' className='text-primary dark:text-primary-dark hover:text-primary transition-colors' >Home</a>
-                <a href='#' className='hover:text-primary transition-colors'>Blog</a>
+                <Link to='/' activeClassName='text-primary' className='hover:text-primary transition-colors' >Home</Link>
+                <Link to='/blog' activeClassName='text-primary' className='hover:text-primary transition-colors'>Blog</Link>
                 <a href='#' className='hover:text-primary transition-colors'>Resume</a>
                 <button className='hover:text-primary transition-colors flex gap-3 items-center' onClick={handleChangeTheme}>
                     <ThemeIndicator isDark={isDark} />
