@@ -1,7 +1,7 @@
 import type { GatsbyConfig as BaseGatsbyConfig } from "gatsby";
 import {PropsWithChildren} from "react";
 
-export type SocialNames = 'twitter' | 'linkedin' | 'youtube' | 'github';
+export type SocialNames = 'twitter' | 'linkedin' | 'youtube' | 'github' | 'facebook';
 
 export type Technologies =
     | 'typescript'

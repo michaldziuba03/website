@@ -36,9 +36,14 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
         ) {
           nodes {
             id
+            fields {
+              readingTime
+            }
             frontmatter {
+              date(formatString: "DD MMM, YYYY")
               slug
             }
+            body
             internal {
               contentFilePath
             }
@@ -75,9 +80,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
 
     posts.forEach((node: any) => {
         createPage({
-            path: `/blog/${node.frontmatter.slug}`,
+            path: `/posts/${node.frontmatter.slug}`,
             component: `${path.resolve(`./src/templates/BlogPost.tsx`)}?__contentFilePath=${node.internal.contentFilePath}`,
-            context: { id: node.id },
+            context: {
+                readingTime: node.fields.readingTime,
+                formattedDate: node.frontmatter.date,
+            },
         })
     })
 

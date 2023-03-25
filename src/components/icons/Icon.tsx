@@ -60,5 +60,7 @@ export const Icon: FC<IconProps> = ({ name }) => {
             return <WebsocketIcon />
         case 'youtube':
             return <YoutubeIcon />
+        case 'facebook':
+            return <FacebookIcon />
     }
 }

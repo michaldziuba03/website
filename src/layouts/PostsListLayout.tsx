@@ -22,7 +22,7 @@ export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes }
                         Articles about web dev, computer science concepts, networking and operating systems.
                     </Paragraph>
 
-                    <div className='flex gap-3 mt-5'>
+                    <div className='flex flex-wrap gap-3 mt-5'>
                         <Tag>Node.js</Tag>
                         <Tag>TypeScript</Tag>
                         <Tag>React.js</Tag>

@@ -1,0 +1,60 @@
+article {
+    max-width: 900px;
+}
+
+.post {
+    @apply text-lg text-heading py-4;
+}
+
+.post h1,
+.post h2,
+.post h3 {
+    @apply mt-12 font-bold;
+}
+
+.post h1 {
+    @apply text-2xl lg:text-3xl;
+}
+
+.post h2 {
+    @apply text-xl lg:text-2xl;
+}
+
+.post h3 {
+    @apply text-lg lg:text-xl;
+}
+
+.post p,
+.post ul,
+.post ol {
+    @apply my-4;
+}
+
+.post a {
+    @apply text-accent hover:underline font-medium;
+}
+
+.post figcaption {
+    @apply mt-2 text-sm text-gray-600 dark:text-gray-300 text-center;
+}
+
+.post img,
+.post [class*="language-"] {
+    @apply rounded;
+}
+
+.post blockquote {
+    @apply border-l-4 px-5 text-base text-gray-500 dark:text-gray-400 border-gray-500;
+}
+
+.post ul,ol {
+    @apply list-inside;
+}
+
+.post ul {
+    @apply list-disc;
+}
+
+.post ol {
+    @apply list-decimal;
+}
