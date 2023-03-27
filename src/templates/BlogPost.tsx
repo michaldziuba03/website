@@ -9,7 +9,7 @@ import '../styles/prism.css';
 import {Footer} from "../components/Footer";
 import {Share} from "../components/Share";
 import {person} from "../config";
-import {Tag} from "../components/Tag";
+import {BlogTag, Tag} from "../components/Tag";
 import {LatestArticles} from "../components/LatestArticles";
 
 interface PostsListTemplateProps extends PropsWithChildren {
@@ -46,7 +46,7 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
                         </div>
 
                         <div className='flex flex-wrap gap-3 mt-5'>
-                            { pageContext.frontmatter.tags.map((tag: string) => <Tag>{ tag }</Tag>) }
+                            { pageContext.frontmatter.tags.map((tag: string) => <BlogTag>{ tag }</BlogTag>) }
                         </div>
                     </article>
 

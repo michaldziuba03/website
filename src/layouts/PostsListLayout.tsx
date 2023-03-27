@@ -4,14 +4,15 @@ import {Paragraph} from "../components/Paragraph";
 import {H1} from "../components/Heading";
 import {Container} from "../components/Container";
 import {Footer} from "../components/Footer";
-import {Tag} from "../components/Tag";
+import {BlogTag, Tag} from "../components/Tag";
 import {ArticleCard} from "../components/ArticleCard";
 
 interface PostsListLayoutProps extends PropsWithChildren {
     articleNodes: any[];
+    tags: string[];
 }
 
-export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes }) => {
+export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes, tags }) => {
     return (
         <>
             <Header />
@@ -23,10 +24,7 @@ export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes }
                     </Paragraph>
 
                     <div className='flex flex-wrap gap-3 mt-5'>
-                        <Tag>Node.js</Tag>
-                        <Tag>TypeScript</Tag>
-                        <Tag>React.js</Tag>
-                        <Tag>Personal</Tag>
+                        { tags.map(tag => <BlogTag>{ tag }</BlogTag>) }
                     </div>
                 </Container>
             </div>

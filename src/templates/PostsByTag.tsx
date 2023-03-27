@@ -2,32 +2,29 @@ import React from 'react';
 import { graphql, HeadFC } from 'gatsby';
 import { PostsListLayout } from '../layouts/PostsListLayout';
 
-interface PostsListTemplateProps {
+interface PostsByTagTemplateProps {
     data: any,
     pageContext: {
         limit: number,
         skip: number,
         numPages: number,
         currentPage: number,
+        tags: string[];
     }
 }
 
-const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data }) => {
-    return (
-        <>
-            <PostsListLayout>
-            </PostsListLayout>
-        </>
-    )
+const PostsByTagTemplate: React.FC<PostsByTagTemplateProps> = ({ data, pageContext }) => {
+    return <PostsListLayout articleNodes={data.allMdx.nodes} tags={pageContext.tags} />
 }
 
-export default PostsListTemplate;
+export default PostsByTagTemplate;
 
 export const query = graphql`
-    query ($skip: Int!, $limit: Int!) {
+    query ($skip: Int!, $limit: Int!, $tag: String) {
         allMdx(
             filter:{
-                fields: { collection: { eq: "blog" } }
+                fields: { collection: { eq: "blog" } },
+                frontmatter: { tags: { eq: $tag} },
             }
             sort: { frontmatter: { date: DESC }}
             limit: $limit
@@ -41,7 +38,7 @@ export const query = graphql`
                     description,
                     featuredImage {
                         childImageSharp {
-                            gatsbyImageData(width: 500, height: 250)
+                            gatsbyImageData(width: 400, height: 225)
                         }
                     },
                     tags

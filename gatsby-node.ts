@@ -49,7 +49,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
             }
           }
         }
-        tags: allMdx {
+        tags: allMdx(filter:{ fields: { collection: { eq: "blog" } }}) {
           group(field: { frontmatter: { tags: SELECT }}) {
             fieldValue
           }
@@ -62,6 +62,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
     }
 
     const posts = result.data.posts.nodes;
+    const tags = result.data.tags.group.map((tag: any) => tag.fieldValue);
     const postsPerPage = 15;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
@@ -74,6 +75,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
                 skip: i * postsPerPage,
                 numPages,
                 currentPage: i + 1,
+                tags,
             },
         })
     });
@@ -88,8 +90,6 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
             },
         })
     })
-
-    const tags = result.data.tags.group.map((tag: any) => tag.fieldValue);
 
     for (const tag of tags) {
         const postsByTagResult = await graphql<any>(`
@@ -129,7 +129,8 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
                     skip: i * postsPerPage,
                     numPages,
                     currentPage: i + 1,
-                    tag
+                    tag,
+                    tags,
                 },
             })
         });
