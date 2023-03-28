@@ -8,7 +8,7 @@ export interface SocialsProps {
 }
 
 export const Socials: React.FC<SocialsProps> = ({ className  }) => {
-    const styles = classNames('text-4xl text-heading flex gap-6', className);
+    const styles = classNames('text-3xl lg:text-4xl text-heading flex gap-6', className);
     return (
         <div className={styles}>
             { socials.map(social => (

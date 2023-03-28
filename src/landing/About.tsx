@@ -22,7 +22,7 @@ export const About: React.FC<SectionProps> = (props) => {
                 </div>
                 <div>
                     <StaticImage
-                        className='w-52 h-52 md:w-64 md:h-64 lg:w-80 lg:h-80 border border-8 border-accent rounded-full'
+                        className='w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 border border-8 border-accent rounded-full'
                         src='../images/aboutme.jpg'
                         alt='my face'
                         loading='eager'

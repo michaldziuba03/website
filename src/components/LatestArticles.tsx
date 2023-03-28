@@ -1,7 +1,8 @@
 import {useArticlesQuery} from "../hooks/useArticlesQuery";
 import React from "react";
-import {GatsbyImage, getImage} from "gatsby-plugin-image";
+import {GatsbyImage, getImage, StaticImage} from "gatsby-plugin-image";
 import {Link} from "gatsby";
+import {person} from "../config";
 
 interface SmallArticleCard {
     imageData: any;
@@ -33,10 +34,24 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
                 >
                     { props.title }
                 </Link>
-                <span className='text-xs'>{ props.formattedDate } · { props.readingTime }</span>
                 <p className='hidden max-w-md md:block 2xl:hidden'>
                     { props.description }
                 </p>
+
+                <div className='flex gap-3 mt-0 lg:mt-3 2xl:mt-0'>
+                    <StaticImage
+                        className='hidden lg:block rounded 2xl:hidden'
+                        width={36}
+                        height={36}
+                        src='../images/aboutme.jpg'
+                        alt='author'
+                    />
+                    <div className='flex flex-col'>
+                        <span className='hidden lg:inline 2xl:hidden text-sm font-medium'>{ person.firstName } { person.secondName}</span>
+                        <span className='text-xs'>{ props.formattedDate } · { props.readingTime }</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     )

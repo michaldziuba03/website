@@ -24,6 +24,7 @@ export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes, 
                     </Paragraph>
 
                     <div className='flex flex-wrap gap-3 mt-5'>
+                        <BlogTag path='/blog'>All</BlogTag>
                         { tags.map(tag => <BlogTag>{ tag }</BlogTag>) }
                     </div>
                 </Container>
@@ -36,6 +37,8 @@ export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes, 
                             featuredImage={node.frontmatter.featuredImage}
                             slug={node.frontmatter.slug}
                             description={node.frontmatter.description}
+                            formattedDate={node.frontmatter.date}
+                            readingTime={node.fields.readingTime}
                         />
                     )) }
                 </Container>

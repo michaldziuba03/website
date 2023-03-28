@@ -1,16 +1,16 @@
 import React, {PropsWithChildren} from 'react';
 import { HeadFC } from 'gatsby';
 import '../styles/blog.css';
-import {Header} from "../components/Header";
-import {MDXProvider} from "@mdx-js/react";
-import {Container} from "../components/Container";
-import {StaticImage} from "gatsby-plugin-image";
+import { Header } from "../components/Header";
+import { MDXProvider } from "@mdx-js/react";
+import { Container } from "../components/Container";
+import { StaticImage } from "gatsby-plugin-image";
 import '../styles/prism.css';
-import {Footer} from "../components/Footer";
-import {Share} from "../components/Share";
-import {person} from "../config";
-import {BlogTag, Tag} from "../components/Tag";
-import {LatestArticles} from "../components/LatestArticles";
+import { Footer } from "../components/Footer";
+import { Share } from "../components/Share";
+import { person } from "../config";
+import { BlogTag } from "../components/Tag";
+import { LatestArticles } from "../components/LatestArticles";
 
 interface PostsListTemplateProps extends PropsWithChildren {
     data: any,
@@ -21,7 +21,7 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
     return (
         <>
             <Header />
-            <main className='pt-32 lg:pt-44'>
+            <main className='py-32 lg:py-44'>
                 <Container className='flex flex-col 2xl:flex-row gap-20'>
                     <article>
                         <h1 className='font-bold text-4xl lg:text-5xl text-heading'>{ pageContext.frontmatter.title }</h1>
@@ -65,7 +65,7 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
 
 
                         <div className='mt-16'>
-                            <h2 className='text-heading font-bold text-xl'>Latest posts</h2>
+                            <h2 className='text-heading font-bold text-xl lg:text-2xl 2xl:text-xl'>Latest posts</h2>
                             <LatestArticles />
                         </div>
                     </div>

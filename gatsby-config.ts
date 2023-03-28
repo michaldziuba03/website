@@ -1,5 +1,8 @@
 // extended version of GatsbyConfig type:
 import { GatsbyConfig } from "./src/types";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {

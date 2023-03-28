@@ -19,14 +19,18 @@ export const Tag: React.FC<TagProps> = ({ technology, children }) => (
     </div>
 )
 
-export const BlogTag: React.FC<React.PropsWithChildren> = ({ children }) => {
-    const pathname = `/blog/tags/${children}`;
+interface BlogTagProps extends React.PropsWithChildren {
+    path?: string;
+}
+
+export const BlogTag: React.FC<BlogTagProps> = ({ children, path }) => {
+    const pathname = path || `/blog/tags/${children}`;
 
     return (
-        <Tag>
             <Link
-                className='text-sm md:text-base'
-                to={pathname}>{ technologyName(children as Technologies) }</Link>
-        </Tag>
+                activeClassName='bg-paragraph text-body'
+                className='bg-body-dark text-sm md:text-base flex gap-2 font-medium items-center justify-center px-2 md:px-4 py-2 rounded'
+                to={pathname}>{ technologyName(children as Technologies) }
+            </Link>
     )
 }

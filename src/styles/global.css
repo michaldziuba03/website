@@ -48,6 +48,23 @@ body {
     background: var(--color-accent);
 }
 
+
+::-webkit-scrollbar {
+    @apply rounded-2xl w-4;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-body-dark transition-colors;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-400;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+}
+
 .svg path {
     fill: currentColor;
 }

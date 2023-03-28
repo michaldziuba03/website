@@ -10,12 +10,14 @@ import { Footer } from "../components/Footer";
 import { About } from "../landing/About";
 import { Projects } from "../landing/Projects";
 import { Contact } from "../landing/Contact";
+import {Featured} from "../landing/Featured";
 
 const IndexPage: React.FC<PageProps> = () => {
     const sections = [
         'hero',
         'about',
         'projects',
+        'featured',
         'contact',
     ];
 
@@ -26,7 +28,8 @@ const IndexPage: React.FC<PageProps> = () => {
               <Hero name={sections[0]} />
               <About name={sections[1]} />
               <Projects name={sections[2]} />
-              <Contact name={sections[3]} />
+              <Featured name={sections[3]} />
+              <Contact name={sections[4]} />
           </main>
           <Footer />
           <SectionIndicator sections={sections} />

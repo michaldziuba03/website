@@ -1,12 +1,15 @@
 import React from "react";
-import {GatsbyImage, getImage} from "gatsby-plugin-image";
+import {GatsbyImage, getImage, StaticImage} from "gatsby-plugin-image";
 import {Link} from "gatsby";
+import {person} from "../config";
 
 interface ArticleCardProps {
     title: string;
     description: string;
     featuredImage: any;
     slug: string;
+    formattedDate: string;
+    readingTime: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = (props) => {
@@ -27,8 +30,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = (props) => {
                     className='text-heading font-bold text-xl'
                     to={pathname}>{ props.title }
                 </Link>
-                <p className='mt-1'>{ props.description }</p>
+                <p className='text-sm'>{ props.formattedDate } · { props.readingTime }</p>
+                <p className=' mt-2'>{ props.description }</p>
             </div>
+
         </div>
     )
 }
