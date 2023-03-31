@@ -16,13 +16,14 @@ export const useArticlesQuery = () => {
                 frontmatter {
                     featuredImage {
                         childImageSharp {
-                            gatsbyImageData(width: 400, height: 225)
+                            gatsbyImageData(width: 600, height: 340)
                         }
                     }
                     title
                     date(formatString: "DD MMM, YYYY")
                     description
                     slug
+                    type
                 }
             }
         }
@@ -35,6 +36,7 @@ export const useArticlesQuery = () => {
         title: node.frontmatter.title,
         formattedDate: node.frontmatter.date,
         slug: node.frontmatter.slug,
+        type: node.frontmatter.type,
         readingTime: node.fields.readingTime,
     }));
 }

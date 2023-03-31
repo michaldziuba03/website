@@ -11,6 +11,7 @@ interface SmallArticleCard {
     readingTime: string;
     description: string;
     slug: string;
+    type: string;
 }
 
 export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
@@ -18,7 +19,7 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
     const pathname = `/posts/${props.slug}`;
 
     return (
-        <div className='grid grid-cols-5 gap-4 md:gap-10 2xl:gap-4'>
+        <div className='grid grid-cols-5 gap-4 md:gap-10 xl:gap-4'>
             <Link to={pathname} className='col-span-2 flex items-center'>
                 <GatsbyImage
                     className='w-full'
@@ -28,27 +29,31 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
             </Link>
 
             <div className='col-span-3 flex flex-col justify-center gap-2'>
+                <span className='hidden lg:block xl:hidden mb-2 font-semibold leading-none text-xs uppercase text-primary'>{ props.type }</span>
+
                 <Link
-                    className='text-heading block font-bold text-sm md:text-xl 2xl:text-sm'
+                    className='hover:text-primary transition-colors text-heading block font-semibold text-sm md:text-xl xl:text-sm'
                     to={pathname}
                 >
                     { props.title }
                 </Link>
-                <p className='hidden max-w-md md:block 2xl:hidden'>
+                <p className='hidden max-w-md md:block xl:hidden'>
                     { props.description }
                 </p>
 
-                <div className='flex gap-3 mt-0 lg:mt-3 2xl:mt-0'>
+                <div className='flex gap-3 mt-0 lg:mt-3 xl:mt-0'>
                     <StaticImage
-                        className='hidden lg:block rounded 2xl:hidden'
+                        className='hidden lg:block rounded-full xl:hidden'
                         width={36}
                         height={36}
                         src='../images/aboutme.jpg'
                         alt='author'
                     />
                     <div className='flex flex-col'>
-                        <span className='hidden lg:inline 2xl:hidden text-sm font-medium'>{ person.firstName } { person.secondName}</span>
-                        <span className='text-xs'>{ props.formattedDate } · { props.readingTime }</span>
+                        <span className='hidden lg:inline xl:hidden text-sm font-medium'>{ person.firstName } { person.secondName}</span>
+                        <span className='text-sm xl:text-xs'>{ props.formattedDate }
+                            <span className='xl:hidden 2xl:inline'>· { props.readingTime }</span>
+                        </span>
                     </div>
                 </div>
 
@@ -60,7 +65,7 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
 export const LatestArticles: React.FC = () => {
     const posts = useArticlesQuery();
     return (
-        <div className='flex flex-col gap-8 2xl:gap-4 mt-4'>
+        <div className='flex flex-col gap-8 2xl:gap-4 mt-6'>
             { posts.map((post: any) => (
                 <SmallArticleCard
                     key={post.id}
@@ -70,6 +75,7 @@ export const LatestArticles: React.FC = () => {
                     readingTime={post.readingTime}
                     slug={post.slug}
                     description={post.description}
+                    type={post.type}
                 />
             )) }
         </div>

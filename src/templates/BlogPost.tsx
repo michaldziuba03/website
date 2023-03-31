@@ -22,8 +22,8 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
         <>
             <Header />
             <main className='py-32 lg:py-44'>
-                <Container className='flex flex-col 2xl:flex-row gap-20'>
-                    <article>
+                <Container className='grid grid-cols-1 xl:grid-cols-7 gap-20'>
+                    <article className='xl:col-span-5'>
                         <h1 className='font-bold text-4xl lg:text-5xl text-heading'>{ pageContext.frontmatter.title }</h1>
                         <div className='flex flex-wrap justify-between items-center py-5 gap-6'>
                             <div className='flex gap-3'>
@@ -50,7 +50,7 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
                         </div>
                     </article>
 
-                    <div className='2xl:sticky 2xl:top-10 2xl:h-min'>
+                    <div className='xl:col-span-2 xl:sticky xl:top-10 xl:h-min'>
                         <div className='max-w-lg'>
                             <StaticImage
                                 className='rounded-full'
@@ -60,12 +60,12 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
                             />
 
                             <h4 className='mt-4 mb-2 font-bold text-lg text-heading'>{ person.firstName } { person.secondName }</h4>
-                            <span className='2xl:text-sm'>{ person.shortBio }</span>
+                            <span className='xl:text-sm'>{ person.shortBio }</span>
                         </div>
 
 
                         <div className='mt-16'>
-                            <h2 className='text-heading font-bold text-xl lg:text-2xl 2xl:text-xl'>Latest posts</h2>
+                            <h2 className='text-heading font-bold text-xl lg:text-2xl xl:text-xl'>Latest posts</h2>
                             <LatestArticles />
                         </div>
                     </div>

@@ -37,9 +37,10 @@ export const query = graphql`
                     description,
                     featuredImage {
                         childImageSharp {
-                            gatsbyImageData(width: 400, height: 225)
+                            gatsbyImageData(width: 600, height: 340)
                         }
                     },
+                    type,
                     tags
                 },
                 fields {

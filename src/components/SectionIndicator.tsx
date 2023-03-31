@@ -59,7 +59,7 @@ export const IndicatorDot: React.FC<IndicatorDotProps> = ({ section, activeSecti
                className=' flex relative group w-5 h-5 flex border border-gray-400 border-2 rounded-full transition-transform'
             >
                 <span className='hidden z-50 capitalize absolute left-7 top-1/2 -translate-y-1/2 select-none rounded group-hover:flex px-3 py-2 bg-heading text-body font-medium text-sm'>
-                    { isFirst ? 'Home' : section }
+                    { section }
                 </span>
             </a>
         )

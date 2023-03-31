@@ -6,6 +6,7 @@ import {Container} from "../components/Container";
 import {Footer} from "../components/Footer";
 import {BlogTag, Tag} from "../components/Tag";
 import {ArticleCard} from "../components/ArticleCard";
+import {ArticlesGrid} from "../components/ArticlesGrid";
 
 interface PostsListLayoutProps extends PropsWithChildren {
     articleNodes: any[];
@@ -16,7 +17,7 @@ export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes, 
     return (
         <>
             <Header />
-            <div className='pt-52 pb-24'>
+            <div className='pt-32 lg:pt-44 pb-16'>
                 <Container>
                     <H1>Blog</H1>
                     <Paragraph className='max-w-xl'>
@@ -30,17 +31,20 @@ export const PostsListLayout: React.FC<PostsListLayoutProps> = ({ articleNodes, 
                 </Container>
             </div>
             <div className='min-h-screen'>
-                <Container className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10'>
-                    { articleNodes.map((node) => (
-                        <ArticleCard
-                            title={node.frontmatter.title}
-                            featuredImage={node.frontmatter.featuredImage}
-                            slug={node.frontmatter.slug}
-                            description={node.frontmatter.description}
-                            formattedDate={node.frontmatter.date}
-                            readingTime={node.fields.readingTime}
-                        />
-                    )) }
+                <Container>
+                    <ArticlesGrid>
+                        { articleNodes.map((node) => (
+                            <ArticleCard
+                                title={node.frontmatter.title}
+                                featuredImage={node.frontmatter.featuredImage}
+                                slug={node.frontmatter.slug}
+                                description={node.frontmatter.description}
+                                formattedDate={node.frontmatter.date}
+                                readingTime={node.fields.readingTime}
+                                type={node.frontmatter.type}
+                            />
+                        )) }
+                    </ArticlesGrid>
                 </Container>
             </div>
             <Footer />

@@ -14,7 +14,7 @@ import {Featured} from "../landing/Featured";
 
 const IndexPage: React.FC<PageProps> = () => {
     const sections = [
-        'hero',
+        'home',
         'about',
         'projects',
         'featured',
