@@ -29,7 +29,7 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
             </Link>
 
             <div className='col-span-3 flex flex-col justify-center gap-2'>
-                <span className='hidden lg:block xl:hidden mb-2 font-semibold leading-none text-xs uppercase text-primary'>{ props.type }</span>
+                <span className='hidden lg:block xl:hidden font-semibold leading-none text-xs uppercase text-primary'>{ props.type }</span>
 
                 <Link
                     className='hover:text-primary transition-colors text-heading block font-semibold text-sm md:text-xl xl:text-sm'
@@ -50,9 +50,9 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
                         alt='author'
                     />
                     <div className='flex flex-col'>
-                        <span className='hidden lg:inline xl:hidden text-sm font-medium'>{ person.firstName } { person.secondName}</span>
+                        <span className='hidden lg:inline xl:hidden text-sm font-medium'>{ person.firstName } { person.secondName }</span>
                         <span className='text-sm xl:text-xs'>{ props.formattedDate }
-                            <span className='xl:hidden 2xl:inline'>· { props.readingTime }</span>
+                            <span className='xl:hidden 2xl:inline'> · { props.readingTime }</span>
                         </span>
                     </div>
                 </div>

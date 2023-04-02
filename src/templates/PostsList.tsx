@@ -10,11 +10,18 @@ interface PostsListTemplateProps {
         numPages: number,
         currentPage: number,
         tags: string[];
+        basePath: string;
     }
 }
 
 const PostsListTemplate: React.FC<PostsListTemplateProps> = ({ data, pageContext }) => {
-    return <PostsListLayout articleNodes={data.allMdx.nodes} tags={pageContext.tags} />
+    return <PostsListLayout
+        basePath={pageContext.basePath}
+        numPages={pageContext.numPages}
+        currentPage={pageContext.currentPage}
+        articleNodes={data.allMdx.nodes}
+        tags={pageContext.tags}
+    />
 }
 
 export default PostsListTemplate;

@@ -63,12 +63,15 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
 
     const posts = result.data.posts.nodes;
     const tags = result.data.tags.group.map((tag: any) => tag.fieldValue);
-    const postsPerPage = 15;
+    const postsPerPage = 1//15;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
     Array.from({ length: numPages }).forEach((_, i) => {
+        const basePath = '/blog';
+        const pathname = i === 0 ? basePath : `${basePath}/${i + 1}`;
+
         createPage({
-            path: i === 0 ? `/blog` : `/blog/${i + 1}`,
+            path: pathname,
             component: path.resolve("./src/templates/PostsList.tsx"),
             context: {
                 limit: postsPerPage,
@@ -76,13 +79,15 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
                 numPages,
                 currentPage: i + 1,
                 tags,
+                basePath,
             },
         })
     });
 
     posts.forEach((node: any) => {
+        const pathname = `/posts/${node.frontmatter.slug}`;
         createPage({
-            path: `/posts/${node.frontmatter.slug}`,
+            path: pathname,
             component: `${path.resolve(`./src/templates/BlogPost.tsx`)}?__contentFilePath=${node.internal.contentFilePath}`,
             context: {
                 readingTime: node.fields.readingTime,
@@ -120,17 +125,21 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
       `, { tag });
 
         const postsByTag = postsByTagResult.data.allMdx.nodes;
-        Array.from({ length: Math.ceil(postsByTag.length / postsPerPage) }).forEach((_, i) => {
+        const postsByTagNumPages = Math.ceil(postsByTag.length / postsPerPage);
+
+        Array.from({ length: postsByTagNumPages }).forEach((_, i) => {
+            const basePath = `/blog/tags/${tag}`;
             createPage({
-                path: i === 0 ? `/blog/tags/${tag}` : `/blog/tags/${tag}/${i + 1}`,
+                path: i === 0 ? basePath : `${basePath}/${i + 1}`,
                 component: path.resolve("./src/templates/PostsByTag.tsx"),
                 context: {
                     limit: postsPerPage,
                     skip: i * postsPerPage,
-                    numPages,
+                    numPages: postsByTagNumPages,
                     currentPage: i + 1,
                     tag,
                     tags,
+                    basePath,
                 },
             })
         });

@@ -10,11 +10,18 @@ interface PostsByTagTemplateProps {
         numPages: number,
         currentPage: number,
         tags: string[];
+        basePath: string;
     }
 }
 
 const PostsByTagTemplate: React.FC<PostsByTagTemplateProps> = ({ data, pageContext }) => {
-    return <PostsListLayout articleNodes={data.allMdx.nodes} tags={pageContext.tags} />
+    return <PostsListLayout
+        numPages={pageContext.numPages}
+        basePath={pageContext.basePath}
+        currentPage={pageContext.currentPage}
+        articleNodes={data.allMdx.nodes}
+        tags={pageContext.tags}
+    />
 }
 
 export default PostsByTagTemplate;

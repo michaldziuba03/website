@@ -46,7 +46,7 @@
 }
 
 .post blockquote {
-    @apply border-l-4 px-5 text-gray-500 dark:text-gray-400 border-gray-500;
+    @apply text-base border-l-4 px-5 text-gray-500 dark:text-gray-400 border-gray-500;
 }
 
 .post ul,ol {

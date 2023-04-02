@@ -29,6 +29,7 @@ export const BlogTag: React.FC<BlogTagProps> = ({ children, path }) => {
     return (
             <Link
                 activeClassName='bg-paragraph text-body'
+                partiallyActive={true}
                 className='bg-body-dark text-sm md:text-base flex gap-2 font-medium items-center justify-center px-2 md:px-4 py-2 rounded'
                 to={pathname}>{ technologyName(children as Technologies) }
             </Link>
