@@ -63,7 +63,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions,
 
     const posts = result.data.posts.nodes;
     const tags = result.data.tags.group.map((tag: any) => tag.fieldValue);
-    const postsPerPage = 1//15;
+    const postsPerPage = 15;
     const numPages = Math.ceil(posts.length / postsPerPage);
 
     Array.from({ length: numPages }).forEach((_, i) => {

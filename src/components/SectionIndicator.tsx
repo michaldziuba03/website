@@ -26,7 +26,7 @@ export const SectionIndicator: React.FC<IndicatorProps> = ({ sections }) => {
     }, []);
 
     return (
-        <nav className='hidden fixed top-2/4 left-24 -translate-y-1/2 xl:flex flex-col items-center gap-6'>
+        <nav className='hidden fixed top-2/4 left-14 -translate-y-1/2 xl:flex flex-col items-center gap-6'>
             { sections.map(section => <IndicatorDot
                 key={section}
                 section={section}

@@ -21,6 +21,7 @@ const PostsByTagTemplate: React.FC<PostsByTagTemplateProps> = ({ data, pageConte
         currentPage={pageContext.currentPage}
         articleNodes={data.allMdx.nodes}
         tags={pageContext.tags}
+        isTag={true}
     />
 }
 

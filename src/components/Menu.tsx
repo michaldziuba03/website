@@ -42,13 +42,13 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
     }
 
     const styles = classNames(menuStyles, {
-        'max-md:translate-x-full': !isOpen,
-        'max-md:translate-x-0  max-md:transition-transform': isOpen,
+        'max-md:-translate-y-full max-md:transition-transform': !isOpen,
+        'max-md:translate-y-0  max-md:transition-transform': isOpen,
     });
 
     return (
         <div className={styles}>
-            <nav className='h-full flex text-2xl md:text-base flex-col md:h-auto md:flex-row justify-center items-center gap-8 font-medium text-heading'>
+            <nav className='h-full flex text-2xl md:text-base flex-col md:h-auto md:flex-row justify-center items-center gap-12 md:gap-8 font-medium text-heading'>
                 <Link to='/' activeClassName='text-primary' className='hover:text-primary transition-colors' >Home</Link>
                 <Link to='/blog' partiallyActive activeClassName='text-primary' className='hover:text-primary transition-colors'>Blog</Link>
                 <a href='#' className='hover:text-primary transition-colors'>Resume</a>
@@ -57,7 +57,7 @@ export const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
                     <span className='md:hidden'>Theme</span>
                 </button>
 
-                <button onClick={onClose} className='md:hidden absolute top-10 right-6'>
+                <button onClick={onClose} className='text-2xl md:hidden absolute top-10 right-6'>
                     <Icon name='close' />
                 </button>
             </nav>

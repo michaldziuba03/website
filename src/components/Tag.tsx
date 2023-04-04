@@ -21,15 +21,16 @@ export const Tag: React.FC<TagProps> = ({ technology, children }) => (
 
 interface BlogTagProps extends React.PropsWithChildren {
     path?: string;
+    partiallyActive?: boolean;
 }
 
-export const BlogTag: React.FC<BlogTagProps> = ({ children, path }) => {
+export const BlogTag: React.FC<BlogTagProps> = ({ children, path, partiallyActive }) => {
     const pathname = path || `/blog/tags/${children}`;
 
     return (
             <Link
                 activeClassName='bg-paragraph text-body'
-                partiallyActive={true}
+                partiallyActive={partiallyActive}
                 className='bg-body-dark text-sm md:text-base flex gap-2 font-medium items-center justify-center px-2 md:px-4 py-2 rounded'
                 to={pathname}>{ technologyName(children as Technologies) }
             </Link>

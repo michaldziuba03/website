@@ -27,7 +27,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
     if (!imageData) {
         return (
             <StaticImage
-                className='hover:opacity-70 transition-opacity rounded'
+                className='rounded'
                 width={600}
                 src='../images/default.png' alt={alt}
             />
@@ -36,7 +36,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
 
     return (
         <GatsbyImage
-            className='hover:opacity-70 transition-opacity rounded'
+            className='rounded'
             image={imageData}
             alt={alt}
         />
@@ -59,8 +59,8 @@ const Project: React.FC<ProjectProps> = ({ name, description, link, tags, images
             </a>
         </div>
         <div className='flex flex-col md:col-span-5'>
-            <span className='text-primary font-bold select-none'>Featured project</span>
-            <a href={link} className='font-bold text-2xl hover:text-gray-500 inline-block'>{ name }</a>
+            <span className='text-primary font-semibold select-none'>Featured project</span>
+            <a href={link} className='font-bold text-2xl hover:text-primary inline-block'>{ name }</a>
             <p className='mt-4 md:text-lg'> { description } </p>
 
             <div className='flex flex-wrap gap-2 mt-4 md:mt-8'>

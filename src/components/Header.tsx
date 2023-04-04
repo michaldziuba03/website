@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
                 <div className='w-full flex justify-between py-6 pt-10 md:py-12 items-center'>
                     <Logo />
                     <Menu isOpen={isMenuOpen} onClose={closeMenu} />
-                    <button className='md:hidden text-3xl' onClick={openMenu}>
+                    <button className='md:hidden text-2xl' onClick={openMenu}>
                         <Icon name='menu' />
                     </button>
                 </div>

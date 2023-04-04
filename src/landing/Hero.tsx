@@ -12,7 +12,7 @@ import { person } from "../config";
 export const Hero: React.FC<SectionProps> = (props) => {
     return (
         <section id={props.name} className='min-h-screen relative flex items-center justify-center pt-24'>
-            <Container className='md:grid md:grid-cols-2'>
+            <Container className='md:grid md:grid-cols-2 xl:py-6 xl:gap-10'>
                 <div className='mt-8 md:mt-16'>
                     <LargeH>Hello world.</LargeH>
                     <LargeH>My name is</LargeH>
@@ -26,7 +26,7 @@ export const Hero: React.FC<SectionProps> = (props) => {
                 <div className='hidden md:flex'>
                     <Dots className='hidden lg:block text-primary dark:text-primary-dark md:w-20 md:h-70' />
                     <StaticImage
-                        className='hero-img mb-8 w-64 h-64 md:w-5/6 md:h-5/6 md:m-0 shadow-primary'
+                        className='hero-img mb-8 w-64 h-64 md:w-5/6 md:h-5/6 md:m-0  shadow-primary'
                         src='../images/me.jpg'
                         alt='my face'
                         loading='eager'

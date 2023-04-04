@@ -15,6 +15,7 @@ interface PostsListLayoutProps extends PropsWithChildren {
     currentPage: number;
     numPages: number;
     tags: string[];
+    isTag?: boolean;
 }
 
 export const PostsListLayout: React.FC<PostsListLayoutProps> = (props) => {
@@ -29,8 +30,8 @@ export const PostsListLayout: React.FC<PostsListLayoutProps> = (props) => {
                     </Paragraph>
 
                     <div className='flex flex-wrap gap-3 mt-5'>
-                        <BlogTag path='/blog'>All</BlogTag>
-                        { props.tags.map(tag => <BlogTag>{ tag }</BlogTag>) }
+                        <BlogTag partiallyActive={!props.isTag} path='/blog'>All</BlogTag>
+                        { props.tags.map(tag => <BlogTag partiallyActive={true}>{ tag }</BlogTag>) }
                     </div>
                 </Container>
             </div>
