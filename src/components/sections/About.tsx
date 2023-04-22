@@ -1,10 +1,10 @@
 import React from "react";
 import { Section, SectionProps } from "./Section";
-import {Paragraph} from "../components/Paragraph";
-import {H1, H2} from "../components/Heading";
+import {Paragraph} from "../Paragraph";
+import {H1, H2} from "../Heading";
 import {StaticImage} from "gatsby-plugin-image";
-import {person} from "../config";
-import {Skills} from "../components/Skills";
+import {person} from "../../config";
+import {Skills} from "../Skills";
 
 export const About: React.FC<SectionProps> = (props) => {
     return (
@@ -23,7 +23,7 @@ export const About: React.FC<SectionProps> = (props) => {
                 <div>
                     <StaticImage
                         className='w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 border border-8 border-accent rounded-full'
-                        src='../images/aboutme.jpg'
+                        src='../../images/aboutme.jpg'
                         alt='my face'
                         loading='eager'
                     />

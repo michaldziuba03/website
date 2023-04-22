@@ -41,14 +41,17 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
                     { props.description }
                 </p>
 
-                <div className='flex gap-3 mt-0 lg:mt-3 xl:mt-0'>
-                    <StaticImage
-                        className='hidden lg:block rounded-full xl:hidden'
-                        width={36}
-                        height={36}
-                        src='../images/aboutme.jpg'
-                        alt='author'
-                    />
+                <div className='flex gap-3 items-center mt-0 lg:mt-3 xl:mt-0'>
+                    <div className='hidden lg:block xl:hidden'>
+                        <StaticImage
+                            className='rounded-full'
+                            width={36}
+                            height={36}
+                            src='../images/aboutme.jpg'
+                            alt='author'
+                        />
+                    </div>
+
                     <div className='flex flex-col'>
                         <span className='hidden lg:inline xl:hidden text-sm font-medium'>{ person.firstName } { person.secondName }</span>
                         <span className='text-sm xl:text-xs'>{ props.formattedDate }

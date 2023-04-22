@@ -1,21 +1,13 @@
-// extended version of GatsbyConfig type:
-import { GatsbyConfig } from "./src/types";
+import { meta } from './src/config';
 import dotenv from 'dotenv';
+import { GatsbyConfig } from "gatsby";
 
 dotenv.config();
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Michał Dziuba`,
-    siteUrl: `https://michaldziuba.dev`,
-    author: {
-      firstName: 'Michał',
-      secondName: 'Dziuba',
-      skills: [
-          'typescript', 'javascript', 'node', 'nest', 'react', 'preact', 'graphql',
-          'docker', 'postgres', 'mongo', 'redis', 'nginx', 'kafka', 'git',
-      ],
-    }
+    title: meta.siteName,
+    siteUrl: meta.url,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

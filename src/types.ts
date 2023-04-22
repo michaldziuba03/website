@@ -17,21 +17,8 @@ export type Technologies =
     | 'react'
     | 'graphql'
     | 'preact'
-    | 'kafka';
-
-export interface MetaDataType {
-    title: string;
-    siteUrl: string;
-    author: {
-        firstName: string;
-        secondName: string;
-        skills: Technologies[];
-    }
-}
-
-export interface GatsbyConfig extends Omit<BaseGatsbyConfig, 'siteMetadata'> {
-    siteMetadata?: MetaDataType;
-}
+    | 'kafka'
+    | 'tailwind';
 
 export interface PropsWitchClassName {
     className?: string;

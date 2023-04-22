@@ -5,7 +5,7 @@ import {
     TwitterShareButton,
 } from 'react-share';
 import { Icon } from './icons/Icon';
-import {ShareApiButton} from "./ShareApiButton";
+import { ShareApiButton } from "./ShareApiButton";
 
 interface ShareProps {
     url: string;

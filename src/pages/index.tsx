@@ -1,16 +1,17 @@
 import '../styles/landing.css';
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
-import { BaseSEO } from "../components/seo/BaseSEO";
 import { PersonJsonLd } from "../components/seo/PersonJsonLd";
-import { Hero } from "../landing/Hero";
+import { Hero } from "../components/sections/Hero";
 import { Header } from "../components/Header";
 import { SectionIndicator } from "../components/SectionIndicator";
 import { Footer } from "../components/Footer";
-import { About } from "../landing/About";
-import { Projects } from "../landing/Projects";
-import { Contact } from "../landing/Contact";
-import {Featured} from "../landing/Featured";
+import { About } from "../components/sections/About";
+import { Projects } from "../components/sections/Projects";
+import { Contact } from "../components/sections/Contact";
+import {Featured} from "../components/sections/Featured";
+import { SEO } from "../components/seo/SEO";
+import {person} from "../config";
 
 const IndexPage: React.FC<PageProps> = () => {
     const sections = [
@@ -41,7 +42,7 @@ export default IndexPage
 
 export const Head: HeadFC = () => (
     <>
-        <BaseSEO title='Michał Dziuba' description='Personal website' />
+        <SEO title='Michał Dziuba' description={person.description} />
         <PersonJsonLd />
     </>
 )

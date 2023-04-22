@@ -11,7 +11,6 @@ export const PersonJsonLd: React.FC = () => {
         "url": "https://michaldziuba.dev",
         "email": person.email,
         "jobTitle": "Node.js Developer",
-        "gender": person.gender,
         "knowsAbout": ["TypeScript", "Node.js", "Nest.js", "JavaScript", "React"],
         "sameAs": socials.map(social => social.url),
     }

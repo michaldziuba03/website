@@ -8,16 +8,20 @@ import { StaticImage } from "gatsby-plugin-image";
 import '../styles/prism.css';
 import { Footer } from "../components/Footer";
 import { Share } from "../components/Share";
-import { person } from "../config";
+import {meta, person} from "../config";
 import { BlogTag } from "../components/Tag";
 import { LatestArticles } from "../components/LatestArticles";
+import { ArticleSEO } from "../components/seo/ArticleSEO";
 
 interface PostsListTemplateProps extends PropsWithChildren {
     data: any,
     pageContext: any;
+    location: {pathname: string};
 }
 
-const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) => {
+const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext, location }) => {
+    const shareUrl = `${meta.url}${location.pathname}`
+
     return (
         <>
             <Header />
@@ -39,7 +43,7 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
                                     <span className='text-sm'>{ pageContext.formattedDate } · { pageContext.readingTime }</span>
                                 </div>
                             </div>
-                            <Share url={'https://michaldziuba.dev/posts/2022-sample'} />
+                            <Share url={shareUrl} />
                         </div>
                         <div className='post'>
                             <MDXProvider>{ children }</MDXProvider>
@@ -78,6 +82,13 @@ const BlogPost: React.FC<PostsListTemplateProps> = ({ children, pageContext }) =
 
 export default BlogPost;
 
-export const Head: HeadFC = ({ location }) => {
-    return <></>
+export const Head: HeadFC<undefined, any> = ({ location, pageContext }) => {
+    return <>
+        <ArticleSEO
+            title={pageContext.frontmatter.title}
+            description={pageContext.frontmatter.description}
+            pathname={location.pathname}
+            previewUrl={pageContext.frontmatter.previewUrl}
+        />
+    </>
 }

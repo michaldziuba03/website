@@ -1,10 +1,10 @@
 import React from "react";
-import {useArticlesQuery} from "../hooks/useArticlesQuery";
+import {useArticlesQuery} from "../../hooks/useArticlesQuery";
 import {Section, SectionProps} from "./Section";
-import {H1} from "../components/Heading";
-import {Paragraph} from "../components/Paragraph";
-import {ArticleCard} from "../components/ArticleCard";
-import {ArticlesGrid} from "../components/ArticlesGrid";
+import {H1} from "../Heading";
+import {Paragraph} from "../Paragraph";
+import {ArticleCard} from "../ArticleCard";
+import {ArticlesGrid} from "../ArticlesGrid";
 
 export const Featured: React.FC<SectionProps> = ({ name }) => {
     const articles = useArticlesQuery();

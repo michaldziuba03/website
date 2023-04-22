@@ -14,6 +14,7 @@ import { TypescriptIcon } from "./TypescriptIcon";
 import { PreactIcon } from './PreactIcon';
 import { Technologies } from "../../types";
 import {KafkaIcon} from "./KafkaIcon";
+import {TailwindIcon} from "./TailwindIcon";
 
 export interface TechIconProps {
     technology: Technologies;
@@ -49,5 +50,7 @@ export const TechIcon: FC<TechIconProps> = ({ technology }) => {
             return <PreactIcon />
         case 'kafka':
             return <KafkaIcon />
+        case 'tailwind':
+            return <TailwindIcon />
     }
 }

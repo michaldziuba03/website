@@ -2,9 +2,10 @@
 title: "Social login in Node.js"
 slug: "2023-social-login-in-nodejs"
 description: "Learn possible way of implementing social authentication in your application."
-date: "2023-02-28"
+date: "2023-04-03"
 tags: ["node", "typescript"]
 featuredImage: "../images/social-login.png"
+previewUrl: "https://res.cloudinary.com/michaldziuba/image/upload/c_scale,w_600/v1680682435/social-login_ihsvmg.png"
 type: "GUIDE"
 ---
 
@@ -42,7 +43,7 @@ Personally, I don't like Passport.js as it is. Frameworks like Nest.js often pro
 We cannot discuss social authentication without mentioning the OAuth 2.0 standard. This standard is the basis of most Passport.js strategies, so I think it's important to understand at least the data flow. Most Passport.js strategies use `Authorization Code Flow`, because this flow is suited for a regular server applications.
 
 ### OAuth 2.0 Authorization Code Flow example
-1. User clicks `Continue with GitHub` button.
+1. User clicks **Continue with GitHub** button.
 2. Button redirects user to GitHub authorization page.
 3. On GitHub authorization page, user must first log in to the service. Then they will be prompted by the service to authorize or deny the application access to their account.
 4. After successful authorization, GitHub redirects user back to our application (to callback endpoint) and sends `code` in query params.
@@ -56,47 +57,107 @@ We cannot discuss social authentication without mentioning the OAuth 2.0 standar
 - [Which OAuth 2.0 flow should I use](https://auth0.com/docs/get-started/authentication-and-authorization-flow/which-oauth-2-0-flow-should-i-use)
 - [OAuth Best practice](https://oauth.net/2/oauth-best-practice/)
 
-## Social login implementation overview
-Now let's move on to the actual part of the article. We will be talking about the moment when you get the user's profile in the Passport.js strategy callback. During my research, I have observed at least 3 ways to implement social authentication.
+## Common issues
+In this section we will discuss common security flaws and general issues.
 
-### Some universal rules and common gotchas
-Before we will discuss each social auth implementation method, I want to mention a few universal rules that apply to any method:
+### You should rely on provider's id first
+Email address is not reliable for existing account lookup - use social account's id instead. In my implementations I use emails only for linking **NEW** social provider to existing account OR creating new account. Why email address from social provider is not reliable? Because in some providers you can **CHANGE** email address and in many implementations I've seen, you will end up with new account in that case.
 
-1. Email address is not reliable for existing account lookup - use social account's id instead. In my implementations I use emails only for linking **NEW** social provider to existing account OR creating new account. Why email address from social provider is not reliable? Because in some providers you can **CHANGE** email address and in many implementations I've seen, you will end up with new account in that case :)
-2. Email address from social provider must be verified. It's very important if you want to link new social provider to existing account. Why? Because some bad actor can find out that a particular email is registered in your application and create a new Google (as example) account with that email address. Bad actor can use that unverified Google account to get access to legitimate account from your application. We will discuss this type of attack in [Linking unverified social accounts](#linking-unverified-social-accounts) section.
-3. You should implement email verification mechanism in your application. It's very important if you want to link new social provider to existing account (registered with email and password). Bad actor can create an account in your application with someone's email address. If after some time the legitimate email owner will sign up with social login, bad actor can access this account. We will discuss this type of attack in [Pre Account Takeover](#pre-account-takeover) section. Make sure that **ONLY** verified accounts can link social providers.
-4. Some providers may not return the email address. In some providers user can register with a phone number. You can simply deny social accounts without email or save phone number (if returned) in email column/field.
+```ts
+// DON'T:
+const user = await userRepository.findOneBy({ email: oauthProfile.email });
+if (!user) {
+    const newUser = await userRepository.save({
+        email: oauthProfile.email,
+        name: oauthProfile.name,
+        picture: oauthProfile.picture,
+    });
 
-### First method - user can login with ONLY one provider
-The first method is fairly simple. User can use only one authentication method for specific email. That means you cannot link your Google account if you registered with Github provider previously.
+    return createSession(newUser.id);
+}
 
-#### Relational databases
-![image](https://user-images.githubusercontent.com/43048524/221054002-07000294-0215-453f-a38f-c34657be27bd.png)
+return createSession(user.id);
+````
+> Pseudo code somewhere in OAuth callback handler
 
-> Entity diagram generated with [dbdiagram.io](https://dbdiagram.io/)
+### CSRF Attacks
+You can prevent [Login CSRF attacks](https://crashtest-security.com/csrf-login-attack/) by using `state` parameter defined in OAuth2 standard. The easiest way to protect your app is generating [nonce](https://en.wikipedia.org/wiki/Cryptographic_nonce) (random value which is supposed to be used just once). You need to save this value in cookie or session, and redirect user to OAuth2 Authorization Page with `state={nonce}` parameter.
+```ts
+const state = randomBytes(16).toString('hex');
+// '21dc458cb0f8ddcbbb68c3c8b4ac3c92'
+res.cookie('state', state);
 
-#### Example flow
-I will briefly explain this method, because I want to focus actually on second method.
-1. Find user by provider and social account id (providerId).
-2. If user already exists - create session/JWT for them.
-3. If user doesn't exists - create new user with data from social provider (email, social account id, displayName). Make sure email is not already taken.
-4. Create session/JWT for created user.
+const params = {
+    'client_id': process.env.GITHUB_CLIENT_ID,
+    'scope': 'user:email',
+    'state': state,
+}
 
-#### Pros:
-- easiest to implement
+const searchParams = new URLSearchParams(params).toString();
+res.redirect(`https://github.com/login/oauth/authorize?${searchParams}`);
+````
 
-#### Cons:
-- bad user experience - most people expect your application to link their social accounts connected to the same email address
+After successful authorization, identity provider will redirect user to the callback endpoint. Callback will get authorization code and state - you must compare state parameter from callback with state saved in cookie.
+```ts
+app.get('/oauth/callback', (req, res) => {
+    const { code, state } = req.query;
+    const cookieState = req.cookies['state'];
 
-### Second method - user can login with multiple providers
-The second method is the most common implementation but is also more complex. User can link multiple authentication providers (connected to the same email address) to a single account.
+    if (state !== cookieState) {
+        return res.status(422).json({ error: 'Invalid state' });
+    }
 
-#### Relational databases
+    res.clearCookie('state');
+    ...
+});
+````
+
+OAuth2 strategies for Passport.js [can handle this for you](https://medium.com/passportjs/application-state-in-oauth-2-0-1d94379164e). We will use this feature in the code sample to protect social logins against CSRF.
+
+Additional resources about state parameter:
+- [Prevent Attacks and Redirect Users with OAuth 2.0 State Parameters](https://auth0.com/docs/secure/attack-protection/state-parameters)
+- [Data Tracker RFC - Threat: CSRF Attack against redirect-uri](https://datatracker.ietf.org/doc/html/rfc6819#section-4.4.1.8)
+- [How to Generate and Validate an OAuth 2.0 State Parameter with Node.js](https://stateful.com/blog/oauth-state-parameters-nodejs)
+- [The importance of the “state” parameter in OAuth](https://medium.com/keycloak/the-importance-of-the-state-parameter-in-oauth-5419c94bef4c)
+
+### Classic-Federated Merge Attack
+You should implement email verification mechanism in your application. It's very important if you want to link new social provider to existing account (registered with email and password). Attacker can create an account in your application with someone's email address. If after some time the legitimate email owner will login with identity provider, bad actor can access this account. For that reason you should require email verification during sign up. You probably may want to revoke active sessions after successful password reset, because victim may want to regain access to their account (created by attacker with email & password method) using **forgot password** feature.
+
+You may also want to prompt user for the password before merging "local" account with new federated identity to ensure account ownership. But still - everything comes to implement session invalidation after successful password reset.
+
+1. Attacker creates new account with victim's email address
+
+<img alt="Pre-hijacking" width="450" src="https://user-images.githubusercontent.com/43048524/221339034-54d55171-b782-4bd4-a578-a2f94de03aa4.png"/>
+
+2. After some time victim signs up with social login provider connected to the same email. Backend merges both accounts.
+
+<img width="500" src="https://user-images.githubusercontent.com/43048524/221339078-0938e1d6-4cde-483f-9196-98642d8a232c.png"/>
+
+3. Attacker has access to the victim's account.
+
+### Non-Verifying IdP Attack
+Email address from identity provider must be verified. Some providers don't guarantee that email address is verified - you may need to verify email ownership on your own before account merging. Otherwise, attacker can create account on identity provider's website with victim's email address.
+
+## Implementation overview
+Implementation sample is obviously oversimplified. In better implementation you need two important things discussed previously:
+- email verification as part of sign up flow.
+- session invalidation after successful password reset.
+
+### Sample flow
+1. After successful OAuth2 authorization, identity provider gives us user's data like name, email and profile picture.
+2. We query database if user with identity provider's id already exists.
+3. If user exists - we just create session for them.
+4. If user doesn't exist - we query database if user with email from identity provider already exists (for example user registered with email & password previously).
+5. If user with same email exists - we will link federated identity to the existing user, and then create session.
+6. Otherwise, we will register brand-new user in our system and create session for them.
+
+### Database schema
+For SQL I suggest to use one-to-many relationship (single user can link many federated identities). We need to identify each provider by name (`google`, `github`, `facebook`). Subject is just unique id for user from identity provider (usually it's some integer or uuid).
+
 ![image](https://user-images.githubusercontent.com/43048524/221053441-ec972f99-85bd-4c4f-920e-18d7f5b6fb26.png)
 
 > Entity diagram generated with [dbdiagram.io](https://dbdiagram.io/)
 
-#### MongoDB
 MongoDB schema is more flexible and there is no reason to normalize data (you shouldn't create additional collection to store federated accounts, just store them in user document). Example schemas for `users` collection:
 ```json
 {
@@ -125,130 +186,8 @@ MongoDB schema is more flexible and there is no reason to normalize data (you sh
 ```
 > This schema is more generic and you can use the same query for each social auth provider. I think you can create unique compound index for `accounts.provider` and `accounts.subject`.
 
-#### Example flow
-I gonna use SQL statements to explain flow. Imagine you are writing Google strategy verification callback and you got object like this:
-```js
-{
-  provider: 'google',
-  id: '142984872137006300000',
-  displayName: 'John Doe',
-  emails: [{ value: 'johndoe@gmail.com', verified: true }],
-  ...
-}
-```
-1. Make sure that email adress from social provider is verified.
-2. Check if social account is already linked:
-```sql
-SELECT * FROM federated_accounts WHERE provider='google' AND subject='142984872137006300000';
-```
-3. If federated account found then just authenticate user (create session/JWT) by using `federated_accounts.user_id` field.
-4. If federated account **doesn't** exist, then we have to check if user with the email from social provider exists in database:
-```sql
-SELECT * FROM users WHERE email='johndoe@gmail.com';
-```
-5. If user with that email exists (for example their id is `20`) and their email is verified, then just link another social provider, so create federated account with insert:
-```sql
-INSERT INTO federated_accounts (provider, subject, user_id) VALUES ('google', '142984872137006300000', 20);
-```
-6. After successful insert you can create session/JWT for a user with id=20.
-7. If user with that email does not exist, create new user and link social provider. I think you should run that query in transaction:
-```sql
-BEGIN;
-  INSERT INTO users (name, email) VALUES ('John Doe', 'johndoe@gmail.com') RETURNING id; ---> id returns 21
-  INSERT INTO federated_accounts (provider, subject, user_id) VALUES ('google', '142984872137006300000', 21);
-COMMIT; ---> or ROLLBACK; in case of error
-```
-8. After successful transaction you can create session/JWT for the created user.
-
-#### Pros:
-- good user experience - their social accounts will be automatically linked to an existing account with the same email address.
-
-#### Cons:
-- more complex
-- you trust a third-party provider to verify email addresses
-
-### Third method - user can login with multiple providers BUT needs to verify email if account already exists
-The last featured method is actually extended version of 2nd method. Let's assume you don't want to trust 3rd parties and you prefer to verify emails on your own.
-
-#### Relational databases
-![3rd diagram](https://user-images.githubusercontent.com/43048524/221438100-b268e4b5-57d9-4c48-bd20-0949f2d3d21c.png)
-
-> Entity diagram generated with [dbdiagram.io](https://dbdiagram.io/)
-
-#### Example flow
-Flow is actually very similar to second method. The only difference is how you create `federated_accounts` entry. You actually create new federated account (link social provider) after email verification.
-
-So if user tries to link new social provider to existing account - you generate random unique token, save entry with user's data in `staged_accounts` and send email to the user. For better security you can hash that verification token with `sha256` before inserting to database, however to the verification link you put the plain token. Don't forget about adding expiration time checks.
-
-When user clicks verification link -  you hash the plain token from link and check if staged account with that token already exists in database.
-If it exists and hasn't expired you can link new social provider. Now the user can simply use this social provider to log into their account.
-
-#### Pros:
-- balanced user experience and security - their social accounts will be automatically linked to existing account with the same email BUT they have to verify email
-- you can verify on your own if the user actually controls the specified email address
-
-#### Cons:
-- the most complex featured solution and actually not that easy to implement correctly
-- user must check their email inbox (it hurts the user experience a bit)
-
-## Common security flaws
-In this section we will discuss typical vulnerabilities in social login implementations.
-
-### Pre Account Takeover
-A pre-account takeover is when an attacker creates a user account with local provider (email and password) using victim's email and after some time the victim signs up with another login method. The application then links the two accounts together based on the matching email address.
-
-#### Attack requirements
-- no checks if the local email address is verified when linking social account (or lack of email verification mechanism at all).
-- attacker must know the victim's email address.
-
-#### Attack steps
-1.&nbsp;Attacker registers new account (in your app) with victim's email address.
-
-<img width="450" src="https://user-images.githubusercontent.com/43048524/221339034-54d55171-b782-4bd4-a578-a2f94de03aa4.png"/>
-
-2.&nbsp;After some time victim signs up with social login provider connected to the same email.
-
-<img width="500" src="https://user-images.githubusercontent.com/43048524/221339078-0938e1d6-4cde-483f-9196-98642d8a232c.png"/>
-
-3.&nbsp;Attacker has access to the victim's account
-
-#### Fix
-- Deny unverified accounts from **your** application to link new social providers.
-
-### Linking unverified social accounts
-Similar vulnerability to previous one but you’d be attacking from the other direction. Imagine that the victim register in your application with some provider. Attacker can use the victim's email to register new unverified account on another provider's website and sign up in your application with this provider. The application then links the two accounts together based on the matching email address.
-
-#### Attack requirements
-- OAuth provider does not require email verification (it's actually very uncommon).
-- no checks if email from social provider is verified.
-- attacker must know the victim's email address.
-
-#### Attack steps
-1.&nbsp;Victim registers new account in your app (with any available login method)
-
-<img width="500" src="https://user-images.githubusercontent.com/43048524/221338983-02386830-c169-4c69-98e3-424f1e5009cf.png"/>
-
-2.&nbsp;Attacker finds out that victim's email is registered in your application
-
-3.&nbsp;Attacker registers new account in social provider application
-
-<img width="640" src="https://user-images.githubusercontent.com/43048524/221339168-11ec9cb1-4b73-4fa4-8d66-a25cdde1621d.png"/>
-
-> I'm just showing Google as an example but with Google this attack is impossible - actually Google requires email verification to complete the signup process at all. The same thing applies for many other OAuth providers. I want to make sure you are aware of this type of attack even if your OAuth providers require email address to be verified.
-
-4.&nbsp;Attacker signs in with social provider using unverified account
-
-<img width="500" src="https://user-images.githubusercontent.com/43048524/221339806-632347ad-560a-4ace-8ab9-d85011109d5e.png"/>
-
-5.&nbsp;Attacker has access to the victim's account
-
-#### Fix
-- check if email address from social provider is verified (many OAuth providers gives you information if email is verified or not).
-- you can implement [3rd method](#third-method---user-can-login-with-multiple-providers-but-needs-to-verify-email-if-account-already-exists) to verify emails from social providers on your own.
-- most OAuth providers actually refuse to authorize unverified accounts.
-
 ## Code sample
-Let's implement [second method](#second-method---user-can-login-with-multiple-providers) in TypeScript and Node.js
+Let's implement simple social login flow in TypeScript and Node.js. I will focus on most important parts of code. You can find full code in my [GitHub repository](https://github.com/michaldziuba03/code-samples/tree/main/social-login).
 
 ### Database setup
 I gonna use TypeORM with SQLite driver (I use SQLite to make project easier to run, without requiring knowledge of tools like Docker).
@@ -415,7 +354,7 @@ app.listen(3000, () => {
 ```
 
 ### Views setup
-I use EJS for HTML templates and Tailwind for styles. The simplest approach is to use the `<a>` element for social login buttons. In the [Passport setup](#passport-setup) section we will configure `/auth/google` and `/auth/github` routes. These paths will redirect users to the provider authorization page.
+I use EJS for HTML templates and Tailwind for styles. The simplest approach is to use the `<a>` element for social login buttons. In the **Passport setup** section we will configure `/auth/google` and `/auth/github` routes. These paths will redirect users to the provider authorization page.
 
 > /views/login.ejs
 ```ejs
@@ -620,9 +559,8 @@ app.post('/auth/register', guestOnly, async (req, res) => {
        password: hashedPassword,
        picture: createGravatar(email),
        /*
-        IMPORTANT: we register users as always verified because we haven't email-verification mechanism.
-        You should always register users with isVerified: false by default, and change it to "true" in email-verification route.
-        Email verification mechanism is out of scope of this guide.
+        Email verification is out of scope of this guide.
+        You should require email verification during registration.
        */
        isVerified: true,
    });
@@ -817,6 +755,7 @@ export const googleStrategy = new Strategy({
     clientID: process.env.GOOGLE_CLIENT_ID!,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     callbackURL: '/auth/google/callback',
+    state: true,
     scope: ['email', 'profile'],
 }, async (_accessToken, _refreshToken, profile, done) => {
     // get email from Google payload - we want only VERIFIED emails
@@ -859,6 +798,8 @@ export const githubStrategy = new Strategy({
     clientID: process.env.GITHUB_CLIENT_ID!,
     clientSecret: process.env.GITHUB_CLIENT_SECRET!,
     callbackURL: '/auth/github/callback',
+    // @ts-ignore: for some reason is string type required
+    state: true,
     scope: ['user:email'],
     // @ts-ignore:
     allRawEmails: true,
@@ -965,6 +906,7 @@ export async function linkAccount(provider: Providers, options: LinkAccountOptio
 Thanks for reading this guide, I hope you found it helpful and interesting. Any feedback is welcome. Let me know if you know a better approach :)
 
 ### Additional resources
+- [New Research Paper: Pre-hijacking Attacks on Web User Accounts](https://msrc.microsoft.com/blog/2022/05/pre-hijacking-attacks/)
 - [Sample application with Facebook login](https://github.com/passport/todos-express-facebook)
 - [Auth0 user profile schema](https://auth0.com/docs/manage-users/user-accounts/user-profiles/normalized-user-profile-schema)
 - [Google OAuth2 login without Passport.js video](https://www.youtube.com/watch?v=idqhYcXxbPs)
@@ -977,3 +919,4 @@ Thanks for reading this guide, I hope you found it helpful and interesting. Any 
 - [Social login "SpoofedMe" attack](https://www.eecs.yorku.ca/course_archive/2014-15/W/3482/Team19_presentation.pdf)
 - [Account pre-hijacking](https://en.wikipedia.org/wiki/Account_pre-hijacking)
 - [What is account pre-hijacking](https://www.makeuseof.com/what-is-account-pre-hijacking/)
+- [How to Generate and Validate an OAuth 2.0 State Parameter with Node.js](https://stateful.com/blog/oauth-state-parameters-nodejs)

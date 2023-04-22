@@ -1,13 +1,13 @@
 import React from "react";
-import { H1, H2 } from "../components/Heading";
-import { Paragraph } from "../components/Paragraph";
-import { Tag } from "../components/Tag";
+import { H1, H2 } from "../Heading";
+import { Paragraph } from "../Paragraph";
+import { Tag } from "../Tag";
 import { Section, SectionProps } from "./Section";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
-import { useProjectsQuery } from "../hooks/useProjectsQuery";
-import { Technologies } from "../types";
-import { LibraryCard } from "../components/LibraryCard";
-import { useLibsQuery } from "../hooks/useLibsQuery";
+import { useProjectsQuery } from "../../hooks/useProjectsQuery";
+import { Technologies } from "../../types";
+import { LibraryCard } from "../LibraryCard";
+import { useLibsQuery } from "../../hooks/useLibsQuery";
 
 interface ProjectProps {
     name: string;
@@ -29,7 +29,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
             <StaticImage
                 className='rounded'
                 width={600}
-                src='../images/default.png' alt={alt}
+                src='../../images/default.png' alt={alt}
             />
         );
     }

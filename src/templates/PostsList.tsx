@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, HeadFC } from 'gatsby';
 import { PostsListLayout } from '../layouts/PostsListLayout';
+import { SEO } from "../components/seo/SEO";
 
 interface PostsListTemplateProps {
     data: any,
@@ -58,5 +59,5 @@ export const query = graphql`
     }`;
 
 export const Head: HeadFC = ({ location }) => {
-    return <></>
+    return <SEO title='Blog posts' />
 }

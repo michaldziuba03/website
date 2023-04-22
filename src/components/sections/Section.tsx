@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from "react";
-import { Container } from "../components/Container";
+import { Container } from "../Container";
 
 export interface SectionProps extends PropsWithChildren {
     name?: string;

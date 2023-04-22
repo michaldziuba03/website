@@ -1,10 +1,10 @@
 import React from "react";
-import { H1 } from "../components/Heading";
-import { Paragraph } from "../components/Paragraph";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
+import { H1 } from "../Heading";
+import { Paragraph } from "../Paragraph";
+import { Input } from "../Input";
+import { Button } from "../Button";
 import { Section, SectionProps } from "./Section";
-import { person } from "../config";
+import { person } from "../../config";
 
 export const Contact: React.FC<SectionProps> = (props) => (
     <Section {...props}>

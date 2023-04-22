@@ -20,7 +20,9 @@ export function technologyName(technology: Technologies) {
         case 'mongo':
             return 'MongoDB';
         case 'nest':
-            return 'Nest.js';
+            return 'NestJS';
+        case 'tailwind':
+            return 'TailwindCSS';
         default:
             return capitalize(technology);
     }
