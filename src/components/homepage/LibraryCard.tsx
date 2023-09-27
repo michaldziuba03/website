@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, IconNames } from "./icons/Icon";
+import { Icon, IconNames } from "../icons/Icon";
 
 interface LibraryCardProps {
     name: string;

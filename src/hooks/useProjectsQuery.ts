@@ -14,7 +14,7 @@ export function useProjectsQuery() {
                         link
                         images {
                             childImageSharp {
-                                gatsbyImageData(width: 700, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
+                                gatsbyImageData(width: 496, height: 278 placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                             }
                         }
                     }

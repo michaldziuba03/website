@@ -10,13 +10,16 @@
 
 Built with React and Gatsby. I am not frontend developer but I tried to make it good enough. This is my third iteration of design.
 
-
 ### ENV Variables
+
 ```ts
 GATSBY_SITE_URL='https://michaldziuba.dev'
 ```
 
 ### Install dependencies and run
+
+> Node v18+ is required as website is built with Gatsby
+
 ```shell
 npm install
 npm run develop

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import classNames from "classnames";
-import {changeTheme, getSavedTheme} from "../theme";
-import {Icon} from "./icons/Icon";
+import {changeTheme, getSavedTheme} from "../../theme";
+import {Icon} from "../icons/Icon";
 import {Link} from "gatsby";
 import {Container} from "./Container";
 

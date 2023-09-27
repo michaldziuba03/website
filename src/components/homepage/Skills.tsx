@@ -1,8 +1,8 @@
 import React from "react";
-import {TechIcon} from "./technologies";
-import { Technologies } from "../types";
-import { technologyName } from "../helpers";
-import {person} from "../config";
+import {TechIcon} from "../technologies";
+import { Technologies } from "../../types";
+import { technologyName } from "../../helpers";
+import {person} from "../../config";
 
 interface SkillProps {
     technology: Technologies;

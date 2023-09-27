@@ -1,8 +1,8 @@
 import * as React from "react"
 import { HeadFC, PageProps } from "gatsby";
-import { Button } from "../components/Button";
-import { Socials } from "../components/Socials";
-import {Container} from "../components/Container";
+import { Button } from "../components/shared/Button";
+import { Socials } from "../components/shared/Socials";
+import {Container} from "../components/shared/Container";
 
 const NotFoundPage: React.FC<PageProps> = () => {
   return (
@@ -14,7 +14,7 @@ const NotFoundPage: React.FC<PageProps> = () => {
             <h1 className='text-4xl md:text-5xl lg:text-7xl font-bold'>OOPS! PAGE NOT FOUND</h1>
             <h1 className='text-6xl lg:text-9xl font-bold'>404</h1>
             <div className="md:w-80 mt-8">
-                <Button  href='/' variant='primary'>Back to home</Button>
+                <Button href='/' variant='primary'>Back to home</Button>
             </div>
         </div>
 

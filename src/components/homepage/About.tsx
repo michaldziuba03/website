@@ -1,10 +1,10 @@
 import React from "react";
 import { Section, SectionProps } from "./Section";
-import {Paragraph} from "../Paragraph";
-import {H1, H2} from "../Heading";
+import {Paragraph} from "../shared/Paragraph";
+import {H1, H2} from "../shared/Heading";
 import {StaticImage} from "gatsby-plugin-image";
 import {person} from "../../config";
-import {Skills} from "../Skills";
+import {Skills} from "./Skills";
 
 export const About: React.FC<SectionProps> = (props) => {
     return (
@@ -17,7 +17,7 @@ export const About: React.FC<SectionProps> = (props) => {
                     </div>
                     <div className='mt-20'>
                         <H2>Tech stack</H2>
-                        <Paragraph>Some technologies I use on daily basis.</Paragraph>
+                        <Paragraph>Some technologies and tools I use on daily basis.</Paragraph>
                     </div>
                 </div>
                 <div>

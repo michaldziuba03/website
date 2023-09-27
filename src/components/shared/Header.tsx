@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Icon } from "./icons/Icon";
+import { Icon } from "../icons/Icon";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import {Menu} from "./Menu";

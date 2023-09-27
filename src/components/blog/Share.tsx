@@ -4,7 +4,7 @@ import {
     LinkedinShareButton,
     TwitterShareButton,
 } from 'react-share';
-import { Icon } from './icons/Icon';
+import { Icon } from '../icons/Icon';
 import { ShareApiButton } from "./ShareApiButton";
 
 interface ShareProps {

@@ -1,13 +1,14 @@
 import React from "react";
-import { H1, H2 } from "../Heading";
-import { Paragraph } from "../Paragraph";
-import { Tag } from "../Tag";
+import { H1, H2 } from "../shared/Heading";
+import { Paragraph } from "../shared/Paragraph";
+import { Tag } from "../blog/Tag";
 import { Section, SectionProps } from "./Section";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
 import { useProjectsQuery } from "../../hooks/useProjectsQuery";
 import { Technologies } from "../../types";
-import { LibraryCard } from "../LibraryCard";
+import { LibraryCard } from "./LibraryCard";
 import { useLibsQuery } from "../../hooks/useLibsQuery";
+import { DeviceMock } from "./DeviceMock";
 
 interface ProjectProps {
     name: string;
@@ -27,7 +28,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
     if (!imageData) {
         return (
             <StaticImage
-                className='rounded'
+                className='rounded w-full h-full'
                 width={600}
                 src='../../images/default.png' alt={alt}
             />
@@ -36,7 +37,7 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
 
     return (
         <GatsbyImage
-            className='rounded'
+            className='rounded w-full h-full'
             image={imageData}
             alt={alt}
         />
@@ -44,27 +45,21 @@ const ProjectImage: React.FC<ProjectImageProps> = ({ image, alt }) => {
 }
 
 const Project: React.FC<ProjectProps> = ({ name, description, link, tags, images }) => (
-    <div className='w-full flex flex-col lg:grid lg:grid-cols-9 gap-6 lg:gap-16 items-center grid-flow-col even:grid-reverse'>
-        <div className='flex lg:pr-6 lg:col-span-4 lg:grid lg:grid-cols-2 md:gap-3'>
-            <a href={link} className='table w-full h-full md:col-span-full'>
-                <ProjectImage image={images[0]} alt='screen1' />
-            </a>
-
-            <a href={link} className='hidden md:flex rounded'>
-                <ProjectImage image={images[1]} alt='screen2' />
-            </a>
-
-            <a href={link} className='hidden lg:flex rounded'>
-                <ProjectImage image={images[2]} alt='screen3' />
-            </a>
-        </div>
-        <div className='flex flex-col md:col-span-5'>
+    <div className='w-full flex flex-col-reverse lg:flex-row gap-6 lg:gap-16 items-center lg:even:flex-row-reverse'>
+        <div className='flex flex-col lg:flex-1'>
             <span className='text-primary font-semibold select-none'>Featured project</span>
             <a href={link} className='font-bold text-2xl hover:text-primary inline-block'>{ name }</a>
             <p className='mt-4 md:text-lg'> { description } </p>
 
             <div className='flex flex-wrap gap-2 mt-4 md:mt-8'>
                 { tags.map(tag => <Tag key={tag} technology={tag} />) }
+            </div>
+        </div>
+        <div className='flex w-full max-w-[570px]'>
+            <div className="w-full">
+                <DeviceMock>
+                    <ProjectImage image={images[0]} alt="project" />
+                </DeviceMock>
             </div>
         </div>
     </div>

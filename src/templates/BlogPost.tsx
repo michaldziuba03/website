@@ -1,16 +1,16 @@
 import React, {PropsWithChildren} from 'react';
 import { HeadFC } from 'gatsby';
 import '../styles/blog.css';
-import { Header } from "../components/Header";
+import { Header } from "../components/shared/Header";
 import { MDXProvider } from "@mdx-js/react";
-import { Container } from "../components/Container";
+import { Container } from "../components/shared/Container";
 import { StaticImage } from "gatsby-plugin-image";
 import '../styles/prism.css';
-import { Footer } from "../components/Footer";
-import { Share } from "../components/Share";
+import { Footer } from "../components/shared/Footer";
+import { Share } from "../components/blog/Share";
 import {meta, person} from "../config";
-import { BlogTag } from "../components/Tag";
-import { LatestArticles } from "../components/LatestArticles";
+import { BlogTag } from "../components/blog/Tag";
+import { LatestArticles } from "../components/blog/LatestArticles";
 import { ArticleSEO } from "../components/seo/ArticleSEO";
 
 interface PostsListTemplateProps extends PropsWithChildren {

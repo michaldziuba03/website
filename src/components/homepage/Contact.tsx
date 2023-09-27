@@ -1,8 +1,8 @@
 import React from "react";
-import { H1 } from "../Heading";
-import { Paragraph } from "../Paragraph";
-import { Input } from "../Input";
-import { Button } from "../Button";
+import { H1 } from "../shared/Heading";
+import { Paragraph } from "../shared/Paragraph";
+import { Input } from "../shared/Input";
+import { Button } from "../shared/Button";
 import { Section, SectionProps } from "./Section";
 import { person } from "../../config";
 
@@ -16,8 +16,8 @@ export const Contact: React.FC<SectionProps> = (props) => (
                   action={`https://formsubmit.co/${person.email}`}
                   method='POST'
             >
-                <Input required name='email' label='Email' type='email' />
-                <Input required name='name' label='Name' />
+                <Input placeholder="johndoe@example.com" required name='email' label='Email' type='email' />
+                <Input placeholder="John Doe" required name='name' label='Name' />
                 <Input required name='message' label='Message' type='textarea' />
 
                 <div>

@@ -1,7 +1,7 @@
 import React from "react";
-import { Icon } from "./icons/Icon";
+import { Icon } from "../icons/Icon";
 import classNames from "classnames";
-import { socials } from "../config";
+import { socials } from "../../config";
 
 export interface SocialsProps {
     className?: string;

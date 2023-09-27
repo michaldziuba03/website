@@ -6,13 +6,14 @@ export interface InputProps {
     label?: string;
     required?: boolean;
     type?: HTMLInputTypeAttribute | 'textarea'
+    placeholder?: string;
 }
 
-export const Input: React.FC<InputProps> = ({ name, label, type= 'text', required }) => (
+export const Input: React.FC<InputProps> = ({ name, placeholder, label, type= 'text', required }) => (
     <div>
         <label className='flex flex-col'>
             <span className='font-medium'>{ label }</span>
-            <InputOrTextArea name={name} type={type} required={required} />
+            <InputOrTextArea placeholder={placeholder} name={name} type={type} required={required} />
         </label>
     </div>
 );
@@ -26,6 +27,7 @@ const InputOrTextArea: React.FC<InputProps> = (props) => {
                 className={classNames(inputStyle, 'resize-none h-64')}
                 name={props.name}
                 required={props.required}
+                placeholder={props.placeholder}
             />
         )
     }
@@ -36,6 +38,7 @@ const InputOrTextArea: React.FC<InputProps> = (props) => {
             type={props.type}
             name={props.name}
             required={props.required}
+            placeholder={props.placeholder}
         />
     )
 }

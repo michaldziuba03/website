@@ -1,12 +1,12 @@
 import React from 'react';
 import { SectionProps } from "./Section";
-import { Container } from "../Container";
-import { Button } from "../Button";
+import { Container } from "../shared/Container";
+import { Button } from "../shared/Button";
 import {ArrowIcon} from "../icons/ArrowIcon";
 import {StaticImage} from "gatsby-plugin-image";
-import {Dots} from "../Dots";
-import {LargeH} from "../Heading";
-import {Socials} from "../Socials";
+import {Dots} from "./Dots";
+import {LargeH} from "../shared/Heading";
+import {Socials} from "../shared/Socials";
 import { person } from "../../config";
 
 export const Hero: React.FC<SectionProps> = (props) => {
@@ -29,7 +29,6 @@ export const Hero: React.FC<SectionProps> = (props) => {
                         className='hero-img mb-8 w-64 h-64 md:w-5/6 md:h-5/6 md:m-0  shadow-primary'
                         src='../../images/me.jpg'
                         alt='my face'
-                        loading='eager'
                     />
                     <Dots className='hidden lg:block text-primary dark:text-primary-dark w-20 h-70' />
                 </div>

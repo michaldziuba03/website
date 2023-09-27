@@ -1,5 +1,5 @@
 import React from "react";
-import {PropsWithChildrenAndClass} from "../types";
+import {PropsWithChildrenAndClass} from "../../types";
 import classNames from "classnames";
 
 // TypeScript will merge interfaces with same name

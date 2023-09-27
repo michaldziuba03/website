@@ -1,8 +1,8 @@
-import {useArticlesQuery} from "../hooks/useArticlesQuery";
+import {useArticlesQuery} from "../../hooks/useArticlesQuery";
 import React from "react";
 import {GatsbyImage, getImage, StaticImage} from "gatsby-plugin-image";
 import {Link} from "gatsby";
-import {person} from "../config";
+import {person} from "../../config";
 
 interface SmallArticleCard {
     imageData: any;

@@ -1,13 +1,13 @@
 import React, { PropsWithChildren } from "react";
-import { Header } from "../components/Header";
-import { Paragraph } from "../components/Paragraph";
-import { H1 } from "../components/Heading";
-import { Container } from "../components/Container";
-import { Footer } from "../components/Footer";
-import { BlogTag } from "../components/Tag";
-import { ArticleCard } from "../components/ArticleCard";
-import { ArticlesGrid } from "../components/ArticlesGrid";
-import {Pagination} from "../components/Pagination";
+import { Header } from "../components/shared/Header";
+import { Paragraph } from "../components/shared/Paragraph";
+import { H1 } from "../components/shared/Heading";
+import { Container } from "../components/shared/Container";
+import { Footer } from "../components/shared/Footer";
+import { BlogTag } from "../components/blog/Tag";
+import { ArticleCard } from "../components/blog/ArticleCard";
+import { ArticlesGrid } from "../components/blog/ArticlesGrid";
+import {Pagination} from "../components/blog/Pagination";
 
 interface PostsListLayoutProps extends PropsWithChildren {
     articleNodes: any[];

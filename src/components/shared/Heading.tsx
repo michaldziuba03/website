@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { PropsWithChildrenAndClass } from "../types";
+import { PropsWithChildrenAndClass } from "../../types";
 
 const headingStyles = 'text-heading font-bold leading-normal';
 

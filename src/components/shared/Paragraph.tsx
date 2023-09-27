@@ -1,5 +1,5 @@
 import React from "react";
-import { PropsWithChildrenAndClass } from "../types";
+import { PropsWithChildrenAndClass } from "../../types";
 import classNames from "classnames";
 
 export const Paragraph: React.FC<PropsWithChildrenAndClass> = (props) => {

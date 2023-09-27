@@ -1,7 +1,7 @@
 import React from "react";
-import { TechIcon } from "./technologies";
-import { Technologies } from "../types";
-import { technologyName } from "../helpers";
+import { TechIcon } from "../technologies";
+import { Technologies } from "../../types";
+import { technologyName } from "../../helpers";
 import {Link} from "gatsby";
 
 interface TagProps extends React.PropsWithChildren {

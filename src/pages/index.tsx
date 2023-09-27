@@ -2,14 +2,14 @@ import '../styles/landing.css';
 import * as React from "react"
 import type { HeadFC, PageProps } from "gatsby"
 import { PersonJsonLd } from "../components/seo/PersonJsonLd";
-import { Hero } from "../components/sections/Hero";
-import { Header } from "../components/Header";
-import { SectionIndicator } from "../components/SectionIndicator";
-import { Footer } from "../components/Footer";
-import { About } from "../components/sections/About";
-import { Projects } from "../components/sections/Projects";
-import { Contact } from "../components/sections/Contact";
-import {Featured} from "../components/sections/Featured";
+import { Hero } from "../components/homepage/Hero";
+import { Header } from "../components/shared/Header";
+import { SectionIndicator } from "../components/homepage/SectionIndicator";
+import { Footer } from "../components/shared/Footer";
+import { About } from "../components/homepage/About";
+import { Projects } from "../components/homepage/Projects";
+import { Contact } from "../components/homepage/Contact";
+import {Featured} from "../components/homepage/Featured";
 import { SEO } from "../components/seo/SEO";
 import {person} from "../config";
 

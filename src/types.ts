@@ -18,7 +18,8 @@ export type Technologies =
     | 'graphql'
     | 'preact'
     | 'kafka'
-    | 'tailwind';
+    | 'tailwind'
+    | 'nx';
 
 export interface PropsWitchClassName {
     className?: string;

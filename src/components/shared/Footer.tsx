@@ -1,7 +1,7 @@
 import React from "react";
 import { Logo } from "./Logo";
 import { Socials } from "./Socials";
-import { person } from "../config";
+import { person } from "../../config";
 
 export const Footer: React.FC = () => {
     const date = new Date();

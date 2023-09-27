@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Icon } from './icons/Icon';
+import { Icon } from '../icons/Icon';
 
 interface ShareApiProps {
     url: string;

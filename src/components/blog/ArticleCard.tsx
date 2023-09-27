@@ -1,7 +1,7 @@
 import React from "react";
 import {GatsbyImage, getImage, StaticImage} from "gatsby-plugin-image";
 import {Link} from "gatsby";
-import {person} from "../config";
+import {person} from "../../config";
 
 interface ArticleCardProps {
     title: string;
@@ -37,7 +37,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = (props) => {
                 <div className='mt-4 flex gap-3 items-center'>
                     <StaticImage
                         className='rounded-full'
-                        src='../images/aboutme.jpg'
+                        src='../../images/aboutme.jpg'
                         alt='author photo'
                         width={36}
                         height={36}
