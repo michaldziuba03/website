@@ -47,7 +47,7 @@ export const SmallArticleCard: React.FC<SmallArticleCard> = (props) => {
                             className='rounded-full'
                             width={36}
                             height={36}
-                            src='../images/aboutme.jpg'
+                            src='../../images/aboutme.jpg'
                             alt='author'
                         />
                     </div>
