@@ -17,7 +17,7 @@ export const person: Person = {
     secondName: 'Dziuba',
     role: 'Node.js backend developer',
     description:
-        'I’m 19 years old from Poland. I started with programming in 2018. I’m interested in backend development, operating systems (like Linux) and open-source-software movement. Besides programming I also like video games, history and dogs.',
+        'I’m 20 years old from Poland. I started with programming in 2018. I’m interested in backend development, operating systems (like Linux) and open-source-software movement. Besides programming I also like video games, history and dogs.',
     shortBio: 'I started with programming in 2018. I’m interested in backend development, operating systems and open-source-software movement.',
     skills: [
         'typescript', 'javascript', 'node', 'nest', 'react', 'nx', 'graphql',
