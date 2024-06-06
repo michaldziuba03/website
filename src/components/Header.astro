@@ -3,6 +3,7 @@ import Container from "./Container.astro";
 import GithubIcon from "./icons/GithubIcon.astro";
 import LinkedinIcon from "./icons/LinkedinIcon.astro";
 import TwitterIcon from "./icons/TwitterIcon.astro";
+import { MenuIcon } from 'lucide-react';
 
 import { SOCIAL_MEDIA } from '../consts';
 ---
@@ -10,7 +11,8 @@ import { SOCIAL_MEDIA } from '../consts';
 	<Container>
 		<div class="pt-6 lg:pt-8 w-full flex justify-between items-center font-semibold text-sm leading-6">
 			<span class="text-xl text-heading dark:text-heading-dark font-black select-none cursor-pointer">MD</span>
-			<nav class="flex items-center gap-x-8 text-slate-500">
+			<MenuIcon className="sm:hidden" />
+			<nav class="hidden sm:flex items-center gap-x-8 text-slate-500">
 				<a href="/" class="hover:text-primary">Home</a>
 				<a href="/resume" class="hover:text-primary">Resume</a>
 				<a href="/blog" class="hover:text-primary">Blog</a>
