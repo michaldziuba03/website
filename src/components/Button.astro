@@ -1,0 +1,14 @@
+---
+export interface Props {
+  variant?: 'primary' | 'bordered';
+}
+
+const { variant = 'primary' } = Astro.props;
+---
+<button class:list={[
+  "text-sm font-medium max-h-10 py-4 px-8 flex justify-center items-center rounded-3xl",
+  { "bg-primary text-white": variant == 'primary' },
+  { "border border-slate-700 text-slate-700": variant == 'bordered' },
+]}>
+  <slot />
+</button>
