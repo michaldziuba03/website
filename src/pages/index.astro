@@ -3,6 +3,9 @@ import BaseHead from '../components/BaseHead.astro';
 import Button from '../components/Button.astro';
 import Underline from '../components/Underline.astro';
 import Dots from '../components/Dots.astro';
+import Header from '../components/Header.astro';
+import { MouseIcon } from 'lucide-react';
+
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
@@ -12,7 +15,8 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
-		<div class="w-full h-svh flex items-center justify-center">
+		<Header />
+		<div class="w-full mt-64 flex items-center justify-center">
 			<div class="relative">
 				<Dots class="absolute -z-10 -right-10 top-0" />
 				<h1 class="mb-7 font-medium leading-snug tracking-wide text-center text-7xl">
@@ -25,6 +29,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="flex justify-center gap-4 mt-7">
 					<Button>Hire me</Button>
 					<Button variant='bordered'>See projects</Button>
+				</div>
+
+				<div class="mt-24 flex flex-col items-center">
+					<MouseIcon className="w-8 h-8 animate-bounce" />
 				</div>
 			</div>
 		</div>

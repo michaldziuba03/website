@@ -6,9 +6,9 @@ export interface Props {
 const { variant = 'primary' } = Astro.props;
 ---
 <button class:list={[
-  "text-sm font-medium max-h-10 py-4 px-8 flex justify-center items-center rounded-3xl",
-  { "bg-primary text-white": variant == 'primary' },
-  { "border border-slate-700 text-slate-700": variant == 'bordered' },
+  "text-sm font-medium max-h-10 py-4 px-8 flex gap-2 justify-center items-center rounded-3xl",
+  { "bg-primary hover:bg-primary/80 text-white": variant == 'primary' },
+  { "hover:bg-slate-50 border border-slate-300 text-slate-700": variant == 'bordered' },
 ]}>
   <slot />
 </button>

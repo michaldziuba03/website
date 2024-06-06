@@ -1,3 +1,11 @@
 body {
   font-family: 'Lexend Variable', sans-serif;
 }
+
+:root {
+  --color-primary: 2 89 94;
+}
+
+.icon {
+  @apply w-6 h-6;
+}

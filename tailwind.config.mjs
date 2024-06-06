@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-        'primary': '#02595E',
+        'primary': 'rgb(var(--color-primary)  / <alpha-value>)',
 				'accent': '#A9D7DA',
       },
 		},
