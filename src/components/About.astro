@@ -4,6 +4,8 @@ import Container from "./Container.astro";
 
 import { skills, mapIcon } from '../skills';
 import placeholder from '../assets/placeholder.png';
+import umcs from '../assets/umcs.png';
+
 import { Icon } from 'astro-icon/components';
 ---
 <section class="bg-[#F6FFFF] py-20 sm:py-32">
@@ -15,6 +17,22 @@ import { Icon } from 'astro-icon/components';
           I'm Michał, a software developer from Poland. I'm all about backend development, tinkering with operating systems. I enjoy creating and contributing to open source software, as I believe in the power of collaboration and sharing knowledge.  Besides programming, I like metal music, video games, history, and dogs.
         </p>
     
+        <h2 class="font-semibold text-2xl mt-8">Education</h2>
+        <div class="flex gap-4 items-center mt-2">
+          <Image width="72" height="72" class="max-w-20 max-h-20 bg-white p-2.5 rounded-lg border" src={umcs} alt="UMCS logo" />
+          <div class="flex flex-col justify-center">
+            <a 
+              class="font-semibold text-md mt-4"
+              href="https://www.umcs.pl/en/"
+              target="_blank"
+            >
+              Maria Curie-Skłodowska University in Lublin (UMCS)
+            </a>
+            <p class="text-slate-700 leading-loose">Bachelor's degree, Computer Science</p>
+            <p class="text-slate-500">2023 - today</p>
+          </div>
+        </div>
+
         <h2 class="font-semibold text-2xl mt-16">Tech stack</h2>
         <p class="text-slate-700 sm:text-lg max-w-2xl mt-2">
           Some technologies and tools I use on daily basis.
@@ -26,8 +44,9 @@ import { Icon } from 'astro-icon/components';
             {name}
           </div>))}
         </div>
+
       </div>
-      <Image class="hidden md:inline-block border-2 max-h-96 lg:max-h-[600px] xl:max-h-[900px] border-accent max-w-[450px] rounded-lg" src={placeholder} alt="literally me" />
+      <Image class="hidden md:inline-block border-2 max-h-96 lg:max-h-[600px] xl:max-h-[600px] border-accent max-w-[450px] rounded-lg" src={placeholder} alt="literally me" />
     </div>
   </Container>
 </section>
