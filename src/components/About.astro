@@ -11,7 +11,7 @@ import { Icon } from 'astro-icon/components';
     <div class="flex flex-col-reverse md:flex-row gap-16 md:gap-8 justify-between">
       <div>
         <h1 class="font-semibold relative text-3xl before:absolute before:w-16 before:rounded-lg before:-top-5 before:bg-primary before:h-2">About</h1>
-        <p class="text-slate-700 sm:text-lg max-w-2xl mt-4">
+        <p class="text-slate-700 leading-loose sm:text-lg sm:leading-loose max-w-2xl mt-4">
           I'm Michał, a software developer from Poland. I'm all about backend development, tinkering with operating systems. I enjoy creating and contributing to open source software, as I believe in the power of collaboration and sharing knowledge.  Besides programming, I like metal music, video games, history, and dogs.
         </p>
     
@@ -20,9 +20,9 @@ import { Icon } from 'astro-icon/components';
           Some technologies and tools I use on daily basis.
         </p>
         
-        <div class="flex gap-3 flex-wrap mt-4">
-          {skills.map((name) => (<div class="flex gap-3 justify-center items-center bg-[#E0F1F1] py-2 px-3 font-semibold text-sm rounded">
-            <Icon class="w-6 h-6" name={mapIcon(name)} />
+        <div class="flex gap-3 flex-wrap mt-5">
+          {skills.map((name) => (<div class="flex gap-3 justify-center items-center bg-[#E0F1F1] py-1.5 px-4 font-semibold text-sm rounded">
+            <Icon class="w-7 h-7" name={mapIcon(name)} />
             {name}
           </div>))}
         </div>
