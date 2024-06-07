@@ -3,6 +3,11 @@ body {
   overflow-x: hidden;
 }
 
+html,
+body {
+    scroll-behavior: smooth;
+}
+
 :root {
   --color-primary: 2 89 94;
 }
