@@ -1,17 +1,33 @@
 ---
+import { Image } from 'astro:assets';
 import Container from "./Container.astro";
 
+import { skills, mapIcon } from '../skills';
+import placeholder from '../assets/placeholder.png';
+import { Icon } from 'astro-icon/components';
 ---
 <section class="bg-[#F6FFFF] py-20 sm:py-32">
-  <Container>
-    <h1 class="font-semibold relative text-3xl before:absolute before:w-16 before:rounded-lg before:-top-5 before:bg-primary before:h-2">About</h1>
-    <p class="text-slate-700 sm:text-lg max-w-2xl mt-4">
-      I'm Michał, a software developer from Poland. I'm all about backend development, tinkering with operating systems. I enjoy creating and contributing to open source software, as I believe in the power of collaboration and sharing knowledge.  Besides programming, I like metal music, video games, history, and dogs.
-    </p>
-
-    <h2 class="font-semibold text-2xl mt-16">Tech stack</h2>
-    <p class="text-slate-700 sm:text-lg max-w-2xl mt-2">
-      Some technologies and tools I use on daily basis.
-    </p>
+  <Container class="">
+    <div class="flex flex-col-reverse md:flex-row gap-16 md:gap-8 justify-between">
+      <div>
+        <h1 class="font-semibold relative text-3xl before:absolute before:w-16 before:rounded-lg before:-top-5 before:bg-primary before:h-2">About</h1>
+        <p class="text-slate-700 sm:text-lg max-w-2xl mt-4">
+          I'm Michał, a software developer from Poland. I'm all about backend development, tinkering with operating systems. I enjoy creating and contributing to open source software, as I believe in the power of collaboration and sharing knowledge.  Besides programming, I like metal music, video games, history, and dogs.
+        </p>
+    
+        <h2 class="font-semibold text-2xl mt-16">Tech stack</h2>
+        <p class="text-slate-700 sm:text-lg max-w-2xl mt-2">
+          Some technologies and tools I use on daily basis.
+        </p>
+        
+        <div class="flex gap-3 flex-wrap mt-4">
+          {skills.map((name) => (<div class="flex gap-3 justify-center items-center bg-[#E0F1F1] py-2 px-3 font-semibold text-sm rounded">
+            <Icon class="w-6 h-6" name={mapIcon(name)} />
+            {name}
+          </div>))}
+        </div>
+      </div>
+      <Image class="hidden md:inline-block border-2 max-h-96 lg:max-h-[600px] xl:max-h-[900px] border-accent max-w-[450px] rounded-lg" src={placeholder} alt="literally me" />
+    </div>
   </Container>
 </section>
