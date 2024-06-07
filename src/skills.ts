@@ -1,4 +1,4 @@
-const iconsMappings: Record<string, string> = {
+const iconsMappings = {
   "JavaScript": "logos:javascript",
   "TypeScript": "logos:typescript-icon",
   "Node.js": "logos:nodejs-icon-alt",
@@ -18,6 +18,8 @@ const iconsMappings: Record<string, string> = {
 
 export const skills = Object.keys(iconsMappings);
 
-export function mapIcon(skill: string): string {
+export type Skill = keyof typeof iconsMappings;
+
+export function mapIcon(skill: Skill): string {
   return iconsMappings[skill] || ""; // TODO: add fallback icon
 }

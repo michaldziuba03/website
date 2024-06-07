@@ -1,0 +1,62 @@
+---
+
+import Container from "./Container.astro";
+import Project from "./Project.astro";
+
+---
+<section class="py-20 sm:py-32">
+  <Container>
+    <div class="flex flex-col justify-center">
+      <h1 class="font-semibold text-center text-3xl">Showcase</h1>
+      <p class="text-slate-700 text-center leading-loose sm:text-lg sm:leading-loose mt-2">
+        My open source contributions and side projects.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mt-16">
+        <Project 
+          name="Novu" 
+          type="contributions"
+          from="march 2023"
+          to="today"
+          icon="/src/assets/novu.svg"
+          url="https://github.com/novuhq/novu"
+          skills={["Node.js", "NestJS", "JavaScript", "TypeScript", "MongoDB", "Redis", "Docker", "React.js"]}
+        >
+          Open-Source Notification Platform. Embeddable Notification Center, E-mail, Push and Slack Integrations. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum at lacus eget turpis vulputate scelerisque malesuada quis neque.
+        </Project>
+
+        <Project 
+          name="Purly"
+          from="december 2022"
+          to="today"
+          icon="/src/assets/link.svg"
+          url="https://github.com/michaldziuba03/purly"
+          skills={["Node.js", "NestJS", "JavaScript", "TypeScript", "PostgreSQL", "Redis", "Docker", "React.js", "TailwindCSS"]}
+        >
+          Fictional SaaS platform for managing your brand links. Create workspace, add team members, shorten links, generate QR codes, track traffic and more.
+        </Project>
+
+        <Project 
+          name="Edon.js ?"
+          color="#01A651"
+          from="*top secret*"
+          icon="/src/assets/question.svg" 
+          url="https://github.com/michaldziuba03" 
+          skills={["JavaScript", "C", "C++", "Linux"]}
+        >
+          JavaScript runtime written in C and C++ based on V8 engine. Work in progress. ???
+        </Project>
+        <Project 
+          name="Tor client"
+          color="#F0DB4F"
+          from="october 2021"
+          icon="/src/assets/onion.svg" 
+          url="https://github.com/michaldziuba03/tor-client",
+          skills={["Node.js", "JavaScript", "TypeScript"]}
+        >
+          Node.js TOR client written in TypeScript without any external npm dependencies. It contains my own implementation of SOCKS5 protocol and it allows you to use TOR network programatically.
+        </Project />
+      </div>
+    </div>
+  </Container>
+</section>
