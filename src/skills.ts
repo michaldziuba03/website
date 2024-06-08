@@ -16,7 +16,7 @@ const iconsMappings = {
   "Linux": "logos:linux-tux",
 }
 
-export const skills = Object.keys(iconsMappings);
+export const skills = Object.keys(iconsMappings) as Skill[];
 
 export type Skill = keyof typeof iconsMappings;
 

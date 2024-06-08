@@ -8,10 +8,10 @@ export interface Props extends HTMLAttributes<'button'> {
 const { variant = 'primary', class: className, ...props } = Astro.props;
 ---
 <button {...props} class:list={[
-  className,
   "text-sm font-medium max-h-10 py-4 px-8 flex gap-2 justify-center items-center rounded-3xl",
   { "bg-primary hover:bg-primary/80 text-white": variant == 'primary' },
   { "hover:bg-slate-50 border border-slate-300 text-slate-700": variant == 'bordered' },
+  className,
 ]}>
   <slot />
 </button>
