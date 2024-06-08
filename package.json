@@ -18,6 +18,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/lexend": "^5.0.20",
     "@iconify-json/logos": "^1.1.43",
+    "@iconify-json/lucide": "^1.1.190",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.9.3",

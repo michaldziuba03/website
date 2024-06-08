@@ -6,6 +6,12 @@ export const SITE_DESCRIPTION = 'I’m 20 years old from Poland. I started with 
 
 export const EMAIL = 'mail@michaldziuba.dev';
 
+export const FULL_NAME = 'Michał Dziuba';
+
+export function getName() {
+  return FULL_NAME.split(' ')[0];
+}
+
 export const SOCIAL_MEDIA = {
   GITHUB: 'https://github.com/michaldziuba03',
   TWITTER: 'https://twitter.com/michaldziuba03',

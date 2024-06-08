@@ -1,9 +1,9 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Button from '../components/Button.astro';
 import Container from '../components/Container.astro';
 
 import { EMAIL } from '../consts';
-
 ---
 <section id="contact" class="py-20 sm:py-32 md:py-40 lg:py-56 ">
   <Container>
@@ -38,7 +38,7 @@ import { EMAIL } from '../consts';
           </div>
           <div class="flex md:col-span-2 gap-4">
             <textarea 
-              class="bg-gray-100 p-4 w-full rounded-lg min-h-60 focus:border-primary focus:ring-primary focus:outline-none border-2"
+              class="bg-gray-100 p-4 w-full rounded-lg min-h-60 md:min-h-full focus:border-primary focus:ring-primary focus:outline-none border-2"
               placeholder="Your message"
               name="message"
               required
@@ -46,14 +46,19 @@ import { EMAIL } from '../consts';
           </div>
         </div>
         <div class="flex justify-end">
-          <Button type="submit" class="mt-8 py-6">Send message</Button>
+          <Button type="submit" class="mt-8 py-6">
+            Send message
+            <Icon class="w-4 h-4" name="lucide:send-horizontal" />
+          </Button>
         </div>
       </form>
 
       <h3 class="mt-4 font-semibold text-center text-lg md:text-xl">Want to send an email? Write to:</h3>
-      <a href="mailto:mail@michaldziuba.dev" class="mt-3 break-all font-bold hover:text-primary w-full inline-block text-center text-xl md:text-3xl">
-        {EMAIL}
-      </a>
+      <div class="w-full flex justify-center mt-3">
+        <a href="mailto:mail@michaldziuba.dev" class="break-all font-bold hover:text-primary inline-block text-center text-xl md:text-3xl">
+          {EMAIL}
+        </a>
+      </div>
     </div>
   </Container>
 </section>

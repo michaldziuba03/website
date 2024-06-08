@@ -29,6 +29,9 @@ dependencies:
   '@iconify-json/logos':
     specifier: ^1.1.43
     version: 1.1.43
+  '@iconify-json/lucide':
+    specifier: ^1.1.190
+    version: 1.1.190
   '@types/react':
     specifier: ^18.3.3
     version: 18.3.3
@@ -985,6 +988,12 @@ packages:
 
   /@iconify-json/logos@1.1.43:
     resolution: {integrity: sha512-UtvL1yDHUr9dl1Tqihh6K9m5dmbYKOYyLf3i9aKhymSW76QjOCGjpgQc0PQ4GJCAdU1cAMu+WO61TgPxdonrlg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/lucide@1.1.190:
+    resolution: {integrity: sha512-v5tTpGbApIdTYdGU+FgAZHYuzFRiJTsu9lSuLtEaSk/IeLzheexof61Ti5nKuNDSVfr6JKA+SJNJ0P1bdG8Z0w==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false

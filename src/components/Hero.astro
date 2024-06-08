@@ -4,6 +4,7 @@ import Underline from '../components/Underline.astro';
 import Dots from '../components/Dots.astro';
 import Container from '../components/Container.astro';
 import { MouseIcon } from 'lucide-react';
+import { getName } from '../consts';
 
 ---
 <section class="py-20 sm:py-32 md:py-40 lg:py-56 ">
@@ -12,7 +13,7 @@ import { MouseIcon } from 'lucide-react';
       <div class="relative">
         <Dots class="absolute hidden md:block -z-10 -right-10 top-0" />
         <h1 class="mb-7 font-medium tracking-wide sm:text-center text-5xl leading-snug sm:leading-snug md:text-6xl md:leading-snug lg:text-7xl lg:leading-snug ">
-          My name is <span class="text-primary">Michał</span>.
+          My name is <span class="text-primary">{getName()}</span>.
           <br>
           I am <span class="relative">developer.<Underline class="w-full absolute -bottom-4 mt-4 right-0 -z-10" /></span>
         </h1>
