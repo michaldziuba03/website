@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Container from '../components/Container.astro';
 import Share from '../components/Share.astro';
+import ScrollTop from '../components/ScrollTop.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -16,6 +17,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 		<BaseHead title={title} description={description} />
 	</head>
 	<body>
+		<ScrollTop />
 		<Header />
 		<main class="py-16 md:py-28">
 		<Container>
