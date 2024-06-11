@@ -1,7 +1,7 @@
 ---
 title: 'Building An E-Commerce Store With NextJS'
 description: 'This is a guide on how to build a newsletter application that allows users to subscribe to a mailing list using a Google or GitHub account. It uses Next.js, Firebase, and Novu. Part 2.'
-pubDate: 'Jul 01 2022'
+pubDate: 'Jul 01 2024'
 heroImage: '/blog-placeholder-1.jpg'
 ---
 
