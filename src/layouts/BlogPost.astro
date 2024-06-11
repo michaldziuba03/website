@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Container from '../components/Container.astro';
+import Share from '../components/Share.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -26,12 +27,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<div>
 					<p>{description}</p>
 				</div>
-				<div class="flex gap-3 items-center not-prose md:text-base">
-					<div class="w-11 h-11 bg-slate-800 rounded-full"></div>
-					<div class="flex flex-col">
-						<span class="font-medium">Michał Dziuba</span>
-						<span class="text-sm text-slate-500"><FormattedDate date={pubDate} /> · 7 min read</span>
+				<div class="flex justify-between items-center not-prose md:text-base">
+					<div class="flex gap-3 items-center">
+						<div class="w-11 h-11 bg-slate-800 rounded-full"></div>
+						<div class="flex flex-col">
+							<span class="font-medium">Michał Dziuba</span>
+							<span class="text-sm text-slate-500"><FormattedDate date={pubDate} /> · 7 min read</span>
+						</div>
 					</div>
+
+					<Share />
 				</div>
 				<div>
 					{heroImage && <img class="w-full rounded-lg" width={1020} height={510} src={heroImage} alt="" />}
