@@ -15,3 +15,17 @@ body {
 .icon {
   @apply w-6 h-6;
 }
+
+::-moz-selection {
+  color: #fff;
+  background-color: rgb(var(--color-primary));
+}
+
+::selection {
+  color: #fff;
+  background-color: rgb(var(--color-primary));
+}
+
+.blogpost {
+  @apply prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl mx-auto
+}
