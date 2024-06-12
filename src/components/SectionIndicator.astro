@@ -1,0 +1,26 @@
+---
+const sections: string[] = ["hero", "about", "showcase", "blog", "contact"];
+---
+
+<nav class='hidden fixed top-2/4 left-14 -translate-y-1/2 2xl:flex flex-col items-center gap-6'>
+  {sections.map((section, index) => (
+    <label for={`section-${index}`} class='flex relative group cursor-pointer'>
+      <input
+        type='radio'
+        name='section'
+        checked={index == 0}
+        class='hidden peer'
+        id={`section-${index}`}
+        onclick={`location.href="#${section}"`}
+      />
+      <a
+        class='w-5 h-5 flex justify-center items-center pointer-events-none border-gray-400 border-2 rounded-full transition-transform peer-checked:scale-125 peer-checked:border-primary peer-checked:[&>#dot]:block'
+      >
+        <div id="dot" class='hidden w-3 h-3 bg-primary rounded-full'></div>
+        <span class='hidden z-50 capitalize absolute left-7 top-1/2 -translate-y-1/2 select-none rounded group-hover:flex px-3 py-2 text-white bg-black font-medium text-xs'>
+          {section}
+        </span>
+      </a>
+    </label>
+  ))}
+</nav>
