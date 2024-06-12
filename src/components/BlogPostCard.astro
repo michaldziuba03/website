@@ -1,0 +1,39 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+export interface Props {
+  title: string;
+  pubDate: Date;
+  heroImage: string;
+  description: string;
+  slug: string;
+}
+
+const { title, slug, pubDate, heroImage, description, } = Astro.props;
+const link = `/blog/${slug}/`;
+---
+
+<div class="flex flex-col">
+  <a href={link} >
+    <img class="mb-2 border rounded-lg" width={720} height={360} src={heroImage} alt="" />
+  </a>
+  <span class="my-1 block font-bold leading-none text-xs uppercase text-primary">GUIDE</span>
+  <a
+    href={link} 
+    class="hover:text-primary transition-colors text-black font-semibold text-xl">{title}
+  </a>
+
+  <div class="my-3 line-clamp-2 text-base text-gray-9">
+    <p class="text-slate-600">{description}</p>
+  </div>
+
+  <div class="flex justify-between items-center not-prose md:text-base">
+    <div class="flex gap-3 items-center">
+      <div class="w-9 h-9 bg-slate-800 rounded-full"></div>
+      <div class="flex flex-col">
+        <span class="font-medium text-sm">Michał Dziuba</span>
+        <span class="text-sm text-slate-500"><FormattedDate date={pubDate} /></span>
+      </div>
+    </div>
+
+</div>

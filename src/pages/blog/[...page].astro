@@ -8,6 +8,9 @@ import type { GetStaticPaths, Page } from 'astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import Container from '../../components/Container.astro';
 import Pagination from '../../components/Pagination.astro';
+import BlogPostCard from '../../components/BlogPostCard.astro';
+import Button from '../../components/Button.astro'
+import ScrollTop from '../../components/ScrollTop.astro';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 	const blogPosts = (await getCollection('blog'))
@@ -27,99 +30,55 @@ export interface Props {
 const { page } = Astro.props;
 console.log(page.url.next);
 const posts = page.data;
+
+const first = page.data[0];
+const firstLink = `/blog/${first.slug}/`;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 2rem;
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-			}
-			ul li {
-				width: calc(50% - 1rem);
-			}
-			ul li * {
-				text-decoration: none;
-				transition: 0.2s ease;
-			}
-			ul li:first-child {
-				width: 100%;
-				margin-bottom: 1rem;
-				text-align: center;
-			}
-			ul li:first-child img {
-				width: 100%;
-			}
-			ul li:first-child .title {
-				font-size: 2.369rem;
-			}
-			ul li img {
-				margin-bottom: 0.5rem;
-				border-radius: 12px;
-			}
-			ul li a {
-				display: block;
-			}
-			.title {
-				margin: 0;
-				color: rgb(var(--black));
-				line-height: 1;
-			}
-			.date {
-				margin: 0;
-				color: rgb(var(--gray));
-			}
-			ul li a:hover h4,
-			ul li a:hover .date {
-				color: rgb(var(--accent));
-			}
-			ul a:hover img {
-				box-shadow: var(--box-shadow);
-			}
-			@media (max-width: 720px) {
-				ul {
-					gap: 0.5em;
-				}
-				ul li {
-					width: 100%;
-					text-align: center;
-				}
-				ul li:first-child {
-					margin-bottom: 0;
-				}
-				ul li:first-child .title {
-					font-size: 1.563em;
-				}
-			}
-		</style>
 	</head>
 	<body>
+		<ScrollTop />
 		<Header />
 			<main class="py-16 md:py-28">
 				<Container>
-					<ul>
+					<div class="flex gap-4 items-center mb-12 lg:mb-20">
+						<div class="py-8 md:max-w-72 lg:max-w-full">
+							<span class="my-1 block font-bold leading-none text-sm uppercase text-primary">FEATURED</span>
+							<a href={firstLink} class="hover:text-primary transition-colors text-2xl lg:text-4xl mt-4 line-clamp-3 font-bold leading-denser md:line-clamp-none">
+								{first.data.title}
+							</a>
+							<p class="my-3 line-clamp-3 text-base text-gray-600">
+								{first.data.description}
+							</p>
+
+							<Button class="mt-10" variant='bordered'>Read more</Button>
+						</div>
+
+						<a class="hidden md:inline w-full h-full" href={firstLink} >
+							<img class="mb-2 border rounded-lg" width={720} height={360} src={first.data.heroImage} alt="" />
+						</a>
+					</div>
+
+					<h2 class="font-semibold text-xl md:text-2xl">Latest posts</h2>
+					<div class="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
 						{
 							posts.map((post) => (
-								<li>
-									<a href={`/blog/${post.slug}/`}>
-										<img width={720} height={360} src={post.data.heroImage} alt="" />
-										<h4 class="title">{post.data.title}</h4>
-										<p class="date">
-											<FormattedDate date={post.data.pubDate} />
-										</p>
-									</a>
-								</li>
+								<BlogPostCard
+									title={post.data.title}
+									description={post.data.description}
+									pubDate={post.data.pubDate}
+									heroImage={post.data.heroImage}
+									slug={post.slug} 
+								/>
 							))
 						}
-					</ul>
+					</div>
 
+					<div class="border-t border-gray-200 my-8"></div>
 					<Pagination page={page} />
 				</Container>
 			</main>
