@@ -11,7 +11,7 @@ export interface Props {
   type?: 'contributions' | 'own';
   from: string;
   to?: string;
-  skills?: Skill[];
+  skills?: string[];
 }
 
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.svg')
