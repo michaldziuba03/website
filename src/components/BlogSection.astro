@@ -7,7 +7,7 @@ const relatedPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	.slice(0, 3);
 ---
-<section id="blog" class="bg-accent/10 w-full py-24 my-24">
+<section id="blog" class="bg-accent/10 w-full py-24">
   <Container>
     <h1 class="font-semibold text-center text-3xl">Featured blog posts</h1>
     <p class="text-slate-700 text-center leading-loose sm:text-lg sm:leading-loose mt-2">

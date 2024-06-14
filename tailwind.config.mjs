@@ -5,7 +5,7 @@ export default {
 		extend: {
 			colors: {
         'primary': 'rgb(var(--color-primary)  / <alpha-value>)',
-				'accent': '#A9D7DA',
+				'accent': 'rgb(var(--color-accent)  / <alpha-value>)',
       },
 		},
 	},
