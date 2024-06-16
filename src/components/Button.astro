@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+export interface Props extends HTMLAttributes<'button'> {
+  variant?: 'primary' | 'bordered';
+  size?: 'md' | 'lg';
+}
+
+const { variant = 'primary', size = 'md', class: className, ...props } = Astro.props;
+---
+<button {...props} class:list={[
+  "text-sm font-medium max-h-10 flex gap-2 justify-center items-center rounded-full",
+  { "bg-primary hover:bg-primary/80 text-white": variant == 'primary' },
+  { "hover:bg-slate-50 border border-slate-300 text-slate-700": variant == 'bordered' },
+  { "py-7 px-9 md:px-12": size == 'lg' },
+  { "py-4 px-8": size == 'md' },
+  className,
+]}>
+  <slot />
+</button>

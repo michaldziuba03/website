@@ -1,0 +1,63 @@
+---
+
+import Container from "./Container.astro";
+import Project from "./Project.astro";
+
+---
+<section id="showcase" class="py-20 sm:py-32">
+  <Container>
+    <div class="flex flex-col justify-center">
+      <h1 class="font-semibold text-center text-3xl">Showcase</h1>
+      <p class="text-slate-700 text-center leading-loose sm:text-lg sm:leading-loose mt-2">
+        My open source contributions and side projects.
+      </p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mt-16">
+        <Project 
+          name="Novu" 
+          type="contributions"
+          from="march 2023"
+          to="today"
+          icon="/src/assets/novu.svg"
+          url="https://github.com/novuhq/novu"
+          skills={["Node.js", "NestJS", "TypeScript", "MongoDB", "Redis", "Docker", "React.js"]}
+        >
+          A unified API for developers, simplifying the process of sending notifications across various channels such as app, push, email, SMS, and chat. During a year of contributing, I became one of the top contributors to the project (33k+ stars on GitHub) and a moderator on their Discord server (3,5k+ members) where I help other developers and maintain the community.
+        </Project>
+
+        <Project 
+          name="Purly"
+          from="december 2022"
+          to="today"
+          icon="/src/assets/link.svg"
+          url="https://github.com/michaldziuba03/purly"
+          skills={["Node.js", "NestJS", "TypeScript", "PostgreSQL", "Redis", "Docker", "React.js", "TailwindCSS"]}
+        >
+          Fictional SaaS platform designed for comprehensive brand link management. Create workspaces, add team members, shorten links, generate QR codes, track traffic, and more. Additionally, it features integrated payment processing with Stripe for seamless transactions.
+        </Project>
+
+        <Project 
+          name="httpC"
+          color="#01A651"
+          from="(work in progress)"
+          icon="/src/assets/question.svg" 
+          url="https://github.com/michaldziuba03/httpC" 
+          skills={["C", "JavaScript", "Linux", "Networking"]}
+        >
+          HTTP server written in C, featuring a custom event loop based on the Linux's epoll mechanism.
+          This project also includes implementations of data structures such as lists, hash tables, and heaps to handle high loads more efficiently.
+        </Project>
+        <Project 
+          name="Tor client"
+          color="#F0DB4F"
+          from="october 2021"
+          icon="/src/assets/onion.svg" 
+          url="https://github.com/michaldziuba03/tor-client",
+          skills={["Node.js", "TypeScript", "Networking"]}
+        >
+          Node.js TOR client developed in TypeScript with zero external npm dependencies. Featuring a custom-built implementation of the SOCKS5 protocol, this client enables seamless programmatic access to the TOR network.
+        </Project />
+      </div>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,41 @@
+---
+import Container from "./Container.astro";
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkedinIcon from "./icons/LinkedinIcon.astro";
+import TwitterIcon from "./icons/TwitterIcon.astro";
+import Menu from "./Menu.astro";
+
+import { SOCIAL_MEDIA } from '../consts';
+---
+<header>
+	<Container>
+		<div class="pt-6 lg:pt-8 w-full flex justify-between items-center font-medium text-sm leading-6">
+			<a
+				href="/" 
+				class="text-xl text-heading dark:text-heading-dark font-black select-none cursor-pointer"
+			>
+				MD
+			</a>
+			<Menu />
+			<nav class="hidden sm:flex items-center gap-x-9 text-slate-500">
+				<a href="/" class="hover:text-primary">Home</a>
+				<!-- <a href="/resume" class="hover:text-primary">Resume</a> -->
+				<a href="/blog" class="hover:text-primary">Blog</a>
+
+				<div class="flex gap-x-8 border-l pl-8 border-slate-200">
+					<a href={SOCIAL_MEDIA.GITHUB} target="_blank">
+						<GithubIcon class="w-5 h-5 hover:text-black" />
+					</a>
+
+					<a href={SOCIAL_MEDIA.TWITTER} target="_blank">
+						<TwitterIcon class="w-5 h-5 hover:text-black" />
+					</a>
+					
+					<a href={SOCIAL_MEDIA.LINKEDIN} target="_blank">
+						<LinkedinIcon class="w-5 h-5 hover:text-[#0A66C2]" />
+					</a>
+				</div>
+			</nav>
+		</div>
+	</Container>
+</header>

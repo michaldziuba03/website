@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+<script>
+  const scrollTopBtn = document.querySelector('#scroll-top');
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  const BOUNDARY = 100;
+
+  const scrollFunction = () => {
+    if (!scrollTopBtn) return;
+
+    if (
+      document.body.scrollTop > BOUNDARY ||
+      document.documentElement.scrollTop > BOUNDARY
+    ) {
+      scrollTopBtn.classList.remove("hidden");
+    } else {
+      scrollTopBtn.classList.add("hidden");
+    }
+  };
+
+  if (scrollTopBtn)
+    scrollTopBtn.addEventListener('click', scrollToTop);
+
+  window.addEventListener("scroll", scrollFunction);
+
+</script>
+
+<button
+  id="scroll-top"
+  onclick="scrollToTop()"
+  class="z-50 hidden fixed cursor-pointer bottom-5 right-5 md:bottom-10 md:right-10 bg-black p-4 md:p-5 border-2 text-white opacity-75 hover:opacity-90 rounded-full transition duration-150 ease-in-out "
+>
+  <Icon name="lucide:arrow-up-from-dot" />
+</button>

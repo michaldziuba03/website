@@ -1,0 +1,24 @@
+---
+import { FULL_NAME, SOCIAL_MEDIA } from "../consts";
+import GithubIcon from "./icons/GithubIcon.astro";
+import LinkedinIcon from "./icons/LinkedinIcon.astro";
+import TwitterIcon from "./icons/TwitterIcon.astro";
+
+const today = new Date();
+---
+<footer class="p-8 relative text-gray-600">
+	<div class="flex gap-x-8 justify-center items-center before:border before:max-w-96 md:before:w-full before:border-gray-100 before:absolute before:top-0">
+		<a href={SOCIAL_MEDIA.GITHUB} target="_blank">
+			<GithubIcon class="h-6 w-6 hover:text-black" />
+		</a>
+
+		<a href={SOCIAL_MEDIA.TWITTER} target="_blank">
+			<TwitterIcon class="h-6 w-6 hover:text-black" />
+		</a>
+		
+		<a href={SOCIAL_MEDIA.LINKEDIN} target="_blank">
+			<LinkedinIcon class="h-6 w-6 hover:text-[#0A66C2]" />
+		</a>
+	</div>
+	<span class="mt-4 w-full text-center inline-block text-sm font-medium">&copy; {today.getFullYear()} {FULL_NAME}. All rights reserved.</span>
+</footer>

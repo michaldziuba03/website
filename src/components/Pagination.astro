@@ -1,0 +1,49 @@
+---
+import type { Page } from 'astro';
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+	page: Page;
+}
+
+const { page } = Astro.props
+
+const pagesList = Array.from({length: page.lastPage}, (_, i) => i + 1);
+---
+<nav class='w-full font-medium flex justify-between items-center my-8'>
+  <a
+    class:list={[
+      'text-black flex items-center gap-2',
+      { 'text-gray-300 pointer-events-none': !page.url.prev }
+    ]}
+    href={page.url.prev}
+  >
+    <Icon class="w-5 h-5" name='lucide:chevron-left' />
+    <span class="hidden md:inline">Previous</span>
+  </a>
+  <div class='flex gap-3 justify-center items-center'>
+  {
+    pagesList.map((num) => (
+        <a
+          class:list={[
+            'w-8 h-8 flex items-center justify-center rounded-full',
+            { 'bg-primary text-white select-none': num == page.currentPage }
+          ]}
+          href={num == page.currentPage ? null : `/blog${num == 1 ? "" : '/'+(num)}`}
+        >
+            {num}
+        </a>
+    ))
+  }
+  </div>
+  <a
+    class:list={[
+      'text-black flex items-center gap-2',
+      { 'text-gray-300 pointer-events-none': !page.url.next }
+    ]}
+    href={page.url.next}
+  >
+    <span class="hidden md:inline">Next</span>
+    <Icon class="w-5 h-5" name='lucide:chevron-right' />
+  </a>
+</nav>
