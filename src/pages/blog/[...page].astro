@@ -45,8 +45,8 @@ const firstLink = `/blog/${first.slug}/`;
 		<Header />
 			<main class="py-16 md:py-28">
 				<Container>
-					<div class="flex gap-4 items-center mb-12 lg:mb-20">
-						<div class="py-8 md:max-w-72 lg:max-w-full">
+					<div class="flex gap-8 items-center mb-12 lg:mb-20">
+						<div class="py-8 md:max-w-72 lg:max-w-[600px] ">
 							<span class="my-1 block font-bold leading-none text-sm uppercase text-primary">FEATURED</span>
 							<a href={firstLink} class="hover:text-primary transition-colors text-2xl lg:text-4xl mt-4 line-clamp-3 font-bold leading-denser md:line-clamp-none">
 								{first.data.title}
@@ -55,7 +55,7 @@ const firstLink = `/blog/${first.slug}/`;
 								{first.data.description}
 							</p>
 
-							<Button class="mt-10" variant='bordered'>Read more</Button>
+							<Button onclick={`location.href="${firstLink}"`} class="mt-10" variant='bordered'>Read more</Button>
 						</div>
 
 						<a class="hidden md:inline w-full h-full" href={firstLink} >

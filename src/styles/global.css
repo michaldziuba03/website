@@ -28,5 +28,5 @@ body {
 }
 
 .blogpost {
-  @apply prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl mx-auto
+  @apply prose lg:prose-lg mx-auto prose-img:rounded-lg prose-img:border
 }

@@ -10,6 +10,9 @@ import ScrollTop from '../components/ScrollTop.astro';
 import { getCollection } from 'astro:content';
 import BlogPostCard from '../components/BlogPostCard.astro';
 
+import avatar from '../assets/avatar-xs.png';
+import { Image } from 'astro:assets';
+
 type Props = CollectionEntry<'blog'>['data'] & { readTime: string };
 
 const { title, description, pubDate, heroImage, readTime } = Astro.props;
@@ -38,7 +41,7 @@ const relatedPosts = (await getCollection('blog'))
 
 				<div class="flex justify-between items-center not-prose md:text-base">
 					<div class="flex gap-3 items-center">
-						<div class="w-11 h-11 bg-slate-800 rounded-full"></div>
+						<Image alt="avatar" width="64" height="64" src={avatar} class="w-11 h-11 bg-slate-800 rounded-full" />
 						<div class="flex flex-col">
 							<span class="font-medium">Michał Dziuba</span>
 							<span class="text-sm text-slate-500"><FormattedDate date={pubDate} /> · {readTime}</span>
@@ -48,7 +51,7 @@ const relatedPosts = (await getCollection('blog'))
 					<Share />
 				</div>
 				<div>
-					{heroImage && <img class="w-full rounded-lg" width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <img class="w-full border rounded-lg" width={1020} height={510} src={heroImage} alt="" />}
 				</div>
 				<div>
 					<slot />
@@ -59,13 +62,13 @@ const relatedPosts = (await getCollection('blog'))
 
 		<section class="bg-accent/20 w-full py-24 my-24">
 			<Container>
-				<h1 class="font-semibold text-xl md:text-2xl">
+				<h1 class="font-semibold text-2xl md:text-3xl">
 					Another posts
 				</h1>
 				<div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
 					{
 						relatedPosts.map((post) => (
-							<div class="md:last:hidden xl:last:block">
+							<div>
 								<BlogPostCard
 									title={post.data.title}
 									description={post.data.description}

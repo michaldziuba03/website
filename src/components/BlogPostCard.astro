@@ -1,5 +1,8 @@
 ---
+import { Image } from 'astro:assets';
 import FormattedDate from './FormattedDate.astro';
+
+import avatar from '../assets/avatar-xs.png';
 
 export interface Props {
   title: string;
@@ -15,7 +18,7 @@ const link = `/blog/${slug}/`;
 
 <div class="flex flex-col">
   <a href={link} >
-    <img class="mb-2 border rounded-lg" width={720} height={360} src={heroImage} alt="" />
+    <img class="mb-2 border rounded-lg" width={720} height={360} src={heroImage} />
   </a>
   <span class="my-1 block font-bold leading-none text-xs uppercase text-primary">GUIDE</span>
   <a
@@ -29,7 +32,7 @@ const link = `/blog/${slug}/`;
 
   <div class="flex justify-between items-center not-prose md:text-base">
     <div class="flex gap-3 items-center">
-      <div class="w-9 h-9 bg-slate-800 rounded-full"></div>
+      <Image width="32" height="32" alt="avatar" src={avatar} class="w-9 h-9 bg-slate-800 rounded-full" />
       <div class="flex flex-col">
         <span class="font-medium text-sm">Michał Dziuba</span>
         <span class="text-sm text-slate-500"><FormattedDate date={pubDate} /></span>

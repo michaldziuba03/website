@@ -18,8 +18,8 @@ const pagesList = Array.from({length: page.lastPage}, (_, i) => i + 1);
     ]}
     href={page.url.prev}
   >
-    <Icon name='lucide:chevron-left' />
-    Previous
+    <Icon class="w-5 h-5" name='lucide:chevron-left' />
+    <span class="hidden md:inline">Previous</span>
   </a>
   <div class='flex gap-3 justify-center items-center'>
   {
@@ -43,7 +43,7 @@ const pagesList = Array.from({length: page.lastPage}, (_, i) => i + 1);
     ]}
     href={page.url.next}
   >
-    Next
-    <Icon name='lucide:chevron-right' />
+    <span class="hidden md:inline">Next</span>
+    <Icon class="w-5 h-5" name='lucide:chevron-right' />
   </a>
 </nav>

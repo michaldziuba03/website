@@ -1,19 +1,17 @@
 ---
 title: 'Reset password in Node.js'
-description: 'Learn possible way of implementing forgot password feature in your application.'
-pubDate: 'Jul 01 2022'
-heroImage: '/blog-placeholder-1.jpg'
+description: 'In this article, you will learn how to implement reset password flow in Node.js application.'
+pubDate: '2023-04-15'
+heroImage: '/reset-pass.png'
 ---
 
-## Introduction
-Reset password feature is an important part of any application - but can be tricky to implement.
+### Introduction
+
+Reset password feature is an important part of any application - but can be tricky to implement. We will discuss how to implement common reset password flow.
 
 > This article DOESN'T pretend to show you best practices - this text is based on my own opinions and thoughts.
 
-## Implementation overview
-We will discuss how to implement common reset password flow.
-
-### Universal rules
+#### Universal rules
 - Reset token must be **random**, **unique** and **long enough to prevent brute force attack**. Don't use any guessable/related to the user data to generate reset token.
 - Reset token **shouldn't be reusable**. Don't generate "static" reset token during user registration. Don't use stateless JWTs because they can be used many times until they expire.
 - Reset token must **expire** after some time. This is another reason why you shouldn't generate "static" reset tokens.
@@ -21,16 +19,16 @@ We will discuss how to implement common reset password flow.
 -  You should limit the amount of reset password requests that can be send over time for single email address. It's easy to abuse forgot password feature and spam someone's inbox with reset emails - it's called **email bomb**. You can also add reCAPTCHA to prevent spam bots.
 - **Don't rely on the Host header** while creating the reset URLs to avoid Host Header Injection attacks. The URL should be either be defined in env variable, or should be validated against a list of trusted domains.
 
-### Sample Flow
+#### Sample Flow
 1. User enters their email address in forgot password page.
 2. Generate unique and random reset token.
 3. Generate reset password link (example: `https://example.com/reset/{token}`) and send it in email message.
 4. Hash token with SHA256 and store it in database.
 5. User enters link from email message.
 6. User sends form with new password and token to reset password endpoint.
-7. You should revoke all user's active sessions after successful password reset (to prevent [Unexpired Session Identifier Attack](https://msrc.microsoft.com/blog/2022/05/pre-hijacking-attacks/#account-pre-hijacking-attacks)). This can be tricky as express session library is very generic and *unaware* of authentication. You may try to build your own [Store](https://github.com/expressjs/session#store) or extend existing.
+7. You should revoke all user's active sessions after successful password reset (to prevent [Unexpired Session Identifier Attack](https://msrc.microsoft.com/blog/2022/05/pre-hijacking-attacks/#account-pre-hijacking-attacks)).
 
-### Database schema
+#### Database schema
 If you are using SQL you may want to use some cron job to delete expired reset tokens.
 ![SQL Schema](https://user-images.githubusercontent.com/43048524/232195594-b05801a3-af32-4f9e-b4f4-cdf17379e4d4.png)
 
@@ -46,10 +44,10 @@ In case of MongoDB you can use [TTL index](https://www.mongodb.com/docs/manual/c
 }
 ```
 
-## Code sample
+### Code sample
 Let's implement simple reset password flow in TypeScript and Node.js. I will focus on most important parts of code. You can find full code in my [GitHub repository](https://github.com/michaldziuba03/code-samples/tree/main/reset-password).
 
-### Database setup
+#### Database setup
 I gonna use TypeORM with SQLite driver (I use SQLite to make project easier to run, without requiring knowledge of tools like Docker).
 
 > /setup/db.ts
@@ -113,7 +111,7 @@ export class ResetToken {
     tokenExpiry: number;
 }
 ```
-### Setup middlewares
+#### Setup middlewares
 > server.ts
 ```ts
 import 'reflect-metadata';
@@ -143,7 +141,7 @@ app.listen(3000, () => {
 });
 ```
 
-### Mock register & login
+#### Mock register & login
 Authentication is out of scope of this guide but we need somehow create accounts and later test if password actually changes. In login page if password is valid we will just show simple success message.
 > server.ts
 ```ts
@@ -202,7 +200,7 @@ app.post('/login', async (req, res) => {
 });
 ```
 
-### Mail configuration
+#### Mail configuration
 For email testing you can use services like [Ethereal Email](https://ethereal.email) or [Mailtrap](https://mailtrap.io).
 
 In addition to the reset link, it is also good to include:
@@ -241,7 +239,7 @@ export async function sendResetEmail(email: string, token: string) {
 }
 ```
 
-### Reset password request
+#### Reset password request
 > throttler.ts
 ```ts
 import { RateLimiterMemory } from 'rate-limiter-flexible';
@@ -301,7 +299,7 @@ app.post('/reset/request', async (req, res) => {
 });
 ```
 
-### Reset password
+#### Reset password
 > server.ts
 ```ts
 app.get('/reset/:token', (req, res) => {
@@ -339,10 +337,10 @@ app.post('/reset', async (req, res) => {
 });
 ```
 
-## Summary
+### Summary
 Thanks for reading this guide, I hope you found it helpful and interesting. Any feedback is welcome. Let me know if you know a better approach :)
 
-### Additional resources
+#### Additional resources
 - [LogRocket blog - Implementing a secure password reset in Node.js](https://blog.logrocket.com/implementing-secure-password-reset-node-js/)
 - [SuperTokens blog - Implementing a forgot password flow](https://supertokens.com/blog/implementing-a-forgot-password-flow)
 - [Checklist design - Resetting password flow](https://www.checklist.design/flows/password)

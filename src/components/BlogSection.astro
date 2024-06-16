@@ -16,7 +16,7 @@ const relatedPosts = (await getCollection('blog'))
     <div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-7">
       {
         relatedPosts.map((post) => (
-          <div class="md:last:hidden xl:last:block">
+          <div>
             <BlogPostCard
               title={post.data.title}
               description={post.data.description}
