@@ -11,6 +11,6 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },
-  site: 'https://example.com',
+  site: 'https://michaldziuba.dev',
   integrations: [mdx(), sitemap(), tailwind(), icon()]
 });
