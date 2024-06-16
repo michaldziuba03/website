@@ -10,6 +10,7 @@ import Pagination from '../../components/Pagination.astro';
 import BlogPostCard from '../../components/BlogPostCard.astro';
 import Button from '../../components/Button.astro'
 import ScrollTop from '../../components/ScrollTop.astro';
+import { Image } from 'astro:assets';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
 	const blogPosts = (await getCollection('blog'))
@@ -36,7 +37,7 @@ const firstLink = `/blog/${first.slug}/`;
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`${SITE_TITLE} - Blog posts`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<ScrollTop />
@@ -57,7 +58,7 @@ const firstLink = `/blog/${first.slug}/`;
 						</div>
 
 						<a class="hidden md:inline w-full h-full" href={firstLink} >
-							<img class="mb-2 border rounded-lg" width={720} height={360} src={first.data.heroImage} alt="" />
+							{ first.data.heroImage && <Image loading="eager" alt="featured" class="mb-2 border rounded-lg" width="720" height="360" src={first.data.heroImage} /> }
 						</a>
 					</div>
 

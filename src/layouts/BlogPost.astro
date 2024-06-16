@@ -41,7 +41,7 @@ const relatedPosts = (await getCollection('blog'))
 
 				<div class="flex justify-between items-center not-prose md:text-base">
 					<div class="flex gap-3 items-center">
-						<Image alt="avatar" width="64" height="64" src={avatar} class="w-11 h-11 bg-slate-800 rounded-full" />
+						<Image loading="eager" alt="avatar" width="64" height="64" src={avatar} class="w-11 h-11 bg-slate-800 rounded-full" />
 						<div class="flex flex-col">
 							<span class="font-medium">Michał Dziuba</span>
 							<span class="text-sm text-slate-500"><FormattedDate date={pubDate} /> · {readTime}</span>
@@ -51,7 +51,7 @@ const relatedPosts = (await getCollection('blog'))
 					<Share />
 				</div>
 				<div>
-					{heroImage && <img class="w-full border rounded-lg" width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <Image class="w-full border rounded-lg" loading="eager" width={1020} height={510} src={heroImage} alt="" />}
 				</div>
 				<div>
 					<slot />

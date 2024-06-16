@@ -2,8 +2,9 @@
 title: 'How to use Novu with Nuxt.js'
 description: "In this article, I will guide you through integrating Novu, an open source notification infrastructure, with Nuxt.js, the popular Vue.js framework."
 pubDate: '2024-06-16'
-heroImage: '/novu-nuxt.png'
+heroImage: './novu-nuxt.png'
 ---
+import { Image } from 'astro:assets';
 
 ### TL;DR
 
@@ -16,17 +17,17 @@ Let's say you have defined Novu [workflow](https://docs.novu.co/workflows/notifi
 
 In Novu, **Subscriber** is an entity that will receive notifications, so in real app you would use users from your database as [subscribers](https://docs.novu.co/subscribers/subscribers).
 
-![Novu testing workflow](/novu-nuxt-test-workflow.png)
+![Novu testing workflow](../../assets/novu-nuxt-test-workflow.png)
 
 You can find credentials in "Settings" page. **Application ID** can be stored safely on client-side but **API Key** must be secret and stored on server-side only.
 
-![Novu credentials](/novu-nuxt-credentials.png)
+![Novu credentials](../../assets/novu-nuxt-credentials.png)
 
 For security reasons - enable HMAC encryption for **Novu In-App** integration on "Integration Store" page.
 
 HMAC encryption will make sure that a subscriberId is encrypted using the secret API key, and those will prevent malicious actors from impersonating users.
 
-![Novu HMAC](/novu-nuxt-hmac.png)
+![Novu HMAC](../../assets/novu-nuxt-hmac.png)
 
 
 ## Nuxt.js setup

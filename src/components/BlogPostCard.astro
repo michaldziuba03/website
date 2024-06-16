@@ -7,7 +7,7 @@ import avatar from '../assets/avatar.png';
 export interface Props {
   title: string;
   pubDate: Date;
-  heroImage?: string;
+  heroImage?: ImageMetadata;
   description: string;
   slug: string;
 }
@@ -18,7 +18,7 @@ const link = `/blog/${slug}/`;
 
 <div class="flex flex-col">
   <a href={link} >
-    <img class="mb-2 border rounded-lg" width={720} height={360} src={heroImage} />
+    { heroImage && <Image alt="Cover" class="mb-2 border rounded-lg" width={720} height={360} src={heroImage} /> }
   </a>
   <span class="my-1 block font-bold leading-none text-xs uppercase text-primary">GUIDE</span>
   <a
