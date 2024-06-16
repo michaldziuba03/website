@@ -19,8 +19,8 @@ if (!images[icon]) throw new Error(`"${icon}" does not exist in glob: "/src/asse
 
 ---
 <div class="flex flex-col">
-  <div class="flex gap-8 mt-2">
-    <Image src={images[icon]()} alt="Novu logo" class="w-16 h-16 p-2.5 rounded-lg" style={{ backgroundColor: color }} />
+  <div class="flex gap-4 mt-2">
+    <Image src={images[icon]()} alt="project logo" class="w-16 h-16 p-2.5 rounded-lg" style={{ backgroundColor: color }} />
     <div class="flex flex-col">
       <a 
         class="font-bold text-lg hover:text-primary"
