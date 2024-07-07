@@ -4,6 +4,7 @@ import Container from "./Container.astro";
 
 import { skills, mapIcon } from '../skills';
 import umcs from '../assets/umcs.png';
+import me from '../assets/me.jpg';
 
 import { Icon } from 'astro-icon/components';
 ---
@@ -47,9 +48,10 @@ import { Icon } from 'astro-icon/components';
       </div>
       <!--<Image class="hidden md:inline-block border-2 max-h-96 lg:max-h-[600px] xl:max-h-[600px] border-accent max-w-[450px] rounded-lg" src={placeholder} alt="literally me" />
       -->
-      <div class="hidden md:flex justify-center items-center border-2 w-full bg-white max-h-96 lg:max-h-[600px] xl:max-h-[600px] border-accent max-w-[450px] rounded-lg">
-        <span class="font-semibold">Here will be image soon :)</span>
-      </div>
+      <Image
+        class="hidden md:flex justify-center items-center border-2 w-full bg-white max-h-96 lg:max-h-[570px] border-accent max-w-[450px] rounded-lg"
+        alt="Me"
+        src={me} />        
     </div>
   </Container>
 </section>
