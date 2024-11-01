@@ -1,0 +1,362 @@
+---
+title: 'PandJS - building own JavaScript runtime'
+description: "In this article we will discuss how to build own JavaScript runtime and challanges I experience in my side project."
+pubDate: '2024-11-01'
+heroImage: './pandevlog.png'
+---
+
+import YouTubeVideo from '../../components/YouTubeVideo.astro'
+
+### Introduction
+
+Writing own JavaScript runtime "from scratch" is fairly demanding project - 
+I have to design event loop, write lower level API for interaction with operating system and then integrate everything into runtime with v8 engine.
+
+I decided to write event loop in C as seperated project [pandio](https://github.com/pandland/pandio) - it is supposed to abstract any operating system differences and provide API for networking, timers, file system, signals and more.
+It's heavily inspired by [libuv](https://libuv.org/), but I wanted to write my own thing, because I think this is actually core of how runtime behaves - so I don't want to use ready solutions.
+In addition - I just wanted to learn in details how typical event loop works, so how you can learn such thing? Build your own event loop.  
+
+For runtime itself, I decided to go with C++, mainly because v8 is written in C++ and it relies on typical features like **RAII** and **smart pointers**,
+so writing own FFI wrapper for v8 is not easy task (Deno did it with their [rusty-v8](https://github.com/denoland/rusty_v8)).
+
+At the beginning I also want to say that I am not advanced C/C++ programmer, I use them "more seriously" less than one year.
+I still discover how things work.
+
+### Intro into non-blocking architecture
+
+This is typical **blocking** TCP server written in C. This is peak of what you can find in most C tutorials from YouTube.
+This server must handle fully first connection before it will accept next one.
+
+```c
+#define PORT 8080
+#define BUFFER_SIZE 1024
+
+int main() {
+    int server_fd, client_fd;
+    struct sockaddr_in address;
+    int addrlen = sizeof(address);
+    char buffer[BUFFER_SIZE] = {0};
+
+    if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
+        perror("socket failed");
+        exit(EXIT_FAILURE);
+    }
+
+    address.sin_family = AF_INET;
+    address.sin_addr.s_addr = INADDR_ANY;
+    address.sin_port = htons(PORT);
+
+    if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
+        perror("bind failed");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+
+    if (listen(server_fd, 3) < 0) {
+        perror("listen failed");
+        close(server_fd);
+        exit(EXIT_FAILURE);
+    }
+    printf("listen port: %d...\n", PORT);
+
+    while (1) {
+        if ((client_fd = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
+            perror("accept failed");
+            close(server_fd);
+            exit(EXIT_FAILURE);
+        }
+        printf("New connection.\n");
+
+        int valread = read(client_fd, buffer, BUFFER_SIZE);
+        if (valread < 0) {
+            perror("read failed");
+        } else {
+            buffer[valread] = '\0';
+            printf("Received: %s\n", buffer);
+
+            char *response = "Hello world";
+            send(client_fd, response, strlen(response), 0);
+        }
+
+        close(client_fd);
+        printf("Connection closed.\n");
+    }
+
+    close(server_fd);
+    return 0;
+}
+```
+
+For sure, this is not scalable, and there is multiple ways to make it non-blocking.
+
+Traditional way of handling this issue is **thread per connection** model.
+We can create brand new thread for each connection. Drawbacks? Well, each thread has **own seperated stack**,
+so it is like allocating multiple MBs for each connection.
+Another issue? [Context switching](https://en.wikipedia.org/wiki/Context_switch) -
+average CPU doesn't have 1000s cores to handle 1000s connections in pararell. In addition, if you have
+some shared state between connections, you will need proper synchronization with locks.
+
+**[Reactor pattern](https://en.wikipedia.org/wiki/Reactor_pattern)** - this is model we can find in software
+with high concurrency like **Node.js** and **NGINX**.
+The pattern's key component is an **event loop**, running in a **single thread**. Every major operating system
+has own I/O event notification mechanism which acts as **demultiplexer** component.
+Linux has **epoll**, macOS/BSD **kqueue** and Windows has **IOCP**.
+
+**[Handle](https://en.wikipedia.org/wiki/Handle_(computing))** is an abstract term for system resources like **sockets**, **files**, **timers** etc.
+It's good to have some active handles **counter** - if you have active timer, your program should not finish early, right? If you start http server in Node.js
+app, it will wait, because it has at least one active **handle** (listening socket in this case).
+
+This code below is literally event loop code from my **pandio** library. **epoll_wait** is blocking system call - it will wait until will receive *some* event like
+new connection to be accepted or timeout will expire (it will return 0 events on timeout).
+
+```c
+void pd_io_run(pd_io_t *ctx) {
+    struct epoll_event events[MAX_EVENTS];
+    struct epoll_event ev;
+    int timeout = pd_timers_next(ctx);
+    pd_event_t *pev;
+
+    // ctx->refs - counter of active handles
+    while (ctx->refs > 0) {
+        int events_count =
+                epoll_wait(ctx->poll_fd, events, MAX_EVENTS, timeout);
+
+        if (events_count == -1 && errno == EINTR) {
+            // interrupted by signal
+            continue;
+        }
+
+        if (events_count == -1) {
+            perror("epoll_wait");
+            exit(EXIT_FAILURE);
+        }
+
+        ctx->now = pd_now();
+
+        for (int i = 0; i < events_count; ++i) {
+            ev = events[i];
+            unsigned pevents = 0;
+            pev = ev.data.ptr;
+
+            if (ev.events & EPOLLIN)
+                pevents |= PD_POLLIN;
+
+            if (ev.events & EPOLLOUT)
+                pevents |= PD_POLLOUT;
+
+            if (ev.events & (EPOLLERR | EPOLLHUP | EPOLLRDHUP)) {
+                // usually we have to close handle in this scenario, so let's simplify detection
+                pevents |= PD_CLOSE;
+
+                if (ev.events & EPOLLERR)
+                    pevents |= PD_POLLERR;
+
+                if (ev.events & EPOLLHUP)
+                    pevents |= PD_POLLHUP;
+
+                if (ev.events & EPOLLRDHUP)
+                    pevents |= PD_POLLRDHUP;
+
+            }
+
+            pev->handler(pev, pevents);
+        }
+
+        pd_timers_run(ctx);
+        timeout = pd_timers_next(ctx);
+        pd__tcp_pending_close(ctx);
+
+        if (ctx->after_tick)
+            ctx->after_tick(ctx);
+    }
+}
+```
+
+
+### Timers
+
+Timers actually are often implemented outside any operating system mechanism. Popular data structure is
+[binary heap](https://en.wikipedia.org/wiki/Heap_(data_structure)) (min heap to be specific).
+
+Each timer is a node and **expiration time** is a key inside the heap. We can check (just only read) next timer expiration in Θ(1), because it should be
+a root of the heap tree. If you want to delete/insert timer it will be Θ(log n) operation.
+
+Another popular data structures for timers are: [red-black-tree](https://en.wikipedia.org/wiki/Red%E2%80%93black_tree) and timing wheel.
+
+Getting current time is not cheap operation to be made on every timer insertion, becasue this is a system call.
+Currently I simply update current time at the beginning of every [event] loop cycle (iteration).
+
+Mechanisms like epoll/kqueue/IOCP have **timeout** parameter, so we can easily calculate how long we want to wait for events
+and then pass it to the calls like **epoll_wait**:
+
+```c
+int pd_timers_next(pd_io_t *ctx) {
+    pd_timer_t *min = pd_timer_unwrap(heap_peek(&ctx->timers));
+    if (min == NULL)
+        return -1;
+
+    uint64_t next_timeout = min->timeout - ctx->now;
+    return (next_timeout >= INT_MAX) ? INT_MAX : (int)next_timeout;
+}
+```
+
+When **epoll_wait** times out (or eventually receive events), we can re-evaluate our timers and execute any necessary callbacks.
+
+Timers in PandJS/Node.js/Bun/Deno are not high-precision timers. You can easily delay them with long-running blocking functions.
+This is nature of single-threaded architecture of JS runtimes and it's fine.
+
+```js
+setTimeout(() => {
+  console.log("3 seconds?");
+}, 3000);
+
+// some long-running blocking operation:
+while (true) {}
+```
+> in this sample setTimeout callback will be never called, because event loop is blocked
+
+
+### Thread pool
+
+Demultiplexers like **epoll** cannot handle everything - they are useful mainly for pipes and sockets.
+Libraries like **libuv** use thread pool for operations on file system + Node.js uses this threadpool for
+some async operations inside **crypto** module, DNS lookups etc.
+
+[Thread pool](https://en.wikipedia.org/wiki/Thread_pool) is simply bunch of seperated threads created usually at the start of the program + synchronized tasks queue. You enqueue task to be performed in seperated thread, so it will not block your main thread.
+Tricky part is how to integrate thread pool with our event loop?
+
+epoll/kqueue/iocp will wait until it will receive any event (like socket connection) or timeout, so likely our main thread will be blocked.
+So? At the end of the task, we need to send some signal to wake epoll/kqueue/iocp.
+
+On unixes (epoll/kqueue) we can use **"self-pipe"** trick. If threadpool finishes it's job, we can write one byte to pipe,
+at the same time epoll/kqueue watches read side of the pipe, so our loop will wake (receive event from pipe) and then it will check queue of finished tasks from threadpool.
+
+There is also better mechanism on Linux - [eventfd](https://linux.die.net/man/2/eventfd). It is more lightweight and made for this purpose in mind.
+The kernel overhead of an **eventfd** file descriptor is much lower than that of a pipe, and only one file descriptor is required (versus the two required for a pipe).
+
+<YouTubeVideo src="https://youtu.be/P9csgxBgaZ8?si=jtXQH-0r5TdnwOMs&t=883" />
+
+### Actual integration with v8
+
+v8 engine is non-trivial to build unfortunately and it's also large project (compiles 40 minutes on my machine).
+This is not React where you have tutorials about every topic. If you want to learn something, you have to read large codebases
+of Node.js or/and Chromium.
+
+If you are initially overwhelmed with large codebase, you can try to read some early versions - this is what I did with **Node.js**.
+It was much easier to learn about things with smaller codebase. Later I started to understand current codebase too.
+
+v8 engine itself **doesn't** have any event loop. Main purpose of v8 engine is to execute JavaScript code.
+Our responsibility is to write wrappers around handles from our event loop (tcp connections, timers).
+
+#### Sandboxed environment
+
+Typical JS runtime runs inside sandbox, and this have some implications, because for example, you cannot simply pass
+buffer allocated by our `pandio` library to [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) object.
+Any buffers must be allocated inside v8 engine memory space.
+For this reason, pandio avoids own allocations (user must allocate and manage objects) and if it has no choice, I have custom callback which acts as allocator.
+
+`v8::ArrayBuffer::NewBackingStore` allocates read buffer inside v8 memory space:
+
+```cpp
+void *TcpStream::readAllocator(pd_tcp_t *handle, size_t size) {
+  Pand *pand = Pand::get();
+  auto bs = v8::ArrayBuffer::NewBackingStore(
+      pand->isolate, size, v8::BackingStoreInitializationMode::kUninitialized);
+  TcpStream *stream = static_cast<TcpStream *>(handle->data);
+  stream->read_bs = std::move(bs);
+
+  return stream->read_bs->Data();
+}
+```
+
+#### Unhandled async exceptions
+
+Dealing with unhandled async exceptions is tricky.
+
+v8 engine has callback [SetPromiseRejectCallback](https://v8.github.io/api/head/classv8_1_1Isolate.html#a702f0ba4e5dee8a98aeb92239d58784e).
+This callback reports events like `v8::kPromiseRejectWithNoHandler` and I initially thought I will use it for cool central error handling
+(logging and eventually aborting program).
+
+But this code causes - `v8::kPromiseRejectWithNoHandler` to be reported first, but later
+`v8::kPromiseHandlerAddedAfterReject` will be reported:
+
+```js
+async function throwErr() {
+  throw new Error("some exception");
+}
+
+const result = throwErr();
+
+result.catch((err) => {
+  console.log('catch:', err.message);
+})
+```
+
+So yeah, promise handler can be added after reject.
+
+Typical way of handling this scenario is saving exception inside hash map. We give time to add handler until
+the end of current loop cycle.
+
+At the end of event loop cycle, we check if hash map of our unhandled exceptions is not empty.
+If it is not empty, we will abort our program.
+
+```cpp
+static std::unordered_map<int, v8::Global<v8::Value>> rejected_promises;
+
+// runs at the end of each event loop cycle as 'after_tick' pandio hook
+void Errors::checkPendingErrors(pd_io_t *ctx) {
+  if (rejected_promises.empty()) {
+    return;
+  }
+
+  Pand *pand = Pand::get();
+  v8::Isolate *isolate = pand->isolate;
+  v8::HandleScope handle_scope(isolate);
+  v8::Local<v8::Context> context = isolate->GetCurrentContext();
+
+  v8::Global<v8::Value> &result = rejected_promises.begin()->second;
+  v8::Local<v8::Value> value = result.Get(isolate);
+  // logs and abort program
+  Errors::reportUncaught(value, true);
+}
+
+void Errors::promiseRejectedCallback(v8::PromiseRejectMessage message) {
+  v8::Isolate *isolate = Pand::get()->isolate;
+  v8::HandleScope handle_scope(isolate);
+
+  v8::PromiseRejectEvent event = message.GetEvent();
+  v8::Local<v8::Promise> promise = message.GetPromise();
+  v8::Local<v8::Value> error = message.GetValue();
+
+  int promiseId = promise->GetIdentityHash();
+
+  switch (event) {
+  case v8::kPromiseRejectWithNoHandler:
+    rejected_promises[promiseId].Reset(isolate, error);
+    break;
+  case v8::kPromiseHandlerAddedAfterReject:
+    if (rejected_promises.find(promiseId) != rejected_promises.end()) {
+      rejected_promises[promiseId].Reset();
+      rejected_promises.erase(promiseId);
+    }
+    break;
+  default:
+    return;
+  }
+}
+```
+
+### Summary
+
+This is my first blog post about PandJS development.
+
+Currently we have:
+- TCP streams
+- Timers (`setTimeout`, `setInterval`)
+- ES6 modules support
+- Buffer data type
+
+I slowly work on adding file system module, some experimental functions are already implemented
+in my `pandio` library.
+
+I plan to start working on [Streams API](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) from web standard as well.

@@ -5,9 +5,7 @@ export interface Props {
 
 const { src } = Astro.props;
 
-function getID() {
-  const url = new URL(src);
-
+function getID(url: URL) {
   switch (url.hostname) {
     case "youtu.be":
       return url.pathname.slice(1);
@@ -18,7 +16,13 @@ function getID() {
   }
 }
 
-const id = getID();
+function getStart(url: URL) {
+  return url.searchParams.get('t');
+}
+
+const url = new URL(src);
+const id = getID(url);
+const start = getStart(url);
 
 ---
 <style>
@@ -42,7 +46,7 @@ const id = getID();
 </style>
 <div class='embed-container'>
   <iframe
-  src={`https://www.youtube.com/embed/${id}`}
+  src={`https://www.youtube.com/embed/${id}?start=${start}`}
   title="YouTube video player" 
   frameborder="0" 
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
