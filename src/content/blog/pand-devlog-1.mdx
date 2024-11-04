@@ -248,6 +248,56 @@ It was much easier to learn about things with smaller codebase. Later I started 
 v8 engine itself **doesn't** have any event loop. Main purpose of v8 engine is to execute JavaScript code.
 Our responsibility is to write wrappers around handles from our event loop (tcp connections, timers).
 
+#### C++ pointers and v8 garbage collector
+
+When working with C++ and V8, it's essential to consider V8's **garbage collector**. This is particularly important when queuing up actions to be executed later that rely on references to JavaScript objects, such as timers or asynchronous TCP writes.
+
+In the example code below, I create a wrapper for write operations in a TCP stream. Here, `Buffer::getBytes()` and `Buffer::getSize()` are my utility functions for extracting raw data from a
+[Uint8Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) in JavaScript, allowing us to work with byte offsets and lengths. Each write operation is queued for future execution (using epoll to notify when the stream is ready to write). However, in the meantime, the data from the **Uint8Array** could be garbage collected by V8 if not properly handled.
+To prevent this, we use **v8::Persistent** handles, which keep a reference to the wrapped value and prevent it from being prematurely garbage collected.
+
+In the **Writer** struct's destructor, we reset the **v8::Persistent** handle to allow the garbage collector to reclaim the associated memory once the write operation completes and the data is no longer needed.
+
+Here is sample code:
+
+
+```cpp
+template <typename TStream> struct Writer {
+  TStream *stream;
+  void (*onWrite)(TStream *, int, size_t);
+  pd_write_t op;
+  v8::Persistent<v8::Value> value;
+
+  Writer(TStream *stream, v8::Local<v8::Uint8Array> data,
+         void (*onWrite)(TStream *, int, size_t)) {
+    // Create a persistent reference to prevent garbage collection
+    value.Reset(data->GetIsolate(), data);
+    // Extract buffer data and size from Uint8Array
+    char *buf = Buffer::getBytes(data);
+    size_t len = Buffer::getSize(data);
+    pd_write_init(&op, buf, len, Writer::afterWrite); // init write in pandio library
+
+    // Store the stream and callback function for later use
+    this->stream = stream;
+    this->onWrite = onWrite;
+    op.udata = this;
+  }
+
+  // Reset persistent handle, allowing the GC to reclaim the value
+  ~Writer() { value.Reset(); }
+
+  static void afterWrite(pd_write_t *op, int status) {
+    Writer *writer = static_cast<Writer *>(op->udata);
+    if (writer->onWrite) {
+      // pandio notifies only when full buffer is written (or when we get error)
+      writer->onWrite(writer->stream, status, op->data.len);
+    }
+
+    delete writer;
+  }
+};
+```
+
 #### Sandboxed environment
 
 Typical JS runtime runs inside sandbox, and this have some implications, because for example, you cannot simply pass
