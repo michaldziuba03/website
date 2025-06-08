@@ -10,10 +10,12 @@ body {
 
 :root {
   --clr-primary: 20, 174, 92;
+  --clr-primary-darken: 14, 123, 65;
 }
 
 @theme {
-  --color-primary: rgb(var(--clr-primary))
+  --color-primary: rgb(var(--clr-primary));
+  --color-primary-darken: rgb(var(--clr-primary-darken));
 }
 
 ::-moz-selection {

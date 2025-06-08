@@ -49,8 +49,20 @@ const firstLink = `/blog/${first.slug.current}`;
 <Layout>
   <div class="flex flex-col w-full items-center">
     <Navigation />
+		<div class="flex flex-col w-full max-screen container px-8 pt-16">
+			<h1 class="font-black text-6xl">Blog</h1>
+			<p class="text-gray-600 mt-5 text-lg">
+				Explore my latest posts, guides, and personal stories.
+			</p>
+			<div class="mt-8 max-w-min bg-primary-darken rounded-full mb-8 p-2 flex gap-3">
+				<button class="bg-white py-3 px-6 rounded-full font-bold text-sm text-primary-darken">All</button>
+				<button class="text-white hover:bg-primary py-3 px-6 rounded-full font-bold text-sm">Guide</button>
+				<button class="text-white hover:bg-primary py-3 px-6 rounded-full font-bold text-sm">Devlog</button>
+				<button class="text-white hover:bg-primary py-3 px-6 rounded-full font-bold text-sm">Personal</button>
+			</div>
+		</div>
 
-    <div class="mt-16 flex gap-8 items-center justify-between w-full max-screen container px-8">
+    <div class="mt-8 flex gap-8 items-center justify-between w-full max-screen container p-16 bg-white rounded-3xl">
       <div class="py-8 md:max-w-72 lg:max-w-[600px]">
         <span
           class="my-1 block font-black leading-none uppercase text-primary"
@@ -58,7 +70,7 @@ const firstLink = `/blog/${first.slug.current}`;
         >
         <a
           href={firstLink}
-          class="hover:text-primary transition-colors text-2xl lg:text-4xl mt-4 line-clamp-3 font-bold leading-denser md:line-clamp-none"
+          class="hover:text-primary transition-colors text-2xl lg:text-4xl mt-4 line-clamp-3 font-black leading-denser md:line-clamp-none"
         >
           {first.title}
         </a>

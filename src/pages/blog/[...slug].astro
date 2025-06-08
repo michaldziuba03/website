@@ -2,7 +2,16 @@
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "../../sanity/lib/load-query";
 import PortableText from "../../components/PortableText.astro";
+import getReadingTime from 'reading-time';
+import { toPlainText } from 'astro-portabletext';
 import Layout from "../../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getFormattedDate } from "../../utils";
+import { urlForImage } from "../../sanity/lib/utils";
+import { Navigation } from "../../components/Navigation";
+import { Footer } from "../../components/Footer";
+import { Share } from "../../components/Share";
+import { ScrollToTop } from "../../components/ScrollToTop";
 
 export async function getStaticPaths() {
   const { data: posts } = await loadQuery<SanityDocument[]>({
@@ -21,13 +30,80 @@ export async function getStaticPaths() {
 const { params } = Astro;
 
 const { data } = await loadQuery({
-  query: `*[_type == "post" && slug.current == $slug][0]`,
+  query: `*[_type == "post" && slug.current == $slug][0] {
+			title,
+			description,
+			slug,
+      body,
+			mainImage,
+			_updatedAt,
+			_createdAt,
+			author->{
+				name,
+				image
+			}
+		}`,
   params,
 });
 
 const post = data as any;
+const  readingTime = getReadingTime(toPlainText(post.body));
 ---
+
 <Layout>
-  <h1>A post about {post.title}</h1>
-  <PortableText portableText={post.body} />
+  <div class="flex flex-col w-full items-center">
+    <Navigation />
+
+    <article class="max-w-3xl my-16 text-lg">
+      <div class="not-prose md:text-base">
+        <span class="text-primary text-lg font-bold">GUIDE</span>
+        <h1
+          class="font-black text-3xl lg:text-5xl mt-1 whitespace-normal leading-tight"
+        >
+          {post.title}
+        </h1>
+      </div>
+      <div class="mt-4">
+        <p>{post.description}</p>
+      </div>
+
+      <div class="flex justify-between items-center md:text-base">
+        <div class="flex gap-3 items-center">
+          <Image
+            loading="eager"
+            alt="avatar"
+            width="64"
+            height="64"
+            src={urlForImage(post.author.image).size(32, 32).url()}
+            class="w-11 h-11 bg-slate-800 rounded-full"
+          />
+          <div class="flex flex-col my-6">
+            <span class="font-semibold">Michał Dziuba</span>
+            <span class="text-sm font-semibold text-slate-600">{getFormattedDate(new Date(post._createdAt))} · {readingTime.text}</span>
+          </div>
+        </div>
+        <Share client:load />
+      </div>
+      <div>
+        {
+          post.mainImage.asset && (
+            <Image
+              class="w-full border border-gray-300 rounded-lg"
+              loading="eager"
+              width={1020}
+              height={510}
+              src={urlForImage(post.mainImage.asset).url()}
+              alt=""
+            />
+          )
+        }
+      </div>
+      <div class="my-8">
+        <PortableText portableText={post.body} />
+      </div>
+    </article>
+
+    <Footer />
+  </div>
+  <ScrollToTop />
 </Layout>
