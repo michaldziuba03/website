@@ -1,32 +1,27 @@
-body {
-  font-family: 'Lexend Variable', sans-serif;
-  overflow-x: hidden;
-}
+@import "tailwindcss";
 
 html,
 body {
-    scroll-behavior: smooth;
+  margin: 0;
+  font-family: "DM Sans Variable", sans-serif;
+  background: #f8faff;
+  overflow-x: hidden;
 }
 
 :root {
-  --color-primary: 2 89 94;
-  --color-accent: 169 215 218;
+  --clr-primary: 20, 174, 92;
 }
 
-.icon {
-  @apply w-6 h-6;
+@theme {
+  --color-primary: rgb(var(--clr-primary))
 }
 
 ::-moz-selection {
   color: #fff;
-  background-color: rgb(var(--color-primary));
+  background-color: rgb(var(--clr-primary));
 }
 
 ::selection {
   color: #fff;
-  background-color: rgb(var(--color-primary));
-}
-
-.blogpost {
-  @apply prose lg:prose-lg mx-auto prose-img:rounded-lg prose-img:border
+  background-color: rgb(var(--clr-primary));
 }

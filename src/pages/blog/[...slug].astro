@@ -1,20 +1,33 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "../../sanity/lib/load-query";
+import PortableText from "../../components/PortableText.astro";
+import Layout from "../../layouts/Layout.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+  const { data: posts } = await loadQuery<SanityDocument[]>({
+    query: `*[_type == "post"]`,
+  });
+
+  return posts.map(({ slug }) => {
+    return {
+      params: {
+        slug: slug.current,
+      },
+    };
+  });
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
-const { Content, remarkPluginFrontmatter } = await post.render();
+const { params } = Astro;
+
+const { data } = await loadQuery({
+  query: `*[_type == "post" && slug.current == $slug][0]`,
+  params,
+});
+
+const post = data as any;
 ---
-
-<BlogPost {...post.data } readTime={remarkPluginFrontmatter.minutesRead}>
-	<Content />
-</BlogPost>
+<Layout>
+  <h1>A post about {post.title}</h1>
+  <PortableText portableText={post.body} />
+</Layout>

@@ -1,86 +1,130 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import type { GetStaticPaths, Page } from 'astro';
-import Container from '../../components/Container.astro';
-import Pagination from '../../components/Pagination.astro';
-import BlogPostCard from '../../components/BlogPostCard.astro';
-import Button from '../../components/Button.astro'
-import ScrollTop from '../../components/ScrollTop.astro';
-import { Image } from 'astro:assets';
+import type { GetStaticPaths, Page } from "astro";
+import type { SanityDocument } from "@sanity/client";
+import { loadQuery } from "../../sanity/lib/load-query";
+import { urlForImage } from "../../sanity/lib/utils";
+import Layout from "../../layouts/Layout.astro";
+import { Navigation } from "../../components/Navigation";
+import { PostCard } from "../../components/PostCard";
+import Pagination from "../../components/Pagination.astro";
+import { ScrollToTop } from "../../components/ScrollToTop";
+import { Button } from "../../components/Button";
+import { Image } from "astro:assets";
+import { Footer } from "../../components/Footer";
+import { LuArrowRight } from 'react-icons/lu';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
-	const blogPosts = (await getCollection('blog'))
-		.sort(
-			(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-		);
-
-	return paginate(blogPosts, {
-		pageSize: 20,
+	const { data: posts } = await loadQuery<SanityDocument[]>({
+		query: `*[_type == "post"] | order(_createdAt desc) {
+			title,
+			description,
+			slug,
+			mainImage,
+			_updatedAt,
+			_createdAt,
+			author->{
+				name,
+				image
+			}
+		}`,
 	});
-}
+
+  return paginate(posts, {
+    pageSize: 20,
+  });
+};
 
 export interface Props {
-	page: Page;
+  page: Page;
 }
 
 const { page } = Astro.props;
 const posts = page.data;
+console.log(posts);
 
-const first = page.data[0];
-const firstLink = `/blog/${first.slug}/`;
+const first = posts[0];
+const firstLink = `/blog/${first.slug.current}`;
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={`${SITE_TITLE} - Blog posts`} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<ScrollTop />
-		<Header />
-			<main class="py-16 md:py-28">
-				<Container>
-					<div class="flex gap-8 items-center mb-12 lg:mb-20">
-						<div class="py-8 md:max-w-72 lg:max-w-[600px] ">
-							<span class="my-1 block font-bold leading-none text-sm uppercase text-primary">FEATURED</span>
-							<a href={firstLink} class="hover:text-primary transition-colors text-2xl lg:text-4xl mt-4 line-clamp-3 font-bold leading-denser md:line-clamp-none">
-								{first.data.title}
-							</a>
-							<p class="my-3 line-clamp-3 text-base text-gray-600">
-								{first.data.description}
-							</p>
+<Layout>
+  <div class="flex flex-col w-full items-center">
+    <Navigation />
 
-							<Button onclick={`location.href="${firstLink}"`} class="mt-10" variant='bordered'>Read more</Button>
-						</div>
+    <div class="mt-16 flex gap-8 items-center justify-between w-full max-screen container px-8">
+      <div class="py-8 md:max-w-72 lg:max-w-[600px]">
+        <span
+          class="my-1 block font-black leading-none uppercase text-primary"
+          >FEATURED</span
+        >
+        <a
+          href={firstLink}
+          class="hover:text-primary transition-colors text-2xl lg:text-4xl mt-4 line-clamp-3 font-bold leading-denser md:line-clamp-none"
+        >
+          {first.title}
+        </a>
+        <p class="my-3 line-clamp-3 text-base text-gray-600">
+          {first.description}
+        </p>
 
-						<a class="hidden md:inline w-full h-full" href={firstLink} >
-							{ first.data.heroImage && <Image loading="eager" alt="featured" class="mb-2 border rounded-lg" width="720" height="360" src={first.data.heroImage} /> }
-						</a>
-					</div>
+        <Button
+          href={firstLink}
+					size="md"
+          className="mt-10"
+          variant="outline">Read more <LuArrowRight className="w-5 h-5" /></Button
+        >
+      </div>
 
-					<h2 class="font-semibold text-xl md:text-2xl">Latest posts</h2>
-					<div class="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-						{
-							posts.map((post) => (
-								<BlogPostCard
-									title={post.data.title}
-									description={post.data.description}
-									pubDate={post.data.pubDate}
-									heroImage={post.data.heroImage}
-									slug={post.slug} 
-								/>
-							))
-						}
-					</div>
+      <a class="hidden md:inline h-full" href={firstLink}>
+        {
+          first.mainImage.asset && (
+            <Image
+              loading="eager"
+              alt="featured"
+              class="mb-2 border border-gray-300 rounded-xl"
+              width="720"
+              height="360"
+              src={urlForImage(first.mainImage.asset).size(720, 360).url()}
+            />
+          )
+        }
+      </a>
+    </div>
 
-					<div class="border-t border-gray-200 my-8"></div>
-					<Pagination page={page} />
-				</Container>
-			</main>
+    <section
+      class="px-8 py-24 max-screen container md:py-lg md:pt-sm flex flex-col overflow-x-hidden"
+    >
+      <h2
+        class="font-black lg:text-nowrap text-3xl relative before:absolute before:w-8 before:rounded-lg before:-top-5 before:bg-primary before:h-2"
+      >
+        Latest posts
+      </h2>
+      <div class="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        {
+          posts.length === 0 && (
+            <p class="text-gray-500 col-span-full">No posts found.</p>
+          )
+        }
+        {
+          posts.map((post) => (
+            <PostCard
+              title={post.title}
+              description={post.description}
+              slug={post.slug.current}
+              image={urlForImage(post.mainImage.asset).size(600, 300).url()}
+              author={{
+                name: post.author.name,
+                avatar: urlForImage(post.author.image.asset).size(32, 32).url(),
+              }}
+              pubDate={new Date(post._createdAt)}
+            />
+          ))
+        }
+      </div>
+
+      <Pagination page={page} />
+    </section>
+
 		<Footer />
-	</body>
-</html>
+  </div>
+  <ScrollToTop client:only />
+</Layout>

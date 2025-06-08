@@ -1,6 +1,6 @@
 ---
 import type { Page } from 'astro';
-import { Icon } from 'astro-icon/components';
+import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
 
 export interface Props {
 	page: Page;
@@ -18,7 +18,7 @@ const pagesList = Array.from({length: page.lastPage}, (_, i) => i + 1);
     ]}
     href={page.url.prev}
   >
-    <Icon class="w-5 h-5" name='lucide:chevron-left' />
+    <LuChevronLeft className="w-5 h-5" />
     <span class="hidden md:inline">Previous</span>
   </a>
   <div class='flex gap-3 justify-center items-center'>
@@ -44,6 +44,6 @@ const pagesList = Array.from({length: page.lastPage}, (_, i) => i + 1);
     href={page.url.next}
   >
     <span class="hidden md:inline">Next</span>
-    <Icon class="w-5 h-5" name='lucide:chevron-right' />
+    <LuChevronRight className="w-5 h-5" />
   </a>
 </nav>
