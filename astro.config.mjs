@@ -7,6 +7,8 @@ import react from '@astrojs/react';
 
 import sanity from '@sanity/astro';
 
+import expressiveCode from 'astro-expressive-code';
+
 // @ts-ignore
 const env = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 
@@ -18,6 +20,11 @@ export default defineConfig({
     dataset: env.PUBLIC_SANITY_DATASET,
     useCdn: true,
     studioBasePath: '/studio',
+  }), expressiveCode({
+    themes: ['catppuccin-latte'],
+    styleOverrides: {
+      codeFontSize: '1rem',
+    }
   })],
   vite: {
     plugins: [tailwindcss()],

@@ -2,12 +2,15 @@
 import '../styles/post.css';
 import { PortableText as PortableTextInternal } from 'astro-portabletext'
 import PortableTextImage from "./PortableTextImage.astro";
+import PortableCode from './PortableCode.astro';
+
 
 const { portableText } = Astro.props;
 
 const components = {
   type: {
     image: PortableTextImage,
+    code: PortableCode,
   }
 };
 ---

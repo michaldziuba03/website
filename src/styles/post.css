@@ -9,6 +9,18 @@
   margin-bottom: 0.75rem;
 }
 .post p {
-  margin-bottom: .4rem;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
   color: #444;
+}
+
+.post a {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: rgb(var(--clr-primary));
+  text-decoration: underline;
+}
+
+.post a:hover {
+  color: rgb(var(--clr-primary-darken));
 }

@@ -56,9 +56,6 @@ export const blockContentType = defineType({
         ],
       },
     }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
     defineArrayMember({
       type: "image",
       options: { hotspot: true },
@@ -69,6 +66,19 @@ export const blockContentType = defineType({
           title: "Alternative Text",
         },
       ],
+    }),
+    defineArrayMember({
+      type: "code",
+      title: "Code block",
+      options: {
+        languageAlternatives: [
+          { title: 'Javascript', value: 'javascript' },
+          {title: 'sh', value: 'sh'},
+          { title: "C", value: "c", mode: "cpp" },
+          { title: "C++", value: "cpp", mode: "cpp" },
+        ],
+        withFilename: true,
+      },
     }),
   ],
 });
