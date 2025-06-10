@@ -1,0 +1,15 @@
+---
+import YouTubePlayer from "react-player/youtube";
+
+const props = Astro.props.node;
+console.log(props);
+---
+
+<div class="my-6">
+  <YouTubePlayer
+    client:load
+    url={props.url}
+    controls={true}
+    width="100%"
+  />
+</div>

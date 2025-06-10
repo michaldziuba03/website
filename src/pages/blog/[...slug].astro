@@ -51,10 +51,10 @@ const  readingTime = getReadingTime(toPlainText(post.body));
 ---
 
 <Layout>
-  <div class="flex flex-col w-full items-center">
+  <div class="mx-auto container w-full max-screen">
     <Navigation />
 
-    <article class="max-w-3xl my-16 text-lg">
+    <article class="mx-auto max-w-3xl my-16 text-lg">
       <div class="not-prose md:text-base">
         <span class="text-primary text-lg font-bold">GUIDE</span>
         <h1
@@ -105,5 +105,5 @@ const  readingTime = getReadingTime(toPlainText(post.body));
 
     <Footer />
   </div>
-  <ScrollToTop />
+  <ScrollToTop client:load />
 </Layout>

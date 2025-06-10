@@ -26,6 +26,11 @@ export const postType = defineType({
       to: { type: "author" },
     }),
     defineField({
+      name: "category",
+      type: "reference",
+      to: { type: "category" },
+    }),
+    defineField({
       name: "mainImage",
       type: "image",
       options: {
@@ -38,11 +43,6 @@ export const postType = defineType({
           title: "Alternative Text",
         },
       ],
-    }),
-    defineField({
-      name: "categories",
-      type: "array",
-      of: [{ type: "reference", to: { type: "category" } }],
     }),
     defineField({
       name: "publishedAt",

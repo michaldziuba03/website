@@ -1,0 +1,42 @@
+---
+import { PostCard } from "./PostCard";
+import { getPosts } from "../content";
+import { urlForImage } from "../sanity/lib/utils";
+
+const posts = await getPosts(3);
+---
+
+<div class="bg-primary/[4%] flex items-center justify-center w-full">
+  <section
+    class="px-8 py-24 max-screen container md:py-lg md:pt-sm flex flex-col items-center overflow-x-hidden"
+  >
+    <div class="w-full">
+      <h2 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
+        Featured posts
+      </h2>
+      <p class="mt-2">
+        Explore my latest articles and insights on software development, design, and more.
+      </p>
+    </div>
+    <div class="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+      {
+        posts.map((post) => (
+          <div>
+            <PostCard
+              title={post.title}
+              description={post.description}
+              slug={post.slug.current}
+              image={urlForImage(post.mainImage.asset).size(600, 300).url()}
+              author={{
+                name: post.author.name,
+                avatar: urlForImage(post.author.image.asset).size(32, 32).url(),
+              }}
+              pubDate={new Date(post._createdAt)}
+              category={post.category}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</div>

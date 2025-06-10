@@ -24,3 +24,18 @@
 .post a:hover {
   color: rgb(var(--clr-primary-darken));
 }
+
+.post blockquote {
+  border-color: #d1d1d1;
+  background-color: #edeff2;
+  border-radius: 3px;
+  border-left-width: 6px;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+  color: #2d3748;
+  font-size: 1.125rem;
+}

@@ -10,10 +10,13 @@ export interface IProps {
     name: string;
     avatar: string;
   };
+  category?: {
+    title: string;
+  }
 }
 
 export function PostCard(props: IProps) {
-  const { title, slug, pubDate, author, image, description } = props;
+  const { title, slug, pubDate, author, image, description, category } = props;
   const link = `/blog/${slug}/`;
 
   return (
@@ -29,8 +32,8 @@ export function PostCard(props: IProps) {
           />
         )}
       </a>
-      <span className="my-1 block font-black leading-none text-sm uppercase text-primary">
-        GUIDE
+      <span className="my-1.5 block font-black leading-none text-sm uppercase text-primary">
+        { category ? category.title : ""}
       </span>
       <a
         href={link}
