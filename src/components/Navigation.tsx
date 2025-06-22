@@ -5,10 +5,9 @@ export function Navigation() {
 
       <span className="flex items-center justify-between gap-8 font-medium">
         <a href="/">Home</a>
-        <a href='/public/resume.pdf'>Resume</a>
+        <a href='/resume.pdf'>Resume</a>
         <a href="/blog">Blog</a>
       </span>
-
       <div>
         ss
       </div>

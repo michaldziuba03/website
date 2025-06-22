@@ -73,6 +73,39 @@ import FeaturedPosts from '../components/FeaturedPosts.astro';
 				</div>
 			</section>
 			
+			<!-- Portfolio Projects Section -->
+			<section class="px-8 py-24 max-screen container md:py-lg md:pt-sm w-full">
+				<h2 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
+					Showcase
+				</h2>
+				<p class="mt-2">
+					My open source contributions and side projects.
+				</p>
+				<div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
+					<div class="row-span-2 col-span-1 sm:col-span-2 lg:col-span-2 break-inside-avoid rounded-lg shadow-lg bg-white p-10 flex flex-col justify-center items-start">
+						<h3 class="font-bold text-3xl mb-4">Project One (Featured)</h3>
+						<p class="text-lg mb-2">This is a featured project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex. Etiam nec magna euismod, cursus erat at, tempus erat.</p>
+						<p class="text-base text-gray-500">More details about this project can go here.</p>
+					</div>
+					<div class="row-span-2 break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
+						<h3 class="font-bold text-2xl mb-2">Project Two</h3>
+						<p>Maecenas sit amet tincidunt elit. Etiam nec magna euismod, cursus erat at, tempus erat.</p>
+					</div>
+					<div class="break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
+						<h3 class="font-bold text-2xl mb-2">Project Three</h3>
+						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.</p>
+					</div>
+					<div class="break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
+						<h3 class="font-bold text-2xl mb-2">Project Four</h3>
+						<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam.</p>
+					</div>
+					<div class="break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
+						<h3 class="font-bold text-2xl mb-2">Project Five</h3>
+						<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</p>
+					</div>
+				</div>
+			</section>
+
 			<FeaturedPosts />
 			<Contact />
 			<Footer />
