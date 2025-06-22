@@ -8,6 +8,7 @@ import { Footer } from '../components/Footer';
 import { Contact } from '../components/Contact';
 import { ScrollToTop } from '../components/ScrollToTop';
 import FeaturedPosts from '../components/FeaturedPosts.astro';
+import About from '../components/About.astro';
 ---
 <Layout>
 	<div class="flex flex-col w-full items-center">
@@ -45,15 +46,17 @@ import FeaturedPosts from '../components/FeaturedPosts.astro';
 					<!--<div class="bg-primary h-[400px] relative w-full sm:w-1/2"></div> -->
 			</section>
 
+			<About />
+
 			<section class="px-8 py-24 max-screen container md:py-lg md:pt-sm flex flex-col items-center gap-8 overflow-x-hidden sm:flex-row md:gap-16">
 				<div class="w-full flex justify-between gap-32">
 					<div>
 							<h2 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
 								Experience and education
 							</h2>
-							<p class="mt-6">
-								I have worked with some of the most innovative industry leaders </br>
-								to help build their top-notch products.
+							<p class="mt-6 max-w-[600px]">
+								I have contributed to real-world software projects in a professional setting,
+								working closely with teams to deliver reliable code.
 							</p>
 					</div>
 

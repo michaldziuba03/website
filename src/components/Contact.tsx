@@ -89,14 +89,12 @@ export function Contact() {
           Want to send an email directly? Write to:
         </h3>
         <div className="w-full flex justify-center mt-3">
-          {" "}
           <a
             href="mailto:mail@michaldziuba.dev"
             className="break-all font-black hover:text-primary inline-block text-center text-xl md:text-3xl"
           >
-            {" "}
-            mail@michaldziuba.dev{" "}
-          </a>{" "}
+            mail@michaldziuba.dev
+          </a>
         </div>
       </div>
     </>
