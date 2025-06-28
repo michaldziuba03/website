@@ -5,77 +5,32 @@ import { Container } from './Container';
 ---
 
 <section id="hero" class="py-24 w-full md:py-lg md:pt-sm overflow-x-hidden">
-  <Container className="flex flex-col items-center gap-8 sm:flex-row md:gap-16">
-    <div class="w-full space-y-6">
-      <h1 class="font-black text-8xl text-balance">I do...</h1>
-      <h1 class="font-black text-7xl text-balance flex items-center gap-3">
-        <span>Creative</span>
-        <RotatingText
-          client:only
-          texts={['coding.', 'design.']}
-          mainClassName="px-2 sm:px-2 md:px-3 bg-primary text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-          staggerFrom="last"
-          initial={{ y: "100%" } as any}
-          animate={{ y: 0 } as any}
-          exit={{ y: "-120%" } as any}
-          staggerDuration={0.025}
-          splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-          transition={{ type: "spring", damping: 30, stiffness: 400 }}
-          rotationInterval={2000}
-        />
-      </h1>
+  <Container className="flex flex-col items-center text-center max-w-4xl">
+    <h1 class="font-black text-5xl sm:text-6xl md:text-7xl text-balance">Building digital experiences with</h1>
+    <h1 class="font-black text-4xl sm:text-5xl md:text-6xl text-balance flex items-center justify-center">
+      <RotatingText
+        client:only
+        texts={['Creative code.', 'Creative design.']}
+        mainClassName="px-2 sm:px-2 md:px-3 bg-primary text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+        staggerFrom="last"
+        initial={{ y: "100%" } as any}
+        animate={{ y: 0 } as any}
+        exit={{ y: "-120%" } as any}
+        staggerDuration={0.025}
+        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+        transition={{ type: "spring", damping: 30, stiffness: 400 }}
+        rotationInterval={2000}
+      />
+    </h1>
 
-      <p class="text-xl text-gray-800 text-balance mt-10">
-        I'm software developer and open source contributor </br>
-        passionate about building efficient and scalable solutions.
-      </p>
+    <p class="text-xl text-gray-800 text-balance mt-10 max-w-2xl">
+      I'm software developer and open source contributor passionate about building efficient and scalable solutions.
+    </p>
 
-      <div class="flex gap-8 mt-10">
-        <Button variant="primary" size="lg" href="#portfolio">See Projects</Button>
-        <Button variant="outline" size="lg" href="/resume.pdf">My Resume</Button>
-      </div>
-    </div>
-    
-    <!-- Hero Visual Column -->
-    <div class="w-full flex justify-center items-center relative">
-      <div class="relative group">
-        <!-- Floating elements -->
-        <div class="absolute -top-4 -left-4 w-16 h-16 bg-primary/20 rounded-full animate-pulse"></div>
-        <div class="absolute -bottom-6 -right-6 w-12 h-12 bg-blue-500/20 rounded-full animate-bounce delay-300"></div>
-        <div class="absolute top-1/2 -left-8 w-8 h-8 bg-green-500/20 rounded-full animate-ping delay-700"></div>
-        
-        <!-- Main profile image -->
-        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-blue-500/10 p-4 backdrop-blur-sm border border-white/20 shadow-2xl group-hover:scale-105 transition-transform duration-300">
-          <img 
-            src="/src/assets/me.jpg" 
-            alt="Profile" 
-            class="w-80 h-80 object-cover rounded-xl shadow-lg"
-          />
-          
-          <!-- Overlay gradient -->
-          <div class="absolute inset-4 rounded-xl bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        </div>
-        
-        <!-- Code snippets floating around -->
-        <div class="absolute -top-8 right-4 bg-gray-900 text-green-400 px-3 py-2 rounded-lg text-sm font-mono shadow-lg animate-float">
-          <span class="text-gray-500">$</span> npm start
-        </div>
-        
-        <div class="absolute bottom-4 -left-12 bg-gray-900 text-blue-400 px-3 py-2 rounded-lg text-sm font-mono shadow-lg animate-float delay-500">
-          <span class="text-purple-400">const</span> <span class="text-yellow-400">dev</span> = true
-        </div>
-      </div>
+    <div class="flex gap-8 mt-10 flex-wrap justify-center">
+      <Button variant="primary" size="lg" href="#portfolio">See Projects</Button>
+      <Button variant="outline" size="lg" href="/resume.pdf">My Resume</Button>
     </div>
   </Container>
 </section>
 
-<style>
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-</style>
