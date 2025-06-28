@@ -1,117 +1,25 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import RotatingText from '../components/RotatingText';
 import { Navigation } from '../components/Navigation';
-import { Button } from '../components/Button';
-import { ExperienceItem } from '../components/ExperienceItem';
 import { Footer } from '../components/Footer';
-import { Contact } from '../components/Contact';
+import Contact from '../components/Contact.astro';
 import { ScrollToTop } from '../components/ScrollToTop';
 import FeaturedPosts from '../components/FeaturedPosts.astro';
 import About from '../components/About.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Portfolio from '../components/Portfolio.astro';
 ---
 <Layout>
 	<div class="flex flex-col w-full items-center">
-				<Navigation />
-				<section class="px-8 py-24 max-screen container md:py-lg md:pt-sm flex flex-col items-center gap-8 overflow-x-hidden sm:flex-row md:gap-16">
-					<div class="w-full space-y-6">
-						<h1 class="font-black text-8xl text-balance">I do...</h1>
-						<h1 class="font-black text-7xl text-balance flex items-center gap-3">
-							<span>Creative</span>
-							<RotatingText
-								client:only
-								texts={['coding.', 'design.', 'contributions.']}
-								mainClassName="px-2 sm:px-2 md:px-3 bg-primary text-white overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-								staggerFrom={"last"}
-								initial={{ y: "100%" }}
-								animate={{ y: 0 }}
-								exit={{ y: "-120%" }}
-								staggerDuration={0.025}
-								splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-								transition={{ type: "spring", damping: 30, stiffness: 400 }}
-								rotationInterval={2000}
-							/>
-						</h1>
-
-						<p class="text-xl text-gray-800 text-balance mt-10">
-							I'm software developer and open source contributor </br>
-							passionate about building efficient and scalable solutions.
-						</p>
-
-						<div class="flex gap-8 mt-10">
-							<Button variant="primary" size="lg">See Projects</Buton>
-							<Button variant="outline" size="lg">My Resume</Buton>
-						</div>
-					</div>
-					<!--<div class="bg-primary h-[400px] relative w-full sm:w-1/2"></div> -->
-			</section>
-
-			<About />
-
-			<section class="px-8 py-24 max-screen container md:py-lg md:pt-sm">
-				<div class="w-full flex flex-col lg:flex-row lg:justify-between lg:gap-32">
-					<div class="mb-8 lg:mb-0">
-							<h2 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
-								Experience and education
-							</h2>
-							<p class="mt-6 max-w-[600px]">
-								I have contributed to real-world software projects in a professional setting,
-								working closely with teams to deliver reliable code.
-							</p>
-					</div>
-
-					<div class="flex flex-col w-full items-start lg:items-center gap-6">
-						<ExperienceItem 
-							position="Software Developer" 
-							place="Ever Technologies" 
-							contract="B2B Contract"
-							location="Remote"
-						/>
-						<ExperienceItem 
-							position="Bachelor of Computer Science" 
-							place="Maria Curie-Skłodowska University"
-							location='Lublin, Poland'
-						/>
-					</div>
-				</div>
-			</section>
-			
-			<!-- Portfolio Projects Section -->
-			<section class="px-8 py-24 max-screen container md:py-lg md:pt-sm w-full">
-				<h2 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
-					Showcase
-				</h2>
-				<p class="mt-2">
-					My open source contributions and side projects.
-				</p>
-				<div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(180px,auto)]">
-					<div class="row-span-2 col-span-1 sm:col-span-2 lg:col-span-2 break-inside-avoid rounded-lg shadow-lg bg-white p-10 flex flex-col justify-center items-start">
-						<h3 class="font-bold text-3xl mb-4">Project One (Featured)</h3>
-						<p class="text-lg mb-2">This is a featured project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae velit ex. Etiam nec magna euismod, cursus erat at, tempus erat.</p>
-						<p class="text-base text-gray-500">More details about this project can go here.</p>
-					</div>
-					<div class="row-span-2 break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
-						<h3 class="font-bold text-2xl mb-2">Project Two</h3>
-						<p>Maecenas sit amet tincidunt elit. Etiam nec magna euismod, cursus erat at, tempus erat.</p>
-					</div>
-					<div class="break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
-						<h3 class="font-bold text-2xl mb-2">Project Three</h3>
-						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.</p>
-					</div>
-					<div class="break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
-						<h3 class="font-bold text-2xl mb-2">Project Four</h3>
-						<p>Morbi in sem quis dui placerat ornare. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam.</p>
-					</div>
-					<div class="break-inside-avoid rounded-lg shadow-lg bg-white p-6 flex flex-col">
-						<h3 class="font-bold text-2xl mb-2">Project Five</h3>
-						<p>Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat.</p>
-					</div>
-				</div>
-			</section>
-
-			<FeaturedPosts />
-			<Contact />
-			<Footer />
+		<Navigation />
+		<Hero />
+		<About />
+		<Experience />
+		<Portfolio />
+		<FeaturedPosts />
+		<Contact />
+		<Footer />
 	</div>
 	<ScrollToTop client:only />
 </Layout>

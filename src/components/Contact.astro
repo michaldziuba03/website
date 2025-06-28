@@ -1,0 +1,106 @@
+---
+import { Button } from "./Button";
+import { Container } from './Container';
+import { FormInput, FormTextarea } from './FormComponents';
+import { SiGithub, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { LuSendHorizontal } from 'react-icons/lu';
+---
+
+<section class="py-24 md:py-lg md:pt-sm flex flex-col items-center gap-8 overflow-x-hidden sm:flex-row md:gap-16">
+  <Container className="flex flex-col w-full">
+    <h2 class="font-black lg:text-nowrap text-4xl relative before:absolute before:w-8 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
+      Contact me
+    </h2>
+
+    <div class="w-full flex flex-col lg:flex-row justify-between gap-16 mt-8">
+      <div class="flex flex-col gap-8">
+        <p>
+          Feel free to to contact me any time,<br /> my inbox is always
+          open, and I'm always happy to connect or help if I can.
+        </p>
+
+        <div class="flex flex-col gap-1">
+          <span>
+            <span class="font-black">NIP:</span>
+            <span> 5060127126</span>
+          </span>
+
+          <span>
+            <span class="font-black">REGON:</span>
+            <span> 540383170</span>
+          </span>
+        </div>
+
+        <div class="flex gap-6 text-2xl">
+          <SiGithub />
+          <SiLinkedin />
+          <SiX />
+          <SiInstagram />
+        </div>
+      </div>
+
+      <div class="flex flex-col items-center gap-6"></div>
+      <form
+        class="w-full"
+        action="https://formsubmit.co/mail@michaldziuba.dev"
+        method="POST"
+      >
+        <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="flex flex-col gap-4">
+            <FormInput
+              client:load
+              name="name"
+              placeholder="Name"
+              required
+            />
+            <FormInput
+              client:load
+              name="email"
+              placeholder="Email address"
+              type="email"
+              required
+            />
+            <FormInput
+              client:load
+              name="_subject"
+              placeholder="Subject"
+              required
+            />
+          </div>
+          <div class="flex md:col-span-2 gap-4">
+            <FormTextarea
+              client:load
+              name="message"
+              placeholder="Your message"
+              className="min-h-60 md:min-h-full"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="w-full flex justify-end mt-8">
+          <Button variant="black">
+            Send email 
+            <LuSendHorizontal className="w-[18px] h-[18px]" />
+          </Button>
+        </div>
+      </form>
+    </div>
+  </Container>
+</section>
+
+<div class="mb-16 flex flex-col items-center justify-center">
+  <Container>
+    <h3 class="mt-4 font-semibold text-center text-lg md:text-xl">
+      Want to send an email directly? Write to:
+    </h3>
+    <div class="w-full flex justify-center mt-3">
+      <a
+        href="mailto:mail@michaldziuba.dev"
+        class="break-all font-black hover:text-primary inline-block text-center text-xl md:text-3xl"
+      >
+        mail@michaldziuba.dev
+      </a>
+    </div>
+  </Container>
+</div>

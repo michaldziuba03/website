@@ -3,9 +3,10 @@ import { Image } from 'astro:assets';
 
 import { skills, SkillIcon } from './SkillIcon';
 import me from '../assets/me.jpg';
+import { Container } from './Container';
 ---
 <section id="about" class="w-full py-20 sm:py-32">
-  <div class="mx-auto container w-full max-screen px-8">
+  <Container className="w-full max-w-screen-xl">
     <div class="flex flex-col-reverse md:flex-row gap-16 md:gap-8 justify-between">
       <div>
         <h1 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
@@ -33,5 +34,5 @@ import me from '../assets/me.jpg';
         alt="Me"
         src={me} />        
     </div>
-  </div>
+  </Container>
 </section>

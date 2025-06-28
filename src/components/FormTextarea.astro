@@ -1,0 +1,27 @@
+---
+export interface Props {
+  name: string;
+  placeholder: string;
+  required?: boolean;
+  class?: string;
+  rows?: number;
+}
+
+const { 
+  name, 
+  placeholder, 
+  required = false, 
+  class: className = '',
+  rows = 4
+} = Astro.props;
+
+const baseClasses = "bg-white border-gray-300 p-4 w-full rounded-lg focus:border-primary focus:ring-primary focus:outline-none border-2 resize-y";
+---
+
+<textarea
+  class={`${baseClasses} ${className}`}
+  name={name}
+  placeholder={placeholder}
+  required={required}
+  rows={rows}
+></textarea>
