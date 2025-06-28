@@ -12,6 +12,7 @@ import { Navigation } from "../../components/Navigation";
 import { Footer } from "../../components/Footer";
 import { Share } from "../../components/Share";
 import { ScrollToTop } from "../../components/ScrollToTop";
+import { Container } from "../../components/Container";
 
 export async function getStaticPaths() {
   const { data: posts } = await loadQuery<SanityDocument[]>({
@@ -58,7 +59,8 @@ const  readingTime = getReadingTime(toPlainText(post.body));
   <div class="mx-auto container w-full max-screen">
     <Navigation />
 
-    <article class="mx-auto max-w-3xl my-16 text-lg">
+    <Container className="my-16">
+      <article class="mx-auto max-w-3xl text-lg">
       <div class="not-prose md:text-base">
         <span class="text-primary text-lg font-bold uppercase">{post.category.title}</span>
         <h1
@@ -106,6 +108,7 @@ const  readingTime = getReadingTime(toPlainText(post.body));
         <PortableText portableText={post.body} />
       </div>
     </article>
+    </Container>
 
     <Footer />
   </div>

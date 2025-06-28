@@ -1,5 +1,5 @@
-import { SiLinkedin, SiInstagram, SiX, SiGithub } from "react-icons/si";
 import { Container } from "./Container";
+import { SocialLinks } from "./SocialLinks";
 
 export function Footer() {
   const now = new Date();
@@ -15,12 +15,7 @@ export function Footer() {
         reserved.
       </span>
 
-      <div className="flex gap-6 text-xl">
-        <SiGithub />
-        <SiLinkedin />
-        <SiX />
-        <SiInstagram />
-      </div>
+      <SocialLinks className="flex gap-6 text-xl" iconSize="w-5 h-5" />
     </Container>
   );
 }

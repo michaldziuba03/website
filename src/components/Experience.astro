@@ -1,15 +1,16 @@
 ---
 import { ExperienceItem } from './ExperienceItem';
 import { Container } from './Container';
+import { SectionHeading } from './SectionHeading';
 ---
 
-<section class="py-24 md:py-lg md:pt-sm">
+<section id="experience" class="py-24 md:py-lg md:pt-sm">
   <Container>
     <div class="w-full flex flex-col lg:flex-row lg:justify-between lg:gap-32">
       <div class="mb-8 lg:mb-0">
-        <h2 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
+        <SectionHeading>
           Experience and education
-        </h2>
+        </SectionHeading>
         <p class="mt-6 max-w-[600px]">
           I have contributed to real-world software projects in a professional setting,
           working closely with teams to deliver reliable code.
@@ -17,6 +18,12 @@ import { Container } from './Container';
       </div>
 
       <div class="flex flex-col w-full items-start lg:items-center gap-6">
+        <ExperienceItem 
+          position="Software Developer" 
+          place="2cW" 
+          contract="Internship"
+          location="Hybrid (Lublin, Poland)"
+        />
         <ExperienceItem 
           position="Software Developer" 
           place="Ever Technologies" 
