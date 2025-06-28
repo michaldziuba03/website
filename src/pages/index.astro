@@ -48,9 +48,9 @@ import About from '../components/About.astro';
 
 			<About />
 
-			<section class="px-8 py-24 max-screen container md:py-lg md:pt-sm flex flex-col items-center gap-8 overflow-x-hidden sm:flex-row md:gap-16">
-				<div class="w-full flex justify-between gap-32">
-					<div>
+			<section class="px-8 py-24 max-screen container md:py-lg md:pt-sm">
+				<div class="w-full flex flex-col lg:flex-row lg:justify-between lg:gap-32">
+					<div class="mb-8 lg:mb-0">
 							<h2 class="font-black text-4xl relative before:absolute before:w-12 before:rounded-lg before:-top-5 before:bg-primary before:h-2">
 								Experience and education
 							</h2>
@@ -60,7 +60,7 @@ import About from '../components/About.astro';
 							</p>
 					</div>
 
-					<div class="flex flex-col w-full items-center gap-6">
+					<div class="flex flex-col w-full items-start lg:items-center gap-6">
 						<ExperienceItem 
 							position="Software Developer" 
 							place="Ever Technologies" 

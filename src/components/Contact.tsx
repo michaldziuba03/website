@@ -11,7 +11,7 @@ export function Contact() {
             Contact me
           </h2>
 
-          <div className="w-full flex justify-between gap-16 mt-8">
+          <div className="w-full flex flex-col lg:flex-row justify-between gap-16 mt-8">
             <div className="flex flex-col gap-8">
               <p>
                 Feel free to to contact me any time,<br></br> my inbox is always
