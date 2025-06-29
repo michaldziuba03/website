@@ -2,12 +2,13 @@
 import RotatingText from './RotatingText';
 import { Button } from './Button';
 import { Container } from './Container';
+import { LuChevronsDown } from 'react-icons/lu';
 ---
 
 <section id="hero" class="py-32 w-full md:py-lg md:pt-sm overflow-x-hidden">
   <Container className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
     <div class="flex flex-col">
-      <h1 class="font-black text-5xl sm:text-6xl md:text-8xl text-balance">I do...</h1>
+      <h1 class="font-black text-5xl sm:text-6xl md:text-8xl text-balance">I make...</h1>
       <h1 class="font-black text-4xl sm:text-5xl md:text-6xl text-balance flex items-center lg:justify-start justify-center">
         Creative&nbsp;
         <RotatingText
@@ -89,5 +90,11 @@ import { Container } from './Container';
       </div>
     </div>
   </Container>
+
+  <div class="flex justify-center mt-20">
+    <div class="flex flex-col text-4xl items-center animate-bounce">
+      <LuChevronsDown />
+    </div>
+  </div>
 </section>
 

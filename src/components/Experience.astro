@@ -2,6 +2,33 @@
 import { ExperienceItem } from './ExperienceItem';
 import { Container } from './Container';
 import { SectionHeading } from './SectionHeading';
+
+// Experience data array
+const experiences = [
+  {
+    position: "Software Developer",
+    place: "2cW",
+    contract: "Internship",
+    location: "Hybrid (Lublin, Poland)",
+    image: "/src/assets/2cw.png",
+    dateRange: "Jul 2025 - now"
+  },
+  {
+    position: "Software Developer",
+    place: "Ever Technologies",
+    contract: "B2B Contract",
+    location: "Remote",
+    image: "/src/assets/ever.png",
+    dateRange: "Jan 2025 - Apr 2025"
+  },
+  {
+    position: "Bachelor of Computer Science",
+    place: "Maria Curie-Skłodowska University",
+    location: "Lublin, Poland",
+    image: "/src/assets/umcs.jpeg",
+    dateRange: "2023 - now"
+  }
+];
 ---
 
 <section id="experience" class="py-24 md:py-lg md:pt-sm">
@@ -18,23 +45,16 @@ import { SectionHeading } from './SectionHeading';
       </div>
 
       <div class="flex flex-col w-full items-start lg:items-center gap-6">
-        <ExperienceItem 
-          position="Software Developer" 
-          place="2cW" 
-          contract="Internship"
-          location="Hybrid (Lublin, Poland)"
-        />
-        <ExperienceItem 
-          position="Software Developer" 
-          place="Ever Technologies" 
-          contract="B2B Contract"
-          location="Remote"
-        />
-        <ExperienceItem 
-          position="Bachelor of Computer Science" 
-          place="Maria Curie-Skłodowska University"
-          location='Lublin, Poland'
-        />
+        {experiences.map((experience) => (
+          <ExperienceItem 
+            position={experience.position}
+            place={experience.place}
+            contract={experience.contract}
+            location={experience.location}
+            image={experience.image}
+            dateRange={experience.dateRange}
+          />
+        ))}
       </div>
     </div>
   </Container>
