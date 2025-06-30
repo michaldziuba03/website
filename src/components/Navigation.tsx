@@ -16,18 +16,18 @@ export function Navigation() {
       </div>
 
       {/* Mobile Hamburger Menu */}
-      <div className="md:hidden">
+      <div className="md:hidden relative">
         {/* Hamburger Toggle - Hidden Checkbox */}
         <input type="checkbox" id="menu-toggle" className="hidden peer" />
         
         {/* Hamburger Button */}
         <label 
           htmlFor="menu-toggle" 
-          className="cursor-pointer z-50 relative flex flex-col w-6 h-6 justify-center items-center group"
+          className="cursor-pointer z-50 relative w-6 h-6 flex items-center justify-center group"
         >
-          <span className="block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out group-hover:bg-primary peer-checked:rotate-45 peer-checked:translate-y-2"></span>
-          <span className="block w-6 h-0.5 bg-gray-800 mt-1.5 transition-all duration-300 ease-in-out group-hover:bg-primary peer-checked:opacity-0"></span>
-          <span className="block w-6 h-0.5 bg-gray-800 mt-1.5 transition-all duration-300 ease-in-out group-hover:bg-primary peer-checked:-rotate-45 peer-checked:-translate-y-2"></span>
+          <span className="absolute w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out group-hover:bg-primary origin-center hamburger-line-top"></span>
+          <span className="absolute w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out group-hover:bg-primary origin-center hamburger-line-middle"></span>
+          <span className="absolute w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out group-hover:bg-primary origin-center hamburger-line-bottom"></span>
         </label>
 
         {/* Mobile Menu Overlay */}

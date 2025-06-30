@@ -28,3 +28,28 @@ body {
   color: #fff;
   background-color: rgb(var(--clr-primary));
 }
+
+/* Hamburger Menu Animation */
+.hamburger-line-top {
+  transform: translateY(-6px);
+}
+
+.hamburger-line-middle {
+  transform: translateY(0);
+}
+
+.hamburger-line-bottom {
+  transform: translateY(6px);
+}
+
+#menu-toggle:checked + label .hamburger-line-top {
+  transform: translateY(0) rotate(45deg);
+}
+
+#menu-toggle:checked + label .hamburger-line-middle {
+  opacity: 0;
+}
+
+#menu-toggle:checked + label .hamburger-line-bottom {
+  transform: translateY(0) rotate(-45deg);
+}
