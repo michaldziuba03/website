@@ -11,32 +11,37 @@ const projects = [
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
     githubUrl: "https://github.com/yourusername/featured-project",
     liveUrl: "https://featured-project.com",
-    featured: true
+    featured: true,
+    badge: "Side Project"
   },
   {
     title: "Open Source Library",
     description: "A lightweight, performant library for handling complex data transformations. Used by hundreds of developers worldwide with over 1k GitHub stars.",
     technologies: ["JavaScript", "TypeScript", "Jest", "Rollup"],
-    githubUrl: "https://github.com/yourusername/library"
+    githubUrl: "https://github.com/yourusername/library",
+    badge: "Open Source"
   },
   {
     title: "Mobile App",
     description: "Cross-platform mobile application with offline capabilities and real-time synchronization.",
     technologies: ["React Native", "Redux", "Firebase", "TypeScript"],
     githubUrl: "https://github.com/yourusername/mobile-app",
-    liveUrl: "https://play.google.com/store/apps/details?id=com.yourapp"
+    liveUrl: "https://play.google.com/store/apps/details?id=com.yourapp",
+    badge: "Side Project"
   },
   {
     title: "Data Visualization Tool",
     description: "Interactive dashboard for analyzing complex datasets with beautiful charts and real-time updates.",
     technologies: ["D3.js", "Vue.js", "Python", "FastAPI"],
-    githubUrl: "https://github.com/yourusername/data-viz"
+    githubUrl: "https://github.com/yourusername/data-viz",
+    badge: "Open Source"
   },
   {
     title: "DevOps Pipeline",
     description: "Automated CI/CD pipeline configuration with monitoring and deployment automation.",
     technologies: ["Docker", "Kubernetes", "GitHub Actions", "Terraform"],
-    githubUrl: "https://github.com/yourusername/devops-pipeline"
+    githubUrl: "https://github.com/yourusername/devops-pipeline",
+    badge: "Side Project"
   }
 ];
 ---
@@ -58,6 +63,7 @@ const projects = [
           githubUrl={project.githubUrl}
           liveUrl={project.liveUrl}
           featured={project.featured}
+          badge={project.badge}
         />
       ))}
     </div>

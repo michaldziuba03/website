@@ -6,18 +6,21 @@ interface IProps {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  badge?: string;
 }
 
 export function ProjectCard(props: IProps) {
   return (
-    <div className={`break-inside-avoid rounded-lg shadow-lg bg-white overflow-hidden flex flex-col h-full ${
+    <div className={`break-inside-avoid rounded-lg shadow-lg bg-white overflow-hidden flex h-full ${
       props.featured 
-        ? 'row-span-2 col-span-1 sm:col-span-2 lg:col-span-2' 
-        : 'row-span-1'
+        ? 'row-span-1 col-span-1 sm:col-span-2 lg:col-span-2 md:flex-row flex-col' 
+        : 'row-span-1 flex-col'
     }`}>
       {/* Project Image or Placeholder */}
-      <div className={`bg-gray-200 flex items-center justify-center ${
-        props.featured ? 'h-48' : 'h-32'
+      <div className={`bg-gray-200 flex items-center justify-center shrink-0 ${
+        props.featured 
+          ? 'md:w-1/2 w-full h-48 md:h-auto' 
+          : 'h-32 w-full'
       }`}>
         {props.image ? (
           <img 
@@ -38,12 +41,23 @@ export function ProjectCard(props: IProps) {
       </div>
       
       {/* Project Content */}
-      <div className={`p-6 flex flex-col flex-grow ${props.featured ? 'p-8' : 'p-6'}`}>
-        <h3 className={`font-bold mb-3 ${props.featured ? 'text-3xl' : 'text-xl'}`}>
-          {props.title}
-        </h3>
+      <div className={`flex flex-col flex-grow ${
+        props.featured 
+          ? 'md:w-1/2 w-full p-6 lg:p-8' 
+          : 'p-6'
+      }`}>
+        <div className="flex items-center gap-3 mb-3">
+          <h3 className="font-bold text-xl">
+            {props.title}
+          </h3>
+          {props.badge && (
+            <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full shrink-0">
+              {props.badge}
+            </span>
+          )}
+        </div>
         
-        <p className={`text-gray-700 mb-4 flex-grow ${props.featured ? 'text-lg' : 'text-base'}`}>
+        <p className="text-gray-700 mb-4 flex-grow text-base">
           {props.description}
         </p>
         
@@ -52,7 +66,7 @@ export function ProjectCard(props: IProps) {
           {props.technologies.map((tech, index) => (
             <span 
               key={index}
-              className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+              className="px-2 py-1 bg-green-50 text-green-800 text-xs rounded-full border border-green-100"
             >
               {tech}
             </span>

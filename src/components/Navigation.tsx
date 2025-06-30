@@ -4,15 +4,59 @@ export function Navigation() {
   return (
     <Container
       as="nav"
-      className="flex p-8 w-full items-center justify-between"
+      className="flex p-8 w-full items-center justify-between relative"
     >
-      <a href="/" className="font-black text-xl">MD_</a>
+      <a href="/" className="font-black text-xl z-50 relative">MD_</a>
 
-      <span className="flex items-center justify-between gap-8 font-medium">
-        <a href="/">Home</a>
-        <a href="/resume.pdf">Resume</a>
-        <a href="/blog">Blog</a>
-      </span>
+      {/* Desktop Navigation */}
+      <div className="hidden md:flex items-center justify-between gap-8 font-medium">
+        <a href="/" className="hover:text-primary transition-colors">Home</a>
+        <a href="/resume.pdf" className="hover:text-primary transition-colors">Resume</a>
+        <a href="/blog" className="hover:text-primary transition-colors">Blog</a>
+      </div>
+
+      {/* Mobile Hamburger Menu */}
+      <div className="md:hidden">
+        {/* Hamburger Toggle - Hidden Checkbox */}
+        <input type="checkbox" id="menu-toggle" className="hidden peer" />
+        
+        {/* Hamburger Button */}
+        <label 
+          htmlFor="menu-toggle" 
+          className="cursor-pointer z-50 relative flex flex-col w-6 h-6 justify-center items-center group"
+        >
+          <span className="block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out group-hover:bg-primary peer-checked:rotate-45 peer-checked:translate-y-2"></span>
+          <span className="block w-6 h-0.5 bg-gray-800 mt-1.5 transition-all duration-300 ease-in-out group-hover:bg-primary peer-checked:opacity-0"></span>
+          <span className="block w-6 h-0.5 bg-gray-800 mt-1.5 transition-all duration-300 ease-in-out group-hover:bg-primary peer-checked:-rotate-45 peer-checked:-translate-y-2"></span>
+        </label>
+
+        {/* Mobile Menu Overlay */}
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-300 ease-in-out"></div>
+        
+        {/* Mobile Menu */}
+        <div className="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-40 transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out">
+          <div className="flex flex-col pt-20 px-8 space-y-6">
+            <a 
+              href="/" 
+              className="text-lg font-medium py-3 border-b border-gray-100 hover:text-primary transition-colors"
+            >
+              Home
+            </a>
+            <a 
+              href="/resume.pdf" 
+              className="text-lg font-medium py-3 border-b border-gray-100 hover:text-primary transition-colors"
+            >
+              Resume
+            </a>
+            <a 
+              href="/blog" 
+              className="text-lg font-medium py-3 border-b border-gray-100 hover:text-primary transition-colors"
+            >
+              Blog
+            </a>
+          </div>
+        </div>
+      </div>
     </Container>
   );
 }
