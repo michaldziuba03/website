@@ -14,7 +14,7 @@ export function SectionHeading({
   text,
 }: SectionHeadingProps) {
   const baseClasses =
-    "font-black text-3xl relative before:absolute before:w-10 before:rounded-lg before:-top-4 before:bg-primary before:h-2";
+    "font-black text-2xl sm:text-3xl relative before:absolute before:w-8 sm:before:w-10 before:rounded-lg before:-top-3 sm:before:-top-4 before:bg-primary before:h-1.5 sm:before:h-2";
   const combinedClasses = `${baseClasses} ${className}`.trim();
   const HeadingTag = level;
 

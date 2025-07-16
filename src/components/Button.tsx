@@ -23,8 +23,8 @@ export function Button({ className, variant = 'primary', size = 'lg', hover = 'c
       "before:bg-black hover:shadow-black": variant === 'primary' && hover === 'circle',
       "bg-transparent border border-black text-black": variant === 'outline',
       "hover:shadow-2xl before:bg-black hover:shadow-black hover:text-white": variant === 'outline' && hover === 'circle',
-      "py-6 px-9 md:px-12": size === 'lg',
-      "py-4 px-8": size === 'md',
+      "py-4 px-6 sm:py-5 sm:px-8 md:py-6 md:px-9 lg:px-12": size === 'lg',
+      "py-3 px-5 sm:py-4 sm:px-8": size === 'md',
     },
     className,
   ])

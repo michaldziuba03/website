@@ -1,8 +1,18 @@
 import type { SanityDocument } from "@sanity/client";
 import { loadQuery } from "./sanity/lib/load-query";
 
+interface Post {
+	title: string;
+	description: string;
+	slug: { current: string };
+	mainImage: { asset: { url: string } };
+	_createdAt: string;
+	_updatedAt: string;
+	category: { title: string; slug: { current: string } };
+}
+
 export async function getPosts(limit?: number) {
-  const { data } = await loadQuery<SanityDocument[]>({
+  const { data } = await loadQuery<SanityDocument<Post>[]>({
     query: `*[_type == "post"]${ limit ? `[0...${limit}]` : '' } | order(_createdAt desc) {
 			title,
 			description,

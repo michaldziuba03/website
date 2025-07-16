@@ -4,7 +4,7 @@ export function Navigation() {
   return (
     <Container
       as="nav"
-      className="flex p-8 w-full items-center justify-between relative"
+      className="flex py-4 px-4 sm:py-6 md:py-8 w-full items-center justify-between relative"
     >
       <a href="/" className="font-black text-xl z-50 relative">MD_</a>
 
@@ -34,23 +34,23 @@ export function Navigation() {
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 invisible peer-checked:opacity-100 peer-checked:visible transition-all duration-300 ease-in-out"></div>
         
         {/* Mobile Menu */}
-        <div className="fixed top-0 right-0 h-full w-64 bg-white shadow-2xl z-40 transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out">
-          <div className="flex flex-col pt-20 px-8 space-y-6">
+        <div className="fixed top-0 right-0 h-full w-72 sm:w-80 bg-white shadow-2xl z-40 transform translate-x-full peer-checked:translate-x-0 transition-transform duration-300 ease-in-out">
+          <div className="flex flex-col pt-16 sm:pt-20 px-6 sm:px-8 space-y-4 sm:space-y-6">
             <a 
               href="/" 
-              className="text-lg font-medium py-3 border-b border-gray-100 hover:text-primary transition-colors"
+              className="text-lg sm:text-xl font-medium py-4 sm:py-3 border-b border-gray-100 hover:text-primary transition-colors"
             >
               Home
             </a>
             <a 
               href="/resume.pdf" 
-              className="text-lg font-medium py-3 border-b border-gray-100 hover:text-primary transition-colors"
+              className="text-lg sm:text-xl font-medium py-4 sm:py-3 border-b border-gray-100 hover:text-primary transition-colors"
             >
               Resume
             </a>
             <a 
               href="/blog" 
-              className="text-lg font-medium py-3 border-b border-gray-100 hover:text-primary transition-colors"
+              className="text-lg sm:text-xl font-medium py-4 sm:py-3 border-b border-gray-100 hover:text-primary transition-colors"
             >
               Blog
             </a>

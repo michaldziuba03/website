@@ -1,3 +1,4 @@
+import { SiRss } from "react-icons/si";
 import { Container } from "./Container";
 import { SocialLinks } from "./SocialLinks";
 
@@ -15,7 +16,11 @@ export function Footer() {
         reserved.
       </span>
 
-      <SocialLinks className="flex gap-6 text-xl" iconSize="w-5 h-5" />
+      <SocialLinks className="flex gap-6 text-xl" iconSize="w-5 h-5">
+        <a href="/rss.xml">
+          <SiRss className="w-5 h-5 hover:text-[#f26522]" />
+        </a>  
+      </SocialLinks>
     </Container>
   );
 }

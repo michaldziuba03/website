@@ -1,4 +1,4 @@
-import { SiGithub, SiInstagram, SiLinkedin, SiX } from "react-icons/si";
+import { SiGithub, SiLinkedin, SiX } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -19,20 +19,15 @@ const socialLinks = [
     icon: SiX,
     label: "Follow me on X"
   },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/michaldziuba03",
-    icon: SiInstagram,
-    label: "Follow me on Instagram"
-  }
 ];
 
 interface SocialLinksProps {
   className?: string;
   iconSize?: string;
+  children?: React.ReactNode;
 }
 
-export function SocialLinks({ className = "flex gap-6 text-2xl", iconSize = "w-6 h-6" }: SocialLinksProps) {
+export function SocialLinks({ className = "flex gap-6 text-2xl", iconSize = "w-6 h-6", children }: SocialLinksProps) {
   return (
     <div className={className}>
       {socialLinks.map((social) => {
@@ -50,6 +45,7 @@ export function SocialLinks({ className = "flex gap-6 text-2xl", iconSize = "w-6
           </a>
         );
       })}
+      {children}
     </div>
   );
 }

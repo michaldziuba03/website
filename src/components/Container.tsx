@@ -12,7 +12,7 @@ export function Container({
   as: Element = 'div' 
 }: ContainerProps) {
   return (
-    <Element className={`px-8 max-w-screen-xl w-full mx-auto ${className}`}>
+    <Element className={`px-4 sm:px-6 md:px-8 max-w-screen-xl w-full mx-auto ${className}`}>
       {children}
     </Element>
   );

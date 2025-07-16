@@ -11,7 +11,7 @@ interface IProps {
 
 export function ProjectCard(props: IProps) {
   return (
-    <div className={`break-inside-avoid rounded-lg shadow-lg bg-white overflow-hidden flex h-full ${
+    <div className={`break-inside-avoid rounded-lg shadow-md border border-gray-200 bg-white overflow-hidden flex h-full ${
       props.featured 
         ? 'row-span-1 col-span-1 sm:col-span-2 lg:col-span-2 md:flex-row flex-col' 
         : 'row-span-1 flex-col'
