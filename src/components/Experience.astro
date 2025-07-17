@@ -1,6 +1,7 @@
 ---
 import { Container } from "./Container";
 import { SectionHeading } from "./SectionHeading";
+import { Timeline } from "./Timeline";
 
 // Experience data array
 const experiences = [
@@ -44,81 +45,7 @@ const experiences = [
       </div>
 
       <div class="flex flex-col w-full items-start lg:items-center gap-6">
-        <div
-          class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent"
-        >
-          <!-- Item #1 -->
-          <div
-            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-          >
-            <!-- Icon -->
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-emerald-500 text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2"
-            >
-              <img class="rounded-full" src="/src/assets/2cw.jpg" />
-            </div>
-            <!-- Card -->
-            <div
-              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-slate-200 shadow"
-            >
-              <div class="flex items-center justify-between space-x-2 mb-1">
-                <div class="font-bold text-slate-900">Software Developer Intern</div>
-              </div>
-              <div class="text-slate-500">
-                Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum
-                morbi blandit cursus risus.
-              </div>
-            </div>
-          </div>
-
-          <!-- Item #2 -->
-          <div
-            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-          >
-            <!-- Icon -->
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-emerald-500 text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2"
-            >
-              <img class="rounded-full" src="/src/assets/ever.png" />
-            </div>
-            <!-- Card -->
-            <div
-              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-slate-200 shadow"
-            >
-              <div class="flex items-center justify-between space-x-2 mb-1">
-                <div class="font-bold text-slate-900">Software Developer</div>
-              </div>
-              <div class="text-slate-500">
-                Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum
-                morbi blandit cursus risus.
-              </div>
-            </div>
-          </div>
-
-          <!-- Item #3 -->
-          <div
-            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
-          >
-            <!-- Icon -->
-            <div
-              class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-slate-300 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2"
-            >
-              <img class="rounded-full border-primary" src="/src/assets/umcs.jpeg" />
-            </div>
-            <!-- Card -->
-            <div
-              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-slate-200 shadow"
-            >
-              <div class="flex items-center justify-between space-x-2 mb-1">
-                <div class="font-bold text-slate-900">Bachelor of Computer Science</div>
-              </div>
-              <div class="text-slate-500">
-                Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum
-                morbi blandit cursus risus.
-              </div>
-            </div>
-          </div>
-        </div>
+        <Timeline experiences={experiences} client:load />
       </div>
     </div>
   </Container>
