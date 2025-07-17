@@ -9,7 +9,7 @@ export function Navigation() {
       <a href="/" className="font-black text-xl z-50 relative">MD_</a>
 
       {/* Desktop Navigation */}
-      <div className="hidden md:flex items-center justify-between gap-8 font-medium">
+      <div className="hidden md:flex items-center text-sm justify-between gap-8 font-medium">
         <a href="/" className="hover:text-primary transition-colors">Home</a>
         <a href="/resume.pdf" className="hover:text-primary transition-colors">Resume</a>
         <a href="/blog" className="hover:text-primary transition-colors">Blog</a>

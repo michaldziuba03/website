@@ -1,71 +1,79 @@
 ---
-import { Container } from './Container';
-import { SectionHeading } from './SectionHeading';
-import { ProjectCard } from './ProjectCard';
+import { Container } from "./Container";
+import { SectionHeading } from "./SectionHeading";
+import { ProjectCard } from "./ProjectCard";
+import { Dots } from "./Dots";
 
 // Projects data array
 const projects = [
   {
     title: "Featured Project",
-    description: "A comprehensive web application built with modern technologies. This project showcases full-stack development skills including user authentication, real-time data processing, and responsive design. Features include advanced search capabilities, data visualization, and seamless user experience.",
+    description:
+      "A comprehensive web application built with modern technologies. This project showcases full-stack development skills including user authentication, real-time data processing, and responsive design. Features include advanced search capabilities, data visualization, and seamless user experience.",
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
     githubUrl: "https://github.com/yourusername/featured-project",
     liveUrl: "https://featured-project.com",
     featured: true,
-    badge: "Side Project"
+    badge: "Side Project",
   },
   {
     title: "Open Source Library",
-    description: "A lightweight, performant library for handling complex data transformations. Used by hundreds of developers worldwide with over 1k GitHub stars.",
+    description:
+      "A lightweight, performant library for handling complex data transformations. Used by hundreds of developers worldwide with over 1k GitHub stars.",
     technologies: ["JavaScript", "TypeScript", "Jest", "Rollup"],
     githubUrl: "https://github.com/yourusername/library",
-    badge: "Open Source"
+    badge: "Open Source",
   },
   {
     title: "Mobile App",
-    description: "Cross-platform mobile application with offline capabilities and real-time synchronization.",
+    description:
+      "Cross-platform mobile application with offline capabilities and real-time synchronization.",
     technologies: ["React Native", "Redux", "Firebase", "TypeScript"],
     githubUrl: "https://github.com/yourusername/mobile-app",
     liveUrl: "https://play.google.com/store/apps/details?id=com.yourapp",
-    badge: "Side Project"
+    badge: "Side Project",
   },
   {
     title: "Data Visualization Tool",
-    description: "Interactive dashboard for analyzing complex datasets with beautiful charts and real-time updates.",
+    description:
+      "Interactive dashboard for analyzing complex datasets with beautiful charts and real-time updates.",
     technologies: ["D3.js", "Vue.js", "Python", "FastAPI"],
     githubUrl: "https://github.com/yourusername/data-viz",
-    badge: "Open Source"
+    badge: "Open Source",
   },
   {
     title: "DevOps Pipeline",
-    description: "Automated CI/CD pipeline configuration with monitoring and deployment automation.",
+    description:
+      "Automated CI/CD pipeline configuration with monitoring and deployment automation.",
     technologies: ["Docker", "Kubernetes", "GitHub Actions", "Terraform"],
     githubUrl: "https://github.com/yourusername/devops-pipeline",
-    badge: "Side Project"
-  }
+    badge: "Side Project",
+  },
 ];
 ---
 
-<section id="portfolio" class="py-24 md:py-lg md:pt-sm w-full">
+<section id="portfolio" class="py-24 md:py-lg md:pt-sm w-full relative">
   <Container>
-    <SectionHeading>
-      Showcase
-    </SectionHeading>
+    <SectionHeading> Showcase </SectionHeading>
     <p class="mt-2">
       My open source contributions and side projects.
     </p>
-    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
-      {projects.map((project) => (
-        <ProjectCard 
-          title={project.title}
-          description={project.description}
-          technologies={project.technologies}
-          githubUrl={project.githubUrl}
-          liveUrl={project.liveUrl}
-          featured={project.featured}
-          badge={project.badge}
-        />
-      ))}
+    <div
+      class="mt-8 z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]"
+    >
+      {
+        projects.map((project) => (
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            technologies={project.technologies}
+            githubUrl={project.githubUrl}
+            liveUrl={project.liveUrl}
+            featured={project.featured}
+            badge={project.badge}
+          />
+        ))
+      }
     </div>
   </Container>
 </section>

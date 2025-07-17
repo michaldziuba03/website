@@ -3,8 +3,8 @@
 html,
 body {
   margin: 0;
-  font-family: "DM Sans Variable", sans-serif;
-  background: #f8faff;
+  font-family: 'DM Sans Variable', sans-serif;
+  background: #fbfcfd;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }

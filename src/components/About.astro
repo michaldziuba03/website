@@ -5,6 +5,7 @@ import { skills, SkillIcon } from './SkillIcon';
 import me from '../assets/me.png';
 import { Container } from './Container';
 import { SectionHeading } from './SectionHeading';
+import { Dots } from './Dots';
 
 ---
 <section id="about" class="w-full py-16 sm:py-20 md:py-32">
@@ -14,8 +15,12 @@ import { SectionHeading } from './SectionHeading';
         <SectionHeading level="h1">
           About
         </SectionHeading>
-        <p class="text-slate-700 leading-relaxed sm:leading-loose text-base max-w-2xl mt-4">
-          I'm Michał, a software developer from Poland. I'm all about backend development and tinkering with operating systems since 2018. I enjoy creating and contributing to open source software, as I believe in the power of collaboration and sharing knowledge.  Besides programming, I like metal music, video games, history, and dogs.
+        <p class="text-slate-700 leading-relaxed sm:leading-loose sm:text-lg max-w-2xl mt-4">
+          I am Michał, a software developer from Poland passionate about building and exploring how technology works.
+          My journey in programming began in 2018, and I genuinely enjoy contributing to open-source software, 
+          driven by a belief in collaboration and sharing knowledge. 
+          Beyond coding, my interests include metal music, video games, history, 
+          creating <a class="text-primary font-semibold" href="https://www.deviantart.com/mdd003">pixel art</a>, and dogs.
         </p>
 
         <h2 class="font-black text-xl sm:text-2xl mt-12 sm:mt-16">Tech stack</h2>
@@ -35,6 +40,7 @@ import { SectionHeading } from './SectionHeading';
       <!-- Animated profile image from hero -->
       <div class="md:w-1/2 lg:w-2/5 flex justify-center md:justify-end">
       <div class="relative">
+         <Dots />
         <div class="relative group">
           <!-- Floating elements -->
           <div class="absolute -top-2 sm:-top-4 -left-2 sm:-left-4 w-8 h-8 sm:w-12 md:w-16 sm:h-12 md:h-16 bg-primary/20 rounded-full animate-pulse"></div>
@@ -48,7 +54,6 @@ import { SectionHeading } from './SectionHeading';
               alt="Me"
               class="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 object-cover rounded-xl shadow-lg"
             />
-            
             <!-- Overlay gradient -->
             <div class="absolute inset-3 sm:inset-4 rounded-xl bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
