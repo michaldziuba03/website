@@ -1,7 +1,6 @@
 ---
-import { ExperienceItem } from './ExperienceItem';
-import { Container } from './Container';
-import { SectionHeading } from './SectionHeading';
+import { Container } from "./Container";
+import { SectionHeading } from "./SectionHeading";
 
 // Experience data array
 const experiences = [
@@ -11,7 +10,7 @@ const experiences = [
     contract: "Internship",
     location: "Remote",
     image: "/src/assets/2cw.jpg",
-    dateRange: "Jul 2025 - now"
+    dateRange: "Jul 2025 - now",
   },
   {
     position: "Software Developer",
@@ -19,71 +18,107 @@ const experiences = [
     contract: "B2B Contract",
     location: "Remote",
     image: "/src/assets/ever.png",
-    dateRange: "Jan 2025 - Apr 2025"
+    dateRange: "Jan 2025 - Apr 2025",
   },
   {
     position: "Bachelor of Computer Science",
     place: "Maria Curie-Skłodowska University",
     location: "Lublin, Poland",
     image: "/src/assets/umcs.jpeg",
-    dateRange: "2023 - now"
-  }
+    dateRange: "2023 - now",
+  },
 ];
 ---
 
-<section id="experience" class="py-16 sm:py-20 md:py-24 relative overflow-hidden">
+<section id="experience" class="py-16 sm:py-20 md:py-24">
   <Container>
-    <!-- Background decorative elements -->
-    <div class="absolute top-0 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-    <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-green-200/20 rounded-full blur-3xl -z-10"></div>
-    
-    <div class="w-full flex flex-col">
-      <!-- Header Section -->
-      <div class="text-center mb-12 sm:mb-16 lg:mb-20">
-        <SectionHeading>
-          Experience & Education
-        </SectionHeading>
-        <p class="mt-4 sm:mt-6 max-w-2xl mx-auto sm:text-lg leading-relaxed text-gray-600">
-          My journey through professional development and academic growth, 
-          building expertise in modern software development practices.
+    <div
+      class="w-full flex flex-col lg:flex-row lg:justify-between lg:gap-16 xl:gap-32"
+    >
+      <div class="mb-6 sm:mb-8 lg:mb-0">
+        <SectionHeading> Experience and education </SectionHeading>
+        <p class="mt-4 sm:mt-6 max-w-[600px] sm:text-lg leading-loose">
+          I have contributed to real-world software projects in a professional
+          setting, working closely with teams to deliver reliable code.
         </p>
       </div>
 
-      <!-- Timeline Container -->
-      <div class="relative max-w-4xl mx-auto w-full experience-timeline">
-        <!-- Timeline Line -->
-        <div class="absolute left-6 sm:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/60 to-transparent transform sm:-translate-x-px"></div>
-        
-        <!-- Experience Items -->
-        <div class="space-y-8 sm:space-y-12">
-          {experiences.map((experience, index) => (
-            <div class={`timeline-item relative flex items-center ${index % 2 === 0 ? 'sm:flex-row' : 'sm:flex-row-reverse'} group`}>
-              <!-- Timeline Dot -->
-              <div class="timeline-dot absolute left-6 sm:left-1/2 w-3 h-3 bg-primary rounded-full border-4 border-white shadow-lg transform sm:-translate-x-1.5 z-10 group-hover:scale-125 transition-transform duration-300"></div>
-              
-              <!-- Content Card -->
-              <div class={`ml-16 sm:ml-0 sm:w-1/2 ${index % 2 === 0 ? 'sm:pr-8' : 'sm:pl-8'}`}>
-                <div class="experience-card">
-                  <ExperienceItem 
-                    position={experience.position}
-                    place={experience.place}
-                    contract={experience.contract}
-                    location={experience.location}
-                    image={experience.image}
-                    dateRange={experience.dateRange}
-                    isAlternate={index % 2 !== 0}
-                  />
-                </div>
-              </div>
-              
-              <!-- Empty space for alternating layout on larger screens -->
-              <div class="hidden sm:block sm:w-1/2"></div>
+      <div class="flex flex-col w-full items-start lg:items-center gap-6">
+        <div
+          class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent"
+        >
+          <!-- Item #1 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <!-- Icon -->
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-emerald-500 text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2"
+            >
+              <img class="rounded-full" src="/src/assets/2cw.jpg" />
             </div>
-          ))}
+            <!-- Card -->
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-slate-200 shadow"
+            >
+              <div class="flex items-center justify-between space-x-2 mb-1">
+                <div class="font-bold text-slate-900">Software Developer Intern</div>
+              </div>
+              <div class="text-slate-500">
+                Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum
+                morbi blandit cursus risus.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item #2 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <!-- Icon -->
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-emerald-500 text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2"
+            >
+              <img class="rounded-full" src="/src/assets/ever.png" />
+            </div>
+            <!-- Card -->
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-slate-200 shadow"
+            >
+              <div class="flex items-center justify-between space-x-2 mb-1">
+                <div class="font-bold text-slate-900">Software Developer</div>
+              </div>
+              <div class="text-slate-500">
+                Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum
+                morbi blandit cursus risus.
+              </div>
+            </div>
+          </div>
+
+          <!-- Item #3 -->
+          <div
+            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
+          >
+            <!-- Icon -->
+            <div
+              class="flex items-center justify-center w-10 h-10 rounded-full border border-primary bg-slate-300 text-slate-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2"
+            >
+              <img class="rounded-full border-primary" src="/src/assets/umcs.jpeg" />
+            </div>
+            <!-- Card -->
+            <div
+              class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded border border-slate-200 shadow"
+            >
+              <div class="flex items-center justify-between space-x-2 mb-1">
+                <div class="font-bold text-slate-900">Bachelor of Computer Science</div>
+              </div>
+              <div class="text-slate-500">
+                Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum
+                morbi blandit cursus risus.
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <!-- Timeline End Dot -->
-        <div class="absolute left-6 sm:left-1/2 bottom-0 w-2 h-2 bg-gray-300 rounded-full transform sm:-translate-x-1 translate-y-8"></div>
       </div>
     </div>
   </Container>
