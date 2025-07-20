@@ -7,7 +7,7 @@ import { SectionHeading } from './SectionHeading';
 import { LuSendHorizontal } from 'react-icons/lu';
 ---
 
-<section  id="contact" class="py-24 md:py-lg md:pt-sm flex flex-col items-center gap-8 overflow-x-hidden sm:flex-row md:gap-16">
+<section  id="contact" class="w-full py-24 md:py-lg md:pt-sm flex flex-col items-center gap-8 overflow-x-hidden sm:flex-row md:gap-16">
   <Container className="flex flex-col w-full">
     <SectionHeading>
       Contact me
@@ -15,11 +15,12 @@ import { LuSendHorizontal } from 'react-icons/lu';
 
     <div class="w-full flex flex-col lg:flex-row justify-between gap-8 mt-8">
       <div class="flex flex-col gap-8">
-        <p>
-          Feel free to to contact me any time,<br /> my inbox is always
-          open, and I'm always happy to connect or help if I can.
+        <p class="sm:text-lg">
+          Feel free to to contact me any time, my inbox is always
+          open.
         </p>
 
+        <!--
         <div class="flex flex-col gap-1.5">
           <span>
             <span class="font-black">NIP:</span>
@@ -31,11 +32,11 @@ import { LuSendHorizontal } from 'react-icons/lu';
             <span>540383170</span>
           </span>
         </div>
+        -->
 
         <SocialLinks />
       </div>
 
-      <div class="flex flex-col items-center gap-6"></div>
       <form
         class="w-full"
         action="https://formsubmit.co/mail@michaldziuba.dev"

@@ -1,3 +1,5 @@
+import { LuMapPin } from "react-icons/lu";
+
 interface Experience {
   position: string;
   place: string;
@@ -16,23 +18,61 @@ interface TimelineItemProps {
   index: number;
 }
 
-export function TimelineItem({ experience, index }: TimelineItemProps) {
+function TimelineItem({ experience, index }: TimelineItemProps) {
   return (
-    <div className="relative flex items-center gap-4">
-      {/* Icon */}
-      <div className="flex items-center justify-center w-12 h-12 rounded-full border border-white bg-slate-300 group-[.is-active]:bg-emerald-500 text-slate-500 group-[.is-active]:text-emerald-50 shadow shrink-0 mt-1">
-        <img className="rounded-full w-10 h-10 object-cover" src={experience.image} alt={experience.place} />
-      </div>
-      {/* Card */}
-      <div className="flex-1 bg-white p-4 rounded border border-slate-200 shadow">
-        <div className="flex items-center justify-between space-x-2 mb-1">
-          <div className="font-bold text-slate-900">{experience.position}</div>
-          <div className="text-sm text-slate-500">{experience.dateRange}</div>
+    <div className="group relative flex items-start w-full space-x-4 pb-8">
+      {/* Timeline line - hidden on last item */}
+      {index < 100 && (
+        <div className="absolute left-6 top-12 h-full w-0.5 bg-gray-200 group-last:hidden" />
+      )}
+      
+      {/* Logo container */}
+      <div className="relative z-10 flex-shrink-0">
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md ring-2 ring-gray-100 dark:bg-gray-800 dark:ring-gray-700">
+          <img
+            src={experience.image}
+            alt={`${experience.place} logo`}
+            className="h-10 w-10 rounded-full object-contain"
+          />
         </div>
-        <div className="text-slate-600 font-semibold mb-2 text-sm">{experience.place}</div>
-        <div className="text-slate-500 text-sm">
-          Pretium lectus quam id leo. Urna et pharetra aliquam vestibulum
-          morbi blandit cursus risus.
+      </div>
+      
+      {/* Content */}
+      <div className="min-w-0 flex-1 w-full">
+        <div className="relative rounded-xl border border-gray-200 bg-white py-4 px-5 shadow-sm before:content-[''] before:absolute before:left-[-8px] before:top-6 before:h-0 before:w-0 before:border-t-8 before:border-r-8 before:border-b-8 before:border-l-0 before:border-transparent before:border-r-gray-200">
+          {/* Header */}
+          <div className="mb-2 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                {experience.position}
+              </h3>
+              <p className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                {experience.place}
+              </p>
+            </div>
+            <div className="mt-1 sm:mt-0 sm:text-right">
+              <time className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                {experience.dateRange}
+              </time>
+            </div>
+          </div>
+          
+          {/* Details */}
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-gray-600">
+            {experience.contract && (
+              <div>
+                <span className="rounded-full bg-gray-100 px-2 py-1 text-xs font-medium">
+                  {experience.contract}
+                </span>
+              </div>
+            )}
+            <div>
+              <span className="inline-flex items-center text-xs font-medium gap-1 px-2 py-1 bg-gray-100 rounded-full">
+                <LuMapPin className="h-3 w-3" />
+                <span>{experience.location}</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -41,10 +81,15 @@ export function TimelineItem({ experience, index }: TimelineItemProps) {
 
 export function Timeline({ experiences }: TimelineProps) {
   return (
-    <div className="space-y-6 relative before:absolute before:left-6 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+    <div className="relative w-full">
       {experiences.map((experience, index) => (
-        <TimelineItem key={index} experience={experience} index={index} />
+        <TimelineItem
+          key={`${experience.place}-${experience.position}-${index}`}
+          experience={experience}
+          index={index}
+        />
       ))}
     </div>
   );
 }
+

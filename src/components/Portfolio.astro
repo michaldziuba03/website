@@ -2,78 +2,95 @@
 import { Container } from "./Container";
 import { SectionHeading } from "./SectionHeading";
 import { ProjectCard } from "./ProjectCard";
-import { Dots } from "./Dots";
 
-// Projects data array
+// Projects data array - 4 projects for 2x2 grid
 const projects = [
   {
-    title: "Featured Project",
+    title: "PandJS",
     description:
-      "A comprehensive web application built with modern technologies. This project showcases full-stack development skills including user authentication, real-time data processing, and responsive design. Features include advanced search capabilities, data visualization, and seamless user experience.",
-    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
-    githubUrl: "https://github.com/yourusername/featured-project",
-    liveUrl: "https://featured-project.com",
+      "JavaScript runtime from scratch based on v8 engine with non-blocking I/O, inspired by Node.js and Deno. Currently it implements ES6 modules, timers, TCP networking, Buffers and file system.",
+    technologies: ["C++", "C", "JavaScript", "Linux", "Networking"],
+    githubUrl: "https://github.com/pandland/pand",
     featured: true,
-    badge: "Side Project",
+    liveUrl: "https://pandland.github.io/guides/getting-started",
   },
   {
-    title: "Open Source Library",
+    title: "Tor client",
     description:
-      "A lightweight, performant library for handling complex data transformations. Used by hundreds of developers worldwide with over 1k GitHub stars.",
-    technologies: ["JavaScript", "TypeScript", "Jest", "Rollup"],
-    githubUrl: "https://github.com/yourusername/library",
-    badge: "Open Source",
+      "Node.js TOR client developed in TypeScript with zero external npm dependencies. Featuring a custom-built implementation of the SOCKS5 protocol, this client enables seamless programmatic access to the TOR network.",
+    technologies: ["Node.js", "Networking", "TypeScript", "SOCKS5"],
+    githubUrl: "https://github.com/michaldziuba03/tor-client",
   },
   {
-    title: "Mobile App",
+    title: "Novu contributor",
     description:
-      "Cross-platform mobile application with offline capabilities and real-time synchronization.",
-    technologies: ["React Native", "Redux", "Firebase", "TypeScript"],
-    githubUrl: "https://github.com/yourusername/mobile-app",
-    liveUrl: "https://play.google.com/store/apps/details?id=com.yourapp",
-    badge: "Side Project",
+      "A unified API for developers, simplifying the process of sending notifications across various channels such as app, push, email, SMS, and chat. During a year of contributing, I became one of the top contributors to the project (33k+ stars on GitHub) and a moderator on their Discord server (3,5k+ members) where I help other developers and maintain the community.",
+    technologies: ["TypeScript", "Node.js", "React", "NestJS", "Redis", "MongoDB", "Docker"],
+    githubUrl: "https://github.com/novuhq/novu/commits?author=michaldziuba03",
+    liveUrl: "https://novu.co/contributors/michaldziuba03",
   },
   {
-    title: "Data Visualization Tool",
+    title: "Purly",
     description:
-      "Interactive dashboard for analyzing complex datasets with beautiful charts and real-time updates.",
-    technologies: ["D3.js", "Vue.js", "Python", "FastAPI"],
-    githubUrl: "https://github.com/yourusername/data-viz",
-    badge: "Open Source",
-  },
-  {
-    title: "DevOps Pipeline",
-    description:
-      "Automated CI/CD pipeline configuration with monitoring and deployment automation.",
-    technologies: ["Docker", "Kubernetes", "GitHub Actions", "Terraform"],
-    githubUrl: "https://github.com/yourusername/devops-pipeline",
-    badge: "Side Project",
+      "Fictional SaaS platform designed for comprehensive brand link management. Create workspaces, add team members, shorten links, generate QR codes, track traffic, and more. Additionally, it features integrated payment processing with Stripe for seamless transactions.",
+    technologies: ["Node.js", "React", "Redis", "PostgreSQL", "Stripe", "Docker", "TailwindCSS", "TypeScript", "NestJS"],
+    githubUrl: "https://github.com/yourusername/portfolio-analytics",
+    featured: true,
   },
 ];
+
 ---
 
 <section id="portfolio" class="py-24 md:py-lg md:pt-sm w-full relative">
   <Container>
     <SectionHeading> Showcase </SectionHeading>
-    <p class="mt-2">
+    <p class="mt-2 text-lg">
       My open source contributions and side projects.
     </p>
-    <div
-      class="mt-8 z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]"
-    >
-      {
-        projects.map((project) => (
-          <ProjectCard
-            title={project.title}
-            description={project.description}
-            technologies={project.technologies}
-            githubUrl={project.githubUrl}
-            liveUrl={project.liveUrl}
-            featured={project.featured}
-            badge={project.badge}
-          />
-        ))
-      }
+    <div class="mt-8 z-10 flex flex-col lg:grid lg:grid-cols-3 gap-6 lg:auto-rows-[minmax(200px,auto)]">
+      {/* First row: First element spans 2 columns, second element spans 1 column */}
+      <div class="col-span-2">
+        <ProjectCard
+          title={projects[0].title}
+          description={projects[0].description}
+          technologies={projects[0].technologies}
+          githubUrl={projects[0].githubUrl}
+          liveUrl={projects[0].liveUrl}
+          featured={projects[0].featured}
+        />
+      </div>
+      <div class="col-span-1">
+        <ProjectCard
+          title={projects[1].title}
+          description={projects[1].description}
+          technologies={projects[1].technologies}
+          githubUrl={projects[1].githubUrl}
+          liveUrl={projects[1].liveUrl}
+          featured={projects[1].featured}
+        />
+      </div>
+      
+      {/* Second row: First element spans 1 column, second element spans 2 columns */}
+      <div class="col-span-1">
+        <ProjectCard
+          title={projects[2].title}
+          description={projects[2].description}
+          technologies={projects[2].technologies}
+          githubUrl={projects[2].githubUrl}
+          liveUrl={projects[2].liveUrl}
+          featured={projects[2].featured}
+        />
+      </div>
+      <div class="col-span-2">
+        <ProjectCard
+          title={projects[3].title}
+          description={projects[3].description}
+          technologies={projects[3].technologies}
+          githubUrl={projects[3].githubUrl}
+          liveUrl={projects[3].liveUrl}
+          featured={projects[3].featured}
+        />
+      </div>
     </div>
   </Container>
 </section>

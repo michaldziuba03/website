@@ -14,7 +14,7 @@ const experiences = [
     dateRange: "Jul 2025 - now",
   },
   {
-    position: "Software Developer",
+    position: "Fullstack Software Developer",
     place: "Ever Technologies",
     contract: "B2B Contract",
     location: "Remote",
@@ -31,21 +31,20 @@ const experiences = [
 ];
 ---
 
-<section id="experience" class="py-16 sm:py-20 md:py-24">
+<section id="experience" class="py-16 sm:py-20 md:py-24 w-full">
   <Container>
     <div
-      class="w-full flex flex-col lg:flex-row lg:justify-between lg:gap-16 xl:gap-32"
+      class="w-full flex flex-col lg:flex-row lg:justify-between lg:gap-16 xl:gap-32 2xl:gap-40"
     >
       <div class="mb-6 sm:mb-8 lg:mb-0">
         <SectionHeading> Experience and education </SectionHeading>
         <p class="mt-4 sm:mt-6 max-w-[600px] sm:text-lg leading-loose">
-          I have contributed to real-world software projects in a professional
-          setting, working closely with teams to deliver reliable code.
+          Contributed to professional software projects and collaborated with teams.
         </p>
       </div>
 
-      <div class="flex flex-col w-full items-start lg:items-center gap-6">
-        <Timeline experiences={experiences} client:load />
+      <div class="flex flex-col w-full items-start gap-6">
+        <Timeline experiences={experiences} />
       </div>
     </div>
   </Container>

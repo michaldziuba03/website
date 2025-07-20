@@ -13,7 +13,7 @@ export async function GET(context: APIContext) {
     pubDate: new Date(post._createdAt),
     updated: new Date(post._updatedAt),
     categories: [post.category.title],
-    author: 'mail@michaldziuba.dev',
+    author: 'mail@michaldziuba.dev (Michał Dziuba)',
   }));
 
   const custom: string[] = [

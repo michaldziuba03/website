@@ -1,4 +1,5 @@
 interface IProps {
+  className?: string;
   title: string;
   description: string;
   technologies: string[];
@@ -15,7 +16,7 @@ export function ProjectCard(props: IProps) {
       props.featured 
         ? 'row-span-1 col-span-1 sm:col-span-2 lg:col-span-2 md:flex-row flex-col' 
         : 'row-span-1 flex-col'
-    }`}>
+    } ${props.className || ''}`}>
       {/* Project Image or Placeholder */}
       <div className={`bg-gray-200 flex items-center justify-center shrink-0 ${
         props.featured 
