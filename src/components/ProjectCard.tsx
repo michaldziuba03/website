@@ -3,7 +3,7 @@ interface IProps {
   title: string;
   description: string;
   technologies: string[];
-  image?: string;
+  image?: ImageMetadata;
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
@@ -30,7 +30,7 @@ export function ProjectCard(props: IProps) {
           <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gray-50 rounded-lg border border-gray-200">
             {props.image ? (
               <img 
-                src={props.image} 
+                src={props.image.src} 
                 alt={`${props.title} logo`}
                 className="w-8 h-8 object-contain"
               />

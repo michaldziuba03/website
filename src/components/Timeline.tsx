@@ -5,7 +5,7 @@ interface Experience {
   place: string;
   contract?: string;
   location: string;
-  image: string;
+  image: ImageMetadata;
   dateRange: string;
 }
 
@@ -30,7 +30,7 @@ function TimelineItem({ experience, index }: TimelineItemProps) {
       <div className="relative z-10 flex-shrink-0">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md ring-2 ring-gray-100 dark:bg-gray-800 dark:ring-gray-700">
           <img
-            src={experience.image}
+            src={experience.image.src}
             alt={`${experience.place} logo`}
             className="h-10 w-10 rounded-full object-contain"
           />

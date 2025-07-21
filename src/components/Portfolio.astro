@@ -3,6 +3,10 @@ import { Container } from "./Container";
 import { SectionHeading } from "./SectionHeading";
 import { ProjectCard } from "./ProjectCard";
 
+import logoPand from "../assets/p/pand.svg";
+import logoTor from "../assets/p/tor.svg";
+import logoNovu from "../assets/p/novu.svg";
+
 // Projects data array - 4 projects for 2x2 grid
 const projects = [
   {
@@ -11,13 +15,13 @@ const projects = [
       "Introducing a new JavaScript runtime built from scratch on the V8 engine. It features non-blocking I/O, drawing inspiration from Node.js and Deno for its core design. Currently, it supports key functionalities like ES6 modules, various timers, TCP networking, efficient Buffers, and a comprehensive file system. This foundation allows for the development of modern and performant applications",
     technologies: ["C++", "C", "JavaScript", "Linux", "Networking"],
     githubUrl: "https://github.com/pandland/pand",
-    image: '/src/assets/p/pand.svg',
+    image: logoPand,
     featured: true,
     liveUrl: "https://pandland.github.io/guides/getting-started",
   },
   {
     title: "Tor client",
-    image: '/src/assets/p/tor.svg',
+    image: logoTor,
     description:
       "Node.js TOR client developed in TypeScript with zero external npm dependencies. Featuring a custom-built implementation of the SOCKS5 protocol, this client enables seamless programmatic access to the TOR network.",
     technologies: ["Node.js", "Networking", "TypeScript", "SOCKS5"],
@@ -25,7 +29,7 @@ const projects = [
   },
   {
     title: "Novu contributor",
-    image: '/src/assets/p/novu.svg',
+    image: logoNovu,
     description:
       "A unified API simplifying notification delivery across app, push, email, SMS, and chat channels. In a year, I became one of the top contributors to this 33k+ GitHub star project and a moderator on their 3.5k+ member Discord server, assisting developers and maintaining the community.",
     technologies: ["TypeScript", "Node.js", "React", "NestJS", "Redis", "MongoDB", "Docker"],
