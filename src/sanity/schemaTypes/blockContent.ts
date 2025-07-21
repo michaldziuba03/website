@@ -53,7 +53,7 @@ export const blockContentType = defineType({
       title: "Code block",
       options: {
         languageAlternatives: [
-          { title: "Javascript", value: "javascript" },
+          { title: "Javascript", value: "js" },
           { title: "sh", value: "sh" },
           { title: "C", value: "c", mode: "cpp" },
           { title: "C++", value: "cpp", mode: "cpp" },

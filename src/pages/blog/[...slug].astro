@@ -13,6 +13,7 @@ import { Footer } from "../../components/Footer";
 import { Share } from "../../components/Share";
 import { ScrollToTop } from "../../components/ScrollToTop";
 import { Container } from "../../components/Container";
+import Head from "../../components/Head.astro";
 
 export async function getStaticPaths() {
   const { data: posts } = await loadQuery<SanityDocument[]>({
@@ -37,6 +38,7 @@ const { data } = await loadQuery({
 			slug,
       body,
 			mainImage,
+      publishedAt,
 			_updatedAt,
 			_createdAt,
 			author->{
@@ -52,9 +54,12 @@ const { data } = await loadQuery({
 });
 
 const post = data as any;
+const mainImage = post.mainImage.asset ? urlForImage(post.mainImage.asset).url() : undefined;
 const  readingTime = getReadingTime(toPlainText(post.body));
 ---
-
+<head>
+  <Head title={post.title} description={post.description} image={mainImage} />
+</head>
 <Layout>
   <div class="mx-auto container w-full max-screen">
     <Navigation />
@@ -85,7 +90,7 @@ const  readingTime = getReadingTime(toPlainText(post.body));
           />
           <div class="flex flex-col my-6">
             <span class="font-semibold">Michał Dziuba</span>
-            <span class="text-sm font-semibold text-slate-600">{getFormattedDate(new Date(post._createdAt))} · {readingTime.text}</span>
+            <span class="text-sm font-semibold text-slate-600">{getFormattedDate(new Date(post.publishedAt))} · {readingTime.text}</span>
           </div>
         </div>
         <Share client:load />
@@ -98,7 +103,7 @@ const  readingTime = getReadingTime(toPlainText(post.body));
               loading="eager"
               width={1020}
               height={510}
-              src={urlForImage(post.mainImage.asset).url()}
+              src={mainImage!}
               alt=""
             />
           )

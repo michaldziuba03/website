@@ -24,15 +24,15 @@ const { page, posts, category } = Astro.props;
 const categories = await getCategories();
 
 const first = posts[0];
-const firstLink = `/blog/${first.slug.current}`;
+const firstLink = first ? `/blog/${first.slug.current}` : '';
 
 ---
 <Layout>
   <div class="flex flex-col w-full items-center">
     <Navigation />
     <Container className="flex flex-col w-full pt-16">
-      <h1 class="font-black text-6xl">Blog</h1>
-      <p class="text-gray-600 mt-5 text-lg">
+      <h1 class="font-black text-3xl sm:text-4xl">Blog</h1>
+      <p class="text-slate-700 mt-5 sm:text-lg">
         Explore my latest posts, guides, and personal stories.
       </p>
       <SegmentedNavigation>
@@ -59,7 +59,7 @@ const firstLink = `/blog/${first.slug.current}`;
           >
           <a
             href={firstLink}
-            class="hover:text-primary transition-colors text-2xl lg:text-4xl mt-4 line-clamp-3 font-black leading-denser md:line-clamp-none"
+            class="hover:text-primary transition-colors text-2xl lg:text-3xl mt-4 line-clamp-3 font-black leading-denser md:line-clamp-none"
           >
             {first.title}
           </a>
@@ -116,7 +116,7 @@ const firstLink = `/blog/${first.slug.current}`;
                   name: post.author.name,
                   avatar: urlForImage(post.author.image.asset).size(32, 32).url(),
                 }}
-                pubDate={new Date(post._createdAt)}
+                pubDate={new Date(post.publishedAt)}
                 category={post.category}
               />
             ))

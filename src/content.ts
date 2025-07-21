@@ -8,18 +8,20 @@ interface Post {
 	mainImage: { asset: { url: string } };
 	_createdAt: string;
 	_updatedAt: string;
+	publishedAt: string;
 	category: { title: string; slug: { current: string } };
 }
 
 export async function getPosts(limit?: number) {
   const { data } = await loadQuery<SanityDocument<Post>[]>({
-    query: `*[_type == "post"]${ limit ? `[0...${limit}]` : '' } | order(_createdAt desc) {
+    query: `*[_type == "post"]${ limit ? `[0...${limit}]` : '' } | order(publishedAt desc) {
 			title,
 			description,
 			slug,
 			mainImage,
 			_updatedAt,
 			_createdAt,
+			publishedAt,
 			category->{
 				title,
 				slug

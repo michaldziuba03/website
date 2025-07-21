@@ -12,53 +12,49 @@ interface IProps {
 
 export function ProjectCard(props: IProps) {
   return (
-    <div className={`break-inside-avoid rounded-lg shadow-md border border-gray-200 bg-white overflow-hidden flex h-full ${
+    <div className={`break-inside-avoid rounded-2xl shadow-md border border-gray-200 bg-white overflow-hidden flex flex-col h-full ${
       props.featured 
-        ? 'row-span-1 col-span-1 sm:col-span-2 lg:col-span-2 md:flex-row flex-col' 
-        : 'row-span-1 flex-col'
+        ? 'row-span-1 col-span-1 sm:col-span-2 lg:col-span-2' 
+        : 'row-span-1'
     } ${props.className || ''}`}>
-      {/* Project Image or Placeholder */}
-      <div className={`bg-gray-200 flex items-center justify-center shrink-0 ${
-        props.featured 
-          ? 'md:w-1/2 w-full h-48 md:h-auto' 
-          : 'h-32 w-full'
-      }`}>
-        {props.image ? (
-          <img 
-            src={props.image} 
-            alt={`${props.title} preview`}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="text-gray-500 text-center">
-            <div className="w-12 h-12 mx-auto mb-2 bg-gray-300 rounded-lg flex items-center justify-center">
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <span className="text-sm">Project Preview</span>
-          </div>
-        )}
-      </div>
       
       {/* Project Content */}
       <div className={`flex flex-col flex-grow ${
         props.featured 
-          ? 'md:w-1/2 w-full p-6 lg:p-8' 
+          ? 'p-6 lg:p-8' 
           : 'p-6'
       }`}>
-        <div className="flex items-center gap-3 mb-3">
-          <h3 className="font-bold text-xl">
-            {props.title}
-          </h3>
-          {props.badge && (
-            <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full shrink-0">
-              {props.badge}
-            </span>
-          )}
+        {/* Header with Logo and Title */}
+        <div className="flex items-center gap-4 mb-4">
+          {/* Project Logo */}
+          <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gray-50 rounded-lg border border-gray-200">
+            {props.image ? (
+              <img 
+                src={props.image} 
+                alt={`${props.title} logo`}
+                className="w-8 h-8 object-contain"
+              />
+            ) : (
+              <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+              </svg>
+            )}
+          </div>
+          
+          <div className="flex-grow min-w-0">
+            <div className="flex items-center gap-3 mb-1">
+              <h3 className="font-bold text-xl truncate">
+                {props.title}
+              </h3>
+              {props.badge && (
+                <span className="px-2 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full shrink-0">
+                  {props.badge}
+                </span>
+              )}
+            </div>
+          </div>
         </div>
-        
-        <p className="text-gray-700 mb-4 flex-grow text-base">
+        <p className="text-gray-800 mb-4 flex-grow text-sm leading-relaxed">
           {props.description}
         </p>
         

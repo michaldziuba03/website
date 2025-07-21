@@ -8,14 +8,16 @@ const projects = [
   {
     title: "PandJS",
     description:
-      "JavaScript runtime from scratch based on v8 engine with non-blocking I/O, inspired by Node.js and Deno. Currently it implements ES6 modules, timers, TCP networking, Buffers and file system.",
+      "Introducing a new JavaScript runtime built from scratch on the V8 engine. It features non-blocking I/O, drawing inspiration from Node.js and Deno for its core design. Currently, it supports key functionalities like ES6 modules, various timers, TCP networking, efficient Buffers, and a comprehensive file system. This foundation allows for the development of modern and performant applications",
     technologies: ["C++", "C", "JavaScript", "Linux", "Networking"],
     githubUrl: "https://github.com/pandland/pand",
+    image: '/src/assets/p/pand.svg',
     featured: true,
     liveUrl: "https://pandland.github.io/guides/getting-started",
   },
   {
     title: "Tor client",
+    image: '/src/assets/p/tor.svg',
     description:
       "Node.js TOR client developed in TypeScript with zero external npm dependencies. Featuring a custom-built implementation of the SOCKS5 protocol, this client enables seamless programmatic access to the TOR network.",
     technologies: ["Node.js", "Networking", "TypeScript", "SOCKS5"],
@@ -23,8 +25,9 @@ const projects = [
   },
   {
     title: "Novu contributor",
+    image: '/src/assets/p/novu.svg',
     description:
-      "A unified API for developers, simplifying the process of sending notifications across various channels such as app, push, email, SMS, and chat. During a year of contributing, I became one of the top contributors to the project (33k+ stars on GitHub) and a moderator on their Discord server (3,5k+ members) where I help other developers and maintain the community.",
+      "A unified API simplifying notification delivery across app, push, email, SMS, and chat channels. In a year, I became one of the top contributors to this 33k+ GitHub star project and a moderator on their 3.5k+ member Discord server, assisting developers and maintaining the community.",
     technologies: ["TypeScript", "Node.js", "React", "NestJS", "Redis", "MongoDB", "Docker"],
     githubUrl: "https://github.com/novuhq/novu/commits?author=michaldziuba03",
     liveUrl: "https://novu.co/contributors/michaldziuba03",
@@ -34,7 +37,7 @@ const projects = [
     description:
       "Fictional SaaS platform designed for comprehensive brand link management. Create workspaces, add team members, shorten links, generate QR codes, track traffic, and more. Additionally, it features integrated payment processing with Stripe for seamless transactions.",
     technologies: ["Node.js", "React", "Redis", "PostgreSQL", "Stripe", "Docker", "TailwindCSS", "TypeScript", "NestJS"],
-    githubUrl: "https://github.com/yourusername/portfolio-analytics",
+    githubUrl: "https://github.com/michaldziuba03/purly",
     featured: true,
   },
 ];
@@ -56,6 +59,7 @@ const projects = [
           technologies={projects[0].technologies}
           githubUrl={projects[0].githubUrl}
           liveUrl={projects[0].liveUrl}
+          image={projects[0].image}
           featured={projects[0].featured}
         />
       </div>
@@ -66,6 +70,7 @@ const projects = [
           technologies={projects[1].technologies}
           githubUrl={projects[1].githubUrl}
           liveUrl={projects[1].liveUrl}
+          image={projects[1].image}
           featured={projects[1].featured}
         />
       </div>
@@ -78,6 +83,7 @@ const projects = [
           technologies={projects[2].technologies}
           githubUrl={projects[2].githubUrl}
           liveUrl={projects[2].liveUrl}
+          image={projects[2].image}
           featured={projects[2].featured}
         />
       </div>
@@ -88,6 +94,7 @@ const projects = [
           technologies={projects[3].technologies}
           githubUrl={projects[3].githubUrl}
           liveUrl={projects[3].liveUrl}
+          image={projects[3].image}
           featured={projects[3].featured}
         />
       </div>

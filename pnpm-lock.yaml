@@ -23,33 +23,6 @@ importers:
       '@fontsource-variable/dm-sans':
         specifier: ^5.2.6
         version: 5.2.6
-      '@fontsource-variable/gabarito':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource-variable/inter':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource-variable/josefin-sans':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource-variable/montserrat':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource-variable/nunito-sans':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource-variable/raleway':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource-variable/rubik':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource/lato':
-        specifier: ^5.2.6
-        version: 5.2.6
-      '@fontsource/poppins':
-        specifier: ^5.2.6
-        version: 5.2.6
       '@sanity/astro':
         specifier: ^3.2.6
         version: 3.2.6(@emotion/is-prop-valid@1.2.2)(@sanity/client@6.29.1)(@sanity/types@3.95.0(@types/react@19.1.8))(astro@5.10.1(@netlify/blobs@8.2.0)(@types/node@24.0.7)(jiti@2.4.2)(lightningcss@1.30.1)(rollup@4.44.1)(typescript@5.8.3)(yaml@2.8.0))(react-dom@19.1.0(react@19.1.0))(react-is@19.1.0)(react@19.1.0)(sanity@3.95.0(@emotion/is-prop-valid@1.2.2)(@types/node@24.0.7)(@types/react@19.1.8)(immer@10.1.1)(jiti@2.4.2)(lightningcss@1.30.1)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(yaml@2.8.0))(styled-components@6.1.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
@@ -1090,33 +1063,6 @@ packages:
 
   '@fontsource-variable/dm-sans@5.2.6':
     resolution: {integrity: sha512-edr+wGsc9d7/5aMB8ty1z0Zb0fqzJtBZ5+c2FhtrJwYhefcLEOL4r66EBqeyEFhVTMhCGIjhtxmigrRbPN0mUw==}
-
-  '@fontsource-variable/gabarito@5.2.6':
-    resolution: {integrity: sha512-pXhojiApjvDdo8HWo3BtKIeccO8pRF9n+xiErGir1An2wLokWaKImXwjyo47aJHPiGOzEF75O0anzfeVCe0NMg==}
-
-  '@fontsource-variable/inter@5.2.6':
-    resolution: {integrity: sha512-jks/bficUPQ9nn7GvXvHtlQIPudW7Wx8CrlZoY8bhxgeobNxlQan8DclUJuYF2loYRrGpfrhCIZZspXYysiVGg==}
-
-  '@fontsource-variable/josefin-sans@5.2.6':
-    resolution: {integrity: sha512-oqJ9FuwPHa8ukZRDIbcz0+FkplU44L8eJQjNN3DpMcHluz6ZhYT3DvVZCF9QWy/WNWkH0Dcz2hcoyNVpRPniLQ==}
-
-  '@fontsource-variable/montserrat@5.2.6':
-    resolution: {integrity: sha512-1eHefcz9ZXSMjZPckKCWSYd8rLjUpmzQIsNO8DuyU0IdPvsqletPvSIJmztr0sCU6sX4EFKsSHxJWawjmROp2A==}
-
-  '@fontsource-variable/nunito-sans@5.2.6':
-    resolution: {integrity: sha512-lDToEZdfmhp+W62yZxDY64+tOzIBF7phjyTcIG+nh8utXMJo8IgS9iqVoOI18LyS/FMJO9Dx3kCsJEDQaf3s9g==}
-
-  '@fontsource-variable/raleway@5.2.6':
-    resolution: {integrity: sha512-C3HhxprSw+hMNtYJcZBadKvskuVIq35qS8QwVUhFvZciILd6YuOW41pRY2e8jDpcb5TZVQFrwcRi81cgPLfg1g==}
-
-  '@fontsource-variable/rubik@5.2.6':
-    resolution: {integrity: sha512-vMOZRIKXE46Q28QN+RKCq0KJW9eg8WAOrlb/W5rjBSzFeINC83ArLvWW4bH9H+bCrp5IeVovH6PqEAjdOU2+xA==}
-
-  '@fontsource/lato@5.2.6':
-    resolution: {integrity: sha512-ykbyuHKHdFsV8QNWPgo2kkCV0veY8/w1HzPlTd7f08LRGGYijPoN7QHkVKPq5QLpgeNauPPe+0a6oRhd8b6MpQ==}
-
-  '@fontsource/poppins@5.2.6':
-    resolution: {integrity: sha512-NFr0121+vWCfzLDVvSZOzwAjRUaNj6QHA9gtUh/KHHoWf1Qn23EkwVFs63XZ6UtF5K1b3UNmCx77YEMGgV7BOQ==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -7668,24 +7614,6 @@ snapshots:
   '@floating-ui/utils@0.2.10': {}
 
   '@fontsource-variable/dm-sans@5.2.6': {}
-
-  '@fontsource-variable/gabarito@5.2.6': {}
-
-  '@fontsource-variable/inter@5.2.6': {}
-
-  '@fontsource-variable/josefin-sans@5.2.6': {}
-
-  '@fontsource-variable/montserrat@5.2.6': {}
-
-  '@fontsource-variable/nunito-sans@5.2.6': {}
-
-  '@fontsource-variable/raleway@5.2.6': {}
-
-  '@fontsource-variable/rubik@5.2.6': {}
-
-  '@fontsource/lato@5.2.6': {}
-
-  '@fontsource/poppins@5.2.6': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:

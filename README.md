@@ -7,6 +7,7 @@ A modern, professional portfolio and blog built with [Astro](https://astro.build
 - **Astro** for fast, static-first site generation
 - **React** components for interactive UI elements
 - **Sanity CMS** for content management (blog, authors, categories)
+- **RSS Feed** for subscribing to content updates.
 - **Tailwind CSS** for utility-first, responsive styling
 - **Framer Motion** for smooth animations
 - **Accessible** and responsive design
