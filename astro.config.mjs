@@ -2,9 +2,9 @@ import { loadEnv } from "vite";
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import netlify from "@astrojs/netlify";
-import sanity from "@sanity/astro";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
+import sanityIntegration from "@sanity/astro";
 
 // @ts-ignore
 const env = loadEnv(process.env.NODE_ENV, process.cwd(), "");
@@ -14,7 +14,7 @@ export default defineConfig({
   site: "https://michaldziuba.dev",
   integrations: [
     react(),
-    sanity({
+    sanityIntegration({
       projectId: env.PUBLIC_SANITY_PROJECT_ID,
       dataset: env.PUBLIC_SANITY_DATASET,
       useCdn: true,
