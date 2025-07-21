@@ -9,7 +9,6 @@ A modern, professional portfolio and blog built with [Astro](https://astro.build
 - **Sanity CMS** for content management (blog, authors, categories)
 - **RSS Feed** for subscribing to content updates.
 - **Tailwind CSS** for utility-first, responsive styling
-- **Framer Motion** for smooth animations
 - **Accessible** and responsive design
 - **Contact form** with [FormSubmit](https://formsubmit.co/)
 - **SEO-friendly** and performant
