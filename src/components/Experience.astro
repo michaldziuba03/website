@@ -1,0 +1,55 @@
+---
+import { Container } from "./Container";
+import { SectionHeading } from "./SectionHeading";
+import { Timeline } from "./Timeline";
+
+import logo2cW from "../assets/2cw.jpg";
+import logoEver from "../assets/ever.png";
+import logoUMCS from "../assets/umcs.jpeg";
+
+// Experience data array
+const experiences = [
+  {
+    position: "Software Developer Intern",
+    place: "2cW",
+    contract: "Internship",
+    location: "Remote",
+    image: logo2cW,
+    dateRange: "Jul 2025 - now",
+  },
+  {
+    position: "Fullstack Software Developer",
+    place: "Ever Technologies",
+    contract: "B2B Contract",
+    location: "Remote",
+    image: logoEver,
+    dateRange: "Jan 2025 - Apr 2025",
+  },
+  {
+    position: "Bachelor of Computer Science",
+    place: "Maria Curie-Skłodowska University",
+    location: "Lublin, Poland",
+    image: logoUMCS,
+    dateRange: "2023 - now",
+  },
+];
+---
+
+<section id="experience" class="py-16 sm:py-20 md:py-24 w-full">
+  <Container>
+    <div
+      class="w-full flex flex-col lg:flex-row lg:justify-between lg:gap-16 xl:gap-32 2xl:gap-40"
+    >
+      <div class="mb-6 sm:mb-8 lg:mb-0">
+        <SectionHeading> Experience and education </SectionHeading>
+        <p class="mt-4 sm:mt-6 max-w-[600px] sm:text-lg leading-loose">
+          Contributed to professional software projects and collaborated with teams.
+        </p>
+      </div>
+
+      <div class="flex flex-col w-full items-start gap-6">
+        <Timeline experiences={experiences} />
+      </div>
+    </div>
+  </Container>
+</section>

@@ -1,0 +1,21 @@
+---
+import '../styles/post.css';
+import { PortableText as PortableTextInternal } from 'astro-portabletext'
+import PortableTextImage from "./PortableTextImage.astro";
+import PortableCode from './PortableCode.astro';
+import PortableYoutube from './PortableYoutube.astro';
+
+
+const { portableText } = Astro.props;
+
+const components = {
+  type: {
+    image: PortableTextImage,
+    code: PortableCode,
+    youtube: PortableYoutube,
+  }
+};
+---
+<div class="post">
+  <PortableTextInternal value={portableText} components={components} />
+</div>

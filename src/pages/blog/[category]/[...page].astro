@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths, Page } from "astro";
+import { getCategories, getPosts } from "../../../content";
+import BlogListing from "../../../components/BlogListing.astro";
+import Head from "../../../components/Head.astro";
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+	const categories: string[] = (await getCategories()).map((category) => category.slug.current);
+  const posts = await getPosts();
+
+  return categories.flatMap((category) => {
+    const filteredPosts = posts.filter((post) => post.category.slug.current === category);
+    return paginate(filteredPosts, {
+      params: { category },
+      pageSize: 20
+    });
+  });
+};
+
+export interface Props {
+  page: Page;
+}
+
+const page = Astro.props.page as Page;
+const posts = page.data;
+const category: string = Astro.params.category as string;
+---
+<head>
+  <Head title={`Blog - ${category} - Michał Dziuba`} description="Latest posts and articles by Michał Dziuba" />
+</head>
+<BlogListing posts={posts} page={page} category={category} />

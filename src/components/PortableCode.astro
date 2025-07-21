@@ -1,0 +1,12 @@
+---
+import { Code } from 'astro-expressive-code/components';
+
+const { code, language, filename } = Astro.props.node;
+---
+<div class="my-6">
+  <Code
+    code={code} 
+    lang={language} 
+    title={filename}
+  />
+</div>

@@ -1,64 +1,99 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Button from '../components/Button.astro';
-import Container from '../components/Container.astro';
-
-import { EMAIL } from '../consts';
+import { Button } from "./Button";
+import { Container } from './Container';
+import { FormInput, FormTextarea } from './FormComponents';
+import { SocialLinks } from './SocialLinks';
+import { SectionHeading } from './SectionHeading';
+import { LuSendHorizontal } from 'react-icons/lu';
 ---
-<section id="contact" class="py-20 sm:py-32">
-  <Container>
-    <div>
-      <h1 class="font-semibold text-center text-3xl">Contact</h1>
-      <p class="text-slate-700 text-center leading-loose sm:text-lg sm:leading-loose mt-2">
-        Feel free to to contact me any time, my inbox is always open.
-      </p>
 
-      <form class="my-12"action={`https://formsubmit.co/${EMAIL}`} method="POST">
+<section  id="contact" class="w-full py-24 md:py-lg md:pt-sm flex flex-col items-center gap-8 overflow-x-hidden sm:flex-row md:gap-16">
+  <Container className="flex flex-col w-full">
+    <SectionHeading>
+      Contact me
+    </SectionHeading>
+
+    <div class="w-full flex flex-col lg:flex-row justify-between gap-8 mt-8">
+      <div class="flex flex-col gap-8">
+        <p class="sm:text-lg">
+          Feel free to to contact me any time, my inbox is always
+          open.
+        </p>
+
+        <!--
+        <div class="flex flex-col gap-1.5">
+          <span>
+            <span class="font-black">NIP:</span>
+            <span>5060127126</span>
+          </span>
+
+          <span>
+            <span class="font-black">REGON:</span>
+            <span>540383170</span>
+          </span>
+        </div>
+        -->
+
+        <SocialLinks />
+      </div>
+
+      <form
+        class="w-full"
+        action="https://formsubmit.co/mail@michaldziuba.dev"
+        method="POST"
+      >
         <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
           <div class="flex flex-col gap-4">
-            <input 
-              class="bg-gray-100 p-4 rounded-lg focus:border-primary focus:ring-primary focus:outline-none border-2"
+            <FormInput
+              name="name"
               placeholder="Name"
-              name='name'
               required
             />
-            <input 
-              class="bg-gray-100 p-4 rounded-lg focus:border-primary focus:ring-primary focus:outline-none border-2" 
-              placeholder="Email address" 
+            <FormInput
+              name="email"
+              placeholder="Email address"
               type="email"
-              name='email'
               required
             />
-            <input 
-              class="bg-gray-100 p-4 rounded-lg focus:border-primary focus:ring-primary focus:outline-none border-2"
-              placeholder="Subject"
+            <FormInput
               name="_subject"
+              placeholder="Subject"
               required
-            /> 
+            />
           </div>
           <div class="flex md:col-span-2 gap-4">
-            <textarea 
-              class="bg-gray-100 p-4 w-full rounded-lg min-h-60 md:min-h-full focus:border-primary focus:ring-primary focus:outline-none border-2"
-              placeholder="Your message"
+            <FormTextarea
               name="message"
+              placeholder="Your message"
+              className="min-h-60 md:min-h-full"
               required
             />
           </div>
         </div>
-        <div class="flex justify-end">
-          <Button type="submit" class="mt-8 py-6">
-            Send message
-            <Icon class="w-4 h-4" name="lucide:send-horizontal" />
+
+        <div class="w-full flex justify-end mt-8">
+          <Button variant="black">
+            Send email 
+            <LuSendHorizontal className="w-[18px] h-[18px]" />
           </Button>
         </div>
       </form>
-
-      <h3 class="mt-4 font-semibold text-center text-lg md:text-xl">Want to send an email? Write to:</h3>
-      <div class="w-full flex justify-center mt-3">
-        <a href="mailto:mail@michaldziuba.dev" class="break-all font-bold hover:text-primary inline-block text-center text-xl md:text-3xl">
-          {EMAIL}
-        </a>
-      </div>
     </div>
   </Container>
 </section>
+
+<div class="mb-16 flex flex-col items-center justify-center">
+  <Container>
+    <h3 class="mt-4 font-semibold text-center text-lg md:text-xl">
+      Want to send an email directly? Write to:
+    </h3>
+    <div class="w-full flex justify-center mt-3">
+      <a
+        href="mailto:mail@michaldziuba.dev"
+        class="break-all font-black hover:text-primary inline-block text-center text-xl md:text-3xl"
+      >
+        mail@michaldziuba.dev
+      </a>
+    </div>
+  </Container>
+</div>

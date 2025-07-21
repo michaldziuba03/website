@@ -1,0 +1,63 @@
+.post p, li {
+  font-size: 1.2rem;
+}
+
+.post h1 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.post h2, .post h3 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.post h4 {
+  font-weight: 800;
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.post p {
+  line-height: 1.8;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #444;
+}
+
+.post a {
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: rgb(var(--clr-primary));
+  text-decoration: underline;
+}
+
+.post a:hover {
+  color: rgb(var(--clr-primary-darken));
+}
+
+.post blockquote {
+  border-color: #d1d1d1;
+  background-color: #edeff2;
+  border-radius: 3px;
+  border-left-width: 6px;
+  font-weight: 400;
+  font-style: italic;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  padding-left: 1.5rem;
+  color: #2d3748;
+  font-size: 1.125rem;
+}
+
+.post ul {
+  margin-bottom: 2rem;
+}
+
+.post li {
+  list-style: inside;
+  margin-bottom: 1rem;
+}

@@ -1,43 +1,41 @@
 ---
-import Button from '../components/Button.astro';
-import Underline from '../components/Underline.astro';
-import Container from '../components/Container.astro';
-import { getName } from '../consts';
-import { Icon } from 'astro-icon/components';
-
+import { Button } from './Button';
+import { Container } from './Container';
+import { LuChevronsDown, LuChevronRight } from 'react-icons/lu';
 ---
-<section id="hero" class="py-20 sm:py-32">
-  <Container>
-    <div class="w-full flex items-center justify-center">
-      <div class="flex flex-col items-center">
-        <h1 class="mb-7 font-semibold tracking-wide text-center text-5xl leading-tight md:text-7xl lg:leading-tight">
-          Hello World<span class="text-primary">.</span>
-          <br>
-          My name is <span class="relative text-primary">{getName()}.<Underline class="text-accent w-full absolute -bottom-3 right-0 -z-10" /></span>
-        </h1>
 
-        <p class="text-slate-700 leading-relaxed text-center md:leading-relaxed md:text-xl max-w-[700px] mt-2">
-          I'm Node.js developer and open source contributor passionate about building efficient and scalable solutions.
-        </p>
+<section id="hero" class="py-16 sm:py-24 md:py-32 w-full overflow-x-hidden bg-[radial-gradient(#5e6e65,transparent_1px)] [background-size:16px_16px] lg:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)]">
+  <Container className="w-full">
 
-        <div class="flex sm:justify-center gap-4 mt-8">
-          <Button size='lg' onclick="location.href='#showcase'">
-            See projects
-          </Button>
-          <Button size="lg" onclick="location.href='#contact'" variant='bordered'>
-            Contact
-          </Button>
+    <div class="py-8 px-4 mx-auto w-full text-center lg:py-16 lg:px-12">
+        <a href="/blog" target="_blank" class="inline-flex gap-3 justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-gray-100 rounded-full hover:bg-gray-200" role="alert">
+            <span class="text-xs bg-green-600 rounded-full text-white p-1.5 px-3.5 font-semibold">
+              New
+            </span>
+            <span class="text-sm font-medium">Checkout my blog</span>
+            <LuChevronRight className='w-4 h-4' />
+        </a>
+
+
+        <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">Building the Future, Line by Line.</h1>
+        <p class="mb-8 font-normal text-slate-800 lg:text-lg sm:px-16 xl:px-48">I'm Michał, a Software Developer and Open Source Contributor passionate about building efficient and scalable solutions.</p>
+        <div class="flex mb-8 lg:mb-16 space-y-4 flex-wrap justify-center gap-4">
+            
+            <div>
+              <Button href='#portfolio'>See projects</Button>
+              </div>
+            <div>
+              <Button href="#contact" variant='outline' className='bg-white'>Contact</Button>
+            </div>
+          </div>
         </div>
-
-        <div class="mt-24 flex flex-col items-center">
-          <Icon name="lucide:mouse" class="w-8 h-8 animate-bounce mb-6" />
-          
-          <svg width="16" class="h-24" viewBox="0 0 16 115" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.29289 114.707C7.68341 115.098 8.31658 115.098 8.7071 114.707L15.0711 108.343C15.4616 107.953 15.4616 107.319 15.0711 106.929C14.6805 106.538 14.0474 106.538 13.6568 106.929L8 112.586L2.34314 106.929C1.95262 106.538 1.31945 106.538 0.928928 106.929C0.538403 107.319 0.538403 107.953 0.928927 108.343L7.29289 114.707ZM7 -4.37114e-08L7 114L9 114L9 4.37114e-08L7 -4.37114e-08Z" fill="#181818"/>
-          </svg>
-  
-        </div>
-      </div>
     </div>
   </Container>
+
+  <div class="flex justify-center mt-20">
+    <div class="flex flex-col text-4xl items-center animate-bounce">
+      <LuChevronsDown />
+    </div>
+  </div>
 </section>
+

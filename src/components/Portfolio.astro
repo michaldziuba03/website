@@ -1,0 +1,107 @@
+---
+import { Container } from "./Container";
+import { SectionHeading } from "./SectionHeading";
+import { ProjectCard } from "./ProjectCard";
+
+import logoPand from "../assets/p/pand.svg";
+import logoTor from "../assets/p/tor.svg";
+import logoNovu from "../assets/p/novu.svg";
+
+// Projects data array - 4 projects for 2x2 grid
+const projects = [
+  {
+    title: "PandJS",
+    description:
+      "Introducing a new JavaScript runtime built from scratch on the V8 engine. It features non-blocking I/O, drawing inspiration from Node.js and Deno for its core design. Currently, it supports key functionalities like ES6 modules, various timers, TCP networking, efficient Buffers, and a comprehensive file system. This foundation allows for the development of modern and performant applications",
+    technologies: ["C++", "C", "JavaScript", "Linux", "Networking"],
+    githubUrl: "https://github.com/pandland/pand",
+    image: logoPand,
+    featured: true,
+    liveUrl: "https://pandland.github.io/guides/getting-started",
+  },
+  {
+    title: "Tor client",
+    image: logoTor,
+    description:
+      "Node.js TOR client developed in TypeScript with zero external npm dependencies. Featuring a custom-built implementation of the SOCKS5 protocol, this client enables seamless programmatic access to the TOR network.",
+    technologies: ["Node.js", "Networking", "TypeScript", "SOCKS5"],
+    githubUrl: "https://github.com/michaldziuba03/tor-client",
+  },
+  {
+    title: "Novu contributor",
+    image: logoNovu,
+    description:
+      "A unified API simplifying notification delivery across app, push, email, SMS, and chat channels. In a year, I became one of the top contributors to this 33k+ GitHub star project and a moderator on their 3.5k+ member Discord server, assisting developers and maintaining the community.",
+    technologies: ["TypeScript", "Node.js", "React", "NestJS", "Redis", "MongoDB", "Docker"],
+    githubUrl: "https://github.com/novuhq/novu/commits?author=michaldziuba03",
+    liveUrl: "https://novu.co/contributors/michaldziuba03",
+  },
+  {
+    title: "Purly",
+    description:
+      "Fictional SaaS platform designed for comprehensive brand link management. Create workspaces, add team members, shorten links, generate QR codes, track traffic, and more. Additionally, it features integrated payment processing with Stripe for seamless transactions.",
+    technologies: ["Node.js", "React", "Redis", "PostgreSQL", "Stripe", "Docker", "TailwindCSS", "TypeScript", "NestJS"],
+    githubUrl: "https://github.com/michaldziuba03/purly",
+    featured: true,
+  },
+];
+
+---
+
+<section id="portfolio" class="py-24 md:py-lg md:pt-sm w-full relative">
+  <Container>
+    <SectionHeading> Showcase </SectionHeading>
+    <p class="mt-2 text-lg">
+      My open source contributions and side projects.
+    </p>
+    <div class="mt-8 z-10 flex flex-col lg:grid lg:grid-cols-3 gap-6 lg:auto-rows-[minmax(200px,auto)]">
+      {/* First row: First element spans 2 columns, second element spans 1 column */}
+      <div class="col-span-2">
+        <ProjectCard
+          title={projects[0].title}
+          description={projects[0].description}
+          technologies={projects[0].technologies}
+          githubUrl={projects[0].githubUrl}
+          liveUrl={projects[0].liveUrl}
+          image={projects[0].image}
+          featured={projects[0].featured}
+        />
+      </div>
+      <div class="col-span-1">
+        <ProjectCard
+          title={projects[1].title}
+          description={projects[1].description}
+          technologies={projects[1].technologies}
+          githubUrl={projects[1].githubUrl}
+          liveUrl={projects[1].liveUrl}
+          image={projects[1].image}
+          featured={projects[1].featured}
+        />
+      </div>
+      
+      {/* Second row: First element spans 1 column, second element spans 2 columns */}
+      <div class="col-span-1">
+        <ProjectCard
+          title={projects[2].title}
+          description={projects[2].description}
+          technologies={projects[2].technologies}
+          githubUrl={projects[2].githubUrl}
+          liveUrl={projects[2].liveUrl}
+          image={projects[2].image}
+          featured={projects[2].featured}
+        />
+      </div>
+      <div class="col-span-2">
+        <ProjectCard
+          title={projects[3].title}
+          description={projects[3].description}
+          technologies={projects[3].technologies}
+          githubUrl={projects[3].githubUrl}
+          liveUrl={projects[3].liveUrl}
+          image={projects[3].image}
+          featured={projects[3].featured}
+        />
+      </div>
+    </div>
+  </Container>
+</section>
