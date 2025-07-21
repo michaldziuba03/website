@@ -37,6 +37,7 @@
     "react-player": "^2.16.0",
     "reading-time": "^1.5.0",
     "sanity": "^3.95.0",
+    "sharp": "^0.34.3",
     "slugify": "^1.6.6",
     "styled-components": "^6.1.19",
     "tailwindcss": "^4.1.11",
