@@ -21,7 +21,6 @@ A modern, professional portfolio and blog built with [Astro](https://astro.build
 | React           | UI components & interactivity  |
 | Sanity          | Headless CMS backend           |
 | Tailwind CSS    | Styling                        |
-| Framer Motion   | Animations                     |
 | React Icons     | Iconography                    |
 | FormSubmit      | Contact form handling          |
 
@@ -42,7 +41,7 @@ A modern, professional portfolio and blog built with [Astro](https://astro.build
 2. **Install dependencies**
 
 ```sh
-npm install
+pnpm install
 ```
 
 3. **Set up environment variables**
@@ -57,7 +56,7 @@ PUBLIC_SANITY_DATASET=your_sanity_dataset
 4. **Run the development server:**
 
 ```sh
-npm run dev
+pnpm dev
 ```
 
 The site will be available by default at `http://localhost:4321`.
