@@ -1,0 +1,11 @@
+.animated {
+  transition: all 1.3s;
+}
+
+.animated.hide {
+  opacity: 0;
+}
+
+.animated.show {
+  opacity: 1;
+}

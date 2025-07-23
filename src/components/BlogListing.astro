@@ -13,6 +13,7 @@ import type { Page } from "astro";
 import { getCategories } from "../content";
 import { urlForImage } from "../sanity/lib/utils";
 import { SegmentedNavigation, SegmentedNavigationItem } from "../components/SegmentedNavigation";
+import { SectionHeading } from "./SectionHeading";
 
 interface Props {
   posts: any[];
@@ -94,11 +95,7 @@ const firstLink = first ? `/blog/${first.slug.current}` : '';
 
     <section class="py-24 md:py-lg md:pt-sm flex flex-col overflow-x-hidden">
       <Container>
-        <h2
-          class="font-black lg:text-nowrap text-3xl relative before:absolute before:w-8 before:rounded-lg before:-top-5 before:bg-primary before:h-2"
-        >
-          Latest posts
-        </h2>
+        <SectionHeading>Latest posts</SectionHeading>
         <div class="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
           {
             posts.length === 0 && (

@@ -7,7 +7,7 @@ interface IProps {
 }
 
 export function SegmentedNavigationItem({ isActive, href, children }: IProps) {
-  const baseClass = "py-3 px-6 rounded-full font-bold text-sm hover:bg-primary";
+  const baseClass = "py-2.5 px-5 rounded-full font-bold text-sm hover:bg-primary";
   const activeClass = "bg-white text-primary hover:bg-white";
   const inactiveClass = "bg-primary-darken text-white";
 
@@ -23,7 +23,7 @@ export function SegmentedNavigationItem({ isActive, href, children }: IProps) {
 
 export function SegmentedNavigation(props: { children: React.ReactNode }) {
   return (
-    <div className="mt-8 max-w-min bg-primary-darken rounded-full mb-8 p-2 flex gap-3">
+    <div className="mt-8 max-w-min bg-primary-darken rounded-full mb-8 p-2 flex gap-3.5">
       {props.children}
     </div>
   );

@@ -54,7 +54,7 @@ export function ProjectCard(props: IProps) {
             </div>
           </div>
         </div>
-        <p className="text-gray-800 mb-4 flex-grow text-sm leading-relaxed">
+        <p className="text-gray-800 mb-6 text-sm sm:text-base flex-grow leading-relaxed">
           {props.description}
         </p>
         

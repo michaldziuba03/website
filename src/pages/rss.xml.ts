@@ -10,7 +10,7 @@ export async function GET(context: APIContext) {
     title: `<![CDATA[ ${post.title} ]]>`,
     description: `<![CDATA[ ${post.description} ]]>`,
     link: `/blog/${post.slug.current}`,
-    pubDate: new Date(post._createdAt),
+    pubDate: new Date(post.publishedAt),
     updated: new Date(post._updatedAt),
     categories: [post.category.title],
     author: 'mail@michaldziuba.dev (Michał Dziuba)',

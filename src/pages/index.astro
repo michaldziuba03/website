@@ -1,27 +1,53 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Navigation } from '../components/Navigation';
-import { Footer } from '../components/Footer';
-import Contact from '../components/Contact.astro';
-import { ScrollToTop } from '../components/ScrollToTop';
-import About from '../components/About.astro';
-import Hero from '../components/Hero.astro';
-import Experience from '../components/Experience.astro';
-import Portfolio from '../components/Portfolio.astro';
-import Head from '../components/Head.astro';
+import Layout from "../layouts/Layout.astro";
+import { Navigation } from "../components/Navigation";
+import { Footer } from "../components/Footer";
+import Contact from "../components/Contact.astro";
+import { ScrollToTop } from "../components/ScrollToTop";
+import About from "../components/About.astro";
+import Hero from "../components/Hero.astro";
+import Experience from "../components/Experience.astro";
+import Portfolio from "../components/Portfolio.astro";
+import Head from "../components/Head.astro";
+import "../styles/animations.css";
 ---
+
 <head>
-	<Head title="Michał Dziuba" description="I'm Michał, a Software Developer and Open Source Contributor passionate about building efficient and scalable solutions." />
+  <Head
+    title="Michał Dziuba"
+    description="I'm Michał, a Software Developer and Open Source Contributor passionate about building efficient and scalable solutions."
+  />
 </head>
+<script is:inline>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          entry.target.classList.remove("hide");
+        } else {
+          entry.target.classList.remove("show");
+        }
+      });
+    }, { threshold: 0.1 },
+  );
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".animated").forEach((el) => {
+      el.classList.add("hide"); // I want website to work without JS
+      observer.observe(el);
+    });
+  });
+</script>
 <Layout>
-	<div class="flex flex-col w-full items-center">
-		<Navigation />
-		<Hero />
-		<About />
-		<Experience />
-		<Portfolio />
-		<Contact />
-		<Footer />
-	</div>
-	<ScrollToTop client:only />
+  <div class="flex flex-col w-full items-center">
+    <Navigation />
+    <Hero />
+    <About />
+    <Experience />
+    <Portfolio />
+    <Contact />
+    <Footer />
+  </div>
+  <ScrollToTop client:only />
 </Layout>
