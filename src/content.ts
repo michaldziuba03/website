@@ -22,6 +22,7 @@ export async function getPosts(limit?: number) {
 			_updatedAt,
 			_createdAt,
 			publishedAt,
+			body,
 			category->{
 				title,
 				slug

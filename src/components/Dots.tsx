@@ -6,6 +6,7 @@ interface IProps {
 export function Dots(props: IProps) {
   const width = props.width || 350;
   const height = props.height || 500;
+  const patternId = crypto.randomUUID();
 
   return (
     <svg
@@ -18,7 +19,7 @@ export function Dots(props: IProps) {
     >
       <defs>
         <pattern
-          id="b1e6e422-73f8-40a6-b5d9-c8586e37e0e7"
+          id={patternId}
           x="0"
           y="0"
           width="40"
@@ -38,7 +39,7 @@ export function Dots(props: IProps) {
       <rect
         width={'100%'}
         height={'100%'}
-        fill="url(#b1e6e422-73f8-40a6-b5d9-c8586e37e0e7)"
+        fill={`url(#${patternId})`}
       ></rect>
     </svg>
   );

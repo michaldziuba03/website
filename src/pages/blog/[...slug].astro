@@ -55,7 +55,7 @@ const { data } = await loadQuery({
 
 const post = data as any;
 const mainImage = post.mainImage.asset ? urlForImage(post.mainImage.asset).url() : undefined;
-const  readingTime = getReadingTime(toPlainText(post.body));
+const readingTime = getReadingTime(toPlainText(post.body));
 ---
 <head>
   <Head title={post.title} description={post.description} image={mainImage} />

@@ -13,6 +13,7 @@ export interface IProps {
   category?: {
     title: string;
   }
+  readingTime?: string;
 }
 
 export function PostCard(props: IProps) {
@@ -58,7 +59,8 @@ export function PostCard(props: IProps) {
           <div className="flex flex-col">
             <span className="font-bold text-sm">{author?.name}</span>
             <span className="text-sm font-semibold text-slate-500">
-              {getFormattedDate(pubDate)}
+              {getFormattedDate(pubDate)} 
+              {props.readingTime && ` · ${props.readingTime}`}
             </span>
           </div>
         </div>
