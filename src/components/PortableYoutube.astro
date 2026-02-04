@@ -1,14 +1,14 @@
 ---
-import YouTubePlayer from "react-player/youtube";
+import ReactPlayer from "react-player";
 
 const props = Astro.props.node;
 ---
 
 <div class="my-6">
-  <YouTubePlayer
+  <ReactPlayer
     client:load
-    url={props.url}
+    src={props.url}
     controls={true}
-    width="100%"
+    style={{ width: '100%', height: 'auto', aspectRatio: '16/9' }}
   />
 </div>
