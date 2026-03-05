@@ -1,5 +1,6 @@
 # Personal Website
 
+
 A modern, professional portfolio and blog built with [Astro](https://astro.build/), [React](https://react.dev/), [Sanity](https://www.sanity.io/), and [Tailwind CSS](https://tailwindcss.com/).
 
 ## ✨ Features
