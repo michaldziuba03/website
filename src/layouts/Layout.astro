@@ -1,5 +1,8 @@
 ---
+import Navigation from "../components/Navigation";
+import { Footer } from "../components/Footer";
 ---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -9,7 +12,11 @@
 		<meta name="generator" content={Astro.generator} />
 		<title>Michał Dziuba</title>
 	</head>
-	<body>
-		<slot />
+	<body class="flex flex-col min-h-screen">
+		<Navigation client:load />
+		<main class="flex-1">
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>

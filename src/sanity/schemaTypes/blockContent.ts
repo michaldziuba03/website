@@ -54,9 +54,12 @@ export const blockContentType = defineType({
       options: {
         languageAlternatives: [
           { title: "Javascript", value: "js" },
+          { title: "Typescript", value: "ts" },
+          { title: "JSON", value: "json" },
           { title: "sh", value: "sh" },
           { title: "C", value: "c", mode: "cpp" },
           { title: "C++", value: "cpp", mode: "cpp" },
+          { title: "Vue", value: "vue" },
         ],
         withFilename: true,
       },

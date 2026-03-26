@@ -1,0 +1,14 @@
+---
+import slugify from "slugify";
+
+const { node } = Astro.props;
+
+const text = node.children?.map((child: any) => child.text).join("") || "";
+const slug = slugify(text, { lower: true, strict: true });
+const level = parseInt(node.style.replace("h", ""), 10) || 2;
+const Element = `h${level}` as any;
+---
+
+<Element id={slug}>
+  <slot />
+</Element>

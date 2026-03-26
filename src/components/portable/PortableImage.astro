@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+import { urlForImage } from "../../sanity/lib/utils";
+
+const { asset, alt } = Astro.props.node;
+
+const url = urlForImage(asset).url();
+const webpUrl = urlForImage(asset).format("webp").url();
+---
+
+<picture>
+    <source srcset={webpUrl} type="image/webp" />
+    <Image
+        class="rounded-2xl border border-background-darken"
+        src={url}
+        alt={alt || "Image"}
+        inferSize
+    />
+</picture>

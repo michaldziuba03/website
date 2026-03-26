@@ -1,45 +1,68 @@
-import clsx from "clsx";
+import React from 'react';
+import { Button as BaseButton } from '@base-ui/react/button';
 
-type IProps = {
-  variant?: 'primary' | 'black' | 'outline';
-  size?: 'lg' | 'md';
-  hover?: 'circle' | 'none';
-  href?: string;
-  children: React.ReactNode;
+type ButtonVariant = 'primary' | 'secondary';
+
+interface ButtonBaseProps {
+  variant?: ButtonVariant;
   className?: string;
-} & React.ButtonHTMLAttributes<HTMLButtonElement> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement>;
+  children?: React.ReactNode;
+}
 
-export function Button({ className, variant = 'primary', size = 'lg', hover = 'circle', children, ...props }: IProps) {
-  const baseClass = clsx([
-    "text-sm font-bold max-h-10 gap-2 justify-center items-center rounded-full relative cursor-pointer overflow-hidden",
-    {
-      "flex": !props.href,
-      "inline-flex": props.href,
-      "transition-all before:absolute before:h-0 before:w-0 before:rounded-full before:duration-[600ms] before:ease-out hover:before:h-56 hover:before:w-56": hover === 'circle',
-      "shadow-2xl bg-black text-white": variant === 'black',
-      "before:bg-primary hover:shadow-primary": variant === 'black' && hover === 'circle',
-      "shadow-2xl bg-primary text-white": variant === 'primary',
-      "before:bg-black hover:shadow-black": variant === 'primary' && hover === 'circle',
-      "bg-transparent border border-black text-black": variant === 'outline',
-      "hover:shadow-2xl before:bg-black hover:shadow-black hover:text-white": variant === 'outline' && hover === 'circle',
-      "py-4 px-6 sm:py-5 sm:px-8 md:py-6 md:px-9 lg:px-12": size === 'lg',
-      "py-3 px-5 sm:py-4 sm:px-8": size === 'md',
-    },
-    className,
-  ])
+// Anchor variant — activated when `href` is provided
+type ButtonAsAnchor = ButtonBaseProps &
+  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonBaseProps> & {
+    href: string;
+  };
 
-  if (props.href) {
+// Native button variant — default (uses Base UI Button)
+type ButtonAsButton = ButtonBaseProps &
+  Omit<React.ComponentPropsWithoutRef<typeof BaseButton>, keyof ButtonBaseProps> & {
+    href?: undefined;
+  };
+
+type ButtonProps = ButtonAsAnchor | ButtonAsButton;
+
+const variantClasses: Record<ButtonVariant, string> = {
+  primary: 'bg-foreground text-white',
+  secondary: 'bg-background-darken text-foreground',
+};
+
+const baseClasses =
+  'inline-flex items-center gap-2 px-7 py-4 rounded-lg font-medium text-sm ' +
+  'transition-opacity duration-150 hover:opacity-80 active:opacity-70 ' +
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-foreground/50 ' +
+  'cursor-pointer select-none h-[52px]';
+
+export function Button({
+  variant = 'primary',
+  className = '',
+  children,
+  href,
+  ...rest
+}: ButtonProps) {
+  const classes = `${baseClasses} ${variantClasses[variant]} ${className}`.trim();
+
+  // Per Base UI docs: links should NOT be rendered through the Button component.
+  // Instead, style the <a> element directly to look like a button.
+  if (href !== undefined) {
     return (
-      <a {...props} className={baseClass}>
-        <span className="relative z-10 gap-2 flex items-center justify-center">{children}</span>
+      <a
+        href={href}
+        className={classes}
+        {...(rest as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
+      >
+        {children}
       </a>
     );
   }
 
   return (
-    <button {...props} className={baseClass}>
-      <span className="relative z-10 flex gap-2 items-center justify-center">{children}</span>
-    </button>
+    <BaseButton
+      className={classes}
+      {...(rest as React.ComponentPropsWithoutRef<typeof BaseButton>)}
+    >
+      {children}
+    </BaseButton>
   );
 }

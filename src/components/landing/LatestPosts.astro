@@ -1,0 +1,63 @@
+---
+import { Container } from "../Container";
+import { getPosts } from "../../content";
+import { PostCard } from "../blog/PostCard";
+import { urlForImage } from "../../sanity/lib/utils";
+import readingTime from "reading-time";
+import { toPlainText } from "astro-portabletext";
+import { Button } from "../Button";
+import { LuArrowDownRight } from "react-icons/lu";
+
+const posts = await getPosts(3);
+---
+
+<Container>
+  <section class="py-16 md:py-24 lg:py-32 flex flex-col gap-12">
+    <div
+      class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6"
+    >
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Latest Posts</h2>
+        <p class="leading-[1.6] text-foreground max-w-lg">
+          Explore my latest posts, guides, and personal stories.
+        </p>
+      </div>
+      <Button href="/blog" variant="secondary">
+        View all posts
+        <LuArrowDownRight className="w-5 h-5 ml-2 inline" />
+      </Button>
+    </div>
+
+    {
+      posts.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map((post: any) => (
+            <PostCard
+              title={post.title}
+              description={post.description}
+              slug={post.slug.current}
+              image={
+                post.mainImage?.asset
+                  ? urlForImage(post.mainImage.asset).size(600, 300).url()
+                  : ""
+              }
+              author={{
+                name: post.author?.name || "Michał Dziuba",
+                avatar: post.author?.image?.asset
+                  ? urlForImage(post.author.image.asset).size(64, 64).url()
+                  : "",
+              }}
+              pubDate={new Date(post.publishedAt)}
+              category={post.category}
+              readingTime={readingTime(toPlainText(post.body || [])).text}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20 bg-background-darken rounded-2xl">
+          <p class="text-foreground/70">No posts available yet.</p>
+        </div>
+      )
+    }
+  </section>
+</Container>

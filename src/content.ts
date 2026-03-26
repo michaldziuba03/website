@@ -10,11 +10,13 @@ interface Post {
 	_updatedAt: string;
 	publishedAt: string;
 	category: { title: string; slug: { current: string } };
+	body?: any;
+	author?: { name: string; image?: any; role?: string; bio?: string };
 }
 
 export async function getPosts(limit?: number) {
-  const { data } = await loadQuery<SanityDocument<Post>[]>({
-    query: `*[_type == "post"]${ limit ? `[0...${limit}]` : '' } | order(publishedAt desc) {
+	const { data } = await loadQuery<SanityDocument<Post>[]>({
+		query: `*[_type == "post"]${limit ? `[0...${limit}]` : ''} | order(publishedAt desc) {
 			title,
 			description,
 			slug,
@@ -32,9 +34,9 @@ export async function getPosts(limit?: number) {
 				image
 			}
 		}`,
-  });
+	});
 
-  return data;
+	return data;
 }
 
 export async function getCategories() {
@@ -43,6 +45,34 @@ export async function getCategories() {
 			title,
 			slug
 		}`,
+	});
+
+	return data;
+}
+
+export async function getPost(slug: string) {
+	const { data } = await loadQuery<SanityDocument<Post> | null>({
+		query: `*[_type == "post" && slug.current == $slug][0] {
+			title,
+			description,
+			slug,
+			body,
+			mainImage,
+			publishedAt,
+			_updatedAt,
+			_createdAt,
+			author->{
+				name,
+				role,
+				bio,
+				image
+			},
+			category->{
+				title,
+				slug
+			}
+		}`,
+		params: { slug },
 	});
 
 	return data;

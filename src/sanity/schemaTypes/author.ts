@@ -31,15 +31,12 @@ export const authorType = defineType({
       ],
     }),
     defineField({
+      name: "role",
+      type: "string",
+    }),
+    defineField({
       name: "bio",
-      type: "array",
-      of: [
-        {
-          type: "block",
-          styles: [{ title: "Normal", value: "normal" }],
-          lists: [],
-        },
-      ],
+      type: "string",
     }),
   ],
   preview: {

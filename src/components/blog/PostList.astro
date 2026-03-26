@@ -1,0 +1,116 @@
+---
+import type { SanityDocument } from "@sanity/client";
+import readingTime from "reading-time";
+import { toPlainText } from "astro-portabletext";
+import Head from "../Head.astro";
+import { PostCard } from "./PostCard";
+import FeaturedPost from "./FeaturedPost.astro";
+import { urlForImage } from "../../sanity/lib/utils";
+import { ScrollToTop } from "../ScrollToTop";
+
+interface Post {
+  title: string;
+  description: string;
+  slug: { current: string };
+  mainImage: { asset: { url: string } } | null;
+  _createdAt: string;
+  _updatedAt: string;
+  publishedAt: string;
+  category: { title: string; slug: { current: string } } | null;
+}
+
+interface Props {
+  posts: any[];
+  page?: any;
+}
+
+const { posts, page } = Astro.props;
+
+const isFirstPage = !page || page.currentPage === 1;
+const featuredPost = isFirstPage && posts.length > 0 ? posts[0] : null;
+const restPosts = isFirstPage && posts.length > 0 ? posts.slice(1) : posts;
+---
+
+<head>
+  <Head
+    title="Michał Dziuba - Blog"
+    description="Explore my latest posts, guides, and personal stories."
+  />
+</head>
+
+<div class="flex flex-col gap-12">
+  {
+    posts.length === 0 ? (
+      <div class="text-center py-20 bg-background-darken rounded-2xl">
+        <h2 class="text-2xl font-bold text-foreground mb-2">
+          No posts available
+        </h2>
+        <p class="text-foreground/70">Check back later for new content!</p>
+      </div>
+    ) : (
+      <>
+        {featuredPost && <FeaturedPost post={featuredPost} />}
+
+        {restPosts.length > 0 && (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {restPosts.map((post: any) => (
+              <PostCard
+                title={post.title}
+                description={post.description}
+                slug={post.slug.current}
+                image={urlForImage(post.mainImage!.asset).size(600, 300).url()}
+                author={{
+                  name: post.author!.name,
+                  avatar: urlForImage(post.author!.image.asset)
+                    .size(64, 64)
+                    .url(),
+                }}
+                pubDate={new Date(post.publishedAt)}
+                category={post.category!}
+                readingTime={readingTime(toPlainText(post.body)).text}
+              />
+            ))}
+          </div>
+        )}
+      </>
+    )
+  }
+
+  {
+    page && (
+      <div class="flex items-center justify-between pt-8 mt-4 border-t border-background-darken">
+        {page.url.prev ? (
+          <a
+            href={page.url.prev}
+            class="px-5 py-2.5 text-sm font-semibold rounded-full bg-background-darken hover:bg-background-darken/80 transition-colors border border-background-darken flex items-center gap-2"
+          >
+            &larr; Previous
+          </a>
+        ) : (
+          <span class="px-5 py-2.5 text-sm font-semibold rounded-full bg-background-darken/30 text-foreground/30 border border-background-darken/30 cursor-not-allowed flex items-center gap-2">
+            &larr; Previous
+          </span>
+        )}
+
+        <span class="text-sm font-semibold text-foreground/60 hidden sm:block">
+          Page {page.currentPage} of {page.lastPage}
+        </span>
+
+        {page.url.next ? (
+          <a
+            href={page.url.next}
+            class="px-5 py-2.5 text-sm font-semibold rounded-full bg-background-darken hover:bg-background-darken/80 transition-colors border border-background-darken flex items-center gap-2"
+          >
+            Next &rarr;
+          </a>
+        ) : (
+          <span class="px-5 py-2.5 text-sm font-semibold rounded-full bg-background-darken/30 text-foreground/30 border border-background-darken/30 cursor-not-allowed flex items-center gap-2">
+            Next &rarr;
+          </span>
+        )}
+      </div>
+    )
+  }
+</div>
+
+<ScrollToTop client:load />

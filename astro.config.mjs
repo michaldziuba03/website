@@ -12,6 +12,9 @@ const env = loadEnv(process.env.NODE_ENV, process.cwd(), "");
 // https://astro.build/config
 export default defineConfig({
   site: "https://michaldziuba.dev",
+  image: {
+    domains: ["cdn.sanity.io", "sanity.io"],
+  },
   integrations: [
     react(),
     sanityIntegration({
@@ -21,7 +24,7 @@ export default defineConfig({
       studioBasePath: "/studio",
     }),
     expressiveCode({
-      themes: ["catppuccin-latte"],
+      themes: ["gruvbox-dark-soft"],
       styleOverrides: {
         codeFontSize: "1rem",
       },

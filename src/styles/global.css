@@ -2,21 +2,28 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+:root {
+  --clr-background: 240, 238, 230;
+  --clr-background-darken: 227, 218, 204;
+  --clr-foreground: 45, 45, 45;
+  --clr-primary: 218, 77, 8;
+  --clr-primary-darken: 173, 63, 9;
+}
+
 html,
 body {
   margin: 0;
-  font-family: 'DM Sans Variable', sans-serif;
-  background: #fbfcfd;
-  overflow-x: hidden;
+  font-family: 'Bricolage Grotesque Variable', sans-serif;
+  color: rgb(var(--clr-foreground));
+  background: rgb(var(--clr-background));
+  overflow-x: clip;
   scroll-behavior: smooth;
 }
 
-:root {
-  --clr-primary: 20, 174, 92;
-  --clr-primary-darken: 14, 123, 65;
-}
-
 @theme {
+  --color-background: rgb(var(--clr-background));
+  --color-foreground: rgb(var(--clr-foreground));
+  --color-background-darken: rgb(var(--clr-background-darken));
   --color-primary: rgb(var(--clr-primary));
   --color-primary-darken: rgb(var(--clr-primary-darken));
 }
@@ -44,14 +51,38 @@ body {
   transform: translateY(6px);
 }
 
-#menu-toggle:checked + label .hamburger-line-top {
+#menu-toggle:checked+label .hamburger-line-top {
   transform: translateY(0) rotate(45deg);
 }
 
-#menu-toggle:checked + label .hamburger-line-middle {
+#menu-toggle:checked+label .hamburger-line-middle {
   opacity: 0;
 }
 
-#menu-toggle:checked + label .hamburger-line-bottom {
+#menu-toggle:checked+label .hamburger-line-bottom {
   transform: translateY(0) rotate(-45deg);
+}
+
+/* Terminal cursor blink */
+@keyframes terminal-blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: #d65d0e;
+  border-radius: 1px;
+  animation: terminal-blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-bottom: 1px;
 }

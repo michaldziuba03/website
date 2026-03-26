@@ -1,0 +1,24 @@
+---
+import { Container } from "../Container";
+import { Timeline } from "./Timeline";
+---
+
+<Container>
+  <section
+    id="experience"
+    class="py-16 md:py-24 lg:py-32 flex flex-col lg:flex-row items-start gap-12 lg:gap-20"
+  >
+    <div class="flex-none md:max-w-xs">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Experience &amp; Education
+      </h2>
+      <p class="leading-[1.6] text-foreground">
+        My professional journey so far - where I've worked and what I've
+        studied.
+      </p>
+    </div>
+    <div class="flex-1 min-w-0">
+      <Timeline />
+    </div>
+  </section>
+</Container>

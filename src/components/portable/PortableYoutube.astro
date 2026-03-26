@@ -1,0 +1,14 @@
+---
+import ReactPlayer from "react-player";
+
+const props = Astro.props.node;
+---
+
+<div class="my-6">
+  <ReactPlayer
+    client:load
+    src={props.url}
+    controls={true}
+    style={{ width: "100%", height: "auto", aspectRatio: "16/9" }}
+  />
+</div>

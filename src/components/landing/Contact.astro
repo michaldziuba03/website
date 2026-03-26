@@ -1,0 +1,100 @@
+---
+import { Container } from "../Container";
+import { Button } from "../Button";
+import { Input } from "../Input";
+import { Textarea } from "../Textarea";
+import { LuSendHorizontal } from "react-icons/lu";
+import { Socials } from "./Socials";
+---
+
+<Container>
+  <section
+    id="contact"
+    class="py-16 md:py-24 lg:py-32 flex flex-col gap-16 md:gap-24 lg:gap-32"
+  >
+    <div class="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
+      {/* Left column — heading + description */}
+      <div class="flex-none lg:max-w-xs w-full">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact</h2>
+        <p class="leading-[1.6] text-foreground">
+          Feel free to to contact me any time, my inbox is always open.
+        </p>
+
+        <div class="mt-8">
+          <Socials />
+        </div>
+      </div>
+
+      {/* Right column — form */}
+      <div class="flex-1 min-w-0 w-full">
+        <form
+          action="https://formsubmit.co/mail@michaldziuba.dev"
+          method="POST"
+          class="flex flex-col gap-4"
+        >
+          {/* Fields grid: 1 col on mobile, inputs|textarea on md+ */}
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Inputs sub-column */}
+            <div class="flex flex-col gap-4">
+              <Input
+                client:load
+                id="contact-name"
+                name="name"
+                label="Name"
+                required
+              />
+              <Input
+                client:load
+                id="contact-email"
+                name="email"
+                type="email"
+                label="Email"
+                required
+              />
+              <Input
+                client:load
+                id="contact-subject"
+                name="_subject"
+                label="Subject"
+                required
+              />
+            </div>
+
+            {/* Textarea sub-column — spans 2 of 3 grid cols */}
+            <div class="flex flex-col h-full md:col-span-2">
+              <Textarea
+                id="contact-message"
+                name="message"
+                label="Message"
+                required
+                className="resize-none"
+              />
+            </div>
+          </div>
+
+          {/* Submit row */}
+          <div class="mt-2 flex justify-end">
+            <Button type="submit">
+              <LuSendHorizontal />
+              Send
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center">
+      <h3 class="mt-4 font-semibold text-center text-lg md:text-xl">
+        Want to send an email directly? Write to:
+      </h3>
+      <div class="w-full flex justify-center mt-3">
+        <a
+          href="mailto:mail@michaldziuba.dev"
+          class="break-all font-black hover:text-primary inline-block text-center text-xl md:text-3xl"
+        >
+          mail@michaldziuba.dev
+        </a>
+      </div>
+    </div>
+  </section>
+</Container>

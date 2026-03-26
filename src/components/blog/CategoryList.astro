@@ -1,0 +1,40 @@
+---
+import { getCategories } from "../../content";
+
+interface Props {
+  activeCategory?: string;
+}
+
+const { activeCategory = "all" } = Astro.props;
+const categories = await getCategories();
+---
+
+<div class="flex flex-wrap items-center gap-2 mb-8">
+  <a
+    href="/blog"
+    class={`px-5 py-2 rounded-full text-sm font-medium transition-colors border ${
+      activeCategory === "all"
+        ? "bg-primary text-white border-primary hover:bg-primary-darken"
+        : "border-transparent bg-background-darken text-foreground hover:bg-background-darken/80"
+    }`}
+  >
+    All
+  </a>
+  {
+    categories?.map((category) => {
+      const isActive = activeCategory === category.slug.current;
+      return (
+        <a
+          href={`/blog/category/${category.slug.current}`}
+          class={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
+            isActive
+              ? "bg-primary text-white hover:bg-primary-darken"
+              : "bg-background-darken text-foreground hover:bg-background-darken/80"
+          }`}
+        >
+          {category.title}
+        </a>
+      );
+    })
+  }
+</div>

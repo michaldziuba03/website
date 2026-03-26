@@ -1,0 +1,26 @@
+# Michał Dziuba
+
+## Summary
+I am Michał Dziuba, a software developer and open-source enthusiast based in Poland. I have been coding since 2018. My work primarily focuses on building reliable applications for the web.
+
+## Tech Stack
+The main technologies I work with on a daily basis include:
+- JavaScript & TypeScript
+- Node.js & NestJS
+- React.js & Next.js
+- Databases: PostgreSQL, MongoDB, Redis
+- Systems & Tools: Docker, Linux, C, C++
+
+## Personal Interests
+Outside of work, I spend my time:
+- Gaming
+- Listening to metal music
+- Exploring history
+- Pixel art
+
+## Links & Details
+- Blog: /blog
+- Resume: /resume.pdf
+
+## Contact
+- Email: mail@michaldziuba.dev

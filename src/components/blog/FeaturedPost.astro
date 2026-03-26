@@ -1,0 +1,115 @@
+---
+import { urlForImage } from "../../sanity/lib/utils";
+import readingTime from "reading-time";
+import { toPlainText } from "astro-portabletext";
+import { getFormattedDate } from "../../utils";
+
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+
+if (!post) {
+  return null;
+}
+
+const title = post.title;
+const description = post.description;
+const slug = post.slug.current;
+const image = post.mainImage
+  ? urlForImage(post.mainImage.asset).size(1280, 720).url()
+  : undefined;
+const author = post.author
+  ? {
+      name: post.author.name,
+      avatar: urlForImage(post.author.image.asset).size(64, 64).url(),
+    }
+  : undefined;
+const pubDate = new Date(post.publishedAt);
+const category = post.category;
+const readTime = readingTime(toPlainText(post.body || [])).text;
+const link = `/blog/${slug}/`;
+---
+
+<article
+  class="group grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-background-darken/40 rounded-[32px] border border-background-darken p-4 sm:p-6 lg:p-8 transition-all duration-300 hover:-translate-y-1"
+>
+  <a
+    href={link}
+    class="relative block overflow-hidden aspect-2/1 w-full bg-background rounded-2xl shrink-0"
+  >
+    {
+      image ? (
+        <img
+          src={image}
+          alt={title}
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          loading="eager"
+          decoding="async"
+        />
+      ) : (
+        <div class="w-full h-full bg-background-darken transition-transform duration-500 group-hover:scale-105" />
+      )
+    }
+  </a>
+
+  <div class="flex flex-col flex-1 justify-center">
+    {
+      category && (
+        <span class="mb-4 w-fit inline-block bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+          {category.title}
+        </span>
+      )
+    }
+
+    <a
+      href={link}
+      class="hover:text-primary transition-colors font-bold text-xl md:text-2xl mb-4 leading-tight"
+    >
+      {title}
+    </a>
+
+    <p
+      class="text-sm lg:text-base leading-relaxed text-foreground/80 mb-8 line-clamp-3 md:line-clamp-4 flex-1"
+    >
+      {description}
+    </p>
+
+    <div
+      class="mt-auto flex items-center justify-between gap-4 pt-6 border-t border-background-darken/60"
+    >
+      <div class="flex items-center gap-4">
+        {
+          author?.avatar ? (
+            <img
+              alt={author.name}
+              src={author.avatar}
+              class="w-12 h-12 rounded-full object-cover border border-background-darken/50 bg-background"
+            />
+          ) : (
+            <div class="w-12 h-12 rounded-full bg-background-darken shrink-0" />
+          )
+        }
+        <div class="flex flex-col">
+          <span class="font-bold text-sm leading-tight">
+            {author?.name || "Unknown"}
+          </span>
+          <span
+            class="text-xs font-medium text-foreground/60 leading-tight mt-1"
+          >
+            {getFormattedDate(pubDate)}
+          </span>
+        </div>
+      </div>
+
+      {
+        readTime && (
+          <span class="text-xs font-semibold text-foreground/50 bg-background-darken/50 px-3 py-1.5 rounded-lg whitespace-nowrap hidden sm:block">
+            {readTime}
+          </span>
+        )
+      }
+    </div>
+  </div>
+</article>

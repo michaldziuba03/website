@@ -1,0 +1,47 @@
+---
+export interface TOCItem {
+  text: string;
+  slug: string;
+  level: number;
+  children: TOCItem[];
+}
+
+export interface Props {
+  headings: TOCItem[];
+  depth?: number;
+}
+
+const { headings, depth = 0 } = Astro.props;
+---
+
+<style is:global>
+  ol.toc-list {
+    counter-reset: item;
+    list-style-type: none;
+    padding-left: 0;
+  }
+  ol.toc-list li.toc-item::before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+    margin-right: 0.25rem;
+    color: inherit;
+    font-weight: 500;
+  }
+</style>
+
+<ol class={`toc-list space-y-3 text-foreground/80 ${depth > 0 ? 'ml-4' : ''}`}>
+  {
+    headings.map((heading) => (
+      <li class="toc-item text-sm font-medium">
+        <a href={`#${heading.slug}`} class="hover:text-primary transition-colors">
+          {heading.text}
+        </a>
+        {heading.children.length > 0 && (
+          <div class="mt-3">
+            <Astro.self headings={heading.children} depth={depth + 1} />
+          </div>
+        )}
+      </li>
+    ))
+  }
+</ol>

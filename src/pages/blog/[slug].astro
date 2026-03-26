@@ -1,0 +1,198 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import { getPosts, getPost } from "../../content";
+import { urlForImage } from "../../sanity/lib/utils";
+import readingTime from "reading-time";
+import PortableText from "../../components/portable/PortableText.astro";
+import { toPlainText } from "astro-portabletext";
+import { getFormattedDate } from "../../utils";
+import Head from "../../components/Head.astro";
+import { ScrollToTop } from "../../components/ScrollToTop";
+import TableOfContents from "../../components/blog/TableOfContents.astro";
+import type { TOCItem } from "../../components/blog/TableOfContents.astro";
+import slugify from "slugify";
+import { Share } from "../../components/blog/Share";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getPosts();
+  return posts.map((post: any) => ({
+    params: { slug: post.slug.current },
+  }));
+};
+
+const { slug } = Astro.params;
+const post = await getPost(slug as string);
+
+if (!post) {
+  return Astro.redirect("/404");
+}
+
+const mainImage = post.mainImage?.asset
+  ? urlForImage(post.mainImage.asset).size(1200, 600).url()
+  : undefined;
+const readTime = readingTime(toPlainText(post.body)).text;
+const authorAvatar = post.author?.image?.asset
+  ? urlForImage(post.author.image.asset).size(128, 128).url()
+  : undefined;
+
+const extractHeadings = (blocks: any[]) => {
+  if (!Array.isArray(blocks)) return [];
+  return blocks
+    .filter((block) => block._type === "block" && /^h[1-6]$/.test(block.style))
+    .map((block) => {
+      const text =
+        block.children?.map((child: any) => child.text).join("") || "";
+      const level = parseInt(block.style.replace("h", ""), 10);
+      return {
+        text,
+        level,
+        slug: slugify(text, { lower: true, strict: true }),
+      };
+    });
+};
+
+const headings = extractHeadings(post.body || []);
+
+function buildToc(headingList: any[]): TOCItem[] {
+  const root: TOCItem[] = [];
+  const stack: { level: number; item: TOCItem }[] = [];
+
+  for (const heading of headingList) {
+    const item: TOCItem = { ...heading, children: [] };
+
+    while (stack.length > 0 && stack[stack.length - 1].level >= heading.level) {
+      stack.pop();
+    }
+
+    if (stack.length > 0) {
+      stack[stack.length - 1].item.children.push(item);
+    } else {
+      root.push(item);
+    }
+
+    stack.push({ level: heading.level, item });
+  }
+  return root;
+}
+
+const tocTree = buildToc(headings);
+---
+
+<Layout>
+  <head>
+    <Head title={post.title} description={post.description} image={mainImage} />
+  </head>
+  <div
+    class="px-4 sm:px-6 md:px-8 max-w-7xl w-full mx-auto py-12 md:py-20 lg:py-24"
+  >
+    <div
+      class="flex flex-col lg:flex-row items-start justify-between gap-12 md:gap-8 xl:gap-18"
+    >
+      {/* Main Content (Left Column) */}
+      <div class="flex flex-col w-full lg:max-w-[700px] xl:max-w-[800px]">
+        <div class="mb-3">
+          <span
+            class="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
+          >
+            {post.category?.title || "Article"}
+          </span>
+        </div>
+
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-3"
+        >
+          {post.title}
+        </h1>
+
+        {
+          post.description && (
+            <p class="text-lg md:text-xl text-foreground/90 mb-5 leading-relaxed font-medium">
+              {post.description}
+            </p>
+          )
+        }
+
+        <div
+          class="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-background-darken"
+        >
+          <div class="flex items-center gap-4">
+            {
+              authorAvatar && (
+                <img
+                  src={authorAvatar}
+                  alt={post.author?.name}
+                  class="w-12 h-12 rounded-full object-cover"
+                />
+              )
+            }
+            <div class="flex flex-col">
+              <span class="font-bold">{post.author?.name || "Anonymous"}</span>
+              <span class="text-sm font-medium text-foreground/80"
+                >{getFormattedDate(new Date(post.publishedAt))} &bull; {
+                  readTime
+                }</span
+              >
+            </div>
+          </div>
+          <Share client:load />
+        </div>
+
+        {
+          mainImage && (
+            <div class="mb-2 w-full overflow-hidden rounded-2xl bg-background-darken border border-background-darken">
+              <img
+                src={mainImage}
+                alt={post.title}
+                class="w-full h-auto object-cover"
+                loading="eager"
+              />
+            </div>
+          )
+        }
+
+        {post.body && <PortableText value={post.body} />}
+      </div>
+
+      {/* Sidebar (Right Column) */}
+      <aside class="w-full lg:max-w-[380px] flex flex-col gap-8 sticky top-8">
+        {/* Author Card */}
+        <div
+          class="bg-background-darken rounded-2xl px-6 pb-6 pt-12 md:px-8 md:pb-8 md:pt-14 flex flex-col items-center text-center border border-background-darken/50 relative mt-10"
+        >
+          {
+            authorAvatar && (
+              <div class="absolute -top-10 left-1/2 -translate-x-1/2">
+                <img
+                  src={authorAvatar}
+                  alt={post.author?.name}
+                  class="w-20 h-20 rounded-full object-cover border-4 border-background bg-background-darken"
+                />
+              </div>
+            )
+          }
+          <h3 class="text-xl font-bold mb-1">
+            {post.author?.name || "Anonymous"}
+          </h3>
+          <p class="text-sm text-foreground/60 mb-4 font-medium">
+            {post.author?.role}
+          </p>
+          <p class="text-sm text-foreground/80 leading-relaxed">
+            {post.author?.bio}
+          </p>
+        </div>
+
+        {/* Table of Contents */}
+        {
+          headings.length > 0 && (
+            <div class="bg-background-darken rounded-2xl p-6 md:p-8 border border-background-darken/50">
+              <h3 class="text-lg font-bold mb-4">Table of Contents</h3>
+              <TableOfContents headings={tocTree} />
+            </div>
+          )
+        }
+      </aside>
+    </div>
+  </div>
+  <ScrollToTop client:load />
+</Layout>

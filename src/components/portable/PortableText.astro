@@ -1,0 +1,30 @@
+---
+import "../../styles/post.css";
+import { PortableText as PortableTextInternal } from "astro-portabletext";
+import PortableImage from "./PortableImage.astro";
+import PortableCode from "./PortableCode.astro";
+import PortableYoutube from "./PortableYoutube.astro";
+import PortableHeading from "./PortableHeading.astro";
+
+const { value } = Astro.props;
+
+const components = {
+    type: {
+        image: PortableImage,
+        code: PortableCode,
+        youtube: PortableYoutube,
+    },
+    block: {
+        h1: PortableHeading,
+        h2: PortableHeading,
+        h3: PortableHeading,
+        h4: PortableHeading,
+        h5: PortableHeading,
+        h6: PortableHeading,
+    },
+};
+---
+
+<article class="post text-foreground/90">
+    <PortableTextInternal value={value} components={components} />
+</article>

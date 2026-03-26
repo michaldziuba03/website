@@ -1,7 +1,7 @@
 ---
-import '@fontsource-variable/dm-sans';
-import normalWoff from '@fontsource-variable/dm-sans/files/dm-sans-latin-wght-normal.woff2?url';
-import '../styles/global.css'
+import "@fontsource-variable/bricolage-grotesque";
+import normalWoff from "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url";
+import "../styles/global.css";
 
 interface Props {
 	title: string;
@@ -10,7 +10,6 @@ interface Props {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
 const { title, description, image } = Astro.props;
 ---
 
@@ -19,9 +18,19 @@ const { title, description, image } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+<meta
+	name="keywords"
+	content="programming,nodejs,michal,dziuba,blog,portfolio,dev,michaldziuba03,github"
+/>
 
 <!-- Font preloads -->
-<link rel="preload" href={normalWoff} as="font" type="font/woff" crossorigin />
+<link
+	rel="preload"
+	href={normalWoff}
+	as="font"
+	type="font/woff2"
+	crossorigin="anonymous"
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -48,7 +57,11 @@ const { title, description, image } = Astro.props;
 
 <!-- Mastodon verification -->
 <link rel="me" href="https://fosstodon.org/@michaldziuba" />
-<meta name="keywords" content="programming,nodejs,michal,dziuba,blog,portfolio,dev,michaldziuba03,github" />
 
 <!-- RSS Discovery -->
-<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/rss.xml" />
+<link
+	rel="alternate"
+	type="application/rss+xml"
+	title="RSS Feed"
+	href="/rss.xml"
+/>
