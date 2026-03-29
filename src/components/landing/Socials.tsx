@@ -1,10 +1,11 @@
-import { SiGithub, SiLinkedin, SiRss } from 'react-icons/si'
+import { SiGithub, SiRss } from 'react-icons/si';
+import { GrLinkedin } from "react-icons/gr";  // simple icons for some reason removed linkedin icon
 
 const socialLinks = [
     {
         name: "LinkedIn",
         url: "https://www.linkedin.com/in/michaldziuba03",
-        icon: SiLinkedin,
+        icon: GrLinkedin,
         label: "Connect with me on LinkedIn"
     },
     {
