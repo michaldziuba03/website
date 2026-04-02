@@ -36,15 +36,8 @@ import { Socials } from "./Socials";
           <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Inputs sub-column */}
             <div class="flex flex-col gap-4">
+              <Input id="contact-name" name="name" label="Name" required />
               <Input
-                client:load
-                id="contact-name"
-                name="name"
-                label="Name"
-                required
-              />
-              <Input
-                client:load
                 id="contact-email"
                 name="email"
                 type="email"
@@ -52,7 +45,6 @@ import { Socials } from "./Socials";
                 required
               />
               <Input
-                client:load
                 id="contact-subject"
                 name="_subject"
                 label="Subject"
