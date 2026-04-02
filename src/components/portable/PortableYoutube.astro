@@ -12,3 +12,9 @@ const props = Astro.props.node;
     style={{ width: "100%", height: "auto", aspectRatio: "16/9" }}
   />
 </div>
+
+<p class="only-reader-view">
+  <a href={props.url} target="_blank" rel="noopener noreferrer">
+    Watch video on YouTube
+  </a>
+</p>

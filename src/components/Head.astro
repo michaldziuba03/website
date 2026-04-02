@@ -8,10 +8,11 @@ interface Props {
 	description: string;
 	image?: string;
 	author?: string;
+	type?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const { title, description, image, author } = Astro.props;
+const { title, description, image, author, type = "website" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -43,7 +44,7 @@ const { title, description, image, author } = Astro.props;
 {author && <meta name="author" content={author} />}
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={type} />
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

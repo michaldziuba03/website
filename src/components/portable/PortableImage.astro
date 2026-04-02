@@ -8,12 +8,15 @@ const url = urlForImage(asset).url();
 const webpUrl = urlForImage(asset).format("webp").url();
 ---
 
-<picture>
-    <source srcset={webpUrl} type="image/webp" />
-    <Image
-        class="rounded-2xl border border-background-darken"
-        src={url}
-        alt={alt || "Image"}
-        inferSize
-    />
-</picture>
+<figure>
+    <picture>
+        <source srcset={webpUrl} type="image/webp" />
+        <Image
+            class="rounded-2xl border border-background-darken"
+            src={url}
+            alt={alt || "Image"}
+            inferSize
+        />
+    </picture>
+    {alt && <figcaption>{alt}</figcaption>}
+</figure>
