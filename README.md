@@ -1,9 +1,9 @@
 # Personal Website
 
 
-A modern, professional portfolio and blog built with [Astro](https://astro.build/), [React](https://react.dev/), [Sanity](https://www.sanity.io/), and [Tailwind CSS](https://tailwindcss.com/).
+My portfolio and blog built with [Astro](https://astro.build/), [React](https://react.dev/), [Sanity](https://www.sanity.io/), and [Tailwind CSS](https://tailwindcss.com/).
 
-## ✨ Features
+## Features
 
 - **Astro** for fast, static-first site generation
 - **React** components for interactive UI elements
@@ -14,7 +14,7 @@ A modern, professional portfolio and blog built with [Astro](https://astro.build
 - **Contact form** with [FormSubmit](https://formsubmit.co/)
 - **SEO-friendly** and performant
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology      | Purpose                        |
 |-----------------|-------------------------------|
@@ -25,12 +25,12 @@ A modern, professional portfolio and blog built with [Astro](https://astro.build
 | React Icons     | Iconography                    |
 | FormSubmit      | Contact form handling          |
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
-- [Node.js](https://nodejs.org/) (v20+ recommended)
-- [npm](https://www.npmjs.com/)
+- [Node.js](https://nodejs.org/) (v22+ recommended)
+- [pnpm](https://pnpm.io/) (v10.30.0+ recommended)
 
 1. **Clone the repository:**
 
@@ -61,12 +61,3 @@ pnpm dev
 ```
 
 The site will be available by default at `http://localhost:4321`.
-
-## 📝 Content Management
-
-Sanity Studio is configured via sanity.config.ts.
-Schemas for posts, authors, categories, and block content are in src/sanity/schemaTypes/.
-To run Sanity Studio locally, use the Sanity CLI or deploy to sanity.io/manage.
-
-
-Made with ❤️ by Michał Dziuba
