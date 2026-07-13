@@ -30,9 +30,9 @@ const education = [
   {
     title: "Bachelor of Computer Science",
     organization: "Maria Curie-Skłodowska University",
-    period: "Oct 2023 - Present",
+    period: "Oct 2023 - Jul 2026",
     location: "Lublin, Poland",
-    isActive: true,
+    isActive: false,
   },
 ];
 
