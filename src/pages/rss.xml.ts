@@ -7,8 +7,8 @@ export async function GET(context: APIContext) {
     const now = new Date();
     const posts = await getPosts(10);
     const items: RSSFeedItem[] = posts.map((post) => ({
-        title: `<![CDATA[ ${post.title} ]]>`,
-        description: `<![CDATA[ ${post.description} ]]>`,
+        title: post.title,
+        description: post.description,
         link: `/blog/${post.slug.current}`,
         pubDate: new Date(post.publishedAt),
         updated: new Date(post._updatedAt),
