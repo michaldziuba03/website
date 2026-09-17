@@ -28,6 +28,13 @@ const workExperience = [
 
 const education = [
   {
+    title: "Master of Computer Science",
+    organization: "Maria Curie-Skłodowska University",
+    period: "Oct 2026 - Jul 2028",
+    location: "Lublin, Poland",
+    isActive: true,
+  },
+  {
     title: "Bachelor of Computer Science",
     organization: "Maria Curie-Skłodowska University",
     period: "Oct 2023 - Jul 2026",
