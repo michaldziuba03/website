@@ -30,7 +30,7 @@ const education = [
   {
     title: "Master of Computer Science",
     organization: "Maria Curie-Skłodowska University",
-    period: "Oct 2026 - Jul 2028",
+    period: "Oct 2026 - Present",
     location: "Lublin, Poland",
     isActive: true,
   },
